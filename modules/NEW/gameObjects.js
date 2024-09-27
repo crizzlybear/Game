@@ -167,7 +167,13 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     this.col="#ffffff";
   }
   pickup(){
-    if(pickup){
+    //set pickup area
+    //should make this into a function or something
+    let rightBorder=this.x+this.w + 10;
+    let leftBorder=this.x -10;
+    let topBorder=this.y - 10;
+    let botBorder=this.y+this.h + 10;
+    if((pickup) && ((rightBorder-bgX>avatarX)&&(botBorder-bgY>avatarY)&&(leftBorder-bgX<avatarX+avatarWidth)&&(topBorder-bgY<avatarY+avatarHeight))){
       console.log("pickedup");
       this.col = "#808080";
     }

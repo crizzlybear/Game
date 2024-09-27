@@ -36,6 +36,7 @@ function level1(canvas,ctx){
       //menu();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       //ctx.drawImage(background,0,0,1024,631,-bgX,-bgY,1024,631);//add this to BG class as well//DONT REMOVE YET
+
       moveableBG.drawUpdate(ctx);
       fixedAvatar.switchSprite(ctx,avatarX,avatarY);
       w1.drawObj_BGFixed(bgX,bgY);//make this before moveBG so theres no lag
@@ -52,6 +53,8 @@ function level1(canvas,ctx){
       item1.collisionObj(bgX,bgY);
       item1.pickup();
       moveableBG.moveBG(canvas);
+
+      fixedAvatar.usePower(ctx,avatarX,avatarY);
       openMenu(canvas,ctx);
       requestAnimationFrame(draw);
   }//===================================

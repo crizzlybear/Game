@@ -24,6 +24,7 @@ function keyDownHandler(e) {
     downPressed = true;
   } else if (e.key ==="e"){
     pickup = true;
+    powerOn = true;
   } else if (e.key ==="t"){
     console.log("t pressed");
     menu = true;
@@ -48,6 +49,7 @@ function keyUpHandler(e) {
     
   } else if(e.key === "e"){
     pickup = false;
+    powerOn = false;
   }else if(e.key == "t"){
     menu=false;
   }

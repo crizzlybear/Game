@@ -15,5 +15,12 @@ https://codepen.io/LFCProductions/details/gOgZXEM
 Notes:
 Can't directly place gifs
 
+Maybe use a second ctx as a mask
+https://stackoverflow.com/questions/6271419/how-to-fill-the-opposite-shape-on-canvas
 
+Animation for powerUp
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations#mouse_following_animation
+
+Clipping
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Compositing
 

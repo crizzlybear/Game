@@ -13,7 +13,7 @@ class Avatar{
     this.testValue = newTest;
   }
 
-  drawAvatar(ctx,updateX,updateY,) {
+  drawAvatar(ctx,updateX,updateY) {
     ctx.beginPath();
     ctx.rect(updateX, updateY, this.avatarW, this.avatarH);
     //ctx.fillStyle = "#0095DD";
@@ -57,10 +57,29 @@ class Avatar{
         drawSprite(last);
     }
   }
+
+
 }//end Avatar
 
 class AvatarFixed extends Avatar{
   constructor(){
     super();
   }
+
+  usePower(ctx, updateX,updateY){
+    //maybe create another ctx to act as a mask
+    if(powerOn){
+      console.log("power On!");
+      
+      ctx.beginPath();
+      // ctx.globalCompositeOperation = 'xor';//cool effect but not needed
+      ctx.rect(updateX,updateY, avatarWidth+30, avatarHeight+30);
+      ctx.fillStyle="rgba(255,0,255,0.5)";//single object transparency
+      ctx.fill();
+      ctx.closePath();
+
+    }
+    
+  }
+
 }

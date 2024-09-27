@@ -38,5 +38,5 @@ let ob = new Image();
 ob.src = "images/bed.png";
 
 
-
+let powerOn =false;
 let score = 0;
