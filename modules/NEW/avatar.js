@@ -59,3 +59,8 @@ class Avatar{
   }
 }//end Avatar
 
+class AvatarFixed extends Avatar{
+  constructor(){
+    super();
+  }
+}

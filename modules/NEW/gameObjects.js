@@ -79,7 +79,8 @@ class GameObjectInteractable extends GameObject{
   pickupObj(){
       //custom collision detection
       //has to be above draw()
-      if(avatarX+20+5>this.x && avatarY+20+5>this.y && avatarY<(this.y+this.h+5) && avatarX<(this.x+this.w+5))
+      //if(avatarX+20+5>this.x && avatarY+20+5>this.y && avatarY<(this.y+this.h+5) && avatarX<(this.x+this.w+5))
+      if(avatarX+avatarWidth>this.x && avatarY+avatarHeight>this.y && avatarY<(this.y+this.h) && avatarX<(this.x+this.w))
           {
             if(pickup){
               console.log("pickedup");
@@ -96,5 +97,83 @@ class GameObjectInteractable extends GameObject{
   }
 
  
+}
+
+
+class GameObjectLocked extends GameObject{
+  constructor(ctx,x,y,w,h){
+    super(ctx,x,y,w,h);
+    this.color="#FFFFFF";
+    this.ctx = ctx;//fix extends
+  }
+  drawObj_BGFixed(newX,newY){//newX,newY = bgX,bgY
+    //console.log("drawn object:", -newX,-newY, this.w, this.h);
+    let ctx = this.ctx;
+    ctx.beginPath();
+    ctx.rect(this.x-newX,this.y-newY, this.w, this.h);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+    ctx.closePath();
+    
+  } 
+  //override
+  collisionObj(){
+    //custom collision detection
+    let rightBorder=this.x+this.w;
+    let leftBorder=this.x;
+    let topBorder=this.y;
+    let botBorder=this.y+this.h;
+    if((rightBorder-bgX>avatarX)&&(botBorder-bgY>avatarY)&&(leftBorder-bgX<avatarX+avatarWidth)&&(topBorder-bgY<avatarY+avatarHeight)){
+      console.log("inside");
+      let collide = [Math.abs((rightBorder-bgX)-avatarX),Math.abs((botBorder-bgY)-avatarY),Math.abs((leftBorder-bgX)-(avatarX+avatarWidth)), Math.abs((topBorder-bgY)-(avatarY+avatarHeight))];
+      let n=collide.indexOf(Math.min(...collide));
+      console.log(collide);
+      console.log("X:"+bgX +" Y:"+bgY);
+      switch(n){
+        case n=0:
+          console.log("from right");
+          bgX = bgX+10;
+          break;
+        case n=1:
+          console.log("from bottom"); 
+          bgY = bgY+10;
+          break;
+        case n=2:
+          console.log("from left");
+          bgX=bgX-10;
+          break;
+        case n=3:
+          console.log("from top"); 
+          bgY = bgY-10;
+          break;
+        default:
+          console.log("nothing...");
+          break;
+      } //end switch
+    }else{//console.log("outside");
+    }
+
+   
+  }//end colision
+  
+}
+
+
+
+class GameObjectInteractableLocked extends GameObjectLocked{
+  constructor(ctx,x,y,w,h){
+    super(ctx,x,y,w,h);
+    this.ctx = ctx;
+    this.col="#ffffff";
+  }
+  pickup(){
+    if(pickup){
+      console.log("pickedup");
+      this.col = "#808080";
+    }
+  }
+  
+  
+
 }
 
