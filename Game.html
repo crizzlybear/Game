@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css"> 
+        <!--
+        <script src="modules/gameFunctions.js"></script>
+        <script src="modules/trackingMovement.js"></script> 
+        -->
+        <script src="modules/main.js"></script>
+        
+        <!--
+        
+        <script src="modules/platformer.js"></script>-->
+        <script src="modules/levels.js"></script>
+        <script src="modules/globalVariables.js"></script>
+        <script src="modules/NEW/avatar.js"></script>
+        <script src="modules/NEW/background.js"></script>
+        <script src="modules/NEW/gameObjects.js"></script>
+        <!-- <script src="modules/NEW/topDownLocked.js"></script> -->
+        <!--let scripts that contain a class that extends a class in another file, let it be ABOVE-->
+        <script src="modules/NEW/canvas.js"></script>
+        
+        
+    </head>
+    <!--
+    <body onload = game()>
+    -->
+    <body onload = "main()">
+        <canvas id="myCanvas" width="480" height="320"></canvas>
+        <div>
+            <p>score:</p><p id="score"></p>
+        </div>
+        <div class="overlap" >Dialogue</div>
+    </body>
+</html>
