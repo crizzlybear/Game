@@ -31,6 +31,8 @@ function level1(canvas,ctx){
   let fixedAvatar = new AvatarFixed(canvas.width/2,canvas.height/2,avatarWidth,avatarHeight);
   let moveableBG = new BGLocked("images/floor.png");
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
+  var col = averageColor();
+  console.log("COLOR: ", col);
   //DRAW LOOP===========================
   function draw(){
       //menu();

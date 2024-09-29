@@ -2,6 +2,8 @@ https://developer.mozilla.org/en-US/docs/Games/Anatomy
 TO RUN:
 (in cmd)
 start game.html
+iin wsl start server 
+python3 -m http.server
 
 Sample https://stackoverflow.com/questions/75179832/how-do-i-correctly-add-collisions-between-a-player-and-wall-in-javascript-canvas
 Canvas image
