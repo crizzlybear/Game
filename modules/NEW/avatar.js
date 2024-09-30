@@ -107,6 +107,8 @@ class AvatarFixed extends Avatar{
 
 }
 
+
+
   usePower(ctx, updateX,updateY){
     //maybe create another ctx to act as a mask
     if(powerOn){
@@ -129,5 +131,28 @@ class AvatarFixed extends Avatar{
     }
     
   }
+
+
+  usePowerColorStream(ctx, updateX,updateY){
+    //maybe create another ctx to act as a mask
+    if(powerOn){
+      console.log("power On Color Stream!");
+      let img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = "images/colormap.png";
+      ctx.beginPath();
+      // ctx.globalCompositeOperation = 'xor';//cool effect but not needed
+      //ctx.rect(updateX,updateY, avatarWidth+30, avatarHeight+30);
+      
+      //ctx.drawImage(img,updateX-30,updateY-30,-bgX,-bgY,updateX-30,updateY-30,60,60);
+      //ctx.drawImage(img,bgX,bgY,60,60,avatarX,avatarY,60,60);
+      ctx.drawImage(img,avatarX+bgX,avatarY+bgY,60,60,avatarX,avatarY,60,60);
+      ctx.fill();
+      ctx.closePath();
+
+    }
+    
+  }
+
 
 }

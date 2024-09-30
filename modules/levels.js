@@ -50,7 +50,8 @@ function level1(canvas,ctx){
       item1.pickup();
       moveableBG.moveBG(canvas);
  
-      fixedAvatar.usePower(ctx,avatarX,avatarY);
+     // fixedAvatar.usePower(ctx,avatarX,avatarY);
+     fixedAvatar.usePowerColorStream(ctx,avatarX,avatarY);
       openMenu(canvas,ctx);
       requestAnimationFrame(draw);
   }//===================================
