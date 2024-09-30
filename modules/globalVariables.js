@@ -9,13 +9,17 @@ let speed = 2;
 let n=0;
 let last = 0;//should be private
 let av = new Image();
-av.src = "images/dogSample.png";
+//av.src = "images/dogSample.png";
+av.src = "images/dogSample3.png";
 // let avH = 128;
 // let avW = 455;
 // let avDiv = 455/4;
 
+// let avH = 100;
+// let avW = 400;
+// let avDiv = 100;
 let avH = 100;
-let avW = 400;
+let avW = av.width;
 let avDiv = 100;
 //controls
 

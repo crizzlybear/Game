@@ -1,4 +1,5 @@
 //Classes for a 2d topdown game with fixed size background for level 1
+
 class Avatar{
   constructor(avatarW,avatarH){
     this.avatarW = avatarW;
@@ -33,28 +34,60 @@ class Avatar{
         avatarY = Math.min(avatarY +speed, canvas.height - avatarHeight);
     }
   }
-
+ 
 
   switchSprite(ctx,updateX,updateY){ 
+    
     function drawSprite(n){
             ctx.drawImage(av,n*avDiv,0,avDiv,avH,updateX,updateY,avatarWidth,avatarHeight);//1,2,3,4=part of image you want to show //5,6,7,8 how to display
             /*if fixed, updateX and updateY are constant,
             if moves, updateX = avatarX, updateY = avatarY. avatarX,avatarY is updated by moveFree()*/
         }
     if(rightPressed){
-        drawSprite(0);
-        last =0;
+        // drawSprite(0);
+        // last =0;
+        if(Math.abs(bgX)%20<10){
+          drawSprite(0);
+          last=0;
+        }else{
+          drawSprite(4);
+          last =4;
+        }
     }else if(leftPressed){
-        drawSprite(1);
-        last =1;
+        // drawSprite(1);
+        // last =1;
+       // console.log("bgX:", bgX%20);
+        if(Math.abs(bgX)%20<10){
+          drawSprite(1);
+          last=1;
+        }else{
+          drawSprite(5);
+          last =5;
+        }
     }else if(upPressed){
-        drawSprite(2);
-        last =2;
+        // drawSprite(2);
+        // last =2;
+        if(Math.abs(bgY)%20<10){
+          drawSprite(6);
+          last=6;
+        }else{
+          drawSprite(7);
+          last =7;
+        }
+        
     }else if(downPressed){
-        drawSprite(3);
-        last =3;
+        // drawSprite(3);
+        // last =3;
+        if(Math.abs(bgY)%20<10){
+          drawSprite(3);
+          last=3;
+        }else{
+          drawSprite(2);
+          last =2;
+        }
     }else{
-        drawSprite(last);
+        drawSprite(2);
+        //drawSprite(last);
     }
   }
 
