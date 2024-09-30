@@ -140,6 +140,14 @@ class AvatarFixed extends Avatar{
       let img = new Image();
       img.crossOrigin = "anonymous";
       img.src = "images/colormap.png";
+      
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(avatarX+30, avatarY+30, 10, 0, Math.PI * 2); // Hole anticlockwise
+      ctx.fill();
+      ctx.closePath();
+      ctx.clip();
+
       ctx.beginPath();
       // ctx.globalCompositeOperation = 'xor';//cool effect but not needed
       //ctx.rect(updateX,updateY, avatarWidth+30, avatarHeight+30);
@@ -148,8 +156,9 @@ class AvatarFixed extends Avatar{
       //ctx.drawImage(img,bgX,bgY,60,60,avatarX,avatarY,60,60);
       ctx.drawImage(img,avatarX+bgX,avatarY+bgY,60,60,avatarX,avatarY,60,60);
       ctx.fill();
+      
       ctx.closePath();
-
+      ctx.restore();
     }
     
   }
