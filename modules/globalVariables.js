@@ -40,3 +40,4 @@ ob.src = "images/bed.png";
 
 let powerOn =false;
 let score = 0;
+let rgb = { r: 0, g: 0, b: 0 };

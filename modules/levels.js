@@ -31,8 +31,7 @@ function level1(canvas,ctx){
   let fixedAvatar = new AvatarFixed(canvas.width/2,canvas.height/2,avatarWidth,avatarHeight);
   let moveableBG = new BGLocked("images/floor.png");
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
-  var col = averageColor();
-  console.log("COLOR: ", col);
+
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -44,18 +43,13 @@ function level1(canvas,ctx){
       w1.drawObj_BGFixed(bgX,bgY);//make this before moveBG so theres no lag
       w2.drawObj_BGFixed(bgX,bgY);//make this before moveBG so theres no lag
       item1.drawObj_BGFixed(bgX,bgY);
-      ctx.beginPath(); // Start a new path
-      //ctx.moveTo(200-bgX, 100-bgY); // Move the pen to (30, 50)
-      //ctx.lineTo(200-bgX, 300-bgY); // Draw a line to (150, 100)
-      ctx.moveTo(100-bgX, 100-bgY); // Move the pen to (30, 50)
-      ctx.lineTo(100-bgX, 300-bgY);
-      ctx.stroke(); // Render the path
+   
       w1.collisionObj(bgX,bgY);
       w2.collisionObj(bgX,bgY);
       item1.collisionObj(bgX,bgY);
       item1.pickup();
       moveableBG.moveBG(canvas);
-
+ 
       fixedAvatar.usePower(ctx,avatarX,avatarY);
       openMenu(canvas,ctx);
       requestAnimationFrame(draw);
