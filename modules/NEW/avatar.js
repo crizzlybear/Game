@@ -147,7 +147,7 @@ class AvatarFixed extends Avatar{
       ctx.fill();
       ctx.closePath();
       ctx.clip();
-
+      ctx.filter="blur(10px)";
       ctx.beginPath();
       // ctx.globalCompositeOperation = 'xor';//cool effect but not needed
       //ctx.rect(updateX,updateY, avatarWidth+30, avatarHeight+30);
@@ -155,6 +155,7 @@ class AvatarFixed extends Avatar{
       //ctx.drawImage(img,updateX-30,updateY-30,-bgX,-bgY,updateX-30,updateY-30,60,60);
       //ctx.drawImage(img,bgX,bgY,60,60,avatarX,avatarY,60,60);
       ctx.drawImage(img,avatarX+bgX,avatarY+bgY,60,60,avatarX,avatarY,60,60);
+      
       ctx.fill();
       
       ctx.closePath();
