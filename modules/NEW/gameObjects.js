@@ -26,9 +26,13 @@ class GameObject{
     this.ctx.closePath();
   }
 
-  drawImg(){
-    this.ctx.drawImage(ob, this.x, this.y, this.w, this.h);
-  }
+//   drawImg(imgName){
+//     var imgO = new Image();
+//     imgO.crossOrigin = "anonymous";
+// // img.src = `images/${imgName}`;
+//     imgO.src = "images/bed.png";
+//     this.ctx.drawImage(img0, this.x, this.y, this.w, this.h);
+//   }
 
   collisionObj(){
     //custom collision detection
@@ -116,6 +120,11 @@ class GameObjectLocked extends GameObject{
     ctx.closePath();
     
   } 
+
+  drawObjImgLayer(ctx,imgName,newX,newY, leftOffset, topOffset, extendX, extendY){
+    //height layer  
+    ctx.drawImage(imgName, this.x-newX+leftOffset, this.y-newY-topOffset, this.w+extendX, this.h+extendY);
+  }
   //override
   collisionObj(){
     //custom collision detection

@@ -187,7 +187,7 @@ class AvatarFixed extends Avatar{
      
       ctx.save();//remove if above is uncommented
       ctx.beginPath();  
-      ctx.filter = "blur(10px)";
+      ctx.filter = "blur(15px)";
       ctx.drawImage(img,avatarX+bgX,avatarY+bgY,60,60,avatarX,avatarY,60,60)
       ctx.fill();
       ctx.closePath();

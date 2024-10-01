@@ -31,7 +31,11 @@ function level1(canvas,ctx){
   let fixedAvatar = new AvatarFixed(canvas.width/2,canvas.height/2,avatarWidth,avatarHeight);
   let moveableBG = new BGLocked("images/floor.png");
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
-
+  let img0 = new Image();
+    img0.crossOrigin = "anonymous";
+// img.src = `images/${imgName}`;
+    img0.src = "images/bed.png";
+    console.log("img:",img0.src);
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -42,14 +46,16 @@ function level1(canvas,ctx){
       fixedAvatar.switchSprite(ctx,avatarX,avatarY);
       w1.drawObj_BGFixed(bgX,bgY);//make this before moveBG so theres no lag
       w2.drawObj_BGFixed(bgX,bgY);//make this before moveBG so theres no lag
+      
+      
       item1.drawObj_BGFixed(bgX,bgY);
-   
+      w1.drawObjImgLayer(ctx,img0, bgX,bgY,0,0,0,40);
       w1.collisionObj(bgX,bgY);
       w2.collisionObj(bgX,bgY);
       item1.collisionObj(bgX,bgY);
       item1.pickup();
       moveableBG.moveBG(canvas);
- 
+     
      // fixedAvatar.usePower(ctx,avatarX,avatarY);
      fixedAvatar.usePowerColorStream(ctx,avatarX,avatarY);
       openMenu(canvas,ctx);

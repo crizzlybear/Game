@@ -38,10 +38,12 @@ let bgX = 0;
 let bgY = 0;
 
 //gameobj
-let ob = new Image();
-ob.src = "images/bed.png";
+// let ob = new Image();
+// ob.src = "images/bed.png";
 
 
 let powerOn =false;
 let score = 0;
 let rgb = { r: 0, g: 0, b: 0 };
+
+let itemQueue = [];
