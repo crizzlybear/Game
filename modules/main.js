@@ -15,7 +15,7 @@ function main(){
 function keyDownHandler(e) {
   if (e.key === "Right" || e.key === "ArrowRight") {
     rightPressed = true;
-    document.getElementById("score").innerText=score++;
+    // document.getElementById("score").innerText=score++;
   } else if (e.key === "Left" || e.key === "ArrowLeft") {
     leftPressed = true;
   } else if (e.key ==="Up" || e.key === "ArrowUp") {

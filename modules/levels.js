@@ -36,6 +36,7 @@ function level1(canvas,ctx){
 // img.src = `images/${imgName}`;
     img0.src = "images/bed.png";
     console.log("img:",img0.src);
+    
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -53,13 +54,15 @@ function level1(canvas,ctx){
       w1.collisionObj(bgX,bgY);
       w2.collisionObj(bgX,bgY);
       item1.collisionObj(bgX,bgY);
-      item1.pickup();
+      //item1.pickup();
+      item1.getEnergy();
       moveableBG.moveBG(canvas);
      
      // fixedAvatar.usePower(ctx,avatarX,avatarY);
-     fixedAvatar.usePowerColorStream(ctx,avatarX,avatarY);
+     fixedAvatar.usePowerColorStream(ctx,avatarX,avatarY,energy);
       openMenu(canvas,ctx);
       requestAnimationFrame(draw);
+      
   }//===================================
   //execute
   requestAnimationFrame(draw);//framerate 

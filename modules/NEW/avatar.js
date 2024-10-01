@@ -168,7 +168,10 @@ class AvatarFixed extends Avatar{
 
   usePowerColorStream(ctx){
     //maybe create another ctx to act as a mask
-    if(powerOn){
+    if(powerOn&&energy>0){
+      energy=energy-1;
+      // console.log("Energy:",energy);
+      document.getElementById("energy").innerText=energy;
       console.log("power On Color Stream!");
       let img = new Image();
       img.crossOrigin = "anonymous";
