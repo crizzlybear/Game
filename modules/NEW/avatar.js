@@ -166,7 +166,7 @@ class AvatarFixed extends Avatar{
   }
 
 
-  usePowerColorStream(ctx, updateX,updateY){
+  usePowerColorStream(ctx){
     //maybe create another ctx to act as a mask
     if(powerOn){
       console.log("power On Color Stream!");
@@ -174,25 +174,26 @@ class AvatarFixed extends Avatar{
       img.crossOrigin = "anonymous";
       img.src = "images/colormap.png";
       
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(avatarX+30, avatarY+30, 10, 0, Math.PI * 2); // Hole anticlockwise
+      
+      // ctx.save();
+      // ctx.filter = "blur(20px)";
+      // ctx.beginPath();
+      // ctx.arc(avatarX+30, avatarY+30, 10, 0, Math.PI * 2); // Hole anticlockwise
+      // ctx.fill();
+      // ctx.closePath();
+      // ctx.restore();
+      // ctx.save();
+      // ctx.clip();
+     
+      ctx.save();//remove if above is uncommented
+      ctx.beginPath();  
+      ctx.filter = "blur(10px)";
+      ctx.drawImage(img,avatarX+bgX,avatarY+bgY,60,60,avatarX,avatarY,60,60)
       ctx.fill();
       ctx.closePath();
-      ctx.clip();
-      ctx.filter="blur(10px)";
-      ctx.beginPath();
-      // ctx.globalCompositeOperation = 'xor';//cool effect but not needed
-      //ctx.rect(updateX,updateY, avatarWidth+30, avatarHeight+30);
       
-      //ctx.drawImage(img,updateX-30,updateY-30,-bgX,-bgY,updateX-30,updateY-30,60,60);
-      //ctx.drawImage(img,bgX,bgY,60,60,avatarX,avatarY,60,60);
-      ctx.drawImage(img,avatarX+bgX,avatarY+bgY,60,60,avatarX,avatarY,60,60);
       
-      ctx.fill();
-      
-      ctx.closePath();
-      ctx.restore();
+      ctx.restore(); 
     }
     
   }
