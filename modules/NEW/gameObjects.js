@@ -88,7 +88,7 @@ class GameObjectInteractable extends GameObject{
           {
             if(pickup){
               console.log("pickedup");
-              this.col = "#808080";
+              this.setCol = "#808080";
             }
           }//end if
     }//end colision
@@ -105,9 +105,9 @@ class GameObjectInteractable extends GameObject{
 
 
 class GameObjectLocked extends GameObject{
-  constructor(ctx,x,y,w,h){
+  constructor(ctx,x,y,w,h,objColor){
     super(ctx,x,y,w,h);
-    this.color="#FFFFFF";
+    this.color=objColor;
     this.ctx = ctx;//fix extends
   }
   drawObj_BGFixed(newX,newY){//newX,newY = bgX,bgY
@@ -125,7 +125,7 @@ class GameObjectLocked extends GameObject{
     //height layer  
     ctx.drawImage(imgName, this.x-newX+leftOffset, this.y-newY-topOffset, this.w+extendX, this.h+extendY);
   }
-  //override
+ override
   collisionObj(){
     //custom collision detection
     let rightBorder=this.x+this.w;
@@ -184,7 +184,9 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let botBorder=this.y+this.h + 10;
     if((pickup) && ((rightBorder-bgX>avatarX)&&(botBorder-bgY>avatarY)&&(leftBorder-bgX<avatarX+avatarWidth)&&(topBorder-bgY<avatarY+avatarHeight))){
       console.log("pickedup");
-      this.col = "#808080";
+      this.col = "#71ffff";
+    }else{
+      this.col = "#ffffff";
     }
   }
   getEnergy(){
@@ -196,10 +198,19 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let botBorder=this.y+this.h + 10;
     if((pickup) && ((rightBorder-bgX>avatarX)&&(botBorder-bgY>avatarY)&&(leftBorder-bgX<avatarX+avatarWidth)&&(topBorder-bgY<avatarY+avatarHeight))){
       energy=1000;
-      this.col = "#808080";
+      //this.col = "#808080";
+      this.col = "#71ffff";
+    }else{
+      this.col = "#ffffff";
     }
   }
   
 
+}
+
+function setShadow(ctx){
+    ctx.shadowColor = "grey";
+    ctx.shadowBlur = 8;
+    ctx.shadowOffsetY = 10;
 }
 

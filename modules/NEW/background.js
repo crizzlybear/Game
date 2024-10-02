@@ -40,4 +40,24 @@ class BGLocked extends BG{
       avatarX = canvas.width/2;
       avatarY = canvas.height/2;
     }
+    drawPattern(ctx,tile){
+      ctx.beginPath();
+      ctx.fillStyle =  ctx.createPattern(tile, "repeat");
+      // ctx.fillRect(-bgX, -bgY, 1024,631);
+      // ctx.save();
+      
+      ctx.fillRect(-bgX, -bgY, 1024,631);
+     
+      //ctx.fillRect(bgX,bgY, 1024, 631);
+      ctx.closePath();
+    }
+    drawGradient(ctx){
+      ctx.beginPath();
+      const grad = ctx.createLinearGradient(0,0,0,631);
+      grad.addColorStop(0,"darkgrey");
+      grad.addColorStop(1,"lightblue");
+      ctx.fillStyle = grad;
+      ctx.fillRect(-bgX,-bgY,1024,631);
+      ctx.closePath();
+    }
 }

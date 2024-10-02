@@ -48,3 +48,6 @@ let rgb = { r: 0, g: 0, b: 0 };
 
 let itemQueue = [];
 let energy = 1000;
+
+let tileObj = new Image();
+tileObj.src = "images/floortile.png";
