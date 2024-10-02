@@ -52,13 +52,30 @@ class BGLocked extends BG{
       ctx.closePath();
     }
     drawGradient(ctx){
+      //vignette effect
+      ctx.save();
+      ctx.globalAlpha = 0.55;
+      ctx.beginPath();
+      const grad2 = ctx.createRadialGradient(260, 200, 50, 260, 200, 250);
+      grad2.addColorStop(0,"#3e4e57");//#524f46 #524f46
+     
+      grad2.addColorStop(0.9,"#0c0529");
+      ctx.fillStyle = grad2;
+      ctx.fillRect(-bgX,-bgY,1024,631);
+      ctx.closePath();
+
+      //simple gradient background
       ctx.beginPath();
       const grad = ctx.createLinearGradient(0,0,0,631);
-      grad.addColorStop(0,"darkgrey");
+      grad.addColorStop(0,"darkgray");
       grad.addColorStop(1,"lightblue");
       ctx.fillStyle = grad;
       ctx.fillRect(-bgX,-bgY,1024,631);
       ctx.closePath();
+      //end
+      
+      
+      ctx.restore();
     }
 }
 
