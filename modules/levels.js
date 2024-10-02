@@ -82,11 +82,10 @@ function level2(canvas,ctx){
   let moveableBG = new BGLocked("images/floor.png");
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
   var box = new GameObjectInteractableLocked(ctx,200,600,30,30);
-  let img0 = new Image();
+  var enemy = new Enemy(ctx,0,0,30,30);
+    let img0 = new Image();
     img0.crossOrigin = "anonymous";
-// img.src = `images/${imgName}`;
     img0.src = "images/buildingLong.png";
-    console.log("img:",img0.src);
     wallImg = new Image();
     wallImg.crossOrigin = "anonymous";
     wallImg.src = "images/wall.png";
@@ -110,12 +109,15 @@ function level2(canvas,ctx){
       emptySpace2.drawObj_BGFixed(bgX,bgY);
       fixedAvatar.switchSprite(ctx,avatarX,avatarY);
       
+
       //draw object collision zone
       w1.drawObj_BGFixed(bgX,bgY);//make this before moveBG so theres no lag
       w2.drawObj_BGFixed(bgX,bgY);//make this before moveBG so theres no lag
       w3.drawObj_BGFixed(bgX,bgY);
       item1.drawObj_BGFixed(bgX,bgY);
       box.drawObj_BGFixed(bgX,bgY);
+      //enemy.drawObj_BGFixed(bgX,bgY);
+      enemy.drawVerticalMovement(bgX,bgY,100);
       w4.drawObj_BGFixed(bgX,bgY);
       //draw layers
       w1.drawObjImgLayer(ctx,img0, bgX,bgY,0,40,0,50);
@@ -123,6 +125,7 @@ function level2(canvas,ctx){
       w3.drawObjImgLayer(ctx,wallImg,bgX,bgY,0,0,0,0);
       box.drawObjImgLayer(ctx,boxImg,bgX,bgY,0,0,0,0);
       w4.drawObjImgLayer(ctx,whImg,bgX,bgY,0,40,0,40);
+      //enemy.drawObjImgLayer(ctx,boxImg,bgX,bgY,0,0,0,0);
       //collisions
       w1.collisionObj(bgX,bgY);
       w2.collisionObj(bgX,bgY);
@@ -130,8 +133,10 @@ function level2(canvas,ctx){
       item1.collisionObj(bgX,bgY);
       emptySpace2.collisionObj(bgX,bgY);
       box.collisionObj(bgX,bgY);
+      //changeBgY();
+  
       w4.collisionObj(bgX,bgY);
-      
+      enemy.collisionObj2(bgX,bgY);
       //item1.pickup();
       item1.getEnergy();
       box.pickup();

@@ -15,6 +15,7 @@ class Avatar{
   }
 
   drawAvatar(ctx,updateX,updateY) {
+    //console.log("updateX:", updateX);
     ctx.beginPath();
     ctx.rect(updateX, updateY, this.avatarW, this.avatarH);
     //ctx.fillStyle = "#0095DD";

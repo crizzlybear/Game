@@ -61,3 +61,10 @@ class BGLocked extends BG{
       ctx.closePath();
     }
 }
+
+function changeBgY(value){
+  bgY  = value;
+};
+function changeBgX(value){
+  bgX = value;
+}

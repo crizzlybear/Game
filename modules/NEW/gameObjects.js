@@ -34,38 +34,38 @@ class GameObject{
 //     this.ctx.drawImage(img0, this.x, this.y, this.w, this.h);
 //   }
 
-  collisionObj(){
-    //custom collision detection
-    if(avatarX+avatarWidth>this.x && avatarY+avatarHeight>this.y && avatarY<(this.y+this.h) && avatarX<(this.x+this.w))
-        {
-          let collide = [Math.abs(this.x-(avatarX+avatarWidth)), Math.abs((this.x+this.w)-(avatarX)), Math.abs(this.y-(avatarY+avatarHeight)), Math.abs(avatarY-(this.y+this.h))];
-          let n=collide.indexOf(Math.min(...collide));
-          switch(n){
-            case n=0:
-              console.log("from left");
-              avatarX=this.x-avatarWidth;
-              break;
-            case n=1:
-              console.log("from right");
-              avatarX=this.x+this.w;
-              break;
-            case n=2:
-              console.log("from top");
-              avatarY=this.y-avatarHeight;
+  // collisionObj(){
+  //   //custom collision detection
+  //   if(avatarX+avatarWidth>this.x && avatarY+avatarHeight>this.y && avatarY<(this.y+this.h) && avatarX<(this.x+this.w))
+  //       {
+  //         let collide = [Math.abs(this.x-(avatarX+avatarWidth)), Math.abs((this.x+this.w)-(avatarX)), Math.abs(this.y-(avatarY+avatarHeight)), Math.abs(avatarY-(this.y+this.h))];
+  //         let n=collide.indexOf(Math.min(...collide));
+  //         switch(n){
+  //           case n=0:
+  //             console.log("from left");
+  //             avatarX=this.x-avatarWidth;
+  //             break;
+  //           case n=1:
+  //             console.log("from right");
+  //             avatarX=this.x+this.w;
+  //             break;
+  //           case n=2:
+  //             console.log("from top");
+  //             avatarY=this.y-avatarHeight;
               
-              console.log("TOP HIT");
-              break;
-            case n=3:
-              console.log("from bottom");
-              avatarY=this.y+this.h;
+  //             console.log("TOP HIT");
+  //             break;
+  //           case n=3:
+  //             console.log("from bottom");
+  //             avatarY=this.y+this.h;
           
-              break;
-            default:
-              console.log("nothing...");
-              break;
-          } //end switch
-        }//end if
-  }//end colision
+  //             break;
+  //           default:
+  //             console.log("nothing...");
+  //             break;
+  //         } //end switch
+  //       }//end if
+  // }//end colision
   
   //wrappers
   createObj(){
