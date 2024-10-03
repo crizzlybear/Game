@@ -97,6 +97,7 @@ function level2(canvas,ctx){
   let rate=0;
   //let energy = 1000;
   var energyStat = new GameStats(20,300,50,10);
+  var w5 = new GameObjectLocked(ctx,260,200,20,20);
   
   //DRAW LOOP===========================
   function draw(){
@@ -132,6 +133,9 @@ function level2(canvas,ctx){
       w3.drawObjImgLayer(ctx,wallImg,bgX,bgY,0,0,0,0);
       box.drawObjImgLayer(ctx,boxImg,bgX,bgY,0,0,0,0);
       w4.drawObjImgLayer(ctx,whImg,bgX,bgY,0,40,0,40);
+
+      w5.animateThis(rate);
+
       //enemy.drawObjImgLayer(ctx,boxImg,bgX,bgY,0,0,0,0);
       //collisions
       w1.collisionObj(bgX,bgY);

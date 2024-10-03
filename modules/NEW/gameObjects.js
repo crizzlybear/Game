@@ -164,6 +164,21 @@ class GameObjectLocked extends GameObject{
 
    
   }//end colision
+
+  animateThis(rate){
+    var w2 = this.w;
+    if(rate==1){
+     
+     (this.x+=5)%200;
+    }
+    
+      let ctx = this.ctx;
+     ctx.beginPath();
+     ctx.rect((this.x)%260,this.y, w2, this.h);
+     ctx.fillStyle = this.color;
+     ctx.fill();
+     ctx.closePath();
+  }
   
 }
 
