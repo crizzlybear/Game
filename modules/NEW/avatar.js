@@ -37,58 +37,80 @@ class Avatar{
   }
  
 
-  switchSprite(ctx,updateX,updateY){ 
+  switchSprite(ctx,updateX,updateY, rate){ 
     
     function drawSprite(n){
             ctx.drawImage(av,n*avDiv,0,avDiv,avH,updateX,updateY,avatarWidth,avatarHeight);//1,2,3,4=part of image you want to show //5,6,7,8 how to display
             /*if fixed, updateX and updateY are constant,
             if moves, updateX = avatarX, updateY = avatarY. avatarX,avatarY is updated by moveFree()*/
         }
-    if(rightPressed){
-        // drawSprite(0);
-        // last =0;
-        if(Math.abs(bgX)%20<10){
+    
+    if(rightPressed){//0,4
+        //if(Math.abs(bgX)%20<10){
+        console.log(rate);
+        if(last==0){
           drawSprite(0);
-          last=0;
+          if(rate==3){
+            last=4;
+          }
+          
         }else{
           drawSprite(4);
-          last =4;
+          if(rate==3){
+            last=0;
+          }
         }
-    }else if(leftPressed){
-        // drawSprite(1);
-        // last =1;
-       // console.log("bgX:", bgX%20);
-        if(Math.abs(bgX)%20<10){
-          drawSprite(1);
+    }else if(leftPressed){//1,5
+      if(last==1){
+        drawSprite(1);
+        if(rate==3){
+          last=5;
+        }
+      }else{
+        drawSprite(5);
+        if(rate==3){
           last=1;
-        }else{
-          drawSprite(5);
-          last =5;
         }
-    }else if(upPressed){
-        // drawSprite(2);
-        // last =2;
-        if(Math.abs(bgY)%20<10){
-          drawSprite(6);
+      }
+    }else if(upPressed){//6,7
+      if(last==7){
+        drawSprite(7);
+        if(rate==3){
           last=6;
-        }else{
-          drawSprite(7);
-          last =7;
         }
+      }else{
+        drawSprite(6);
+        if(rate==3){
+          last=7;
+        }
+      }
         
-    }else if(downPressed){
+    }else if(downPressed){//2,3
         // drawSprite(3);
         // last =3;
-        if(Math.abs(bgY)%20<10){
-          drawSprite(3);
-          last=3;
-        }else{
+        if(last==2){
           drawSprite(2);
-          last =2;
+          if(rate==3){
+            last=3;
+          }
+        }else{
+          drawSprite(3);
+          if(rate==3){
+            last=2;
+          }
         }
     }else{
+      if(last==2){
         drawSprite(2);
-        //drawSprite(last);
+        if(rate==3){
+          last=3;
+        }
+      }else{
+        drawSprite(3);
+        if(rate==3){
+          last=2;
+        }
+      }
     }
   }
 

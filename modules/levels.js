@@ -94,7 +94,7 @@ function level2(canvas,ctx){
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
   var box = new GameObjectInteractableLocked(ctx,200,600,30,30);
   var enemy = new Enemy(ctx,0,0,30,30);
-    
+  let rate=0;
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -106,7 +106,10 @@ function level2(canvas,ctx){
       moveableBG.drawGradient(ctx);
       setShadow(ctx);
       emptySpace2.drawObj_BGFixed(bgX,bgY);
-      fixedAvatar.switchSprite(ctx,avatarX,avatarY);
+     
+      fixedAvatar.switchSprite(ctx,avatarX,avatarY,rate);
+      
+      
       
 
       //draw object collision zone
@@ -145,6 +148,9 @@ function level2(canvas,ctx){
       
      // fixedAvatar.usePower(ctx,avatarX,avatarY);
      fixedAvatar.usePowerColorStream(ctx,avatarX,avatarY,energy);
+
+      rate = (rate+1)%10;//let this be frame rate, e.g if rate == 3, only every 1 out of every 100 frames will be called.
+      
       openMenu(canvas,ctx);
       requestAnimationFrame(draw);
       
