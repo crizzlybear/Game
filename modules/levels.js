@@ -124,6 +124,7 @@ function level2(canvas,ctx){
       box.drawObj_BGFixed(bgX,bgY);
       //enemy.drawObj_BGFixed(bgX,bgY);
       enemy.drawVerticalMovement(bgX,bgY,100);
+     //enemy.drawFollow(bgX,bgY);
       w4.drawObj_BGFixed(bgX,bgY);
       //draw layers
       w1.drawObjImgLayer(ctx,img0, bgX,bgY,0,40,0,50);

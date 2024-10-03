@@ -33,6 +33,23 @@ class Enemy extends GameObjectLocked{
         ctx.closePath();
     }
     
+      drawFollow(bgX,bgY){
+      let ctx = this.ctx;
+      ctx.beginPath();
+      
+      var xDist = Math.floor(convertBGXtoAvatar(bgX)-this.x);
+      var yDist = Math.floor(convertBGYtoAvatar(bgY)- this.y );
+    
+      var ax = this.x +=(xDist*0.01);
+      var ay = this.y +=(yDist*0.01);
+      this.newX = ax;
+      this.newY = ay;
+      ctx.rect(ax-bgX,ay-bgY, this.w, this.h);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+      ctx.closePath();
+  }
+  
     //override
     collisionObj2(bgX,bgY){
       //custom collision detection
