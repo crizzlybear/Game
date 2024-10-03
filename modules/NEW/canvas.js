@@ -59,7 +59,7 @@ class GameStats{
         }
     
         drawBar(ctx,this.x,this.y,this.w,this.h,"white");
-        console.log("eneergy",energy);
+        //console.log("eneergy",energy);
         drawBar(ctx,this.x,this.y,(energy/1000)*this.w,this.h,"green");
     }
 

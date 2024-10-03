@@ -85,3 +85,15 @@ function changeBgY(value){
 function changeBgX(value){
   bgX = value;
 }
+
+function convertBGYtoAvatar(bgY){
+  //avatarRelative position
+  var translated=bgY+160; 
+  return translated;
+}
+
+function convertBGXtoAvatar(bgX){
+   //avatarRelative position
+  var translated=bgX+240; 
+  return translated;
+}
