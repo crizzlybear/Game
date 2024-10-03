@@ -95,6 +95,9 @@ function level2(canvas,ctx){
   var box = new GameObjectInteractableLocked(ctx,200,600,30,30);
   var enemy = new Enemy(ctx,0,0,30,30);
   let rate=0;
+  //let energy = 1000;
+  var energyStat = new GameStats(20,300,50,10);
+  
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -117,6 +120,7 @@ function level2(canvas,ctx){
       w2.drawObj_BGFixed(bgX,bgY);//make this before moveBG so theres no lag
       w3.drawObj_BGFixed(bgX,bgY);
       item1.drawObj_BGFixed(bgX,bgY);
+      
       box.drawObj_BGFixed(bgX,bgY);
       //enemy.drawObj_BGFixed(bgX,bgY);
       enemy.drawVerticalMovement(bgX,bgY,100);
@@ -142,6 +146,8 @@ function level2(canvas,ctx){
       //item1.pickup();
       item1.getEnergy();
       box.pickup();
+      energyStat.drawEnergyBar(ctx,energy);
+      
       moveableBG.moveBG(canvas);
      
 

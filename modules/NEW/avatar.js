@@ -47,7 +47,7 @@ class Avatar{
     
     if(rightPressed){//0,4
         //if(Math.abs(bgX)%20<10){
-        console.log(rate);
+        //console.log(rate);
         if(last==0){
           drawSprite(0);
           if(rate==3){
@@ -194,7 +194,7 @@ class AvatarFixed extends Avatar{
     if(powerOn&&energy>0){
       energy=energy-1;
       // console.log("Energy:",energy);
-      document.getElementById("energy").innerText=energy;
+      // document.getElementById("energy").innerText=energy;
       console.log("power On Color Stream!");
       let img = new Image();
       img.crossOrigin = "anonymous";

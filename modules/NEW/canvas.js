@@ -40,3 +40,27 @@ function openMenu(canvas,ctx){
 
 
 
+class GameStats{
+    constructor(x,y,w,h){
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+    }
+
+    
+    drawEnergyBar(ctx,energy){
+        function drawBar(ctx,xx,yy,ww,hh,setCol){
+            ctx.beginPath();
+            ctx.rect(xx,yy,ww,hh);
+            ctx.fillStyle = setCol;
+            ctx.fill();
+            ctx.closePath();
+        }
+    
+        drawBar(ctx,this.x,this.y,this.w,this.h,"white");
+        console.log("eneergy",energy);
+        drawBar(ctx,this.x,this.y,(energy/1000)*this.w,this.h,"green");
+    }
+
+}
