@@ -5,6 +5,7 @@ class Avatar{
     this.avatarW = avatarW;
     this.avatarH = avatarH;
     this.testValue=1000;
+    this.i=0;
   }
 
   getTest(){
@@ -44,73 +45,22 @@ class Avatar{
             /*if fixed, updateX and updateY are constant,
             if moves, updateX = avatarX, updateY = avatarY. avatarX,avatarY is updated by moveFree()*/
         }
-    
+   if(rate==1){
+    this.i = (this.i+1)%2;//where 2 is number of frames
+   }
     if(rightPressed){//0,4
-        //if(Math.abs(bgX)%20<10){
-        //console.log(rate);
-        if(last==0){
-          drawSprite(0);
-          if(rate==3){
-            last=4;
-          }
-          
-        }else{
-          drawSprite(4);
-          if(rate==3){
-            last=0;
-          }
-        }
+        console.log(this.i);
+        drawSprite(this.i);
     }else if(leftPressed){//1,5
-      if(last==1){
-        drawSprite(1);
-        if(rate==3){
-          last=5;
-        }
-      }else{
-        drawSprite(5);
-        if(rate==3){
-          last=1;
-        }
-      }
+      // console.log("L",this.i+4);
+      drawSprite(this.i+4);
     }else if(upPressed){//6,7
-      if(last==7){
-        drawSprite(7);
-        if(rate==3){
-          last=6;
-        }
-      }else{
-        drawSprite(6);
-        if(rate==3){
-          last=7;
-        }
-      }
+      drawSprite(this.i+6);
         
     }else if(downPressed){//2,3
-        // drawSprite(3);
-        // last =3;
-        if(last==2){
-          drawSprite(2);
-          if(rate==3){
-            last=3;
-          }
-        }else{
-          drawSprite(3);
-          if(rate==3){
-            last=2;
-          }
-        }
+        drawSprite(this.i+2);
     }else{
-      if(last==2){
-        drawSprite(2);
-        if(rate==3){
-          last=3;
-        }
-      }else{
-        drawSprite(3);
-        if(rate==3){
-          last=2;
-        }
-      }
+      drawSprite(this.i+2);
     }
   }
 
