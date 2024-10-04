@@ -106,8 +106,9 @@ function level2(canvas,ctx){
       //ctx.drawImage(background,0,0,1024,631,-bgX,-bgY,1024,631);//add this to BG class as well//DONT REMOVE YET
       ctx.imageSmoothingEnabled = false;
       //moveableBG.drawUpdate(ctx);
-     // moveableBG.drawPattern(ctx,tileObj);
-      moveableBG.drawGradient(ctx);
+      moveableBG.drawPattern(ctx,tileObj);
+      
+      //moveableBG.drawGradient(ctx);
       setShadow(ctx);
       emptySpace2.drawObj_BGFixed(bgX,bgY);
      
@@ -134,7 +135,7 @@ function level2(canvas,ctx){
       box.drawObjImgLayer(ctx,boxImg,bgX,bgY,0,0,0,0);
       w4.drawObjImgLayer(ctx,whImg,bgX,bgY,0,40,0,40);
 
-      w5.animateThis(rate);
+      // w5.animateThis(rate);
 
       //enemy.drawObjImgLayer(ctx,boxImg,bgX,bgY,0,0,0,0);
       //collisions

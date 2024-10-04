@@ -41,15 +41,16 @@ class BGLocked extends BG{
       avatarY = canvas.height/2;
     }
     drawPattern(ctx,tile){
-      ctx.beginPath();
-      ctx.fillStyle =  ctx.createPattern(tile, "repeat");
-      // ctx.fillRect(-bgX, -bgY, 1024,631);
-      // ctx.save();
       
-      ctx.fillRect(-bgX, -bgY, 1024,631);
-     
-      //ctx.fillRect(bgX,bgY, 1024, 631);
+      
+      ctx.fillStyle =  ctx.createPattern(tile, "repeat");
+      ctx.beginPath();
+      ctx.rect(-bgX,-bgY,1024,631);
+      ctx.translate(-bgX,-bgY);
+      ctx.fill();
+      ctx.translate(bgX,bgY);//undo translate so it doesnt smear
       ctx.closePath();
+      
     }
     drawGradient(ctx){
       //vignette effect

@@ -49,7 +49,7 @@ class Avatar{
     this.i = (this.i+1)%2;//where 2 is number of frames
    }
     if(rightPressed){//0,4
-        console.log(this.i);
+        // console.log(this.i);
         drawSprite(this.i);
     }else if(leftPressed){//1,5
       // console.log("L",this.i+4);
