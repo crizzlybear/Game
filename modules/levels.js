@@ -110,7 +110,7 @@ function level2(canvas,ctx){
       
       //moveableBG.drawGradient(ctx);
       setShadow(ctx);
-      emptySpace2.drawObj_BGFixed(bgX,bgY);
+      emptySpace2.drawObj_BGFixed(moveableBG);
      
       fixedAvatar.switchSprite(ctx,avatarX,avatarY,rate);
       
@@ -122,37 +122,37 @@ function level2(canvas,ctx){
 
       //draw object collision zone
       
-      w1.drawObj_BGFixed(bgX,bgY);//make this before moveBG so theres no lag
-      w2.drawObj_BGFixed(bgX,bgY);//make this before moveBG so theres no lag
-      w3.drawObj_BGFixed(bgX,bgY);
-      item1.drawObj_BGFixed(bgX,bgY);
+      w1.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
+      w2.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
+      w3.drawObj_BGFixed(moveableBG);
+      item1.drawObj_BGFixed(moveableBG);
       
-      box.drawObj_BGFixed(bgX,bgY);
-      //enemy.drawObj_BGFixed(bgX,bgY);
-      enemy.drawVerticalMovement(bgX,bgY,100);
-     //enemy.drawFollow(bgX,bgY);
-      w4.drawObj_BGFixed(bgX,bgY);
+      box.drawObj_BGFixed(moveableBG);
+      //enemy.drawObj_BGFixed(moveableBG);
+      enemy.drawVerticalMovement(moveableBG,100);
+     //enemy.drawFollow(moveableBG);
+      w4.drawObj_BGFixed(moveableBG);
       //draw layers
-      w1.drawObjImgLayer(ctx,img0, bgX,bgY,0,40,0,50);
-      w2.drawObjImgLayer(ctx,wallImg,bgX,bgY,0,25,0,25);
-      w3.drawObjImgLayer(ctx,wallImg,bgX,bgY,0,0,0,0);
-      box.drawObjImgLayer(ctx,boxImg,bgX,bgY,0,0,0,0);
-      w4.drawObjImgLayer(ctx,whImg,bgX,bgY,0,40,0,40);
+      w1.drawObjImgLayer(ctx,img0,moveableBG,0,40,0,50);
+      w2.drawObjImgLayer(ctx,wallImg,moveableBG,0,25,0,25);
+      w3.drawObjImgLayer(ctx,wallImg,moveableBG,0,0,0,0);
+      box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
+      w4.drawObjImgLayer(ctx,whImg,moveableBG,0,40,0,40);
 
       // w5.animateThis(rate);
 
-      //enemy.drawObjImgLayer(ctx,boxImg,bgX,bgY,0,0,0,0);
+      //enemy.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
       //collisions
-      w1.collisionObj(bgX,bgY);
-      w2.collisionObj(bgX,bgY);
-      w3.collisionObj(bgX,bgY);
-      item1.collisionObj(bgX,bgY);
-      emptySpace2.collisionObj(bgX,bgY);
-      box.collisionObj(bgX,bgY);
+      w1.collisionObj(moveableBG);
+      w2.collisionObj(moveableBG);
+      w3.collisionObj(moveableBG);
+      item1.collisionObj(moveableBG);
+      emptySpace2.collisionObj(moveableBG);
+      box.collisionObj(moveableBG);
       //changeBgY();
   
-      w4.collisionObj(bgX,bgY);
-      enemy.collisionObj2(bgX,bgY);
+      w4.collisionObj(moveableBG);
+      enemy.collisionObj2(moveableBG);
       //item1.pickup();
       item1.getEnergy();
       box.pickup();

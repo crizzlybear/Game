@@ -2,6 +2,8 @@ class BG{
   constructor(bgSrc){
     this.bgSrc = bgSrc;
     background.src = this.bgSrc;
+    this.bgX=0;
+    this.bgY=0;
   }
   set newBG(newSrc){
     this.bgSrc = newSrc;
@@ -21,21 +23,21 @@ class BGLocked extends BG{
       super(bgSrc);
   }
   drawUpdate(ctx){
-      ctx.drawImage(background,0,0,background.width,background.height,-bgX,-bgY,1024,631);
+      ctx.drawImage(background,0,0,background.width,background.height,-this.bgX,-this.bgY,1024,631);
     }
     moveBG(canvas){
       if (rightPressed) {
         //avatarX = Math.min(avatarX + speed, canvas.width - avatarWidth);//move 7 units right
-        bgX = Math.min(bgX + speed, background.width-canvas.width/2 -avatarWidth);
+        this.bgX = Math.min(this.bgX + speed, background.width-canvas.width/2 -avatarWidth);
       } else if (leftPressed) {
         //avatarX = Math.max(avatarX - speed, 0);
-        bgX = Math.max(bgX - speed, 0-(0.5*canvas.width));
+        this.bgX = Math.max(this.bgX - speed, 0-(0.5*canvas.width));
       } else if(upPressed){
         //avatarY = Math.max(avatarY -speed, 0);
-        bgY = Math.max(bgY -speed, 0-(0.5*canvas.height));
+        this.bgY = Math.max(this.bgY -speed, 0-(0.5*canvas.height));
       } else if(downPressed){
         //avatarY = Math.min(avatarY +speed, canvas.height - avatarHeight);
-        bgY = Math.min(bgY +speed, background.height -(canvas.height/2) - avatarHeight);
+        this.bgY = Math.min(this.bgY +speed, background.height -(canvas.height/2) - avatarHeight);
       }
       avatarX = canvas.width/2;
       avatarY = canvas.height/2;
@@ -45,10 +47,10 @@ class BGLocked extends BG{
       
       ctx.fillStyle =  ctx.createPattern(tile, "repeat");
       ctx.beginPath();
-      ctx.rect(-bgX,-bgY,1024,631);
-      ctx.translate(-bgX,-bgY);
+      ctx.rect(-this.bgX,-this.bgY,1024,631);
+      ctx.translate(-this.bgX,-this.bgY);
       ctx.fill();
-      ctx.translate(bgX,bgY);//undo translate so it doesnt smear
+      ctx.translate(this.bgX,this.bgY);//undo translate so it doesnt smear
       ctx.closePath();
       
     }
@@ -62,7 +64,7 @@ class BGLocked extends BG{
      
       grad2.addColorStop(0.9,"#0c0529");
       ctx.fillStyle = grad2;
-      ctx.fillRect(-bgX,-bgY,1024,631);
+      ctx.fillRect(-this.bgX,-this.bgY,1024,631);
       ctx.closePath();
 
       //simple gradient background
@@ -71,7 +73,7 @@ class BGLocked extends BG{
       grad.addColorStop(0,"darkgray");
       grad.addColorStop(1,"lightblue");
       ctx.fillStyle = grad;
-      ctx.fillRect(-bgX,-bgY,1024,631);
+      ctx.fillRect(-this.bgX,-this.bgY,1024,631);
       ctx.closePath();
       //end
       
@@ -80,11 +82,11 @@ class BGLocked extends BG{
     }
 }
 
-function changeBgY(value){
-  bgY  = value;
+function changeBgY(bgInst,value){
+  bgInst.bgY  = value;
 };
-function changeBgX(value){
-  bgX = value;
+function changeBgX(bgInst,value){
+  bgInst.bgX = value;
 }
 
 function convertBGYtoAvatar(bgY){

@@ -139,7 +139,7 @@ class AvatarFixed extends Avatar{
   }
 
 
-  usePowerColorStream(ctx){
+  usePowerColorStream(ctx, bgInst){
     //maybe create another ctx to act as a mask
     if(powerOn&&energy>0){
       energy=energy-1;
@@ -164,7 +164,7 @@ class AvatarFixed extends Avatar{
       ctx.save();//remove if above is uncommented
       ctx.beginPath();  
       ctx.filter = "blur(15px)";
-      ctx.drawImage(img,avatarX+bgX,avatarY+bgY,60,60,avatarX,avatarY,60,60)
+      ctx.drawImage(img,avatarX+bgInst.bgX,avatarY+bgInst.bgY,60,60,avatarX,avatarY,60,60)
       ctx.fill();
       ctx.closePath();
       

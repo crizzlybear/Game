@@ -34,8 +34,8 @@ menu = false;
 menuOpen = false;
 //bg
 let background = new Image();
-let bgX = 0;
-let bgY = 0;
+// let bgX = 0;
+// let bgY = 0;
 
 //gameobj
 // let ob = new Image();
