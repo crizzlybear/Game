@@ -115,9 +115,13 @@ function level2(canvas,ctx){
       fixedAvatar.switchSprite(ctx,avatarX,avatarY,rate);
       
       
-      
+      // if(bgX>w1.x+w1.w || bgY>w1.y+w1.h){
+      //   //check out of bounds
+      //   console.log("out of bounds");
+      // }
 
       //draw object collision zone
+      
       w1.drawObj_BGFixed(bgX,bgY);//make this before moveBG so theres no lag
       w2.drawObj_BGFixed(bgX,bgY);//make this before moveBG so theres no lag
       w3.drawObj_BGFixed(bgX,bgY);
