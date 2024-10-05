@@ -82,12 +82,12 @@ class BGLocked extends BG{
     }
 }
 
-function changeBgY(bgInst,value){
-  bgInst.bgY  = value;
-};
-function changeBgX(bgInst,value){
-  bgInst.bgX = value;
-}
+// function changeBgY(bgInst,value){
+//   bgInst.bgY  = value;
+// };
+// function changeBgX(bgInst,value){
+//   bgInst.bgX = value;
+// }
 
 function convertBGYtoAvatar(bgY){
   //avatarRelative position

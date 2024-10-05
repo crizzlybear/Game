@@ -69,25 +69,25 @@ class Enemy extends GameObjectLocked{
             console.log("from right!");
             //bgX = bgX+10;
             this.col = "blue";
-            changeBgX(bgInst.bgX+10);
+            bgInst.bgX+=10;
             break;
           case n=1:
             console.log("from bottom", botBorder); 
             console.log("bgY before", bgInst.bgY);
             //bgY = bgY+10;
             this.col = "green";
-            changeBgY(bgInst.bgY+10);
+            bgInst.bgY+=10;
             break;
           case n=2:
             console.log("from left");
             //bgX=bgX-10;
             this.col = "pink";
-            changeBgX(bgInst.bgX-10);
+            bgInst.bgX-=10;
             break;
           case n=3:
             console.log("from top"); 
             this.col = "purple";
-            changeBgY(bgInst.bgY-10);
+            bgInst.bgY-=10;
             break;
           default:
             console.log("nothing...");
