@@ -25,19 +25,19 @@ class BGLocked extends BG{
   drawUpdate(ctx){
       ctx.drawImage(background,0,0,background.width,background.height,-this.bgX,-this.bgY,1024,631);
     }
-    moveBG(canvas){
+    moveBG(canvas, avatarInst){
       if (rightPressed) {
         //avatarX = Math.min(avatarX + speed, canvas.width - avatarWidth);//move 7 units right
-        this.bgX = Math.min(this.bgX + speed, background.width-canvas.width/2 -avatarWidth);
+        this.bgX = Math.min(this.bgX + avatarInst.speed, background.width-canvas.width/2 -avatarWidth);
       } else if (leftPressed) {
-        //avatarX = Math.max(avatarX - speed, 0);
-        this.bgX = Math.max(this.bgX - speed, 0-(0.5*canvas.width));
+        //avatarX = Math.max(avatarX - avatarInst.speed, 0);
+        this.bgX = Math.max(this.bgX - avatarInst.speed, 0-(0.5*canvas.width));
       } else if(upPressed){
-        //avatarY = Math.max(avatarY -speed, 0);
-        this.bgY = Math.max(this.bgY -speed, 0-(0.5*canvas.height));
+        //avatarY = Math.max(avatarY - avatarInst.speed, 0);
+        this.bgY = Math.max(this.bgY - avatarInst.speed, 0-(0.5*canvas.height));
       } else if(downPressed){
-        //avatarY = Math.min(avatarY +speed, canvas.height - avatarHeight);
-        this.bgY = Math.min(this.bgY +speed, background.height -(canvas.height/2) - avatarHeight);
+        //avatarY = Math.min(avatarY + avatarInst.speed, canvas.height - avatarHeight);
+        this.bgY = Math.min(this.bgY + avatarInst.speed, background.height -(canvas.height/2) - avatarHeight);
       }
       avatarX = canvas.width/2;
       avatarY = canvas.height/2;

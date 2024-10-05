@@ -6,6 +6,7 @@ class Avatar{
     this.avatarH = avatarH;
     this.testValue=1000;
     this.i=0;
+    this.speed = 2;
   }
 
   getTest(){
@@ -27,13 +28,13 @@ class Avatar{
 
   moveBoundaries(canvas){//replaces moveBoundaries
     if (rightPressed) {
-        avatarX = Math.min(avatarX + speed, canvas.width - avatarWidth); //move 7 units right with edge
+        avatarX = Math.min(avatarX + this.speed, canvas.width - avatarWidth); //move 7 units right with edge
     } else if (leftPressed) {
-        avatarX = Math.max(avatarX - speed, 0); 
+        avatarX = Math.max(avatarX - this.speed, 0); 
     } else if(upPressed){
-        avatarY = Math.max(avatarY -speed, 0);    
+        avatarY = Math.max(avatarY - this.speed, 0);    
     } else if(downPressed){
-        avatarY = Math.min(avatarY +speed, canvas.height - avatarHeight);
+        avatarY = Math.min(avatarY + this.speed, canvas.height - avatarHeight);
     }
   }
  

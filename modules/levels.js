@@ -154,16 +154,16 @@ function level2(canvas,ctx){
       w4.collisionObj(moveableBG);
       enemy.collisionObj2(moveableBG);
       //item1.pickup();
-      item1.getEnergy();
-      box.pickup();
+      item1.getEnergy(moveableBG);
+      box.pickup(moveableBG);
       energyStat.drawEnergyBar(ctx,energy);
       
-      moveableBG.moveBG(canvas);
+      moveableBG.moveBG(canvas, fixedAvatar);
      
 
       
      // fixedAvatar.usePower(ctx,avatarX,avatarY);
-     fixedAvatar.usePowerColorStream(ctx,avatarX,avatarY,energy);
+     fixedAvatar.usePowerColorStream(ctx, moveableBG);
 
       rate = (rate+1)%10;//let this be frame rate, e.g if rate == 3, only every 1 out of every 100 frames will be called.
       
