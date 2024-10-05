@@ -1,7 +1,7 @@
 //Classes for a 2d topdown game with fixed size background for level 1
 
 class Avatar{
-  constructor(avatarW,avatarH){
+  constructor(avatarX,avatarY,avatarW,avatarH){
     this.avatarW = avatarW;
     this.avatarH = avatarH;
     this.testValue=1000;
@@ -28,21 +28,21 @@ class Avatar{
 
   moveBoundaries(canvas){//replaces moveBoundaries
     if (rightPressed) {
-        avatarX = Math.min(avatarX + this.speed, canvas.width - avatarWidth); //move 7 units right with edge
+        avatarX = Math.min(avatarX + this.speed, canvas.width - this.avatarW); //move 7 units right with edge
     } else if (leftPressed) {
         avatarX = Math.max(avatarX - this.speed, 0); 
     } else if(upPressed){
         avatarY = Math.max(avatarY - this.speed, 0);    
     } else if(downPressed){
-        avatarY = Math.min(avatarY + this.speed, canvas.height - avatarHeight);
+        avatarY = Math.min(avatarY + this.speed, canvas.height - this.avatarH);
     }
   }
  
 
   switchSprite(ctx,updateX,updateY, rate){ 
     
-    function drawSprite(n){
-            ctx.drawImage(av,n*avDiv,0,avDiv,avH,updateX,updateY,avatarWidth,avatarHeight);//1,2,3,4=part of image you want to show //5,6,7,8 how to display
+    function drawSprite(avatarW,avatarH,n){
+            ctx.drawImage(av,n*avDiv,0,avDiv,avH,updateX,updateY,avatarW, avatarH);//1,2,3,4=part of image you want to show //5,6,7,8 how to display
             /*if fixed, updateX and updateY are constant,
             if moves, updateX = avatarX, updateY = avatarY. avatarX,avatarY is updated by moveFree()*/
         }
@@ -51,17 +51,17 @@ class Avatar{
    }
     if(rightPressed){//0,4
         // console.log(this.i);
-        drawSprite(this.i);
+        drawSprite(this.avatarW, this.avatarH, this.i);
     }else if(leftPressed){//1,5
       // console.log("L",this.i+4);
-      drawSprite(this.i+4);
+      drawSprite(this.avatarW, this.avatarH, this.i+4);
     }else if(upPressed){//6,7
-      drawSprite(this.i+6);
+      drawSprite(this.avatarW, this.avatarH, this.i+6);
         
     }else if(downPressed){//2,3
-        drawSprite(this.i+2);
+        drawSprite(this.avatarW, this.avatarH, this.i+2);
     }else{
-      drawSprite(this.i+2);
+      drawSprite(this.avatarW, this.avatarH, this.i+2);
     }
   }
 
@@ -69,8 +69,8 @@ class Avatar{
 }//end Avatar
 
 class AvatarFixed extends Avatar{
-  constructor(){
-    super();
+  constructor(avatarX,avatarY,avatarW,avatarH){
+    super(avatarX,avatarY,avatarW,avatarH);
   }
   
   averageColor(){
@@ -123,7 +123,7 @@ class AvatarFixed extends Avatar{
       
       ctx.beginPath();
       // ctx.globalCompositeOperation = 'xor';//cool effect but not needed
-      ctx.rect(updateX,updateY, avatarWidth+30, avatarHeight+30);
+      ctx.rect(updateX,updateY, this.avatarW+30, this.avatarH+30);
       //ctx.fillStyle="rgba(255,0,255,0.5)";//single object transparency
       // var col = this.averageColor();
       // console.log("returned col: "+col);

@@ -89,7 +89,7 @@ function level2(canvas,ctx){
   var w2 = new GameObjectLocked(ctx,400,300,200,10);
   var w3 = new GameObjectLocked(ctx,400,310,10,50);
   var w4 = new GameObjectLocked(ctx,600,50,200,100);
-  let fixedAvatar = new AvatarFixed(canvas.width/2,canvas.height/2,avatarWidth,avatarHeight);
+  let fixedAvatar = new AvatarFixed(canvas.width/2,canvas.height/2,50,50);
   let moveableBG = new BGLocked("images/floor.png");
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
   var box = new GameObjectInteractableLocked(ctx,200,600,30,30);
@@ -143,19 +143,19 @@ function level2(canvas,ctx){
 
       //enemy.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
       //collisions
-      w1.collisionObj(moveableBG);
-      w2.collisionObj(moveableBG);
-      w3.collisionObj(moveableBG);
-      item1.collisionObj(moveableBG);
-      emptySpace2.collisionObj(moveableBG);
-      box.collisionObj(moveableBG);
+      w1.collisionObj(moveableBG,fixedAvatar);
+      w2.collisionObj(moveableBG,fixedAvatar);
+      w3.collisionObj(moveableBG,fixedAvatar);
+      item1.collisionObj(moveableBG,fixedAvatar);
+      emptySpace2.collisionObj(moveableBG,fixedAvatar);
+      box.collisionObj(moveableBG,fixedAvatar);
       //changeBgY();
   
-      w4.collisionObj(moveableBG);
-      enemy.collisionObj2(moveableBG);
+      w4.collisionObj(moveableBG,fixedAvatar);
+      enemy.collisionObj2(moveableBG,fixedAvatar);
       //item1.pickup();
-      item1.getEnergy(moveableBG);
-      box.pickup(moveableBG);
+      item1.getEnergy(moveableBG, fixedAvatar);
+      box.pickup(moveableBG, fixedAvatar);
       energyStat.drawEnergyBar(ctx,energy);
       
       moveableBG.moveBG(canvas, fixedAvatar);

@@ -51,16 +51,16 @@ class Enemy extends GameObjectLocked{
   }
   
     //override
-    collisionObj2(bgInst){
+    collisionObj2(bgInst, avatarInst){
       //custom collision detection
       var ctx = this.ctx;
       let rightBorder=this.x+this.w;
       let leftBorder=this.x;
       let topBorder=this.newY;
       let botBorder=this.h+this.newY;
-      if((rightBorder-bgInst.bgX>avatarX)&&(botBorder-bgInst.bgY>avatarY)&&(leftBorder-bgInst.bgX<avatarX+avatarWidth)&&(topBorder-bgInst.bgY<avatarY+avatarHeight)){
+      if((rightBorder-bgInst.bgX>avatarX)&&(botBorder-bgInst.bgY>avatarY)&&(leftBorder-bgInst.bgX<avatarX+ avatarInst.avatarW)&&(topBorder-bgInst.bgY<avatarY+ avatarInst.avatarH)){
         console.log("inside");
-        let collide = [Math.abs((rightBorder-bgInst.bgX)-avatarX),Math.abs((botBorder-bgInst.bgY)-avatarY),Math.abs((leftBorder-bgInst.bgX)-(avatarX+avatarWidth)), Math.abs((topBorder-bgInst.bgY)-(avatarY+avatarHeight))];
+        let collide = [Math.abs((rightBorder-bgInst.bgX)-avatarX),Math.abs((botBorder-bgInst.bgY)-avatarY),Math.abs((leftBorder-bgInst.bgX)-(avatarX+ avatarInst.avatarW)), Math.abs((topBorder-bgInst.bgY)-(avatarY+ avatarInst.avatarH))];
         let n=collide.indexOf(Math.min(...collide));
         console.log(collide);
         console.log("X:"+bgInst.bgX +" Y:"+bgInst.bgY);
