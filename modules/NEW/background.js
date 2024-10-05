@@ -39,8 +39,8 @@ class BGLocked extends BG{
         //avatarY = Math.min(avatarY + avatarInst.speed, canvas.height - avatarHeight);
         this.bgY = Math.min(this.bgY + avatarInst.speed, background.height -(canvas.height/2) - avatarInst.avatarH);
       }
-      avatarX = canvas.width/2;
-      avatarY = canvas.height/2;
+      // avatarInst.avatarX = canvas.width/2;
+      // avatarInst.avatarY = canvas.height/2;
     }
     drawPattern(ctx,tile){
       

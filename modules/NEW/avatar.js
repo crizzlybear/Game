@@ -2,6 +2,8 @@
 
 class Avatar{
   constructor(avatarX,avatarY,avatarW,avatarH){
+    this.avatarX = avatarX;
+    this.avatarY = avatarY;
     this.avatarW = avatarW;
     this.avatarH = avatarH;
     this.testValue=1000;
@@ -28,20 +30,20 @@ class Avatar{
 
   moveBoundaries(canvas){//replaces moveBoundaries
     if (rightPressed) {
-        avatarX = Math.min(avatarX + this.speed, canvas.width - this.avatarW); //move 7 units right with edge
+        this.avatarX = Math.min(this.avatarX + this.speed, canvas.width - this.avatarW); //move 7 units right with edge
     } else if (leftPressed) {
-        avatarX = Math.max(avatarX - this.speed, 0); 
+        this.avatarX = Math.max(this.avatarX - this.speed, 0); 
     } else if(upPressed){
-        avatarY = Math.max(avatarY - this.speed, 0);    
+      this.avatarY = Math.max(this.avatarY - this.speed, 0);    
     } else if(downPressed){
-        avatarY = Math.min(avatarY + this.speed, canvas.height - this.avatarH);
+      this.avatarY = Math.min(this.avatarY + this.speed, canvas.height - this.avatarH);
     }
   }
  
 
-  switchSprite(ctx,updateX,updateY, rate){ 
+  switchSprite(ctx, rate){ 
     
-    function drawSprite(avatarW,avatarH,n){
+    function drawSprite(updateX,updateY,avatarW,avatarH,n){
             ctx.drawImage(av,n*avDiv,0,avDiv,avH,updateX,updateY,avatarW, avatarH);//1,2,3,4=part of image you want to show //5,6,7,8 how to display
             /*if fixed, updateX and updateY are constant,
             if moves, updateX = avatarX, updateY = avatarY. avatarX,avatarY is updated by moveFree()*/
@@ -51,17 +53,17 @@ class Avatar{
    }
     if(rightPressed){//0,4
         // console.log(this.i);
-        drawSprite(this.avatarW, this.avatarH, this.i);
+        drawSprite(this.avatarX,this.avatarY,this.avatarW, this.avatarH, this.i);
     }else if(leftPressed){//1,5
       // console.log("L",this.i+4);
-      drawSprite(this.avatarW, this.avatarH, this.i+4);
+      drawSprite(this.avatarX,this.avatarY,this.avatarW, this.avatarH, this.i+4);
     }else if(upPressed){//6,7
-      drawSprite(this.avatarW, this.avatarH, this.i+6);
+      drawSprite(this.avatarX,this.avatarY,this.avatarW, this.avatarH, this.i+6);
         
     }else if(downPressed){//2,3
-        drawSprite(this.avatarW, this.avatarH, this.i+2);
+        drawSprite(this.avatarX,this.avatarY,this.avatarW, this.avatarH, this.i+2);
     }else{
-      drawSprite(this.avatarW, this.avatarH, this.i+2);
+      drawSprite(this.avatarX,this.avatarY,this.avatarW, this.avatarH, this.i+2);
     }
   }
 
@@ -116,14 +118,14 @@ class AvatarFixed extends Avatar{
 
 
 
-  usePower(ctx, updateX,updateY){
+  usePower(ctx){
     //maybe create another ctx to act as a mask
     if(powerOn){
       console.log("power On!");
       
       ctx.beginPath();
       // ctx.globalCompositeOperation = 'xor';//cool effect but not needed
-      ctx.rect(updateX,updateY, this.avatarW+30, this.avatarH+30);
+      ctx.rect(this.avatarX,this.avatarY, this.avatarW+30, this.avatarH+30);
       //ctx.fillStyle="rgba(255,0,255,0.5)";//single object transparency
       // var col = this.averageColor();
       // console.log("returned col: "+col);
@@ -165,7 +167,7 @@ class AvatarFixed extends Avatar{
       ctx.save();//remove if above is uncommented
       ctx.beginPath();  
       ctx.filter = "blur(15px)";
-      ctx.drawImage(img,avatarX+bgInst.bgX,avatarY+bgInst.bgY,60,60,avatarX,avatarY,60,60)
+      ctx.drawImage(img,this.avatarX+bgInst.bgX,this.avatarY+bgInst.bgY,60,60,this.avatarX,this.avatarY,60,60)
       ctx.fill();
       ctx.closePath();
       

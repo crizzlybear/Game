@@ -112,7 +112,7 @@ function level2(canvas,ctx){
       setShadow(ctx);
       emptySpace2.drawObj_BGFixed(moveableBG);
      
-      fixedAvatar.switchSprite(ctx,avatarX,avatarY,rate);
+      fixedAvatar.switchSprite(ctx, rate);
       
       
       // if(bgX>w1.x+w1.w || bgY>w1.y+w1.h){
@@ -130,7 +130,7 @@ function level2(canvas,ctx){
       box.drawObj_BGFixed(moveableBG);
       //enemy.drawObj_BGFixed(moveableBG);
       enemy.drawVerticalMovement(moveableBG,100);
-     //enemy.drawFollow(moveableBG);
+      //enemy.drawFollow(moveableBG);
       w4.drawObj_BGFixed(moveableBG);
       //draw layers
       w1.drawObjImgLayer(ctx,img0,moveableBG,0,40,0,50);
@@ -162,7 +162,7 @@ function level2(canvas,ctx){
      
 
       
-     // fixedAvatar.usePower(ctx,avatarX,avatarY);
+     // fixedAvatar.usePower(ctx);
      fixedAvatar.usePowerColorStream(ctx, moveableBG);
 
       rate = (rate+1)%10;//let this be frame rate, e.g if rate == 3, only every 1 out of every 100 frames will be called.

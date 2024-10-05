@@ -1,5 +1,5 @@
-let avatarX = 10;
-let avatarY = 10;
+// let avatarX = 10;
+// let avatarY = 10;
 // let avatarWidth = 50;//20
 // let avatarHeight = 50;
 // let speed = 2;
