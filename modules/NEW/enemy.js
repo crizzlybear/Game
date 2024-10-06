@@ -40,6 +40,16 @@ class Enemy extends GameObjectLocked{
       var xDist = Math.floor(convertBGXtoAvatar(bgInst.bgX)-this.x);
       var yDist = Math.floor(convertBGYtoAvatar(bgInst.bgY)- this.y );
     
+      if(Math.abs(xDist)<200 && Math.abs(yDist)<150){
+        console.log("IN RANGE");
+        this.col = "orange";
+      
+       }else{ console.log("OUT RANGE");this.col="pink";
+        //move towards starting position
+          xDist = Math.floor(0- this.x);
+          yDist = Math.floor(0- this.y );
+       }
+      
       var ax = this.x +=(xDist*0.005);//ENEMY SPEED default is 0.01
       var ay = this.y +=(yDist*0.005);
       this.newX = ax;
