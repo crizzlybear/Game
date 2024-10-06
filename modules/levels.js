@@ -66,8 +66,8 @@ function level2(canvas,ctx){
       
       box.drawObj_BGFixed(moveableBG);
       //enemy.drawObj_BGFixed(moveableBG);
-      enemy.drawVerticalMovement(moveableBG,100);
-      //enemy.drawFollow(moveableBG);
+      // enemy.drawVerticalMovement(moveableBG,100);
+      enemy.drawFollow(moveableBG);
       w4.drawObj_BGFixed(moveableBG);
       //draw layers
       w1.drawObjImgLayer(ctx,img0,moveableBG,0,40,0,50);
@@ -81,6 +81,7 @@ function level2(canvas,ctx){
       //enemy.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
       //collisions
       w1.collisionObj(moveableBG,fixedAvatar);
+      enemy.collisionObstacles(moveableBG,w1);
       w2.collisionObj(moveableBG,fixedAvatar);
       w3.collisionObj(moveableBG,fixedAvatar);
       item1.collisionObj(moveableBG,fixedAvatar);
