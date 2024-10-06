@@ -58,9 +58,9 @@ class Enemy extends GameObjectLocked{
       let leftBorder=this.x;
       let topBorder=this.newY;
       let botBorder=this.h+this.newY;
-      if((rightBorder-bgInst.bgX>avatarInst.avatarX)&&(botBorder-bgInst.bgY>avatarInst.avatarY)&&(leftBorder-bgInst.bgX<avatarInst.avatarX+ avatarInst.avatarW)&&(topBorder-bgInst.bgY<avatarInst.avatarY+ avatarInst.avatarH)){
+      if((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h)){
         console.log("inside");
-        let collide = [Math.abs((rightBorder-bgInst.bgX)-avatarInst.avatarX),Math.abs((botBorder-bgInst.bgY)-avatarInst.avatarY),Math.abs((leftBorder-bgInst.bgX)-(avatarInst.avatarX+ avatarInst.avatarW)), Math.abs((topBorder-bgInst.bgY)-(avatarInst.avatarY+ avatarInst.avatarH))];
+        let collide = [Math.abs((rightBorder-bgInst.bgX)-avatarInst.x),Math.abs((botBorder-bgInst.bgY)-avatarInst.y),Math.abs((leftBorder-bgInst.bgX)-(avatarInst.x+ avatarInst.w)), Math.abs((topBorder-bgInst.bgY)-(avatarInst.y+ avatarInst.h))];
         let n=collide.indexOf(Math.min(...collide));
         console.log(collide);
         console.log("X:"+bgInst.bgX +" Y:"+bgInst.bgY);

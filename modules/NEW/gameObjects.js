@@ -42,8 +42,8 @@ class GameObjectInteractable extends GameObject{
   pickupObj(avatarInst){
       //custom collision detection
       //has to be above draw()
-      //if(avatarInst.avatarX+20+5>this.x && avatarY+20+5>this.y && avatarY<(this.y+this.h+5) && avatarInst.avatarX<(this.x+this.w+5))
-      if(avatarInst.avatarX+avatarInst.avatarW>this.x && avatarInst.avatarY+avatarInst.avatarH>this.y && avatarInst.avatarY<(this.y+this.h) && avatarInst.avatarX<(this.x+this.w))
+      //if(avatarInst.x+20+5>this.x && avatarY+20+5>this.y && avatarY<(this.y+this.h+5) && avatarInst.avatarX<(this.x+this.w+5))
+      if(avatarInst.x+avatarInst.w>this.x && avatarInst.y+avatarInst.h>this.y && avatarInst.y<(this.y+this.h) && avatarInst.x<(this.x+this.w))
           {
             if(pickup){
               console.log("pickedup");
@@ -92,9 +92,9 @@ class GameObjectLocked extends GameObject{
     let leftBorder=this.x;
     let topBorder=this.y;
     let botBorder=this.y+this.h;
-    if((rightBorder-bgInst.bgX>avatarInst.avatarX)&&(botBorder-bgInst.bgY>avatarInst.avatarY)&&(leftBorder-bgInst.bgX<avatarInst.avatarX+ avatarInst.avatarW)&&(topBorder-bgInst.bgY<avatarInst.avatarY+ avatarInst.avatarH)){
+    if((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h)){
       console.log("inside");
-      let collide = [Math.abs((rightBorder-bgInst.bgX)-avatarInst.avatarX),Math.abs((botBorder-bgInst.bgY)-avatarInst.avatarY),Math.abs((leftBorder-bgInst.bgX)-(avatarInst.avatarX+ avatarInst.avatarW)), Math.abs((topBorder-bgInst.bgY)-(avatarInst.avatarY+ avatarInst.avatarH))];
+      let collide = [Math.abs((rightBorder-bgInst.bgX)-avatarInst.x),Math.abs((botBorder-bgInst.bgY)-avatarInst.y),Math.abs((leftBorder-bgInst.bgX)-(avatarInst.x+ avatarInst.w)), Math.abs((topBorder-bgInst.bgY)-(avatarInst.y+ avatarInst.h))];
       let n=collide.indexOf(Math.min(...collide));
       console.log(collide);
       console.log("X:"+bgInst.bgX +" Y:"+bgInst.bgY);
@@ -157,7 +157,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let leftBorder=this.x -10;
     let topBorder=this.y - 10;
     let botBorder=this.y+this.h + 10;
-    if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.avatarX)&&(botBorder-bgInst.bgY>avatarInst.avatarY)&&(leftBorder-bgInst.bgX<avatarInst.avatarX+ avatarInst.avatarW)&&(topBorder-bgInst.bgY<avatarInst.avatarY+ avatarInst.avatarH))){
+    if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
       console.log("pickedup");
       this.col = "#71ffff";
     }else{
@@ -171,7 +171,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let leftBorder=this.x -10;
     let topBorder=this.y - 10;
     let botBorder=this.y+this.h + 10;
-    if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.avatarX)&&(botBorder-bgInst.bgY>avatarInst.avatarY)&&(leftBorder-bgInst.bgX<avatarInst.avatarX+ avatarInst.avatarW)&&(topBorder-bgInst.bgY<avatarInst.avatarY+ avatarInst.avatarH))){
+    if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
       energy=1000;
       //this.col = "#808080";
       this.col = "#71ffff";

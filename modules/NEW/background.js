@@ -28,7 +28,7 @@ class BGLocked extends BG{
     moveBG(canvas, avatarInst){
       if (rightPressed) {
         //avatarX = Math.min(avatarX + speed, canvas.width - avatarWidth);//move 7 units right
-        this.bgX = Math.min(this.bgX + avatarInst.speed, background.width-canvas.width/2 - avatarInst.avatarW);
+        this.bgX = Math.min(this.bgX + avatarInst.speed, background.width-canvas.width/2 - avatarInst.w);
       } else if (leftPressed) {
         //avatarX = Math.max(avatarX - avatarInst.speed, 0);
         this.bgX = Math.max(this.bgX - avatarInst.speed, 0-(0.5*canvas.width));
@@ -37,7 +37,7 @@ class BGLocked extends BG{
         this.bgY = Math.max(this.bgY - avatarInst.speed, 0-(0.5*canvas.height));
       } else if(downPressed){
         //avatarY = Math.min(avatarY + avatarInst.speed, canvas.height - avatarHeight);
-        this.bgY = Math.min(this.bgY + avatarInst.speed, background.height -(canvas.height/2) - avatarInst.avatarH);
+        this.bgY = Math.min(this.bgY + avatarInst.speed, background.height -(canvas.height/2) - avatarInst.h);
       }
       // avatarInst.avatarX = canvas.width/2;
       // avatarInst.avatarY = canvas.height/2;

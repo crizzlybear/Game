@@ -2,10 +2,10 @@
 
 class Avatar{
   constructor(avatarX,avatarY,avatarW,avatarH){
-    this.avatarX = avatarX;
-    this.avatarY = avatarY;
-    this.avatarW = avatarW;
-    this.avatarH = avatarH;
+    this.x = avatarX;
+    this.y = avatarY;
+    this.w = avatarW;
+    this.h = avatarH;
     this.testValue=1000;
     this.i=0;
     this.speed = 2;
@@ -21,7 +21,7 @@ class Avatar{
   drawAvatar(ctx,updateX,updateY) {
     //console.log("updateX:", updateX);
     ctx.beginPath();
-    ctx.rect(updateX, updateY, this.avatarW, this.avatarH);
+    ctx.rect(updateX, updateY, this.w, this.h);
     //ctx.fillStyle = "#0095DD";
     
     //ctx.fill();//enable to see hitbox
@@ -30,13 +30,13 @@ class Avatar{
 
   moveBoundaries(canvas){//replaces moveBoundaries
     if (rightPressed) {
-        this.avatarX = Math.min(this.avatarX + this.speed, canvas.width - this.avatarW); //move 7 units right with edge
+        this.x = Math.min(this.x + this.speed, canvas.width - this.w); //move 7 units right with edge
     } else if (leftPressed) {
-        this.avatarX = Math.max(this.avatarX - this.speed, 0); 
+        this.x = Math.max(this.x - this.speed, 0); 
     } else if(upPressed){
-      this.avatarY = Math.max(this.avatarY - this.speed, 0);    
+      this.y = Math.max(this.y - this.speed, 0);    
     } else if(downPressed){
-      this.avatarY = Math.min(this.avatarY + this.speed, canvas.height - this.avatarH);
+      this.y = Math.min(this.y + this.speed, canvas.height - this.h);
     }
   }
  
@@ -53,17 +53,17 @@ class Avatar{
    }
     if(rightPressed){//0,4
         // console.log(this.i);
-        drawSprite(this.avatarX,this.avatarY,this.avatarW, this.avatarH, this.i);
+        drawSprite(this.x,this.y,this.w, this.h, this.i);
     }else if(leftPressed){//1,5
       // console.log("L",this.i+4);
-      drawSprite(this.avatarX,this.avatarY,this.avatarW, this.avatarH, this.i+4);
+      drawSprite(this.x,this.y,this.w, this.h, this.i+4);
     }else if(upPressed){//6,7
-      drawSprite(this.avatarX,this.avatarY,this.avatarW, this.avatarH, this.i+6);
+      drawSprite(this.x,this.y,this.w, this.h, this.i+6);
         
     }else if(downPressed){//2,3
-        drawSprite(this.avatarX,this.avatarY,this.avatarW, this.avatarH, this.i+2);
+        drawSprite(this.x,this.y,this.w, this.h, this.i+2);
     }else{
-      drawSprite(this.avatarX,this.avatarY,this.avatarW, this.avatarH, this.i+2);
+      drawSprite(this.x,this.y,this.w, this.h, this.i+2);
     }
   }
 
@@ -125,7 +125,7 @@ class AvatarFixed extends Avatar{
       
       ctx.beginPath();
       // ctx.globalCompositeOperation = 'xor';//cool effect but not needed
-      ctx.rect(this.avatarX,this.avatarY, this.avatarW+30, this.avatarH+30);
+      ctx.rect(this.x, this.y, this.w+30, this.h+30);
       //ctx.fillStyle="rgba(255,0,255,0.5)";//single object transparency
       // var col = this.averageColor();
       // console.log("returned col: "+col);
@@ -167,7 +167,7 @@ class AvatarFixed extends Avatar{
       ctx.save();//remove if above is uncommented
       ctx.beginPath();  
       ctx.filter = "blur(15px)";
-      ctx.drawImage(img,this.avatarX+bgInst.bgX,this.avatarY+bgInst.bgY,60,60,this.avatarX,this.avatarY,60,60)
+      ctx.drawImage(img,this.x+bgInst.bgX,this.y+bgInst.bgY,60,60,this.x,this.y,60,60)
       ctx.fill();
       ctx.closePath();
       
