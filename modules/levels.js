@@ -90,7 +90,7 @@ function level2(canvas,ctx){
       //changeBgY();
   
       w4.collisionObj(moveableBG,fixedAvatar);
-      enemy.collisionObj2(moveableBG,fixedAvatar);
+      // /enemy.collisionObj2(moveableBG,fixedAvatar);
       //item1.pickup();
       item1.getEnergy(moveableBG, fixedAvatar);
       box.pickup(moveableBG, fixedAvatar);
