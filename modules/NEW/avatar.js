@@ -238,7 +238,7 @@ class AvatarFixed extends Avatar{
       var calcY2;
 
       for(var i=0; i<obsList.length; i++){
-            calcX1 = Math.abs((obsList[i].x - convertBGXtoAvatar(bgInst.bgX)));
+            calcX1 = Math.abs((obsList[i].x - convertBGXtoAvatar(bgInst.bgX)));//maybe replace with collision in range
             calcX2 = Math.abs(obsList[i].x+obsList[i].w - convertBGXtoAvatar(bgInst.bgX));
             calcY1 = Math.abs((obsList[i].y - convertBGYtoAvatar(bgInst.bgY)));
             calcY2 = Math.abs(obsList[i].y+obsList[i].h - convertBGYtoAvatar(bgInst.bgY));
@@ -254,8 +254,8 @@ class AvatarFixed extends Avatar{
           this.rgbSum[1] = Math.floor(this.rgbSum[1]/2);
           this.rgbSum[2] = Math.floor(this.rgbSum[2]/2);
           // console.log(obsList[i].rgb, this.rgbSum);
-          this.powerColor = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
-          
+          this.powerColor = `rgba(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]},${1-(center/150)})`;//opacity when close
+          // this.powerColor = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
         }
         // dist.push(center);
       }
