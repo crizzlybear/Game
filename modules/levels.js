@@ -22,11 +22,12 @@
      en.src = "images/enemy1.png";
 function level2(canvas,ctx){
  
-  var emptySpace2 = new GameObjectLocked(ctx,450,531,600,100, "#F0F0F0");
-  var w1 = new GameObjectLocked(ctx,100,100,100,200);//48,100
-  var w2 = new GameObjectLocked(ctx,400,300,200,10);
-  var w3 = new GameObjectLocked(ctx,400,310,10,50);
-  var w4 = new GameObjectLocked(ctx,600,50,200,100);
+  
+  var w1 = new GameObjectLocked(ctx,100,100,100,200,"#F0F0F0","rgb(255,0,0)");//48,100
+  var w2 = new GameObjectLocked(ctx,400,300,200,10,"#F0F0F0","rgb(255,0,0)");
+  var w3 = new GameObjectLocked(ctx,400,310,10,50,"#F0F0F0","rgb(255,0,0)");
+  var w4 = new GameObjectLocked(ctx,600,50,200,100,"#F0F0F0","rgb(0,255,0)");
+  var emptySpace2 = new GameObjectLocked(ctx,450,531,600,100, "#F0F0F0","rgb(0,255,0)");
   let fixedAvatar = new AvatarFixed(canvas.width/2,canvas.height/2,50,50);
   let moveableBG = new BGLocked("images/floor.png");
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);

@@ -1,13 +1,14 @@
 //Classes for a 2d topdown game with fixed size background for level 1
 class GameObject{
   //constructor
-  constructor(ctx,x,y,w,h){
+  constructor(ctx,x,y,w,h, rgb){
     this.x=x;
     this.y=y;
     this.w=w;
     this.h=h;
     this.color="#FFFFFF";
     this.ctx = ctx;
+    this.rgb = rgb;
   } 
   //getters
   get pos(){
@@ -64,10 +65,11 @@ class GameObjectInteractable extends GameObject{
 
 
 class GameObjectLocked extends GameObject{
-  constructor(ctx,x,y,w,h,objColor){
+  constructor(ctx,x,y,w,h,objColor,rgb){
     super(ctx,x,y,w,h);
     this.color=objColor;
     this.ctx = ctx;//fix extends
+    this.rgb = rgb;
   }
   drawObj_BGFixed(bgInst){//newX,newY = bgX,bgY
     //console.log("drawn object:", -newX,-newY, this.w, this.h);

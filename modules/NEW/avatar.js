@@ -10,6 +10,7 @@ class Avatar{
     this.i=0;
     this.speed = 2;
     this.v=0;
+    this.rgbSum = "rgb(255,255,255)";
   }
 
   getTest(){
@@ -241,7 +242,7 @@ class AvatarFixed extends Avatar{
             calcY2 = Math.abs(obsList[i].y+obsList[i].h - convertBGYtoAvatar(bgInst.bgY));
         var center = ((Math.min(calcX1,calcX2) + Math.min(calcY1,calcY2))/2);
         if(center < 150){
-          // console.log("sample color",i);
+          console.log(obsList[i].rgb,i);
         }
         dist.push(center);
       }
