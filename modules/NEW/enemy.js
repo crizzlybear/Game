@@ -44,10 +44,12 @@ class Enemy extends GameObjectLocked{
       var yDist = Math.floor(convertBGYtoAvatar(bgInst.bgY)- this.y );
     
       if(Math.abs(xDist)<200 && Math.abs(yDist)<150){
-        console.log("IN RANGE");
+        // console.log("IN RANGE");
         this.col = "orange";
       
-       }else{ console.log("OUT RANGE");this.col="pink";
+       }else{ 
+        // console.log("OUT RANGE");
+        this.col="pink";
         //move towards starting position
           xDist = Math.floor(this.oldX- this.x);
           yDist = Math.floor(this.oldY- this.y );
@@ -116,9 +118,18 @@ class Enemy extends GameObjectLocked{
      
     }//end colision
 
-    collisionObstacles(bgInst, ObstInst){
+    collisionObstacles(bgInst, ObstInst, obsList){
+
+      function getFromList(obsList1){
+        var r = Math.floor(Math.random()*(obsList1.length));
+        console.log(r);
+        var ob = obsList1[r];
+        return ob;
+      }
       //custom collision detection
       //console.log(this.x+this.w,this.y+this.h, ObstInst.x, ObstInst.y);
+      // console.log(getFromList(obsList));
+      ObstInst = getFromList(obsList);
       var eL = this.x;
       var eR = this.x+this.w;
       var eT = this.y;

@@ -37,7 +37,7 @@ function level2(canvas,ctx){
   //let energy = 1000;
   var energyStat = new GameStats(20,300,50,10);
   var w5 = new GameObjectLocked(ctx,260,200,20,20);
-  
+  let obsList = [w1,w2,w3,w4,w5,emptySpace2];
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -84,7 +84,8 @@ function level2(canvas,ctx){
       //enemy.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
       //collisions
       w1.collisionObj(moveableBG,fixedAvatar);
-      enemy.collisionObstacles(moveableBG,w1);
+      enemy.collisionObstacles(moveableBG,w1, obsList);
+      enemy2.collisionObstacles(moveableBG,w1, obsList);
       w2.collisionObj(moveableBG,fixedAvatar);
       w3.collisionObj(moveableBG,fixedAvatar);
       item1.collisionObj(moveableBG,fixedAvatar);
