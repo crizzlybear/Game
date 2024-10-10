@@ -197,7 +197,7 @@ class AvatarFixed extends Avatar{
       energy=energy-1;
       // console.log("Energy:",energy);
       // document.getElementById("energy").innerText=energy;
-      console.log("power On Color Stream!");
+      // console.log("power On Color Stream!");
       let img = new Image();
       img.crossOrigin = "anonymous";
       img.src = "images/colormap.png";
@@ -215,7 +215,7 @@ class AvatarFixed extends Avatar{
       ctx.rect(this.x-(vv)%25,this.y-(vv)%50,10,10)
       ctx.rect(this.x-(vv)%40,this.y-(vv)%30,10,10)
       ctx.rect(this.x-(-vv)%15,this.y-(vv)%40,10,10)
-      console.log(vv);
+      // console.log(vv);
       ctx.fill();
       ctx.closePath();
       
@@ -223,6 +223,33 @@ class AvatarFixed extends Avatar{
       ctx.restore(); 
     }
     
+  }
+
+
+  closestObject(obsList,bgInst, rate){
+    if((rightPressed||leftPressed||upPressed||downPressed)&&rate==1){
+      var dist = new Array();
+      var calcX1;
+      var calcX2;
+      var calcY1;
+      var calcY2;
+
+      for(var i=0; i<obsList.length; i++){
+            calcX1 = Math.abs((obsList[i].x - convertBGXtoAvatar(bgInst.bgX)));
+            calcX2 = Math.abs(obsList[i].x+obsList[i].w - convertBGXtoAvatar(bgInst.bgX));
+            calcY1 = Math.abs((obsList[i].y - convertBGYtoAvatar(bgInst.bgY)));
+            calcY2 = Math.abs(obsList[i].y+obsList[i].h - convertBGYtoAvatar(bgInst.bgY));
+        var center = ((Math.min(calcX1,calcX2) + Math.min(calcY1,calcY2))/2);
+        if(center < 150){
+          // console.log("sample color",i);
+        }
+        dist.push(center);
+      }
+      // console.log(dist);
+      
+      
+
+    }
   }
 
 }

@@ -36,8 +36,8 @@ function level2(canvas,ctx){
   let rate=0;
   //let energy = 1000;
   var energyStat = new GameStats(20,300,50,10);
-  var w5 = new GameObjectLocked(ctx,260,200,20,20);
-  let obsList = [w1,w2,w3,w4,w5,emptySpace2];
+  
+  let obsList = [w1,w2,w3,w4,emptySpace2];
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -103,7 +103,7 @@ function level2(canvas,ctx){
       moveableBG.moveBG(canvas, fixedAvatar);
      
 
-      
+      fixedAvatar.closestObject(obsList,moveableBG,rate);
      // fixedAvatar.usePower(ctx);
     //  fixedAvatar.usePowerColorStream(ctx, moveableBG);
       fixedAvatar.usePowerColorParticle(ctx, moveableBG);
