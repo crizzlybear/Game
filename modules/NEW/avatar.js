@@ -10,7 +10,8 @@ class Avatar{
     this.i=0;
     this.speed = 2;
     this.v=0;
-    this.rgbSum = "rgb(255,255,255)";
+    this.rgbSum = [0,0,0];
+    this.powerColor = "rgb(255,255,255)";
   }
 
   getTest(){
@@ -217,6 +218,7 @@ class AvatarFixed extends Avatar{
       ctx.rect(this.x-(vv)%40,this.y-(vv)%30,10,10)
       ctx.rect(this.x-(-vv)%15,this.y-(vv)%40,10,10)
       // console.log(vv);
+      ctx.fillStyle = this.powerColor;
       ctx.fill();
       ctx.closePath();
       
@@ -229,7 +231,7 @@ class AvatarFixed extends Avatar{
 
   closestObject(obsList,bgInst, rate){
     if((rightPressed||leftPressed||upPressed||downPressed)&&rate==1){
-      var dist = new Array();
+      // var dist = new Array();
       var calcX1;
       var calcX2;
       var calcY1;
@@ -242,9 +244,20 @@ class AvatarFixed extends Avatar{
             calcY2 = Math.abs(obsList[i].y+obsList[i].h - convertBGYtoAvatar(bgInst.bgY));
         var center = ((Math.min(calcX1,calcX2) + Math.min(calcY1,calcY2))/2);
         if(center < 150){
-          console.log(obsList[i].rgb,i);
+          
+          // console.log(obsList[i].rgb,i);
+          this.rgbSum[0] += obsList[i].rgb[0];
+          this.rgbSum[1] += obsList[i].rgb[1];
+          this.rgbSum[2] += obsList[i].rgb[2];
+          
+          this.rgbSum[0] = Math.floor(this.rgbSum[0]/2);
+          this.rgbSum[1] = Math.floor(this.rgbSum[1]/2);
+          this.rgbSum[2] = Math.floor(this.rgbSum[2]/2);
+          // console.log(obsList[i].rgb, this.rgbSum);
+          this.powerColor = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
+          
         }
-        dist.push(center);
+        // dist.push(center);
       }
       // console.log(dist);
       
