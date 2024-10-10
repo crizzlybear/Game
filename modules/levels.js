@@ -18,7 +18,8 @@
     let whImg = new Image();
       whImg.crossOrigin = "anonymous";
      whImg.src = "images/warehouse.png";
-
+     let en = new Image();
+     en.src = "images/enemy1.png";
 function level2(canvas,ctx){
  
   var emptySpace2 = new GameObjectLocked(ctx,450,531,600,100, "#F0F0F0");
@@ -67,7 +68,7 @@ function level2(canvas,ctx){
       box.drawObj_BGFixed(moveableBG);
       //enemy.drawObj_BGFixed(moveableBG);
       // enemy.drawVerticalMovement(moveableBG,100);
-      enemy.drawFollow(moveableBG);
+      enemy.drawFollow(moveableBG,rate);
       w4.drawObj_BGFixed(moveableBG);
       //draw layers
       w1.drawObjImgLayer(ctx,img0,moveableBG,0,40,0,50);

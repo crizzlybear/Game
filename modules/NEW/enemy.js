@@ -5,6 +5,7 @@ class Enemy extends GameObjectLocked{
         this.col="red";
         this.newX;
         this.newY;
+        this.i=0;
       }
         
       drawHorizontalMovement(bgInst,maxDist){
@@ -33,7 +34,7 @@ class Enemy extends GameObjectLocked{
         ctx.closePath();
     }
     
-      drawFollow(bgInst){
+      drawFollow(bgInst,rate){
       let ctx = this.ctx;
       ctx.beginPath();
       
@@ -54,10 +55,14 @@ class Enemy extends GameObjectLocked{
       var ay = this.y +=(yDist*0.005);
       this.newX = ax;
       this.newY = ay;
-      ctx.rect(ax-bgInst.bgX,ay-bgInst.bgY, this.w, this.h);
-      ctx.fillStyle = this.color;
-      ctx.fill();
-      ctx.closePath();
+      // ctx.rect(ax-bgInst.bgX,ay-bgInst.bgY, this.w, this.h);
+      // ctx.fillStyle = this.color;
+      // ctx.fill();
+      // ctx.closePath();
+      if(rate==1){
+        this.i = (this.i+1)%2;//where 2 is number of frames
+       }
+      ctx.drawImage(en,this.i*64,0,64,64,ax-bgInst.bgX,ay-bgInst.bgY,this.w, this.h);
   }
   
     //override
