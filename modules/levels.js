@@ -105,8 +105,8 @@ function level2(canvas,ctx){
 
       
      // fixedAvatar.usePower(ctx);
-     fixedAvatar.usePowerColorStream(ctx, moveableBG);
-
+    //  fixedAvatar.usePowerColorStream(ctx, moveableBG);
+      fixedAvatar.usePowerColorParticle(ctx, moveableBG);
       rate = (rate+1)%10;//let this be frame rate, e.g if rate == 3, only every 1 out of every 100 frames will be called.
       
       openMenu(canvas,ctx);

@@ -9,6 +9,7 @@ class Avatar{
     this.testValue=1000;
     this.i=0;
     this.speed = 2;
+    this.v=0;
   }
 
   getTest(){
@@ -187,5 +188,41 @@ class AvatarFixed extends Avatar{
     
   }
 
+  usePowerColorParticle(ctx, bgInst){
+    //maybe create another ctx to act as a mask
+    
+    if(powerOn&&energy>0){
+      
+
+      energy=energy-1;
+      // console.log("Energy:",energy);
+      // document.getElementById("energy").innerText=energy;
+      console.log("power On Color Stream!");
+      let img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = "images/colormap.png";
+      
+     
+      ctx.save();//remove if above is uncommented
+      ctx.beginPath();  
+      //ctx.filter = "blur(15px)";
+
+      
+      ctx.drawImage(img,this.x+bgInst.bgX,this.y+bgInst.bgY,60,60,this.x,this.y,10,10);
+      this.v = (this.v+1)%50;
+      var vv = 50-this.v;
+      ctx.rect(this.x+(vv)%25,this.y+(vv)%40,10,10)
+      ctx.rect(this.x-(vv)%25,this.y-(vv)%50,10,10)
+      ctx.rect(this.x-(vv)%40,this.y-(vv)%30,10,10)
+      ctx.rect(this.x-(-vv)%15,this.y-(vv)%40,10,10)
+      console.log(vv);
+      ctx.fill();
+      ctx.closePath();
+      
+      
+      ctx.restore(); 
+    }
+    
+  }
 
 }
