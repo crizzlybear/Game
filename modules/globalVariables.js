@@ -1,6 +1,8 @@
-let avH = 100;
+// let avH = 100;
 let avW = av.width;
-let avDiv = 100;
+//let avDiv = 100;
+let avH = 64;
+let avDiv  = 64;
 //controls
 
 let rightPressed = false;

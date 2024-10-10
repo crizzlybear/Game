@@ -2,10 +2,10 @@
     //bg
     let background = new Image();
     let tileObj = new Image();
-      tileObj.src = "images/floortile.png";
+      tileObj.src = "images/bricks2.png";
     //sprite
     let av = new Image();
-      av.src = "images/dogSample4.png";
+      av.src = "images/dogAvatar15.png";
     let img0 = new Image();
       img0.crossOrigin = "anonymous";
       img0.src = "images/buildingLong.png";
@@ -43,9 +43,9 @@ function level2(canvas,ctx){
       //ctx.drawImage(background,0,0,1024,631,-bgX,-bgY,1024,631);//add this to BG class as well//DONT REMOVE YET
       ctx.imageSmoothingEnabled = false;
       //moveableBG.drawUpdate(ctx);
-      moveableBG.drawPattern(ctx,tileObj);
+      //moveableBG.drawPattern(ctx,tileObj);
       
-      //moveableBG.drawGradient(ctx);
+      moveableBG.drawGradient(ctx);
       setShadow(ctx);
       emptySpace2.drawObj_BGFixed(moveableBG);
      

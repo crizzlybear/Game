@@ -53,17 +53,27 @@ class Avatar{
    }
     if(rightPressed){//0,4
         // console.log(this.i);
-        drawSprite(this.x,this.y,this.w, this.h, this.i);
+        if(powerOn&&energy>0){
+          drawSprite(this.x,this.y,this.w, this.h, this.i+12);
+        }else{
+          drawSprite(this.x,this.y,this.w, this.h, this.i+8);
+        }
+        
     }else if(leftPressed){//1,5
       // console.log("L",this.i+4);
-      drawSprite(this.x,this.y,this.w, this.h, this.i+4);
+      if(powerOn&&energy>0){
+        drawSprite(this.x,this.y,this.w, this.h, this.i+10);
+      }else{
+        drawSprite(this.x,this.y,this.w, this.h, this.i+6);
+      }
+      // drawSprite(this.x,this.y,this.w, this.h, this.i+6);
     }else if(upPressed){//6,7
-      drawSprite(this.x,this.y,this.w, this.h, this.i+6);
+      drawSprite(this.x,this.y,this.w, this.h, this.i+2);
         
     }else if(downPressed){//2,3
-        drawSprite(this.x,this.y,this.w, this.h, this.i+2);
+        drawSprite(this.x,this.y,this.w, this.h, this.i+4);
     }else{
-      drawSprite(this.x,this.y,this.w, this.h, this.i+2);
+      drawSprite(this.x,this.y,this.w, this.h, this.i);
     }
   }
 
