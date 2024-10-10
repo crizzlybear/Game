@@ -32,6 +32,7 @@ function level2(canvas,ctx){
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
   var box = new GameObjectInteractableLocked(ctx,200,600,30,30);
   var enemy = new Enemy(ctx,0,0,30,30);
+  var enemy2 = new Enemy(ctx,450,450,80,80);
   let rate=0;
   //let energy = 1000;
   var energyStat = new GameStats(20,300,50,10);
@@ -69,6 +70,7 @@ function level2(canvas,ctx){
       //enemy.drawObj_BGFixed(moveableBG);
       // enemy.drawVerticalMovement(moveableBG,100);
       enemy.drawFollow(moveableBG,rate);
+      enemy2.drawFollow(moveableBG,rate);
       w4.drawObj_BGFixed(moveableBG);
       //draw layers
       w1.drawObjImgLayer(ctx,img0,moveableBG,0,40,0,50);

@@ -6,6 +6,8 @@ class Enemy extends GameObjectLocked{
         this.newX;
         this.newY;
         this.i=0;
+        this.oldX  = x;
+        this.oldY = y;
       }
         
       drawHorizontalMovement(bgInst,maxDist){
@@ -47,8 +49,8 @@ class Enemy extends GameObjectLocked{
       
        }else{ console.log("OUT RANGE");this.col="pink";
         //move towards starting position
-          xDist = Math.floor(0- this.x);
-          yDist = Math.floor(0- this.y );
+          xDist = Math.floor(this.oldX- this.x);
+          yDist = Math.floor(this.oldY- this.y );
        }
       
       var ax = this.x +=(xDist*0.005);//ENEMY SPEED default is 0.01
