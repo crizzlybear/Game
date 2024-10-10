@@ -122,7 +122,7 @@ class Enemy extends GameObjectLocked{
 
       function getFromList(obsList1){
         var r = Math.floor(Math.random()*(obsList1.length));
-        console.log(r);
+        // console.log(r);
         var ob = obsList1[r];
         return ob;
       }
@@ -164,7 +164,7 @@ class Enemy extends GameObjectLocked{
             break;
         }
       }else{
-        console.log("OUT");
+        // console.log("OUT");
       }
   
      
