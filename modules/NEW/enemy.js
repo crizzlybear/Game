@@ -8,6 +8,8 @@ class Enemy extends GameObjectLocked{
         this.i=0;
         this.oldX  = x;
         this.oldY = y;
+        this.health = 200;
+        this.damage = 2;
       }
         
       drawHorizontalMovement(bgInst,maxDist){
@@ -170,5 +172,70 @@ class Enemy extends GameObjectLocked{
      
     }//end colision
     
+      isAttacked(bgInst, avatarInst){
+      //custom collision detection
+      var ctx = this.ctx;
+      let rightBorder=this.x+this.w;
+      let leftBorder=this.x;
+      let topBorder=this.newY;
+      let botBorder=this.h+this.newY;
+      if((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h)){
+        // console.log("inside");
+
+        let collide = [Math.abs((rightBorder-bgInst.bgX)-avatarInst.x),Math.abs((botBorder-bgInst.bgY)-avatarInst.y),Math.abs((leftBorder-bgInst.bgX)-(avatarInst.x+ avatarInst.w)), Math.abs((topBorder-bgInst.bgY)-(avatarInst.y+ avatarInst.h))];
+        let n=collide.indexOf(Math.min(...collide));
+        // console.log(collide);
+        // console.log("X:"+bgInst.bgX +" Y:"+bgInst.bgY);
+        avatarInst.health = avatarInst.health-this.damage;
+        console.log("avatar health",avatarInst.health,"Enemy health", this.health);
+        if(attack){
+          console.log("attacking!");
+          
+          switch(n){
+            case n=0:
+              // console.log("from right!");
+            
+              this.x = Math.max(this.x-20,0);
+              this.health=this.health-10;
+              break;
+            case n=1:
+              // console.log("from bottom", botBorder); 
+            
+              this.y = Math.max(this.y -20,0);
+              this.health=this.health-10;
+              break;
+            case n=2:
+              // console.log("from left");
+              this.x = Math.min(this.x+20, 1020);
+              this.health=this.health-10;
+              break;
+            case n=3:
+              // console.log("from top"); 
+              // this.col = "purple";
+              this.y = Math.min(this.y +20,630);
+              this.health=this.health-10;
+              break;
+            default:
+              // console.log("nothing...");
+              break;
+          } //end switch
+        }else{//console.log("outside");
+        }
+      }
+    }
+    
+    enemyHealthBar(ctx,bgInst){
+      var maxHealth = 200;
+      ctx.beginPath();
+      ctx.rect(this.x-bgInst.bgX, this.y-5-bgInst.bgY, this.w, 5);
+      ctx.fill();
+      ctx.closePath();
+
+      ctx.beginPath();      
+      ctx.rect(this.x-bgInst.bgX, this.y-5-bgInst.bgY, this.w*(this.health/maxHealth),5);
+      ctx.fillStyle = "rgb(0,0,0)";
+      ctx.fill();
+      ctx.closePath();
+    }
    
 }

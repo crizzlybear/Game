@@ -33,6 +33,8 @@ function keyDownHandler(e) {
     }else{
       menuOpen=false;
     }
+  }else if(e.key ==="r"){
+    attack = true;
   }
 }
 
@@ -52,6 +54,8 @@ function keyUpHandler(e) {
     powerOn = false;
   }else if(e.key == "t"){
     menu=false;
+  }else if(e.key ==="r"){
+    attack = false;
   }
 }
 

@@ -12,6 +12,7 @@ class Avatar{
     this.v=0;
     this.rgbSum = [0,0,0];
     this.powerColor = "rgb(255,255,255)";
+    this.health = 1000;
   }
 
   getTest(){

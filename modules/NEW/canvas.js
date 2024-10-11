@@ -63,4 +63,18 @@ class GameStats{
         drawBar(ctx,this.x,this.y,(energy/1000)*this.w,this.h,"green");
     }
 
+    drawHealthBar(ctx,avatarInst){
+        function drawBar(ctx,xx,yy,ww,hh,setCol){
+            ctx.beginPath();
+            ctx.rect(xx,yy,ww,hh);
+            ctx.fillStyle = setCol;
+            ctx.fill();
+            ctx.closePath();
+        }
+    
+        var maxHealth = 1000;
+        drawBar(ctx,this.x+100,this.y,this.w,this.h,"white");
+        drawBar(ctx,this.x+100,this.y,(avatarInst.health/maxHealth)*this.w,this.h,"red");
+    }
+
 }

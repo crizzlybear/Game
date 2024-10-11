@@ -11,6 +11,7 @@ let upPressed = false;
 let downPressed = false;
 let pickup = false;
 let escPressed = false;
+let attack= false;
 let count=0;
 menu = false;
 menuOpen = false;

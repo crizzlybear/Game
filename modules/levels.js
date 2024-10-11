@@ -77,7 +77,10 @@ function level2(canvas,ctx){
       b4.drawObj_BGFixed(moveableBG);
       //enemy.drawObj_BGFixed(moveableBG);
       // enemy.drawVerticalMovement(moveableBG,100);
-      enemy.drawFollow(moveableBG,rate);
+      if(enemy.health>=0){
+        enemy.enemyHealthBar(ctx,moveableBG);
+        enemy.drawFollow(moveableBG,rate);
+      }
       enemy2.drawFollow(moveableBG,rate);
       w4.drawObj_BGFixed(moveableBG);
       //draw layers
@@ -92,7 +95,7 @@ function level2(canvas,ctx){
       //enemy.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
       //collisions
       w1.collisionObj(moveableBG,fixedAvatar);
-      enemy.collisionObstacles(moveableBG,w1, obsList);
+      if(enemy.health>=0){enemy.collisionObstacles(moveableBG,w1, obsList);}
       enemy2.collisionObstacles(moveableBG,w1, obsList);
       w2.collisionObj(moveableBG,fixedAvatar);
       w3.collisionObj(moveableBG,fixedAvatar);
@@ -103,11 +106,13 @@ function level2(canvas,ctx){
   
       w4.collisionObj(moveableBG,fixedAvatar);
       // /enemy.collisionObj2(moveableBG,fixedAvatar);
+      if(enemy.health>=0){enemy.isAttacked(moveableBG,fixedAvatar);}
+      enemy2.isAttacked(moveableBG,fixedAvatar);
       //item1.pickup();
       item1.getEnergy(moveableBG, fixedAvatar);
       box.pickup(moveableBG, fixedAvatar);
       energyStat.drawEnergyBar(ctx,energy);
-      
+      energyStat.drawHealthBar(ctx,fixedAvatar);
       moveableBG.moveBG(canvas, fixedAvatar);
      
 
@@ -116,6 +121,9 @@ function level2(canvas,ctx){
     //  fixedAvatar.usePowerColorStream(ctx, moveableBG);
       fixedAvatar.usePowerColorParticle(ctx, moveableBG);
       rate = (rate+1)%10;//let this be frame rate, e.g if rate == 3, only every 1 out of every 100 frames will be called.
+      
+     
+
       
       openMenu(canvas,ctx);
       requestAnimationFrame(draw);
