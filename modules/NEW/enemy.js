@@ -174,7 +174,7 @@ class Enemy extends GameObjectLocked{
     
       isAttacked(bgInst, avatarInst){
       //custom collision detection
-      var ctx = this.ctx;
+      
       let rightBorder=this.x+this.w;
       let leftBorder=this.x;
       let topBorder=this.newY;
@@ -187,9 +187,9 @@ class Enemy extends GameObjectLocked{
         // console.log(collide);
         // console.log("X:"+bgInst.bgX +" Y:"+bgInst.bgY);
         avatarInst.health = avatarInst.health-this.damage;
-        console.log("avatar health",avatarInst.health,"Enemy health", this.health);
+        // console.log("avatar health",avatarInst.health,"Enemy health", this.health);
         if(attack){
-          console.log("attacking!");
+          // console.log("attacking!");
           
           switch(n){
             case n=0:
@@ -228,6 +228,7 @@ class Enemy extends GameObjectLocked{
       var maxHealth = 200;
       ctx.beginPath();
       ctx.rect(this.x-bgInst.bgX, this.y-5-bgInst.bgY, this.w, 5);
+      ctx.fillStyle = "white";
       ctx.fill();
       ctx.closePath();
 

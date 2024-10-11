@@ -81,7 +81,10 @@ function level2(canvas,ctx){
         enemy.enemyHealthBar(ctx,moveableBG);
         enemy.drawFollow(moveableBG,rate);
       }
-      enemy2.drawFollow(moveableBG,rate);
+      if(enemy2.health>=0){
+        enemy2.enemyHealthBar(ctx,moveableBG);
+        enemy2.drawFollow(moveableBG,rate);
+      }
       w4.drawObj_BGFixed(moveableBG);
       //draw layers
       w1.drawObjImgLayer(ctx,img0,moveableBG,0,40,0,50);
@@ -96,7 +99,7 @@ function level2(canvas,ctx){
       //collisions
       w1.collisionObj(moveableBG,fixedAvatar);
       if(enemy.health>=0){enemy.collisionObstacles(moveableBG,w1, obsList);}
-      enemy2.collisionObstacles(moveableBG,w1, obsList);
+      if(enemy2.health>=0){enemy2.collisionObstacles(moveableBG,w1, obsList);}
       w2.collisionObj(moveableBG,fixedAvatar);
       w3.collisionObj(moveableBG,fixedAvatar);
       item1.collisionObj(moveableBG,fixedAvatar);
@@ -107,7 +110,7 @@ function level2(canvas,ctx){
       w4.collisionObj(moveableBG,fixedAvatar);
       // /enemy.collisionObj2(moveableBG,fixedAvatar);
       if(enemy.health>=0){enemy.isAttacked(moveableBG,fixedAvatar);}
-      enemy2.isAttacked(moveableBG,fixedAvatar);
+      if(enemy2.health>=0){enemy2.isAttacked(moveableBG,fixedAvatar);}
       //item1.pickup();
       item1.getEnergy(moveableBG, fixedAvatar);
       box.pickup(moveableBG, fixedAvatar);
