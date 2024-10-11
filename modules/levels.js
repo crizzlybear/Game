@@ -52,6 +52,7 @@ function level2(canvas,ctx){
       //moveableBG.drawPattern(ctx,tileObj);
       
       moveableBG.drawGradient(ctx);
+      moveableBG.drawGroundRandom(ctx);
       setShadow(ctx);
       emptySpace2.drawObj_BGFixed(moveableBG);
      

@@ -71,7 +71,9 @@ class BGLocked extends BG{
       ctx.beginPath();
       const grad = ctx.createLinearGradient(0,0,0,631);
       grad.addColorStop(0,"darkgray");
-      grad.addColorStop(1,"lightblue");
+      grad.addColorStop(1,"BurlyWood");
+      // grad.addColorStop(0,"darkgray");
+      // grad.addColorStop(1,"rgb(69, 76, 87)");
       ctx.fillStyle = grad;
       ctx.fillRect(-this.bgX,-this.bgY,1024,631);
       ctx.closePath();
@@ -79,6 +81,22 @@ class BGLocked extends BG{
       
       
       ctx.restore();
+    }
+
+
+    drawGroundRandom(ctx){
+      ctx.beginPath();
+      ctx.rect(10-this.bgX,10-this.bgY,25,50);
+      ctx.rect(50-this.bgX,40-this.bgY,30,30);
+      ctx.rect(155-this.bgX,320-this.bgY,25,20);
+      ctx.rect(230-this.bgX,140-this.bgY,40,25);
+      // ctx.translate(-this.bgX,-this.bgY);
+     ctx.fillStyle = "rgba(194,183,155,0.4)";
+    //  ctx.fillStyle = "rgba(145, 161, 189,0.4)";
+      ctx.fill();
+      // ctx.translate(this.bgX,this.bgY);//undo translate so it doesnt smear
+      ctx.closePath();
+      
     }
 }
 
