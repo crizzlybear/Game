@@ -147,10 +147,11 @@ class GameObjectLocked extends GameObject{
 
 
 class GameObjectInteractableLocked extends GameObjectLocked{
-  constructor(ctx,x,y,w,h){
-    super(ctx,x,y,w,h);
+  constructor(ctx,x,y,w,h,rgb){
+    super(ctx,x,y,w,h,rgb);
     this.ctx = ctx;
     this.col="#ffffff";
+    this.rgb = rgb;
   }
   pickup(bgInst, avatarInst){
     //set pickup area

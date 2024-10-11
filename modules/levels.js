@@ -31,13 +31,16 @@ function level2(canvas,ctx){
   let fixedAvatar = new AvatarFixed(canvas.width/2,canvas.height/2,50,50);
   let moveableBG = new BGLocked("images/floor.png");
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
-  var box = new GameObjectInteractableLocked(ctx,200,600,30,30);
+  var box = new GameObjectInteractableLocked(ctx,200,600,30,30,[255,0,0]);
+  var b2 = new GameObjectInteractableLocked(ctx,550,500,30,30,[0,255,0]);
+  var b3 = new GameObjectInteractableLocked(ctx,800,100,30,30,[0,0,255]);
+  var b4 = new GameObjectInteractableLocked(ctx,850,100,30,30,[0,0,0]);
   var enemy = new Enemy(ctx,0,0,30,30);
   var enemy2 = new Enemy(ctx,450,450,80,80);
   let rate=0;
   //let energy = 1000;
   var energyStat = new GameStats(20,300,50,10);
-  
+  var boxList = [box,b2,b3,b4];
   let obsList = [w1,w2,w3,w4,emptySpace2];
   //DRAW LOOP===========================
   function draw(){
@@ -68,6 +71,9 @@ function level2(canvas,ctx){
       item1.drawObj_BGFixed(moveableBG);
       
       box.drawObj_BGFixed(moveableBG);
+      b2.drawObj_BGFixed(moveableBG);
+      b3.drawObj_BGFixed(moveableBG);
+      b4.drawObj_BGFixed(moveableBG);
       //enemy.drawObj_BGFixed(moveableBG);
       // enemy.drawVerticalMovement(moveableBG,100);
       enemy.drawFollow(moveableBG,rate);
@@ -104,7 +110,7 @@ function level2(canvas,ctx){
       moveableBG.moveBG(canvas, fixedAvatar);
      
 
-      fixedAvatar.closestObject(obsList,moveableBG,rate);
+      fixedAvatar.closestObject(boxList,moveableBG,rate);
      // fixedAvatar.usePower(ctx);
     //  fixedAvatar.usePowerColorStream(ctx, moveableBG);
       fixedAvatar.usePowerColorParticle(ctx, moveableBG);
