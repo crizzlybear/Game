@@ -122,16 +122,19 @@ class Enemy extends GameObjectLocked{
 
     collisionObstacles(bgInst, ObstInst, obsList){
 
-      function getFromList(obsList1){
-        var r = Math.floor(Math.random()*(obsList1.length));
-        // console.log(r);
-        var ob = obsList1[r];
-        return ob;
-      }
+      // function getFromList(obsList1){
+      //   var r = Math.floor(Math.random()*(obsList1.length));
+      //   // console.log(r);
+      //   var ob = obsList1[r];
+      //   return ob;
+      // }
       //custom collision detection
       //console.log(this.x+this.w,this.y+this.h, ObstInst.x, ObstInst.y);
       // console.log(getFromList(obsList));
-      ObstInst = getFromList(obsList);
+      // ObstInst = getFromList(obsList);
+      for(var i=0; i<obsList.length; i++){
+        ObstInst = obsList[i];
+      }
       var eL = this.x;
       var eR = this.x+this.w;
       var eT = this.y;
