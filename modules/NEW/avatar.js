@@ -13,6 +13,7 @@ class Avatar{
     this.rgbSum = [0,0,0];
     this.powerColor = "rgb(255,255,255)";
     this.health = 1000;
+    
   }
 
   getTest(){
@@ -247,18 +248,41 @@ class AvatarFixed extends Avatar{
         if(center < 150){
           
           // console.log(obsList[i].rgb,i);
-          this.rgbSum[0] += obsList[i].rgb[0];
-          this.rgbSum[1] += obsList[i].rgb[1];
-          this.rgbSum[2] += obsList[i].rgb[2];
+          this.rgbSum[0] += obsList[i].rgb[0]*2;
+          this.rgbSum[1] += obsList[i].rgb[1]*2;
+          this.rgbSum[2] += obsList[i].rgb[2]*2;
+          // this.rgbSum[(obsList[i].rgb).indexOf((Math.max(...obsList[i].rgb)))] +=255;
+          // this.rgbSum[0] = Math.floor(this.rgbSum[0]/2);
+          // this.rgbSum[1] = Math.floor(this.rgbSum[1]/2);
+          // this.rgbSum[2] = Math.floor(this.rgbSum[2]/2);
           
-          this.rgbSum[0] = Math.floor(this.rgbSum[0]/2);
-          this.rgbSum[1] = Math.floor(this.rgbSum[1]/2);
-          this.rgbSum[2] = Math.floor(this.rgbSum[2]/2);
-          // console.log(obsList[i].rgb, this.rgbSum);
-          this.powerColor = `rgba(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]},${1-(center/150)})`;//opacity when close
+          //  console.log("@@@@@@",(obsList[i].rgb).indexOf((Math.max(...obsList[i].rgb))));
+          // this.powerColor = `rgba(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]},${1-(center/150)})`;//opacity when close
           // this.powerColor = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
+        }else{
+          this.rgbSum[0] += 255;
+          this.rgbSum[1] += 255;
+          this.rgbSum[2] += 255;
+          // this.rgbSum[(obsList[i].rgb).indexOf((Math.max(...obsList[i].rgb)))] +=255;
+          this.rgbSum[0] = Math.floor(this.rgbSum[0]/3);
+          this.rgbSum[1] = Math.floor(this.rgbSum[1]/3);
+          this.rgbSum[2] = Math.floor(this.rgbSum[2]/3);
+
+          //convert to hsl and increase saturation
+          var f = 2;
+          var L = 0.33*this.rgbSum[0]+0.33*this.rgbSum[1]+0.33*this.rgbSum[2]; //L = 0.3*r + 0.6*g + 0.1*b;
+          var rr = this.rgbSum[0]-f*(L-this.rgbSum[0]);
+          var gg = this.rgbSum[1]-f*(L-this.rgbSum[1]);
+          var bb = this.rgbSum[2]-f*(L-this.rgbSum[2]);
+          this.powerColor = `rgb(${rr},${gg},${bb})`;
+
+          
+
+          
+         
         }
         // dist.push(center);
+        
       }
       // console.log(dist);
       
