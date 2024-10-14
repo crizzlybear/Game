@@ -74,7 +74,7 @@ class GameStats{
     
         var maxHealth = 1000;
         drawBar(ctx,this.x+100,this.y,this.w,this.h,"white");
-        drawBar(ctx,this.x+100,this.y,(avatarInst.health/maxHealth)*this.w,this.h,"red");
+        drawBar(ctx,this.x+100,this.y,Math.max((avatarInst.health/maxHealth)*this.w,0),this.h,"red");
     }
 
 }
