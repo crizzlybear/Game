@@ -186,6 +186,69 @@ class GameObjectInteractableLocked extends GameObjectLocked{
 
 }
 
+
+class Stairs extends GameObject{
+  constructor(ctx,x,y,w,h,objColor){
+    super(ctx,x,y,w,h);
+    this.color=objColor;
+    this.ctx = ctx;//fix extends
+    //this.direction = direction;//starting from bottom: NE,NW,N,S
+    //Test norteast stairs
+  }
+  drawObj_BGFixed(bgInst){//newX,newY = bgX,bgY
+    //console.log("drawn object:", -newX,-newY, this.w, this.h);
+    let ctx = this.ctx;
+    ctx.beginPath();
+    ctx.rect(this.x-bgInst.bgX,this.y-bgInst.bgY, this.w, this.h);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+    ctx.closePath();
+    
+  } 
+
+  drawObjImgLayer(ctx,imgName,bgInst, leftOffset, topOffset, extendX, extendY){
+    //height layer  
+    //console.log("drawn", bgInst.bgX,bgInst.bgY);
+    ctx.drawImage(imgName, this.x-bgInst.bgX+leftOffset, this.y-bgInst.bgY-topOffset, this.w+extendX, this.h+extendY);
+  }
+
+  collisionObj(bgInst, avatarInst){
+    //custom collision detection
+    let rightBorder=this.x+this.w;
+    let leftBorder=this.x;
+    let topBorder=this.y;
+    let botBorder=this.y+this.h;
+    if((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h)){
+      console.log("inside");
+      
+      
+      
+          if(leftPressed){
+            bgInst.bgX = bgInst.bgX-1;
+            bgInst.bgY = bgInst.bgY-0.5;
+          }else if(rightPressed){
+            bgInst.bgX = bgInst.bgX+1;
+            bgInst.bgY = bgInst.bgY+0.5;
+          }
+          
+       
+    
+    }else{//console.log("outside");
+    }
+
+   
+  }//end colision
+}
+
+
+
+
+
+
+
+
+
+
 function setShadow(ctx){
     ctx.shadowColor = "grey";
     ctx.shadowBlur = 8;

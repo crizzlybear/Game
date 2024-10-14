@@ -20,6 +20,8 @@
      whImg.src = "images/warehouse.png";
      let en = new Image();
      en.src = "images/enemy1.png";
+    let stairsImg = new Image();
+    stairsImg.src = "images/stairs.png";
 function level2(canvas,ctx){
  
   
@@ -38,6 +40,7 @@ function level2(canvas,ctx){
   var enemy = new Enemy(ctx,0,0,30,30);
   var enemy2 = new Enemy(ctx,450,450,80,80);
   let rate=0;
+  var stair1 = new Stairs(ctx,100,450,150,100);
   //let energy = 1000;
   var energyStat = new GameStats(20,300,50,10);
   var boxList = [box,b2,b3,b4];
@@ -53,6 +56,8 @@ function level2(canvas,ctx){
       
       moveableBG.drawGradient(ctx);
       moveableBG.drawGroundRandom(ctx);
+      stair1.drawObj_BGFixed(moveableBG);
+      stair1.drawObjImgLayer(ctx,stairsImg,moveableBG,0,0,0,0);
       setShadow(ctx);
       emptySpace2.drawObj_BGFixed(moveableBG);
      
@@ -69,6 +74,8 @@ function level2(canvas,ctx){
       w1.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
       w2.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
       w3.drawObj_BGFixed(moveableBG);
+      
+
       item1.drawObj_BGFixed(moveableBG);
       
       box.drawObj_BGFixed(moveableBG);
@@ -92,7 +99,7 @@ function level2(canvas,ctx){
       w3.drawObjImgLayer(ctx,wallImg,moveableBG,0,0,0,0);
       box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
       w4.drawObjImgLayer(ctx,whImg,moveableBG,0,40,0,40);
-
+      
       // w5.animateThis(rate);
 
       //enemy.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
@@ -105,6 +112,7 @@ function level2(canvas,ctx){
       item1.collisionObj(moveableBG,fixedAvatar);
       emptySpace2.collisionObj(moveableBG,fixedAvatar);
       box.collisionObj(moveableBG,fixedAvatar);
+      stair1.collisionObj(moveableBG,fixedAvatar);
       //changeBgY();
   
       w4.collisionObj(moveableBG,fixedAvatar);
