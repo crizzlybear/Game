@@ -1,9 +1,9 @@
 //menu
 
-function drawText(canvas, ctx, text){
-    ctx.font = "48px serif";
-    ctx.fillStyle = "#f57bb5";
-    ctx.fillText(text, 0, 115);
+function drawText(canvas,ctx,x,y,size,col,text){
+    ctx.font = `bold ${size}px Courier New`;
+    ctx.fillStyle = col;
+    ctx.fillText(text, x, y);
     
 }  
 function drawButton(canvas,ctx){

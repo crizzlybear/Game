@@ -45,6 +45,7 @@ function level2(canvas,ctx){
   var energyStat = new GameStats(20,300,50,10);
   var boxList = [box,b2,b3,b4];
   let obsList = [w1,w2,w3,w4,emptySpace2];
+
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -134,12 +135,35 @@ function level2(canvas,ctx){
       rate = (rate+1)%10;//let this be frame rate, e.g if rate == 3, only every 1 out of every 100 frames will be called.
       
      
-
+      
       
       openMenu(canvas,ctx);
-      requestAnimationFrame(draw);
-      
+      if(fixedAvatar.health>0){
+        requestAnimationFrame(draw);
+      }else{
+        requestAnimationFrame(gameOver);
+      }
   }//===================================
+
+
+  function gameOver(){
+    //menu();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //ctx.drawImage(background,0,0,1024,631,-bgX,-bgY,1024,631);//add this to BG class as well//DONT REMOVE YET
+    ctx.imageSmoothingEnabled = false;
+    drawMenu(canvas,ctx);
+    drawText(canvas,ctx, 110,150,48,"black","GAME OVER");
+    drawText(canvas,ctx, 80,200,20,"black","Press any key to continue...");
+
+    
+    
+  }//
+
   //execute
-  requestAnimationFrame(draw);//framerate 
+  if(fixedAvatar.health>0){
+    requestAnimationFrame(draw);
+  }else{
+    gameOver();
+  }
+  //framerate 
 }
