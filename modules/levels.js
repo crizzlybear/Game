@@ -63,7 +63,7 @@ function level2(canvas,ctx){
       emptySpace2.drawObj_BGFixed(moveableBG);
      
       fixedAvatar.switchSprite(ctx, rate);
-      
+      fixedAvatar.run();
       
       // if(bgX>w1.x+w1.w || bgY>w1.y+w1.h){
       //   //check out of bounds

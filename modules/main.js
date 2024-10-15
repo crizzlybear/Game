@@ -35,6 +35,9 @@ function keyDownHandler(e) {
     }
   }else if(e.key ==="r"){
     attack = true;
+  }else if(e.key ==="Shift"){
+    console.log("S");
+    shiftPressed = true;
   }
 }
 
@@ -56,6 +59,8 @@ function keyUpHandler(e) {
     menu=false;
   }else if(e.key ==="r"){
     attack = false;
+  }else if(e.key ==="Shift"){
+    shiftPressed = false;
   }
 }
 
