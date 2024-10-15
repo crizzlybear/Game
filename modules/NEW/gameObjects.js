@@ -176,9 +176,9 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let topBorder=this.y - 10;
     let botBorder=this.y+this.h + 10;
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
-      console.log("pickedup");
+      // console.log("pickedup");
       // this.col = "#71ffff";
-      console.log(item);
+      // console.log(item);
       if(!this.pickedUp){
         inventory.push(item);
         this.pickedUp=true;
@@ -264,7 +264,7 @@ class Stairs extends GameObject{
 class Gate extends GameObjectInteractableLocked{
   constructor(ctx,x,y,w,h,gateKeyReq){
     super(ctx,x,y,w,h);
-    this.locked = true;
+     this.locked = true;
     this.gateKeyReq = gateKeyReq;
   }
   
@@ -274,12 +274,15 @@ class Gate extends GameObjectInteractableLocked{
     let topBorder=this.y - 10;
     let botBorder=this.y+this.h + 10;
     var unlockAction = pickup;
-    var keyFound = inventory.some(item => item.color === this.gateKeyReq);
+    // var keyFound = inventory.some(item => item.color === this.gateKeyReq);
+    var keyFoundIndex = inventory.findIndex(item => item.color === this.gateKeyReq);
       //  console.log(keyFound, JSON.stringify(inventory[0]) == JSON.stringify({"color":this.gateKeyReq}));
+      // console.log("key", keyFoundIndex);
     if(((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
-      if(unlockAction && keyFound){
-        
-        this.y = Math.max(this.y-2,10);
+      if(unlockAction && keyFoundIndex!=-1){
+        this.locked = false;
+        // this.y = Math.max(this.y-2,10);
+      
       }
       
       // this.col = "#71ffff";
@@ -287,7 +290,14 @@ class Gate extends GameObjectInteractableLocked{
       // this.col = "#ffffff";
      
     }
+    if(!this.locked){
+      this.y = Math.max(this.y-2,10);
+    }
+    if(this.y==10){
+      inventory.shift();
+    }
   }
+  
 
 }
 
