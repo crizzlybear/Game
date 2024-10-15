@@ -45,7 +45,7 @@ class Enemy extends GameObjectLocked{
       var xDist = Math.floor(convertBGXtoAvatar(bgInst.bgX)-this.x);
       var yDist = Math.floor(convertBGYtoAvatar(bgInst.bgY)- this.y );
     
-      if(Math.abs(xDist)<200 && Math.abs(yDist)<150){
+      if(Math.abs(xDist)<200 && Math.abs(yDist)<200){
         // console.log("IN RANGE");
         this.col = "orange";
       
@@ -57,8 +57,8 @@ class Enemy extends GameObjectLocked{
           yDist = Math.floor(this.oldY- this.y );
        }
       
-      var ax = this.x +=(xDist*0.005);//ENEMY SPEED default is 0.01
-      var ay = this.y +=(yDist*0.005);
+      var ax = this.x +=(xDist*0.008);//ENEMY SPEED default is 0.01
+      var ay = this.y +=(yDist*0.008);
       this.newX = ax;
       this.newY = ay;
       // ctx.rect(ax-bgInst.bgX,ay-bgInst.bgY, this.w, this.h);
@@ -122,19 +122,19 @@ class Enemy extends GameObjectLocked{
 
     collisionObstacles(bgInst, ObstInst, obsList){
 
-      // function getFromList(obsList1){
-      //   var r = Math.floor(Math.random()*(obsList1.length));
-      //   // console.log(r);
-      //   var ob = obsList1[r];
-      //   return ob;
-      // }
+      function getFromList(obsList1){
+        var r = Math.floor(Math.random()*(obsList1.length));
+        // console.log(r);
+        var ob = obsList1[r];
+        return ob;
+      }
       //custom collision detection
       //console.log(this.x+this.w,this.y+this.h, ObstInst.x, ObstInst.y);
       // console.log(getFromList(obsList));
-      // ObstInst = getFromList(obsList);
-      for(var i=0; i<obsList.length; i++){
-        ObstInst = obsList[i];
-      }
+      ObstInst = getFromList(obsList);
+      // for(var i=0; i<obsList.length; i++){
+      //   ObstInst = obsList[i];
+      // }
       var eL = this.x;
       var eR = this.x+this.w;
       var eT = this.y;
