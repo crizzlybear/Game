@@ -153,7 +153,7 @@ class Enemy extends GameObjectLocked{
             break;
           case n=1://T
             console.log("T");
-            this.y = ObstInst.y-50;
+            this.y = ObstInst.y-100;
             // this.x=this.x+1;
             break;
           case n=2://B
