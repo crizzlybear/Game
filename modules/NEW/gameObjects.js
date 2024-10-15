@@ -261,7 +261,35 @@ class Stairs extends GameObject{
 }
 
 
+class Gate extends GameObjectInteractableLocked{
+  constructor(ctx,x,y,w,h,gateKeyReq){
+    super(ctx,x,y,w,h);
+    this.locked = true;
+    this.gateKeyReq = gateKeyReq;
+  }
+  
+  unlock(bgInst,avatarInst,inventory){
+    let rightBorder=this.x+this.w + 10;
+    let leftBorder=this.x -10;
+    let topBorder=this.y - 10;
+    let botBorder=this.y+this.h + 10;
+    var unlockAction = pickup;
+    var keyFound = inventory.some(item => item.color === this.gateKeyReq);
+      //  console.log(keyFound, JSON.stringify(inventory[0]) == JSON.stringify({"color":this.gateKeyReq}));
+    if(((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
+      if(unlockAction && keyFound){
+        
+        this.y = Math.max(this.y-2,10);
+      }
+      
+      // this.col = "#71ffff";
+    }else{
+      // this.col = "#ffffff";
+     
+    }
+  }
 
+}
 
 
 

@@ -293,7 +293,7 @@ class AvatarFixed extends Avatar{
 
   run(){
     if(shiftPressed){
-      console.log("running");
+      // console.log("running");
       this.speed = 4;
     }else{
       this.speed = 2;

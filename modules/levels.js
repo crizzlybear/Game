@@ -47,6 +47,8 @@ function level2(canvas,ctx){
   let obsList = [w1,w2,w3,w4,emptySpace2];
   var inventory = new Array();
   var inventoryBox = new GameStats(300,280,15,15);
+
+  var gate1 = new Gate(ctx,580,160,20,120,"red");
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -84,6 +86,7 @@ function level2(canvas,ctx){
       b2.drawObj_BGFixed(moveableBG);
       b3.drawObj_BGFixed(moveableBG);
       b4.drawObj_BGFixed(moveableBG);
+      gate1.drawObj_BGFixed(moveableBG);
       //enemy.drawObj_BGFixed(moveableBG);
       // enemy.drawVerticalMovement(moveableBG,100);
       if(enemy.health>=0){
@@ -115,6 +118,7 @@ function level2(canvas,ctx){
       emptySpace2.collisionObj(moveableBG,fixedAvatar);
       box.collisionObj(moveableBG,fixedAvatar);
       stair1.collisionObj(moveableBG,fixedAvatar);
+      gate1.collisionObj(moveableBG,fixedAvatar);
       //changeBgY();
   
       w4.collisionObj(moveableBG,fixedAvatar);
@@ -127,6 +131,7 @@ function level2(canvas,ctx){
       b2.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"green"});
       b3.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"blue"});
       b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"});
+      gate1.unlock(moveableBG,fixedAvatar,inventory);
       energyStat.drawEnergyBar(ctx,energy);
       energyStat.drawHealthBar(ctx,fixedAvatar);
       // console.log(inventory);
