@@ -266,6 +266,7 @@ class Gate extends GameObjectInteractableLocked{
     super(ctx,x,y,w,h);
      this.locked = true;
     this.gateKeyReq = gateKeyReq;
+    this.keyTaken = false;
   }
   
   unlock(bgInst,avatarInst,inventory){
@@ -293,8 +294,10 @@ class Gate extends GameObjectInteractableLocked{
     if(!this.locked){
       this.y = Math.max(this.y-2,10);
     }
-    if(this.y==10){
+    if(this.y==10&&this.keyTaken==false){//drops key when opened
       inventory.shift();
+      this.keyTaken=true;
+      console.log("Removed",this.keyTaken);
     }
   }
   

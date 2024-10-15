@@ -36,7 +36,7 @@ function level2(canvas,ctx){
   var box = new GameObjectInteractableLocked(ctx,200,600,30,30,[255,0,0]);
   var b2 = new GameObjectInteractableLocked(ctx,550,500,30,30,[0,255,0]);
   var b3 = new GameObjectInteractableLocked(ctx,800,100,30,30,[0,0,255]);
-  var b4 = new GameObjectInteractableLocked(ctx,850,100,30,30,[0,0,0]);
+  var b4 = new GameObjectInteractableLocked(ctx,900,100,30,30,[0,0,0]);
   var enemy = new Enemy(ctx,0,0,30,30);
   var enemy2 = new Enemy(ctx,450,450,80,80);
   let rate=0;
