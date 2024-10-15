@@ -45,7 +45,8 @@ function level2(canvas,ctx){
   var energyStat = new GameStats(20,300,50,10);
   var boxList = [box,b2,b3,b4];
   let obsList = [w1,w2,w3,w4,emptySpace2];
-
+  var inventory = new Array();
+  var inventoryBox = new GameStats(300,280,15,15);
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -122,9 +123,14 @@ function level2(canvas,ctx){
       if(enemy2.health>=0){enemy2.isAttacked(moveableBG,fixedAvatar);}
       //item1.pickup();
       item1.getEnergy(moveableBG, fixedAvatar);
-      box.pickup(moveableBG, fixedAvatar);
+      box.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"red"});
+      b2.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"green"});
+      b3.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"blue"});
+      b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"});
       energyStat.drawEnergyBar(ctx,energy);
       energyStat.drawHealthBar(ctx,fixedAvatar);
+      // console.log(inventory);
+      inventoryBox.drawInventory(ctx,inventory);
       moveableBG.moveBG(canvas, fixedAvatar);
      
 

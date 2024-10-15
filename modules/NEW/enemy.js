@@ -197,7 +197,7 @@ class Enemy extends GameObjectLocked{
           switch(n){
             case n=0:
               // console.log("from right!");
-            
+              
               this.x = Math.max(this.x-20,0);
               this.health=this.health-10;
               break;

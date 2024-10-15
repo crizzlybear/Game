@@ -9,6 +9,7 @@ class GameObject{
     this.color="#FFFFFF";
     this.ctx = ctx;
     this.rgb = rgb;
+    this.pickedUp=false;
   } 
   //getters
   get pos(){
@@ -165,6 +166,25 @@ class GameObjectInteractableLocked extends GameObjectLocked{
       this.col = "#71ffff";
     }else{
       this.col = "#ffffff";
+    }
+  }
+  pickupItem(bgInst, avatarInst,inventory,item){
+    //set pickup area
+    //should make this into a function or something
+    let rightBorder=this.x+this.w + 10;
+    let leftBorder=this.x -10;
+    let topBorder=this.y - 10;
+    let botBorder=this.y+this.h + 10;
+    if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
+      console.log("pickedup");
+      // this.col = "#71ffff";
+      console.log(item);
+      if(!this.pickedUp){
+        inventory.push(item);
+        this.pickedUp=true;
+      }
+    }else{
+      // this.col = "#ffffff";
     }
   }
   getEnergy(bgInst, avatarInst){
