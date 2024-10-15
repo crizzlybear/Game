@@ -176,7 +176,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let topBorder=this.y - 10;
     let botBorder=this.y+this.h + 10;
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
-      // console.log("pickedup");
+      console.log("pickedup");
       // this.col = "#71ffff";
       // console.log(item);
       if(!this.pickedUp){
@@ -294,10 +294,29 @@ class Gate extends GameObjectInteractableLocked{
     if(!this.locked){
       this.y = Math.max(this.y-2,10);
     }
-    if(this.y==10&&this.keyTaken==false){//drops key when opened
-      inventory.shift();
+    if(!this.locked&&this.keyTaken==false){//drops key when opened
+      var i=0;
+      var j=0;
+      inventory.push("temp");//prevent outofbounds kind of
+      for(i; i<inventory.length-1; i++){
+        
+        if(i!=keyFoundIndex){
+          
+          inventory[i] = inventory[j];
+          
+        }else{
+          //i==found
+          j++;
+          inventory[i] = inventory[j];
+        }
+        j++;
+        // console.log(i,j, inventory[i], inventory[j]);
+      }
+      inventory.pop();
+      inventory.pop();
+      // console.log("INV LEN",inventory.length);
       this.keyTaken=true;
-      console.log("Removed",this.keyTaken);
+      // console.log("Removed",this.keyTaken);
     }
   }
   
