@@ -45,7 +45,7 @@ class Enemy extends GameObjectLocked{
       var xDist = Math.floor(convertBGXtoAvatar(bgInst.bgX)-this.x);
       var yDist = Math.floor(convertBGYtoAvatar(bgInst.bgY)- this.y );
     
-      if(Math.abs(xDist)<200 && Math.abs(yDist)<200){
+      if(Math.abs(xDist)<80 && Math.abs(yDist)<80){//default 200,200
         // console.log("IN RANGE");
         this.col = "orange";
       

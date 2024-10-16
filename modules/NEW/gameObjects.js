@@ -213,6 +213,7 @@ class Stairs extends GameObject{
     super(ctx,x,y,w,h);
     this.color=objColor;
     this.ctx = ctx;//fix extends
+    this.switch=false;//imagine there is an ivisible button 
     //this.direction = direction;//starting from bottom: NE,NW,N,S
     //Test norteast stairs
   }
@@ -240,19 +241,19 @@ class Stairs extends GameObject{
     let topBorder=this.y;
     let botBorder=this.y+this.h;
     if((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h)){
-      console.log("inside");
+      // console.log("inside");
       
       
       
-          if(leftPressed){
-            bgInst.bgX = bgInst.bgX-1;
-            bgInst.bgY = bgInst.bgY-0.5;
-            avatarInst.level=1;
-          }else if(rightPressed){
-            bgInst.bgX = bgInst.bgX+1;
-            bgInst.bgY = bgInst.bgY+0.5;
-            avatarInst.level=0;
-          }
+          // if(leftPressed){
+          //   bgInst.bgX = bgInst.bgX-1;
+          //   bgInst.bgY = bgInst.bgY-0.5;
+          //   avatarInst.level=1;
+          // }else if(rightPressed){
+          //   bgInst.bgX = bgInst.bgX+1;
+          //   bgInst.bgY = bgInst.bgY+0.5;
+          //   avatarInst.level=0;
+          // }
           
        
     
@@ -261,7 +262,105 @@ class Stairs extends GameObject{
 
    
   }//end colision
+
+  collisionShape(bgInst, avatarInst, stairWidth){
+    var aX = convertBGXtoAvatar(bgInst.bgX);
+    var aY = convertBGYtoAvatar(bgInst.bgY);
+    // console.log("inEQ",aY<0.2*aX+424);//working
+    // console.log("inEQ",aY<0.2*aX+474);//also working
+    if(aY>0.2*aX+380 && aY<0.2*aX+385 &&aX>this.x-avatarInst.w && aX<this.x+this.w){
+      // console.log("On the stairs");
+      let collide = [Math.abs(0.2*aX+380-aY),Math.abs(0.2*aX+385-aY),Math.abs(this.x-avatarInst.w-aX), Math.abs(this.x+this.w-aX)];
+      let n=collide.indexOf(Math.min(...collide));
+      switch(n){
+        case n=0:
+          console.log("from top");
+          bgInst.bgY = bgInst.bgY-5;
+          break;
+        case n=1:
+          console.log("from bottom"); 
+          bgInst.bgY = bgInst.bgY+5;
+          break;
+        default:
+          console.log("nothing...");
+          break;
+      } //end switch
+    }else{//console.log("outside");
+    }
+
+    if(aY>0.2*aX+465 && aY<0.2*aX+470 &&aX>this.x-avatarInst.w && aX<this.x+this.w){
+      // console.log("On the stairs");
+      let collide = [Math.abs(0.2*aX+465-aY),Math.abs(0.2*aX+470-aY),Math.abs(this.x-avatarInst.w-aX), Math.abs(this.x+this.w-aX)];
+      let n=collide.indexOf(Math.min(...collide));
+      switch(n){
+        case n=0:
+          console.log("from top");
+          bgInst.bgY = bgInst.bgY-5;
+          break;
+        case n=1:
+          console.log("from bottom"); 
+          bgInst.bgY = bgInst.bgY+5;
+          break;
+        default:
+          console.log("nothing...");
+          break;
+      } //end switch
+    }else{//console.log("outside");
+    }
+
+    if(aY>0.2*aX+380 && aY<0.2*aX+465 &&aX>this.x-avatarInst.w && aX<this.x+this.w){
+      // var bgX1 = bgInst.bgX  
+      // console.log("x",bgX1,bgInst.bgX);
+        if(leftPressed){
+          bgInst.bgX = bgInst.bgX-0.6;
+          bgInst.bgY = bgInst.bgY-0.4;
+          avatarInst.level=1;
+          
+        }else if(rightPressed){
+          bgInst.bgX = bgInst.bgX+0.6;
+          bgInst.bgY = bgInst.bgY+0.4;
+          
+          avatarInst.level=0;
+        }
+        
+    }
+
+  }
+  
+  
+
 }
+
+/*
+if(aY>0.2*aX+380 && aY<0.2*aX+465 &&aX>this.x-avatarInst.w && aX<this.x+this.w){
+      // console.log("On the stairs");
+      let collide = [Math.abs(0.2*aX+380-aY),Math.abs(0.2*aX+465-aY),Math.abs(this.x-avatarInst.w-aX), Math.abs(this.x+this.w-aX)];
+      let n=collide.indexOf(Math.min(...collide));
+      switch(n){
+        case n=0:
+          console.log("from top");
+          bgInst.bgY = bgInst.bgY-5;
+          break;
+        case n=1:
+          console.log("from bottom"); 
+          bgInst.bgY = bgInst.bgY+5;
+          break;
+        case n=2:
+          console.log("from left");
+          // bgInst.bgX = bgInst.bgX-5;
+          break;
+        case n=3:
+          console.log("from right"); 
+          // bgInst.bgX = bgInst.bgX+5;
+        
+          break;
+        default:
+          console.log("nothing...");
+          break;
+      } //end switch
+    }else{//console.log("outside");
+    }
+*/
 
 
 class Gate extends GameObjectInteractableLocked{
@@ -374,10 +473,14 @@ class Platform extends GameObjectLocked{
     }else{//on level
       var canvasW = 480;
       var canvasH = 360;
+      var stairH = 50;//drawn height not square h
       if (rightPressed) {
         console.log("PLAT bgY",bgInst.bgY,"avatar",convertBGYtoAvatar(bgInst.bgY),"stairs",stairInst.y );
-        if(convertBGYtoAvatar(bgInst.bgY)>stairInst.y && convertBGYtoAvatar(bgInst.bgY)<stairInst.y+stairInst.h ){
+        if(convertBGYtoAvatar(bgInst.bgY)>stairInst.y && convertBGYtoAvatar(bgInst.bgY)<stairInst.y+stairH ){
           //is in range of stairs
+          if(convertBGXtoAvatar(bgInst.bgX)>stairInst.x-10){
+            avatarInst.level=0;
+          }
         }else{
           bgInst.bgX = Math.min(bgInst.bgX + avatarInst.speed, this.x+this.w-canvasW/2 - avatarInst.w);
         }

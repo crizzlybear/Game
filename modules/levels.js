@@ -38,7 +38,7 @@ function level2(canvas,ctx){
   var b3 = new GameObjectInteractableLocked(ctx,800,100,30,30,[0,0,255]);
   var b4 = new GameObjectInteractableLocked(ctx,900,100,30,30,[0,0,0]);
   var enemy = new Enemy(ctx,0,0,30,30);
-  var enemy2 = new Enemy(ctx,450,450,80,80);
+  var enemy2 = new Enemy(ctx,600,450,80,80);
   let rate=0;
   var stair1 = new Stairs(ctx,130,450,150,100);
   //let energy = 1000;
@@ -121,6 +121,7 @@ function level2(canvas,ctx){
       emptySpace2.collisionObj(moveableBG,fixedAvatar);
       box.collisionObj(moveableBG,fixedAvatar);
       stair1.collisionObj(moveableBG,fixedAvatar);
+      stair1.collisionShape(moveableBG,fixedAvatar,70);
       gate1.collisionObj(moveableBG,fixedAvatar);
       plat1.collisionObj(moveableBG,fixedAvatar,stair1);
       //changeBgY();
