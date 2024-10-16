@@ -127,10 +127,10 @@ function level2(canvas,ctx){
       if(enemy2.health>=0){enemy2.isAttacked(moveableBG,fixedAvatar);}
       //item1.pickup();
       item1.getEnergy(moveableBG, fixedAvatar);
-      box.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"red"});
-      b2.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"green"});
-      b3.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"blue"});
-      b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"});
+      if(!box.pickedUp){box.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"red"})};
+      if(!b2.pickedUp){b2.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"green"})};
+      if(!b3.pickedUp){b3.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"blue"})};
+      if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
       gate1.unlock(moveableBG,fixedAvatar,inventory);
       energyStat.drawEnergyBar(ctx,energy);
       energyStat.drawHealthBar(ctx,fixedAvatar);
