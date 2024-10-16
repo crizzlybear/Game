@@ -140,29 +140,29 @@ class Enemy extends GameObjectLocked{
       var eT = this.y;
       var eB = this.y+this.h;
 
-      if(eR>ObstInst.x && eB>ObstInst.y &&eT<ObstInst.y+ObstInst.h&&eL<ObstInst.x+ObstInst.w){
+      if(eR>ObstInst.x-10 && eB>ObstInst.y-10 &&eT<ObstInst.y+ObstInst.h+10&&eL<ObstInst.x+ObstInst.w+10){
         console.log("Enemey INSIDE");
-        let collide = [Math.abs(eR-ObstInst.x),Math.abs(eB-ObstInst.y),Math.abs(eT-ObstInst.y-ObstInst.h),Math.abs(eL-ObstInst.x-ObstInst.w)];
+        let collide = [Math.abs(eR-ObstInst.x+10),Math.abs(eB-ObstInst.y+10),Math.abs(eT-ObstInst.y-ObstInst.h-10),Math.abs(eL-ObstInst.x-ObstInst.w-10)];
         let n=collide.indexOf(Math.min(...collide));
         console.log(n);
         switch(n){
           case n=0://L
             console.log("L");
-            this.x = ObstInst.x-this.w-10;
+            this.x = ObstInst.x-this.w-5;
             // this.y=this.y*1.0005;
             break;
           case n=1://T
             console.log("T");
-            this.y = ObstInst.y-100;
+            this.y = ObstInst.y-this.h-5;
             // this.x=this.x+1;
             break;
           case n=2://B
           console.log("B"); 
-          this.y = ObstInst.y+ObstInst.h+30;
+          this.y = ObstInst.y+ObstInst.h+5;
             break;
           case n=3://R
           console.log("R");
-          this.x = ObstInst.x+ObstInst.w+10;
+          this.x = ObstInst.x+ObstInst.w+5;
           // this.y = this.y*1.005;
             break;
           default:
