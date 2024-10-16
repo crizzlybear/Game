@@ -140,9 +140,9 @@ class Enemy extends GameObjectLocked{
       var eT = this.y;
       var eB = this.y+this.h;
 
-      if(eR>ObstInst.x-10 && eB>ObstInst.y-10 &&eT<ObstInst.y+ObstInst.h+10&&eL<ObstInst.x+ObstInst.w+10){
+      if(eR>ObstInst.x && eB>ObstInst.y &&eT<ObstInst.y+ObstInst.h&&eL<ObstInst.x+ObstInst.w){
         console.log("Enemey INSIDE");
-        let collide = [Math.abs(eR-ObstInst.x+10),Math.abs(eB-ObstInst.y+10),Math.abs(eT-ObstInst.y-ObstInst.h-10),Math.abs(eL-ObstInst.x-ObstInst.w-10)];
+        let collide = [Math.abs(eR-ObstInst.x),Math.abs(eB-ObstInst.y),Math.abs(eT-ObstInst.y-ObstInst.h),Math.abs(eL-ObstInst.x-ObstInst.w)];
         let n=collide.indexOf(Math.min(...collide));
         console.log(n);
         switch(n){
