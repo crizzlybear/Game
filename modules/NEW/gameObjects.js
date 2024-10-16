@@ -247,9 +247,11 @@ class Stairs extends GameObject{
           if(leftPressed){
             bgInst.bgX = bgInst.bgX-1;
             bgInst.bgY = bgInst.bgY-0.5;
+            avatarInst.level=1;
           }else if(rightPressed){
             bgInst.bgX = bgInst.bgX+1;
             bgInst.bgY = bgInst.bgY+0.5;
+            avatarInst.level=0;
           }
           
        
@@ -326,8 +328,73 @@ class Gate extends GameObjectInteractableLocked{
 
 
 
+class Platform extends GameObjectLocked{
+  constructor(ctx,x,y,w,h){
+    super(ctx,x,y,w,h,"lightblue");
+    this.ctx = ctx;//fix extends
+  }
+  
 
+  collisionObj(bgInst, avatarInst,stairInst){
+    //custom collision detection
+    let rightBorder=this.x+this.w;
+    let leftBorder=this.x;
+    let topBorder=this.y;
+    let botBorder=this.y+this.h;
+    if((avatarInst.level==0)){
+      if((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h)){
+        console.log("inside");
+        let collide = [Math.abs((rightBorder-bgInst.bgX)-avatarInst.x),Math.abs((botBorder-bgInst.bgY)-avatarInst.y),Math.abs((leftBorder-bgInst.bgX)-(avatarInst.x+ avatarInst.w)), Math.abs((topBorder-bgInst.bgY)-(avatarInst.y+ avatarInst.h))];
+        let n=collide.indexOf(Math.min(...collide));
+        console.log(collide);
+        console.log("X:"+bgInst.bgX +" Y:"+bgInst.bgY);
+        switch(n){
+          case n=0:
+            console.log("from right");
+            bgInst.bgX = bgInst.bgX+10;
+            break;
+          case n=1:
+            console.log("from bottom"); 
+            bgInst.bgY = bgInst.bgY+10;
+            break;
+          case n=2:
+            console.log("from left");
+            bgInst.bgX=bgInst.bgX-10;
+            break;
+          case n=3:
+            console.log("from top"); 
+            bgInst.bgY = bgInst.bgY-10;
+            break;
+          default:
+            console.log("nothing...");
+            break;
+        } //end switch
+      }else{//console.log("outside");
+      }
+    }else{//on level
+      var canvasW = 480;
+      var canvasH = 360;
+      if (rightPressed) {
+        console.log("PLAT bgY",bgInst.bgY,"avatar",convertBGYtoAvatar(bgInst.bgY),"stairs",stairInst.y );
+        if(convertBGYtoAvatar(bgInst.bgY)>stairInst.y && convertBGYtoAvatar(bgInst.bgY)<stairInst.y+stairInst.h ){
+          //is in range of stairs
+        }else{
+          bgInst.bgX = Math.min(bgInst.bgX + avatarInst.speed, this.x+this.w-canvasW/2 - avatarInst.w);
+        }
+        
 
+      } else if (leftPressed) {
+        bgInst.bgX = Math.max(bgInst.bgX - avatarInst.speed, this.x-(0.5*canvasW));
+      } else if(upPressed){
+        bgInst.bgY = Math.max(bgInst.bgY - avatarInst.speed, this.y-(0.5*canvasH));
+      } else if(downPressed){
+        bgInst.bgY = Math.min(bgInst.bgY + avatarInst.speed, this.y+this.h -(canvasH/2) - avatarInst.h);
+      }
+    }
+    
+   
+  }//end colision
+}
 
 
 function setShadow(ctx){

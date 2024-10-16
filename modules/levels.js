@@ -40,7 +40,7 @@ function level2(canvas,ctx){
   var enemy = new Enemy(ctx,0,0,30,30);
   var enemy2 = new Enemy(ctx,450,450,80,80);
   let rate=0;
-  var stair1 = new Stairs(ctx,100,450,150,100);
+  var stair1 = new Stairs(ctx,130,450,150,100);
   //let energy = 1000;
   var energyStat = new GameStats(20,300,50,10);
   var boxList = [box,b2,b3,b4];
@@ -49,6 +49,7 @@ function level2(canvas,ctx){
   var inventoryBox = new GameStats(300,280,15,15);
 
   var gate1 = new Gate(ctx,580,160,20,120,"red");
+  var plat1 = new Platform(ctx,50,400,80,220);
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -61,6 +62,8 @@ function level2(canvas,ctx){
       moveableBG.drawGradient(ctx);
       //moveableBG.drawGroundRandom(ctx);
       //stair1.drawObj_BGFixed(moveableBG);
+      plat1.drawObj_BGFixed(moveableBG);
+      
       stair1.drawObjImgLayer(ctx,stairsImg,moveableBG,0,0,0,0);
       setShadow(ctx);
       emptySpace2.drawObj_BGFixed(moveableBG);
@@ -119,6 +122,7 @@ function level2(canvas,ctx){
       box.collisionObj(moveableBG,fixedAvatar);
       stair1.collisionObj(moveableBG,fixedAvatar);
       gate1.collisionObj(moveableBG,fixedAvatar);
+      plat1.collisionObj(moveableBG,fixedAvatar,stair1);
       //changeBgY();
   
       w4.collisionObj(moveableBG,fixedAvatar);
