@@ -41,7 +41,6 @@ function level2(canvas,ctx){
   var enemy2 = new Enemy(ctx,600,450,80,80);
   let rate=0;
   var stair1 = new Stairs(ctx,130,450,150,100);
-  //let energy = 1000;
   var gameUI = new GameStats(20,300,50,10);
 
   var inventory = new Array();
@@ -56,34 +55,32 @@ function level2(canvas,ctx){
   function draw(){
       //menu();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      //ctx.drawImage(background,0,0,1024,631,-bgX,-bgY,1024,631);//add this to BG class as well//DONT REMOVE YET
       ctx.imageSmoothingEnabled = false;
-      //moveableBG.drawUpdate(ctx);
-      //moveableBG.drawPattern(ctx,tileObj);
-      
-      moveableBG.drawGradient(ctx);
-      //moveableBG.drawGroundRandom(ctx);
-      //stair1.drawObj_BGFixed(moveableBG);
-      plat1.drawObj_BGFixed(moveableBG);
-      
-      stair1.drawObjImgLayer(ctx,stairsImg,moveableBG,0,0,0,0);
       setShadow(ctx);
+
+      /*1.BACKGROUND*/
+      moveableBG.drawGradient(ctx);
+      /*Bg options:
+        //moveableBG.drawUpdate(ctx);
+        //moveableBG.drawPattern(ctx,tileObj);
+        //moveableBG.drawGroundRandom(ctx);
+        //stair1.drawObj_BGFixed(moveableBG);
+      */
+      
+      plat1.drawObj_BGFixed(moveableBG);
+      stair1.drawObjImgLayer(ctx,stairsImg,moveableBG,0,0,0,0); 
       emptySpace2.drawObj_BGFixed(moveableBG);
-     
+      
+      /*2.AVATAR*/
       fixedAvatar.switchSprite(ctx, rate);
       fixedAvatar.run();
       
-      // if(bgX>w1.x+w1.w || bgY>w1.y+w1.h){
-      //   //check out of bounds
-      //   console.log("out of bounds");
-      // }
-
-      //draw object collision zone
-      
+      /*3.DRAW OBJECT BASE - layer above avatar and moveBG so there is no lag*/
+     
       w1.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
       w2.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
       w3.drawObj_BGFixed(moveableBG);
-      
+      w4.drawObj_BGFixed(moveableBG);
 
       item1.drawObj_BGFixed(moveableBG);
       
@@ -91,9 +88,10 @@ function level2(canvas,ctx){
       b2.drawObj_BGFixed(moveableBG);
       b3.drawObj_BGFixed(moveableBG);
       b4.drawObj_BGFixed(moveableBG);
+
       gate1.drawObj_BGFixed(moveableBG);
-      //enemy.drawObj_BGFixed(moveableBG);
-      // enemy.drawVerticalMovement(moveableBG,100);
+
+      /*Enemies*/
       if(enemy.health>=0){
         enemy.enemyHealthBar(ctx,moveableBG);
         enemy.drawFollow(moveableBG,rate);
@@ -102,59 +100,74 @@ function level2(canvas,ctx){
         enemy2.enemyHealthBar(ctx,moveableBG);
         enemy2.drawFollow(moveableBG,rate);
       }
-      w4.drawObj_BGFixed(moveableBG);
-      //draw layers
+      /*Enemy options
+         //enemy.drawObj_BGFixed(moveableBG);
+        / enemy.drawVerticalMovement(moveableBG,100);
+      */
+
+      /*4.DRAW OBJECT IMAGE LAYER*/
+      
       w1.drawObjImgLayer(ctx,img0,moveableBG,0,40,0,50);
       w2.drawObjImgLayer(ctx,wallImg,moveableBG,0,25,0,25);
       w3.drawObjImgLayer(ctx,wallImg,moveableBG,0,0,0,0);
-      box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
       w4.drawObjImgLayer(ctx,whImg,moveableBG,0,40,0,40);
-      
-      // w5.animateThis(rate);
 
-      //enemy.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
-      //collisions
+      box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
+
+     
+      /*5.AVATAR COLLISIONS*/
       w1.collisionObj(moveableBG,fixedAvatar);
-      if(enemy.health>=0){enemy.collisionObstacles(moveableBG,w1, obsList);}
-      if(enemy2.health>=0){enemy2.collisionObstacles(moveableBG,w1, obsList);}
       w2.collisionObj(moveableBG,fixedAvatar);
       w3.collisionObj(moveableBG,fixedAvatar);
-      item1.collisionObj(moveableBG,fixedAvatar);
+      w4.collisionObj(moveableBG,fixedAvatar);
       emptySpace2.collisionObj(moveableBG,fixedAvatar);
+      
+      item1.collisionObj(moveableBG,fixedAvatar);
+     
       box.collisionObj(moveableBG,fixedAvatar);
-      stair1.collisionObj(moveableBG,fixedAvatar);
+      // stair1.collisionObj(moveableBG,fixedAvatar);
       stair1.collisionShape(moveableBG,fixedAvatar,70);
       gate1.collisionObj(moveableBG,fixedAvatar);
       plat1.collisionObj(moveableBG,fixedAvatar,stair1);
-      //changeBgY();
   
-      w4.collisionObj(moveableBG,fixedAvatar);
-      // /enemy.collisionObj2(moveableBG,fixedAvatar);
+      /*ENEMY COLLISIONS and ATTACK*/
+      if(enemy.health>=0){enemy.collisionObstacles(moveableBG,w1, obsList);}
+      if(enemy2.health>=0){enemy2.collisionObstacles(moveableBG,w1, obsList);}
       if(enemy.health>=0){enemy.isAttacked(moveableBG,fixedAvatar);}
       if(enemy2.health>=0){enemy2.isAttacked(moveableBG,fixedAvatar);}
-      //item1.pickup();
+      
+
+      /*ITEM and INTERACTABLE PROPERTIES*/
       item1.getEnergy(moveableBG, fixedAvatar);
       if(!box.pickedUp){box.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"red"})};
       if(!b2.pickedUp){b2.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"green"})};
       if(!b3.pickedUp){b3.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"blue"})};
       if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
       gate1.unlock(moveableBG,fixedAvatar,inventory);
+      
+      /*UI*/
       gameUI.drawEnergyBar(ctx,energy);
       gameUI.drawHealthBar(ctx,fixedAvatar);
-      // console.log(inventory);
       inventoryBox.drawInventory(ctx,inventory);
+      
+      
+      /*Move BG LAST to prevent lag */
       moveableBG.moveBG(canvas, fixedAvatar);
      
 
+      /*AVATAR EFFECTS*/
       fixedAvatar.closestObject(boxList,moveableBG,rate);
-     // fixedAvatar.usePower(ctx);
-    //  fixedAvatar.usePowerColorStream(ctx, moveableBG);
       fixedAvatar.usePowerColorParticle(ctx, moveableBG);
+
+      /*ANIMATION FRAME RATE*/
       rate = (rate+1)%10;//let this be frame rate, e.g if rate == 3, only every 1 out of every 100 frames will be called.
       
-     
-      
-      
+      /*LOAD IF IN BOUNDS
+      // if(bgX>w1.x+w1.w || bgY>w1.y+w1.h){
+      //   //check out of bounds
+      //   console.log("out of bounds");
+      // }
+      */
       openMenu(canvas,ctx);
       if(fixedAvatar.health>0){
         requestAnimationFrame(draw);
@@ -165,23 +178,19 @@ function level2(canvas,ctx){
 
 
   function gameOver(){
-    //menu();
+    //This has no animation, just 1 frame
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //ctx.drawImage(background,0,0,1024,631,-bgX,-bgY,1024,631);//add this to BG class as well//DONT REMOVE YET
     ctx.imageSmoothingEnabled = false;
     drawMenu(canvas,ctx);
     drawText(canvas,ctx, 110,150,48,"black","GAME OVER");
     drawText(canvas,ctx, 80,200,20,"black","Press any key to continue...");
-
-    
-    
   }//
 
-  //execute
+  /*EXECUTE */
   if(fixedAvatar.health>0){
     requestAnimationFrame(draw);
   }else{
     gameOver();
   }
-  //framerate 
+  
 }
