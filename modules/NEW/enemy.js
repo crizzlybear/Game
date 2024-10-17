@@ -71,7 +71,6 @@ class Enemy extends GameObjectLocked{
     //override
     collisionObj2(bgInst, avatarInst){
       //custom collision detection
-      var ctx = this.ctx;
       let rightBorder=this.x+this.w;
       let leftBorder=this.x;
       let topBorder=this.newY;
@@ -117,7 +116,7 @@ class Enemy extends GameObjectLocked{
      
     }//end colision
 
-    collisionObstacles(bgInst, ObstInst, obsList){
+    collisionObstacles(obsList){
 
       function getFromList(obsList1){
         var r = Math.floor(Math.random()*(obsList1.length));
@@ -128,7 +127,7 @@ class Enemy extends GameObjectLocked{
       //custom collision detection
       //console.log(this.x+this.w,this.y+this.h, ObstInst.x, ObstInst.y);
       // console.log(getFromList(obsList));
-      ObstInst = getFromList(obsList);
+      var objectN = getFromList(obsList);
       // for(var i=0; i<obsList.length; i++){
       //   ObstInst = obsList[i];
       // }
@@ -137,29 +136,29 @@ class Enemy extends GameObjectLocked{
       var eT = this.y;
       var eB = this.y+this.h;
 
-      if(eR>ObstInst.x && eB>ObstInst.y &&eT<ObstInst.y+ObstInst.h&&eL<ObstInst.x+ObstInst.w){
+      if(eR>objectN.x && eB>objectN.y &&eT<objectN.y+objectN.h&&eL<objectN.x+objectN.w){
         console.log("Enemey INSIDE");
-        let collide = [Math.abs(eR-ObstInst.x),Math.abs(eB-ObstInst.y),Math.abs(eT-ObstInst.y-ObstInst.h),Math.abs(eL-ObstInst.x-ObstInst.w)];
+        let collide = [Math.abs(eR-objectN.x),Math.abs(eB-objectN.y),Math.abs(eT-objectN.y-objectN.h),Math.abs(eL-objectN.x-objectN.w)];
         let n=collide.indexOf(Math.min(...collide));
         console.log(n);
         switch(n){
           case n=0://L
             console.log("L");
-            this.x = ObstInst.x-this.w-5;
+            this.x = objectN.x-this.w-5;
             // this.y=this.y*1.0005;
             break;
           case n=1://T
             console.log("T");
-            this.y = ObstInst.y-this.h-5;
+            this.y = objectN.y-this.h-5;
             // this.x=this.x+1;
             break;
           case n=2://B
           console.log("B"); 
-          this.y = ObstInst.y+ObstInst.h+5;
+          this.y = objectN.y+objectN.h+5;
             break;
           case n=3://R
           console.log("R");
-          this.x = ObstInst.x+ObstInst.w+5;
+          this.x = objectN.x+objectN.w+5;
           // this.y = this.y*1.005;
             break;
           default:

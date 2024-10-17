@@ -1,12 +1,12 @@
 //menu
 
-function drawText(canvas,ctx,x,y,size,col,text){
+function drawText(ctx,x,y,size,col,text){
     ctx.font = `bold ${size}px Courier New`;
     ctx.fillStyle = col;
     ctx.fillText(text, x, y);
     
 }  
-function drawButton(canvas,ctx){
+function drawButton(ctx){
     ctx.beginPath();
     ctx.rect(100, 100, 100, 30);
     ctx.fillStyle = "#5f949f";

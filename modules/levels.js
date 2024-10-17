@@ -131,8 +131,8 @@ function level2(canvas,ctx){
       plat1.collisionObj(moveableBG,fixedAvatar,stair1);
   
       /*ENEMY COLLISIONS and ATTACK*/
-      if(enemy.health>=0){enemy.collisionObstacles(moveableBG,w1, obsList);}
-      if(enemy2.health>=0){enemy2.collisionObstacles(moveableBG,w1, obsList);}
+      if(enemy.health>=0){enemy.collisionObstacles(obsList);}
+      if(enemy2.health>=0){enemy2.collisionObstacles(obsList);}
       if(enemy.health>=0){enemy.isAttacked(moveableBG,fixedAvatar);}
       if(enemy2.health>=0){enemy2.isAttacked(moveableBG,fixedAvatar);}
       
@@ -182,8 +182,8 @@ function level2(canvas,ctx){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.imageSmoothingEnabled = false;
     drawMenu(canvas,ctx);
-    drawText(canvas,ctx, 110,150,48,"black","GAME OVER");
-    drawText(canvas,ctx, 80,200,20,"black","Press any key to continue...");
+    drawText(ctx, 110,150,48,"black","GAME OVER");
+    drawText(ctx, 80,200,20,"black","Press any key to continue...");
   }//
 
   /*EXECUTE */
