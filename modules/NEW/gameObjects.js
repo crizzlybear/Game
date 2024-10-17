@@ -193,7 +193,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let topBorder=this.y - 10;
     let botBorder=this.y+this.h + 10;
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
-      energy=1000;
+      avatarInst.energy=1000;
       //this.col = "#808080";
       this.col = "#71ffff";
     }else{
