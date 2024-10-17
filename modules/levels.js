@@ -146,7 +146,7 @@ function level2(canvas,ctx){
       gate1.unlock(moveableBG,fixedAvatar,inventory);
       
       /*UI*/
-      gameUI.drawEnergyBar(ctx,energy);
+      gameUI.drawEnergyBar(ctx,fixedAvatar);
       gameUI.drawHealthBar(ctx,fixedAvatar);
       inventoryBox.drawInventory(ctx,inventory);
       

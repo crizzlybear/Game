@@ -13,6 +13,7 @@ class Avatar{
     this.rgbSum = [0,0,0];
     this.powerColor = "rgb(255,255,255)";
     this.health = 1000;
+    this.energy = 1000;
     this.level=0;
   }
 
@@ -58,7 +59,7 @@ class Avatar{
    }
     if(rightPressed){//0,4
         // console.log(this.i);
-        if(powerOn&&energy>0){
+        if(powerOn&&this.energy>0){
           drawSprite(this.x,this.y,this.w, this.h, this.i+12);
         }else{
           drawSprite(this.x,this.y,this.w, this.h, this.i+8);
@@ -66,7 +67,7 @@ class Avatar{
         
     }else if(leftPressed){//1,5
       // console.log("L",this.i+4);
-      if(powerOn&&energy>0){
+      if(powerOn&&this.energy>0){
         drawSprite(this.x,this.y,this.w, this.h, this.i+10);
       }else{
         drawSprite(this.x,this.y,this.w, this.h, this.i+6);
@@ -159,8 +160,8 @@ class AvatarFixed extends Avatar{
 
   usePowerColorStream(ctx, bgInst){
     //maybe create another ctx to act as a mask
-    if(powerOn&&energy>0){
-      energy=energy-1;
+    if(powerOn&&this.energy>0){
+      this.energy=this.energy-1;
       // console.log("Energy:",energy);
       // document.getElementById("energy").innerText=energy;
       console.log("power On Color Stream!");
@@ -195,24 +196,14 @@ class AvatarFixed extends Avatar{
   usePowerColorParticle(ctx, bgInst){
     //maybe create another ctx to act as a mask
     
-    if(powerOn&&energy>0){
+    if(powerOn&&this.energy>0){
       
 
-      energy=energy-1;
-      // console.log("Energy:",energy);
-      // document.getElementById("energy").innerText=energy;
-      // console.log("power On Color Stream!");
-      // let img = new Image();
-      // img.crossOrigin = "anonymous";
-      // img.src = "images/colormap.png";
-      
-     
-      // ctx.save();//remove if above is uncommented
+      this.energy=this.energy-1;
       ctx.beginPath();  
-      //ctx.filter = "blur(15px)";
+      // ctx.filter = "blur(15px)";
 
       
-      //ctx.drawImage(img,this.x+bgInst.bgX,this.y+bgInst.bgY,60,60,this.x,this.y,10,10);
       ctx.rect(this.x,this.y,10,10);
       this.v = (this.v+1)%50;
       var vv = 50-this.v;
@@ -257,9 +248,7 @@ class AvatarFixed extends Avatar{
           this.rgbSum[1] = Math.floor(this.rgbSum[1]/2);
           this.rgbSum[2] = Math.floor(this.rgbSum[2]/2);
           this.powerColor = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
-          //  console.log("@@@@@@",(obsList[i].rgb).indexOf((Math.max(...obsList[i].rgb))));
-          // this.powerColor = `rgba(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]},${1-(center/150)})`;//opacity when close
-          // this.powerColor = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
+          
         }else{
           
           this.rgbSum[0] = this.rgbSum[0]*2 + 255;
@@ -270,17 +259,6 @@ class AvatarFixed extends Avatar{
           this.rgbSum[1] = Math.floor(this.rgbSum[1]/3);
           this.rgbSum[2] = Math.floor(this.rgbSum[2]/3);
           this.powerColor = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
-         
-          //convert to hsl and increase saturation
-          // var f = 2;
-          // var L = 0.33*this.rgbSum[0]+0.33*this.rgbSum[1]+0.33*this.rgbSum[2]; //L = 0.3*r + 0.6*g + 0.1*b;
-          // var rr = this.rgbSum[0]-f*(L-this.rgbSum[0]);
-          // var gg = this.rgbSum[1]-f*(L-this.rgbSum[1]);
-          // var bb = this.rgbSum[2]-f*(L-this.rgbSum[2]);
-          // this.powerColor = `rgb(${rr},${gg},${bb})`;
-
-          
-
           
          
         }

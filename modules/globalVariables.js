@@ -22,6 +22,4 @@ let powerOn =false;
 let score = 0;
 let rgb = { r: 0, g: 0, b: 0 };
 
-let itemQueue = [];
-let energy = 1000;
 

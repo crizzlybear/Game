@@ -49,7 +49,7 @@ class GameStats{
     }
 
     
-    drawEnergyBar(ctx,energy){
+    drawEnergyBar(ctx,avatarInst){
         function drawBar(ctx,xx,yy,ww,hh,setCol){
             ctx.beginPath();
             ctx.rect(xx,yy,ww,hh);
@@ -60,7 +60,7 @@ class GameStats{
     
         drawBar(ctx,this.x,this.y,this.w,this.h,"white");
         //console.log("eneergy",energy);
-        drawBar(ctx,this.x,this.y,(energy/1000)*this.w,this.h,"green");
+        drawBar(ctx,this.x,this.y,(avatarInst.energy/1000)*this.w,this.h,"green");
     }
 
     drawHealthBar(ctx,avatarInst){
