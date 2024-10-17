@@ -1,6 +1,6 @@
     //Preload images =======================================
     //bg
-    let background = new Image();
+    
     let tileObj = new Image();
       tileObj.src = "images/bricks2.png";
     //sprite
@@ -31,7 +31,7 @@ function level2(canvas,ctx){
   var w4 = new GameObjectLocked(ctx,600,50,200,100,"#F0F0F0",[0,0,255]);
   var emptySpace2 = new GameObjectLocked(ctx,450,531,600,100, "#F0F0F0",[0,0,255]);
   let fixedAvatar = new AvatarFixed(canvas.width/2,canvas.height/2,50,50);
-  let moveableBG = new BGLocked("images/floor.png");
+  let moveableBG = new BGLocked(1024,631);
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
   var box = new GameObjectInteractableLocked(ctx,200,600,30,30,[255,0,0]);
   var b2 = new GameObjectInteractableLocked(ctx,550,500,30,30,[0,255,0]);
