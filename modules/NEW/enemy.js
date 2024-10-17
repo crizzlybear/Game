@@ -16,7 +16,6 @@ class Enemy extends GameObjectLocked{
         let ctx = this.ctx;
         ctx.beginPath();
         
-        //var enemyX = (this.x++)%200-bgX;
         var enemyX = maxDist*Math.sin(this.x+=0.008)+maxDist;
         //console.log("sine:", enemyX);
         ctx.rect(enemyX-bgInst.bgX,this.y-bgInst.bgY, this.w, this.h);
@@ -28,10 +27,8 @@ class Enemy extends GameObjectLocked{
       drawVerticalMovement(bgInst,maxDist){
         let ctx = this.ctx;
         ctx.beginPath();
-        //var enemyX = (this.x++)%200-bgX;
         var enemyY = maxDist*Math.sin(this.y+=0.008)+maxDist;
         this.newY = enemyY;
-        //console.log("sine:", enemyX);
         ctx.rect(this.x-bgInst.bgX,this.newY-bgInst.bgY, this.w, this.h);
         ctx.fillStyle = this.color;
         ctx.fill();

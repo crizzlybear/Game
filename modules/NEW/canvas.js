@@ -85,12 +85,9 @@ class GameStats{
             ctx.fill();
             ctx.closePath();
         }
-        //console.log(inventory);
-        // var invCopy = inventory.slice();
-        // console.log(invCopy);
+       
         for(var i=0; i<inventory.length; i++){
             drawItem(ctx,this.x+(i*this.w),this.y, this.w,this.h, inventory[i].color);
-            // invCopy.pop();
         }
     }
 

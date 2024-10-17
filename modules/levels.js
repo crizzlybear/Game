@@ -42,14 +42,16 @@ function level2(canvas,ctx){
   let rate=0;
   var stair1 = new Stairs(ctx,130,450,150,100);
   //let energy = 1000;
-  var energyStat = new GameStats(20,300,50,10);
-  var boxList = [box,b2,b3,b4];
-  let obsList = [w1,w2,w3,w4,emptySpace2];
+  var gameUI = new GameStats(20,300,50,10);
+
   var inventory = new Array();
   var inventoryBox = new GameStats(300,280,15,15);
 
   var gate1 = new Gate(ctx,580,160,20,120,"red");
   var plat1 = new Platform(ctx,50,400,80,220);
+
+  var boxList = [box,b2,b3,b4];
+  let obsList = [w1,w2,w3,w4,emptySpace2,gate1,plat1];
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -137,8 +139,8 @@ function level2(canvas,ctx){
       if(!b3.pickedUp){b3.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"blue"})};
       if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
       gate1.unlock(moveableBG,fixedAvatar,inventory);
-      energyStat.drawEnergyBar(ctx,energy);
-      energyStat.drawHealthBar(ctx,fixedAvatar);
+      gameUI.drawEnergyBar(ctx,energy);
+      gameUI.drawHealthBar(ctx,fixedAvatar);
       // console.log(inventory);
       inventoryBox.drawInventory(ctx,inventory);
       moveableBG.moveBG(canvas, fixedAvatar);
