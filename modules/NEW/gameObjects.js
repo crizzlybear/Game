@@ -1,14 +1,13 @@
 //Classes for a 2d topdown game with fixed size background for level 1
 class GameObject{
   //constructor
-  constructor(ctx,x,y,w,h, rgb){
+  constructor(ctx,x,y,w,h){
     this.x=x;
     this.y=y;
     this.w=w;
     this.h=h;
     this.color="#FFFFFF";
     this.ctx = ctx;
-    this.rgb = rgb;
     this.pickedUp=false;
   } 
   //getters
@@ -44,7 +43,6 @@ class GameObjectInteractable extends GameObject{
   pickupObj(avatarInst){
       //custom collision detection
       //has to be above draw()
-      //if(avatarInst.x+20+5>this.x && avatarY+20+5>this.y && avatarY<(this.y+this.h+5) && avatarInst.avatarX<(this.x+this.w+5))
       if(avatarInst.x+avatarInst.w>this.x && avatarInst.y+avatarInst.h>this.y && avatarInst.y<(this.y+this.h) && avatarInst.x<(this.x+this.w))
           {
             if(pickup){
@@ -66,11 +64,10 @@ class GameObjectInteractable extends GameObject{
 
 
 class GameObjectLocked extends GameObject{
-  constructor(ctx,x,y,w,h,objColor,rgb){
+  constructor(ctx,x,y,w,h,objColor){
     super(ctx,x,y,w,h);
     this.color=objColor;
     this.ctx = ctx;//fix extends
-    this.rgb = rgb;
   }
   drawObj_BGFixed(bgInst){//newX,newY = bgX,bgY
     //console.log("drawn object:", -newX,-newY, this.w, this.h);
@@ -149,7 +146,7 @@ class GameObjectLocked extends GameObject{
 
 class GameObjectInteractableLocked extends GameObjectLocked{
   constructor(ctx,x,y,w,h,rgb){
-    super(ctx,x,y,w,h,rgb);
+    super(ctx,x,y,w,h);
     this.ctx = ctx;
     this.col="#ffffff";
     this.rgb = rgb;
