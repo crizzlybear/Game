@@ -91,119 +91,13 @@ class AvatarFixed extends Avatar{
     super(avatarX,avatarY,avatarW,avatarH);
   }
   
-  averageColor(){
-    
-    let img = new Image();
-    img.crossOrigin = "anonymous";
-    img.src = "images/colormap.png";
-    let canvas2 = document.getElementById("myCanvas2");
-    let context= canvas2.getContext &&canvas2.getContext('2d');
-    let imgData = 0;
-    if(img==null){
-        console.log("img is null");
-        return null;
-    }
-    img.addEventListener("load",(e)=>{
-       
-        
-        //context.drawImage(img, 0, 0,img.width,img.height,-400/10,-160/10,img.width/10,img.height/10);
-        context.clearRect(0,0,img.width, img.height);
-        context.drawImage(img, 0, 0,img.width,img.height,-bgX/10,-bgY/10,img.width/10,img.height/10);
-        imgData = context.getImageData( 0, 0, 50, 50);
-        //console.log("len", imgData.data.length/40);
-        var len = imgData.data.length;
-        for (var i = 0; i < len; i += 40) {
-        rgb.r += imgData.data[i];
-        rgb.g += imgData.data[i + 1];
-        rgb.b += imgData.data[i + 2];
-        //console.log("rbg..",rgb.r,rgb.g,rgb.b);
-        }
-        rgb.r= Math.floor(rgb.r / (len/40));
-        rgb.g = Math.floor(rgb.g / (len/40));
-        rgb.b= Math.floor(rgb.b / (len/40));
-
-        // console.log("RGBf: ",rgb);
-        //context.clearRect(0, 0, canvas2.width, canvas2.height);
-        
-    });
-    console.log("RGBa: ",rgb);
-    return JSON.parse(JSON.stringify(rgb));
-   
-
-}
-
-
-
-  usePower(ctx){
-    //maybe create another ctx to act as a mask
-    if(powerOn){
-      console.log("power On!");
-      
-      ctx.beginPath();
-      // ctx.globalCompositeOperation = 'xor';//cool effect but not needed
-      ctx.rect(this.x, this.y, this.w+30, this.h+30);
-      //ctx.fillStyle="rgba(255,0,255,0.5)";//single object transparency
-      // var col = this.averageColor();
-      // console.log("returned col: "+col);
-      // ctx.fillStyle = col;
-      var col = this.averageColor();
-      var str = `rgba(${col.r},${col.g},${col.b},0.6)`;
-      console.log("str:", str);
-      ctx.fillStyle = str;
-      ctx.fill();
-      ctx.closePath();
-
-    }
-    
-  }
-
-
-  usePowerColorStream(ctx, bgInst){
-    //maybe create another ctx to act as a mask
-    if(powerOn&&this.energy>0){
-      this.energy=this.energy-1;
-      // console.log("Energy:",energy);
-      // document.getElementById("energy").innerText=energy;
-      console.log("power On Color Stream!");
-      let img = new Image();
-      img.crossOrigin = "anonymous";
-      img.src = "images/colormap.png";
-      
-      
-      // ctx.save();
-      // ctx.filter = "blur(20px)";
-      // ctx.beginPath();
-      // ctx.arc(avatarX+30, avatarY+30, 10, 0, Math.PI * 2); // Hole anticlockwise
-      // ctx.fill();
-      // ctx.closePath();
-      // ctx.restore();
-      // ctx.save();
-      // ctx.clip();
-     
-      ctx.save();//remove if above is uncommented
-      ctx.beginPath();  
-      ctx.filter = "blur(15px)";
-      ctx.drawImage(img,this.x+bgInst.bgX,this.y+bgInst.bgY,60,60,this.x,this.y,60,60)
-      ctx.fill();
-      ctx.closePath();
-      
-      
-      ctx.restore(); 
-    }
-    
-  }
-
-  usePowerColorParticle(ctx, bgInst){
+ 
+  usePowerColorParticle(ctx){
     //maybe create another ctx to act as a mask
     
     if(powerOn&&this.energy>0){
-      
-
       this.energy=this.energy-1;
       ctx.beginPath();  
-      // ctx.filter = "blur(15px)";
-
-      
       ctx.rect(this.x,this.y,10,10);
       this.v = (this.v+1)%50;
       var vv = 50-this.v;
@@ -216,14 +110,12 @@ class AvatarFixed extends Avatar{
       ctx.fill();
       ctx.closePath();
       
-      
-      // ctx.restore(); 
     }
     
   }
 
 
-  closestObject(obsList,bgInst, rate){
+  getClosestItemColors(obsList,bgInst, rate){
     if((rightPressed||leftPressed||upPressed||downPressed)&&rate==1){
       // var dist = new Array();
       var calcX1;

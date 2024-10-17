@@ -156,7 +156,7 @@ function level2(canvas,ctx){
      
 
       /*AVATAR EFFECTS*/
-      fixedAvatar.closestObject(boxList,moveableBG,rate);
+      fixedAvatar.getClosestItemColors(boxList,moveableBG,rate);
       fixedAvatar.usePowerColorParticle(ctx, moveableBG);
 
       /*ANIMATION FRAME RATE*/
