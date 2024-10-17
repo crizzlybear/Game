@@ -311,14 +311,17 @@ class Stairs extends GameObject{
         if(leftPressed){
           bgInst.bgX = bgInst.bgX-0.6;
           bgInst.bgY = bgInst.bgY-0.4;
-          avatarInst.level=1;
+        
           
         }else if(rightPressed){
           bgInst.bgX = bgInst.bgX+0.6;
           bgInst.bgY = bgInst.bgY+0.4;
           
-          avatarInst.level=0;
         }
+        if(aX<this.x-1){
+          console.log("level1");
+          avatarInst.level=1;
+        }else{avatarInst=0;}
         
     }
 
@@ -328,36 +331,6 @@ class Stairs extends GameObject{
 
 }
 
-/*
-if(aY>0.2*aX+380 && aY<0.2*aX+465 &&aX>this.x-avatarInst.w && aX<this.x+this.w){
-      // console.log("On the stairs");
-      let collide = [Math.abs(0.2*aX+380-aY),Math.abs(0.2*aX+465-aY),Math.abs(this.x-avatarInst.w-aX), Math.abs(this.x+this.w-aX)];
-      let n=collide.indexOf(Math.min(...collide));
-      switch(n){
-        case n=0:
-          console.log("from top");
-          bgInst.bgY = bgInst.bgY-5;
-          break;
-        case n=1:
-          console.log("from bottom"); 
-          bgInst.bgY = bgInst.bgY+5;
-          break;
-        case n=2:
-          console.log("from left");
-          // bgInst.bgX = bgInst.bgX-5;
-          break;
-        case n=3:
-          console.log("from right"); 
-          // bgInst.bgX = bgInst.bgX+5;
-        
-          break;
-        default:
-          console.log("nothing...");
-          break;
-      } //end switch
-    }else{//console.log("outside");
-    }
-*/
 
 
 class Gate extends GameObjectInteractableLocked{
@@ -470,26 +443,24 @@ class Platform extends GameObjectLocked{
     }else{//on level
       var canvasW = 480;
       var canvasH = 360;
-      var stairH = 50;//drawn height not square h
-      if (rightPressed) {
-        console.log("PLAT bgY",bgInst.bgY,"avatar",convertBGYtoAvatar(bgInst.bgY),"stairs",stairInst.y );
-        if(convertBGYtoAvatar(bgInst.bgY)>stairInst.y && convertBGYtoAvatar(bgInst.bgY)<stairInst.y+stairH ){
-          //is in range of stairs
-          if(convertBGXtoAvatar(bgInst.bgX)>stairInst.x-10){
-            avatarInst.level=0;
-          }
-        }else{
-          bgInst.bgX = Math.min(bgInst.bgX + avatarInst.speed, this.x+this.w-canvasW/2 - avatarInst.w);
-        }
-        
+      var stairH = 90;//drawn height not square h
+      
+      var aX = convertBGXtoAvatar(bgInst.bgX);
+      var aY = convertBGYtoAvatar(bgInst.bgY);
+      if(aX<this.x){
+        bgInst.bgX+=5;
+      }else if((aX>this.x+this.w-avatarInst.w && aY>stairInst.y+stairH-avatarInst.h) || (aX>this.x+this.w-avatarInst.w &&aY<stairInst.y-avatarInst.h)){
+        // console.log("HERE");
+        bgInst.bgX-=5;
+      }else if(aY<this.y-(avatarInst.h*0.6)){
+        bgInst.bgY+=5;
+      }else if(aY>this.y+this.h-avatarInst.h){
+        bgInst.bgY-=5;
+      }else if((aX>this.x+this.w-(avatarInst.w*0.5) && aY<stairInst.y+stairH-avatarInst.h) && (aX>this.x+this.w-avatarInst.w && aY>stairInst.y-avatarInst.h)){
+        console.log("level0");
+        avatarInst.level=0;
 
-      } else if (leftPressed) {
-        bgInst.bgX = Math.max(bgInst.bgX - avatarInst.speed, this.x-(0.5*canvasW));
-      } else if(upPressed){
-        bgInst.bgY = Math.max(bgInst.bgY - avatarInst.speed, this.y-(0.5*canvasH));
-      } else if(downPressed){
-        bgInst.bgY = Math.min(bgInst.bgY + avatarInst.speed, this.y+this.h -(canvasH/2) - avatarInst.h);
-      }
+      }else{}
     }
     
    
