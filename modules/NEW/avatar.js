@@ -132,13 +132,13 @@ class AvatarFixed extends Avatar{
         if((center < 150)&& !obsList[i].pickedUp){
           
           // console.log(obsList[i].rgb,i);
-          this.rgbSum[0] += obsList[i].rgb[0]*3;
-          this.rgbSum[1] += obsList[i].rgb[1]*3;
-          this.rgbSum[2] += obsList[i].rgb[2]*3;
+          this.rgbSum[0] += obsList[i].rgb[0]*3*(100/center);
+          this.rgbSum[1] += obsList[i].rgb[1]*3*(100/center);
+          this.rgbSum[2] += obsList[i].rgb[2]*3*(100/center);
           // this.rgbSum[(obsList[i].rgb).indexOf((Math.max(...obsList[i].rgb)))] +=255;
-          this.rgbSum[0] = Math.floor(this.rgbSum[0]/2);
-          this.rgbSum[1] = Math.floor(this.rgbSum[1]/2);
-          this.rgbSum[2] = Math.floor(this.rgbSum[2]/2);
+          this.rgbSum[0] = Math.floor(this.rgbSum[0]/(2*100/center));
+          this.rgbSum[1] = Math.floor(this.rgbSum[1]/(2*100/center));
+          this.rgbSum[2] = Math.floor(this.rgbSum[2]/(2*100/center));
           this.powerColor = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
           
         }else{
