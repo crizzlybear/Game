@@ -146,9 +146,8 @@ class GameObjectLocked extends GameObject{
 
 class GameObjectInteractableLocked extends GameObjectLocked{
   constructor(ctx,x,y,w,h,rgb){
-    super(ctx,x,y,w,h);
+    super(ctx,x,y,w,h,"#ffffff");
     this.ctx = ctx;
-    this.col="#ffffff";
     this.rgb = rgb;
   }
   pickup(bgInst, avatarInst){
@@ -160,9 +159,9 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let botBorder=this.y+this.h + 10;
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
       console.log("pickedup");
-      this.col = "#71ffff";
+      this.color = "#71ffff";
     }else{
-      this.col = "#ffffff";
+      this.color = "#ffffff";
     }
   }
   pickupItem(bgInst, avatarInst,inventory,item){
@@ -333,9 +332,9 @@ class Stairs extends GameObject{
 
 
 
-class Gate extends GameObjectInteractableLocked{
+class Gate extends GameObjectLocked{
   constructor(ctx,x,y,w,h,gateKeyReq){
-    super(ctx,x,y,w,h);
+    super(ctx,x,y,w,h,gateKeyReq);
      this.locked = true;
     this.gateKeyReq = gateKeyReq;
     this.keyTaken = false;
@@ -469,8 +468,8 @@ class Platform extends GameObjectLocked{
 
 
 function setShadow(ctx){
-    ctx.shadowColor = "grey";
-    ctx.shadowBlur = 8;
-    ctx.shadowOffsetY = 10;
+    ctx.shadowColor = "rgb(59, 55, 71)";
+    ctx.shadow = 2;//instead of ctx.shadowBlur
+    ctx.shadowOffsetY = 5;
 }
 

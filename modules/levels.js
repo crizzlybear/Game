@@ -107,10 +107,10 @@ function level2(canvas,ctx){
 
       /*4.DRAW OBJECT IMAGE LAYER*/
       
-      w1.drawObjImgLayer(ctx,img0,moveableBG,0,40,0,50);
-      w2.drawObjImgLayer(ctx,wallImg,moveableBG,0,25,0,25);
-      w3.drawObjImgLayer(ctx,wallImg,moveableBG,0,0,0,0);
-      w4.drawObjImgLayer(ctx,whImg,moveableBG,0,40,0,40);
+      // w1.drawObjImgLayer(ctx,img0,moveableBG,0,40,0,50);
+      // w2.drawObjImgLayer(ctx,wallImg,moveableBG,0,25,0,25);
+      // w3.drawObjImgLayer(ctx,wallImg,moveableBG,0,0,0,0);
+      // w4.drawObjImgLayer(ctx,whImg,moveableBG,0,40,0,40);
 
       box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
 
