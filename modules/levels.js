@@ -75,7 +75,7 @@ function level2(canvas,ctx){
       /*2.AVATAR*/
       fixedAvatar.switchSprite(ctx, rate);
       fixedAvatar.run();
-      fixedAvatar.loadNear(allObj,moveableBG,rate);
+      // fixedAvatar.loadNear(allObj,moveableBG,rate);
       
       /*3.DRAW OBJECT BASE - layer above avatar and moveBG so there is no lag*/
      
@@ -118,23 +118,26 @@ function level2(canvas,ctx){
 
      
       /*5.AVATAR COLLISIONS*/
-      w1.collisionObj(moveableBG,fixedAvatar);
-      w2.collisionObj(moveableBG,fixedAvatar);
-      w3.collisionObj(moveableBG,fixedAvatar);
-      w4.collisionObj(moveableBG,fixedAvatar);
-      emptySpace2.collisionObj(moveableBG,fixedAvatar);
-      
-      item1.collisionObj(moveableBG,fixedAvatar);
+      if(rightPressed||leftPressed||upPressed||downPressed){
+        w1.collisionObj(moveableBG,fixedAvatar);
+        w2.collisionObj(moveableBG,fixedAvatar);
+        w3.collisionObj(moveableBG,fixedAvatar);
+        w4.collisionObj(moveableBG,fixedAvatar);
+        emptySpace2.collisionObj(moveableBG,fixedAvatar);
+        
+        item1.collisionObj(moveableBG,fixedAvatar);
+       
+        box.collisionObj(moveableBG,fixedAvatar);
+        // stair1.collisionObj(moveableBG,fixedAvatar);
+        stair1.collisionShape(moveableBG,fixedAvatar,70);
+        gate1.collisionObj(moveableBG,fixedAvatar);
+        plat1.collisionObj(moveableBG,fixedAvatar,stair1);
+      }
      
-      box.collisionObj(moveableBG,fixedAvatar);
-      // stair1.collisionObj(moveableBG,fixedAvatar);
-      stair1.collisionShape(moveableBG,fixedAvatar,70);
-      gate1.collisionObj(moveableBG,fixedAvatar);
-      plat1.collisionObj(moveableBG,fixedAvatar,stair1);
   
       /*ENEMY COLLISIONS and ATTACK*/
-      if(enemy.health>=0){enemy.collisionObstacles(obsList);}
-      if(enemy2.health>=0){enemy2.collisionObstacles(obsList);}
+      if(enemy.health>=0 && !enemy.isIdle){enemy.collisionObstacles(obsList);}
+      if(enemy2.health>=0  && !enemy2.isIdle){enemy2.collisionObstacles(obsList);}
       if(enemy.health>=0){enemy.isAttacked(moveableBG,fixedAvatar);}
       if(enemy2.health>=0){enemy2.isAttacked(moveableBG,fixedAvatar);}
       

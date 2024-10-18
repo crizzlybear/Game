@@ -10,6 +10,7 @@ class Enemy extends GameObjectLocked{
         this.oldY = y;
         this.health = 200;
         this.damage = 2;
+        this.isIdle = true;
       }
         
       drawHorizontalMovement(bgInst,maxDist){
@@ -42,10 +43,10 @@ class Enemy extends GameObjectLocked{
       var xDist = Math.floor(convertBGXtoAvatar(bgInst.bgX)-this.x);
       var yDist = Math.floor(convertBGYtoAvatar(bgInst.bgY)- this.y );
     
-      if(Math.abs(xDist)<80 && Math.abs(yDist)<80){//default 200,200
+      if(Math.abs(xDist)<150 && Math.abs(yDist)<150){//default 200,200
         // console.log("IN RANGE");
         this.col = "orange";
-      
+        
        }else{ 
         // console.log("OUT RANGE");
         this.col="pink";
@@ -62,6 +63,11 @@ class Enemy extends GameObjectLocked{
       // ctx.fillStyle = this.color;
       // ctx.fill();
       // ctx.closePath();
+      if(Math.round(this.newX)==Math.round(this.oldX) && Math.round(this.newY)==Math.round(this.oldX)){//checking is new position is the same as starting pos
+        this.isIdle=true;
+      }else{
+        this.isIdle=false;
+      }
       if(rate==1){
         this.i = (this.i+1)%2;//where 2 is number of frames
        }

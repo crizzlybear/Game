@@ -165,11 +165,12 @@ class AvatarFixed extends Avatar{
   }
 
   loadNear(allObj, bgInst, rate){
+    //maybe not that efficient
     var calcX1;
     var calcX2;
     var calcY1;
     var calcY2;
-    if(rate==1){
+    if(rate==1 &&(rightPressed||leftPressed||upPressed||downPressed)){
       for(var i=0; i<allObj.length; i++){
         calcX1 = Math.abs((allObj[i].x - convertBGXtoAvatar(bgInst.bgX)));//maybe replace with collision in range
         calcX2 = Math.abs(allObj[i].x+allObj[i].w - convertBGXtoAvatar(bgInst.bgX));
@@ -178,8 +179,10 @@ class AvatarFixed extends Avatar{
     var center = ((Math.min(calcX1,calcX2) + Math.min(calcY1,calcY2))/2);
     if((center < 150)){
       allObj[i].color = "pink";
+      allObj[i].isVisible=true;
     }else{
       allObj[i].color = "white";
+      allObj[i].isVisible=false;
     }
 }
     }
