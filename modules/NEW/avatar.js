@@ -129,7 +129,7 @@ class AvatarFixed extends Avatar{
             calcY1 = Math.abs((obsList[i].y - convertBGYtoAvatar(bgInst.bgY)));
             calcY2 = Math.abs(obsList[i].y+obsList[i].h - convertBGYtoAvatar(bgInst.bgY));
         var center = ((Math.min(calcX1,calcX2) + Math.min(calcY1,calcY2))/2);
-        if((center < 150)&& !obsList[i].pickedUp){
+        if((center < 130)&& !obsList[i].pickedUp){
           
           // console.log(obsList[i].rgb,i);
           this.rgbSum[0] += obsList[i].rgb[0]*3*(100/center);
@@ -143,13 +143,13 @@ class AvatarFixed extends Avatar{
           
         }else{
           
-          this.rgbSum[0] = this.rgbSum[0]*2 + 255;
-          this.rgbSum[1] = this.rgbSum[1]*2 + 255;
-          this.rgbSum[2] = this.rgbSum[2]*2 + 255;
+          this.rgbSum[0] = this.rgbSum[0]*10 + 255;
+          this.rgbSum[1] = this.rgbSum[1]*10 + 255;
+          this.rgbSum[2] = this.rgbSum[2]*10 + 255;
           // this.rgbSum[(obsList[i].rgb).indexOf((Math.max(...obsList[i].rgb)))] +=255;
-          this.rgbSum[0] = Math.floor(this.rgbSum[0]/3);
-          this.rgbSum[1] = Math.floor(this.rgbSum[1]/3);
-          this.rgbSum[2] = Math.floor(this.rgbSum[2]/3);
+          this.rgbSum[0] = Math.floor(this.rgbSum[0]/11);
+          this.rgbSum[1] = Math.floor(this.rgbSum[1]/11);
+          this.rgbSum[2] = Math.floor(this.rgbSum[2]/11);
           this.powerColor = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
           
          
