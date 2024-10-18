@@ -129,12 +129,12 @@ class AvatarFixed extends Avatar{
             calcY1 = Math.abs((obsList[i].y - convertBGYtoAvatar(bgInst.bgY)));
             calcY2 = Math.abs(obsList[i].y+obsList[i].h - convertBGYtoAvatar(bgInst.bgY));
         var center = ((Math.min(calcX1,calcX2) + Math.min(calcY1,calcY2))/2);
-        if(center < 150){
+        if((center < 150)&& !obsList[i].pickedUp){
           
           // console.log(obsList[i].rgb,i);
-          this.rgbSum[0] += obsList[i].rgb[0]*2;
-          this.rgbSum[1] += obsList[i].rgb[1]*2;
-          this.rgbSum[2] += obsList[i].rgb[2]*2;
+          this.rgbSum[0] += obsList[i].rgb[0]*3;
+          this.rgbSum[1] += obsList[i].rgb[1]*3;
+          this.rgbSum[2] += obsList[i].rgb[2]*3;
           // this.rgbSum[(obsList[i].rgb).indexOf((Math.max(...obsList[i].rgb)))] +=255;
           this.rgbSum[0] = Math.floor(this.rgbSum[0]/2);
           this.rgbSum[1] = Math.floor(this.rgbSum[1]/2);
