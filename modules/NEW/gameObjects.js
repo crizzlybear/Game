@@ -68,6 +68,7 @@ class GameObjectLocked extends GameObject{
     super(ctx,x,y,w,h);
     this.color=objColor;
     this.ctx = ctx;//fix extends
+    this.visible = false;
   }
   drawObj_BGFixed(bgInst){//newX,newY = bgX,bgY
     //console.log("drawn object:", -newX,-newY, this.w, this.h);

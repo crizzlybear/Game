@@ -164,6 +164,28 @@ class AvatarFixed extends Avatar{
     }
   }
 
+  loadNear(allObj, bgInst, rate){
+    var calcX1;
+    var calcX2;
+    var calcY1;
+    var calcY2;
+    if(rate==1){
+      for(var i=0; i<allObj.length; i++){
+        calcX1 = Math.abs((allObj[i].x - convertBGXtoAvatar(bgInst.bgX)));//maybe replace with collision in range
+        calcX2 = Math.abs(allObj[i].x+allObj[i].w - convertBGXtoAvatar(bgInst.bgX));
+        calcY1 = Math.abs((allObj[i].y - convertBGYtoAvatar(bgInst.bgY)));
+        calcY2 = Math.abs(allObj[i].y+allObj[i].h - convertBGYtoAvatar(bgInst.bgY));
+    var center = ((Math.min(calcX1,calcX2) + Math.min(calcY1,calcY2))/2);
+    if((center < 150)){
+      allObj[i].color = "pink";
+    }else{
+      allObj[i].color = "white";
+    }
+}
+    }
+    
+}
+
   run(){
     if(shiftPressed){
       // console.log("running");

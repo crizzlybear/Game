@@ -51,6 +51,7 @@ function level2(canvas,ctx){
 
   var boxList = [box,b2,b3,b4];
   let obsList = [w1,w2,w3,w4,emptySpace2,gate1,plat1];
+  var allObj = [w1,w2,w3,w4,emptySpace2,gate1,plat1,box,b2,b3,b4];
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -74,6 +75,7 @@ function level2(canvas,ctx){
       /*2.AVATAR*/
       fixedAvatar.switchSprite(ctx, rate);
       fixedAvatar.run();
+      fixedAvatar.loadNear(allObj,moveableBG,rate);
       
       /*3.DRAW OBJECT BASE - layer above avatar and moveBG so there is no lag*/
      
