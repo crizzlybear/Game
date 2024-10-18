@@ -4,26 +4,26 @@
     // let tileObj = new Image();
     //   tileObj.src = "images/bricks2.png";
     //sprite
-
-    // let av = new Image();
-    //   av.src = "images/dogAvatar15.png";
-    // let img0 = new Image();
-    //   img0.crossOrigin = "anonymous";
-    //   img0.src = "images/buildingLong.png";
-    // wallImg = new Image();
-    //   wallImg.crossOrigin = "anonymous";
-    //   wallImg.src = "images/wall.png";
-    // let boxImg = new Image();
-    //   boxImg.crossOrigin = "anonymous";
-    //   boxImg.src = "images/box.png";
-    // let whImg = new Image();
-    //   whImg.crossOrigin = "anonymous";
-    //  whImg.src = "images/warehouse.png";
-    //  let en = new Image();
-    //  en.src = "images/enemy1.png";
-    // let stairsImg = new Image();
-    // stairsImg.src = "images/stairs.png";
-function level2(canvas,ctx){
+    
+    let av = new Image();
+      av.src = "images/dogAvatar15.png";
+    let img0 = new Image();
+      img0.crossOrigin = "anonymous";
+      img0.src = "images/buildingLong.png";
+    wallImg = new Image();
+      wallImg.crossOrigin = "anonymous";
+      wallImg.src = "images/wall.png";
+    let boxImg = new Image();
+      boxImg.crossOrigin = "anonymous";
+      boxImg.src = "images/box.png";
+    let whImg = new Image();
+      whImg.crossOrigin = "anonymous";
+     whImg.src = "images/warehouse.png";
+     let en = new Image();
+     en.src = "images/enemy1.png";
+    let stairsImg = new Image();
+    stairsImg.src = "images/stairs.png";
+function level3(canvas,ctx){
  
   
   var w1 = new GameObjectLocked(ctx,100,100,100,200,"#F0F0F0");//48,100
@@ -32,14 +32,14 @@ function level2(canvas,ctx){
   var w4 = new GameObjectLocked(ctx,600,50,200,100,"#F0F0F0");
   var emptySpace2 = new GameObjectLocked(ctx,450,531,600,100, "#F0F0F0");
   let fixedAvatar = new AvatarFixed(canvas.width/2,canvas.height/2,50,50);
-  let moveableBG = new BGLocked(1024,631);
+  let moveableBG = new BGLocked(2000,631);
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
   var box = new GameObjectInteractableLocked(ctx,200,600,30,30,[255,0,0]);
   var b2 = new GameObjectInteractableLocked(ctx,550,500,30,30,[0,255,0]);
   var b3 = new GameObjectInteractableLocked(ctx,800,100,30,30,[0,0,255]);
   var b4 = new GameObjectInteractableLocked(ctx,900,100,30,30,[0,0,0]);
-  var enemy = new Enemy(ctx,0,0,30,30);
-  var enemy2 = new Enemy(ctx,600,450,80,80);
+  var enemy = new Enemy(ctx,0,0,50,50);
+  var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
   var stair1 = new Stairs(ctx,130,450,150,100);
   var gameUI = new GameStats(20,300,50,10);

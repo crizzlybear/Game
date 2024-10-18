@@ -38,7 +38,7 @@ class BGLocked extends BG{
       
       ctx.fillStyle =  ctx.createPattern(tile, "repeat");
       ctx.beginPath();
-      ctx.rect(-this.bgX,-this.bgY,1024,631);
+      ctx.rect(-this.bgX,-this.bgY,this.bgW,this.bgH);
       ctx.translate(-this.bgX,-this.bgY);
       ctx.fill();
       ctx.translate(this.bgX,this.bgY);//undo translate so it doesnt smear
@@ -52,7 +52,7 @@ class BGLocked extends BG{
       grad.addColorStop(0,"rgb(106, 100, 117)");
       grad.addColorStop(1,"BurlyWood");
       ctx.fillStyle = grad;
-      ctx.fillRect(-this.bgX,-this.bgY,1024,631);
+      ctx.fillRect(-this.bgX,-this.bgY,this.bgW,this.bgH);
       ctx.closePath();
       //end
     }
@@ -67,7 +67,7 @@ class BGLocked extends BG{
      
       grad2.addColorStop(0.9,"#0c0529");
       ctx.fillStyle = grad2;
-      ctx.fillRect(-this.bgX,-this.bgY,1024,631);
+      ctx.fillRect(-this.bgX,-this.bgY,this.bgW,this.bgH);
       ctx.closePath();
 
       //simple gradient background
@@ -76,7 +76,7 @@ class BGLocked extends BG{
       grad.addColorStop(0,"darkgray");
       grad.addColorStop(1,"BurlyWood");
       ctx.fillStyle = grad;
-      ctx.fillRect(-this.bgX,-this.bgY,1024,631);
+      ctx.fillRect(-this.bgX,-this.bgY,this.bgW,this.bgH);
       ctx.closePath();
       //end
       

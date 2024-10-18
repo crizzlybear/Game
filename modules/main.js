@@ -8,8 +8,8 @@ function main(){
   document.addEventListener("keyup", keyUpHandler, false);
   
   //level1(canvas,ctx);
-  level2(canvas,ctx);
-  //level3(canvas,ctx);
+  //level2(canvas,ctx);
+  level3(canvas,ctx);
 }
 //KEY CONTROLS
 function keyDownHandler(e) {
