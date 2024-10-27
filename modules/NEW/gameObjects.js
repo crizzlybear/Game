@@ -126,24 +126,36 @@ class GameObjectLocked extends GameObject{
    
   }//end colision
 
-  animateThis(rate,repeatW){
-    var w2 = this.w;
+  animateThis(rate,startX,startY,repeatW,repeatH){
+    // if(rate==1){
+     
+    //  this.x = (this.x+5)%(repeatW-this.w);
+    // }
+    // if(this.pickedUp){
+    //   this.x =0;
+    //   this.pickedUp = false;
+    //   //push next color
+    // }
+
     if(rate==1){
      
-     this.x = (this.x+5)%(repeatW-this.w);
-    }
-    if(this.pickedUp){
-      this.x =0;
-      this.pickedUp = false;
-      //push next color
-    }
+      
+      if(this.x >repeatW-this.w){
+        this.y=(this.y+5);
+        this.x+=0;
+        if(this.y>repeatH){this.x=startX;this.y=startY;}
+      }else{
+        this.x = (this.x+5);
+      }
+     }
+     if(this.pickedUp){
+       this.x =startX;
+       this.y=startY;
+       this.pickedUp = false;
+       //push next color
+     }
     
-    //   let ctx = this.ctx;
-    //  ctx.beginPath();
-    //  ctx.rect((this.x)%260,this.y, w2, this.h);
-    //  ctx.fillStyle = this.color;
-    //  ctx.fill();
-    //  ctx.closePath();
+    
   }
   
 }
