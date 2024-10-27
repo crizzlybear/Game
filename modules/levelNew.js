@@ -26,15 +26,15 @@
 function level3(canvas,ctx){
  
   
-  var w1 = new GameObjectLocked(ctx,100,100,100,200,"#F0F0F0");//48,100
-  var w2 = new GameObjectLocked(ctx,400,300,200,10,"#F0F0F0");
+  var w1 = new GameObjectLocked(ctx,0,200,300,70,"#F0F0F0");//48,100
+  var w2 = new GameObjectLocked(ctx,500,-50,100,50,"black");
   var w3 = new GameObjectLocked(ctx,400,310,10,50,"#F0F0F0");
   var w4 = new GameObjectLocked(ctx,600,50,200,100,"#F0F0F0");
   var emptySpace2 = new GameObjectLocked(ctx,450,531,600,100, "#F0F0F0");
   let fixedAvatar = new AvatarFixed(canvas.width/2,canvas.height/2,50,50);
-  let moveableBG = new BGLocked(2000,631);
+  let moveableBG = new BGLocked(1000,631);
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
-  var box = new GameObjectInteractableLocked(ctx,200,600,30,30,[255,0,0]);
+  var box = new GameObjectInteractableLocked(ctx,0,200,30,30,[255,0,0]);
   var b2 = new GameObjectInteractableLocked(ctx,550,500,30,30,[0,255,0]);
   var b3 = new GameObjectInteractableLocked(ctx,800,100,30,30,[0,0,255]);
   var b4 = new GameObjectInteractableLocked(ctx,900,100,30,30,[0,0,0]);
@@ -87,7 +87,8 @@ function level3(canvas,ctx){
 
       item1.drawObj_BGFixed(moveableBG);
       
-      box.drawObj_BGFixed(moveableBG);
+      // box.drawObj_BGFixed(moveableBG);
+      box.animateThis(rate,300);
       b2.drawObj_BGFixed(moveableBG);
       b3.drawObj_BGFixed(moveableBG);
       b4.drawObj_BGFixed(moveableBG);
@@ -115,7 +116,7 @@ function level3(canvas,ctx){
       // w3.drawObjImgLayer(ctx,wallImg,moveableBG,0,0,0,0);
       // w4.drawObjImgLayer(ctx,whImg,moveableBG,0,40,0,40);
 
-      box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0);
+      if(!box.pickedUp){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)};
 
      
       /*5.AVATAR COLLISIONS*/
