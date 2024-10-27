@@ -35,7 +35,7 @@ function level3(canvas,ctx){
   let moveableBG = new BGLocked(1000,631);
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
   var box = new GameObjectInteractableLocked(ctx,0,200,30,30,[255,0,0]);
-  var b2 = new GameObjectInteractableLocked(ctx,550,500,30,30,[0,255,0]);
+  var b2 = new GameObjectInteractableLocked(ctx,-100,200,30,30,[0,255,0]);
   var b3 = new GameObjectInteractableLocked(ctx,800,100,30,30,[0,0,255]);
   var b4 = new GameObjectInteractableLocked(ctx,900,100,30,30,[0,0,0]);
   var enemy = new Enemy(ctx,0,0,50,50);
@@ -89,7 +89,8 @@ function level3(canvas,ctx){
       
       // box.drawObj_BGFixed(moveableBG);
       box.animateThis(rate,0,200,300,300);
-      b2.drawObj_BGFixed(moveableBG);
+      b2.animateThis(rate,-50,200,300,300);
+      // b2.drawObj_BGFixed(moveableBG);
       b3.drawObj_BGFixed(moveableBG);
       b4.drawObj_BGFixed(moveableBG);
 
@@ -117,7 +118,7 @@ function level3(canvas,ctx){
       // w4.drawObjImgLayer(ctx,whImg,moveableBG,0,40,0,40);
 
       if(!box.pickedUp){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)};
-
+      if(!b2.pickedUp){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)};
      
       /*5.AVATAR COLLISIONS*/
       if(rightPressed||leftPressed||upPressed||downPressed){
