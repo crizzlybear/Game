@@ -34,9 +34,9 @@ function level3(canvas,ctx){
   let fixedAvatar = new AvatarFixed(canvas.width/2,canvas.height/2,50,50);
   let moveableBG = new BGLocked(600,631);
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
-  var box = new GameObjectInteractableLocked(ctx,0,200,30,30,[255,0,0]);
-  var b2 = new GameObjectInteractableLocked(ctx,-100,200,30,30,[0,255,0]);
-  var b3 = new GameObjectInteractableLocked(ctx,600,500,30,30,[0,0,255]);
+  var box = new GameObjectInteractableLocked(ctx,0,200,30,30,[255,0,0],"red");
+  var b2 = new GameObjectInteractableLocked(ctx,-100,200,30,30,[0,255,0],"green");
+  var b3 = new GameObjectInteractableLocked(ctx,600,500,30,30,[0,0,255],"blue");
   var b4 = new GameObjectInteractableLocked(ctx,0,0,30,30,[0,0,0]);
   var enemy = new Enemy(ctx,0,0,50,50);
   var enemy2 = new Enemy(ctx,600,450,50,50);
@@ -149,9 +149,9 @@ function level3(canvas,ctx){
 
       /*ITEM and INTERACTABLE PROPERTIES*/
       item1.getEnergy(moveableBG, fixedAvatar);
-      if(!box.pickedUp){box.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"red"})};
-      if(!b2.pickedUp){b2.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"green"})};
-      if(!b3.pickedUp){b3.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"blue"})};
+      if(!box.pickedUp){box.pickupItem(moveableBG, fixedAvatar,inventory)};
+      if(!b2.pickedUp){b2.pickupItem(moveableBG, fixedAvatar,inventory)};
+      if(!b3.pickedUp){b3.pickupItem(moveableBG, fixedAvatar,inventory)};
       // if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
       gate1.unlock(moveableBG,fixedAvatar,inventory);
       gate2.unlock(moveableBG,fixedAvatar,inventory);

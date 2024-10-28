@@ -87,7 +87,7 @@ class GameStats{
         }
        
         for(var i=0; i<inventory.length; i++){
-            drawItem(ctx,this.x+(i*this.w),this.y, this.w,this.h, inventory[i].color);
+            drawItem(ctx,this.x+(i*this.w),this.y, this.w,this.h, inventory[0]);
         }
     }
     drawInventory2(ctx,avatarInst,inventory,boxImg){

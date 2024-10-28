@@ -195,10 +195,18 @@ class GameObjectLocked extends GameObject{
 
 
 class GameObjectInteractableLocked extends GameObjectLocked{
-  constructor(ctx,x,y,w,h,rgb){
+  constructor(ctx,x,y,w,h,rgb,key){
     super(ctx,x,y,w,h,"#ffffff");
     this.ctx = ctx;
     this.rgb = rgb;
+    this.key = key;
+  }
+  setNewRGBandColor(){
+    var rgbList = [[255,0,0],[0,255,0],[0,0,255],[0,0,0]];
+    var colorList = ["red","green","blue","black"];
+    var index = Math.round(Math.random()*3);
+    this.rgb = rgbList[index];
+    this.key=colorList[index];
   }
   pickup(bgInst, avatarInst){
     //set pickup area
@@ -214,7 +222,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
       this.color = "#ffffff";
     }
   }
-  pickupItem(bgInst, avatarInst,inventory,item){
+  pickupItem(bgInst, avatarInst,inventory){
     //set pickup area
     //should make this into a function or something
     let rightBorder=this.x+this.w + 10;
@@ -226,8 +234,11 @@ class GameObjectInteractableLocked extends GameObjectLocked{
       // this.col = "#71ffff";
       // console.log(item);
       if(!this.pickedUp && inventory.length==0){
-        inventory.push(item);
-        this.rgb = [255,255,255];
+        inventory.push(this.key);
+       
+        // console.log("!new",this.rgb, "key",this.key);
+        // console.log("!invent", inventory);
+        // this.rgb = [255,255,255];
         this.pickedUp=true;
       }
     }else{
@@ -250,6 +261,57 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     }
   }
   
+  animateThis(rate,startX,startY,repeatW,repeatH){
+  
+
+    if(rate==1){
+     
+      
+      if(this.x >repeatW-this.w){
+        this.y=(this.y+5);
+        this.x+=0;
+        if(this.y>repeatH){this.x=startX;this.y=startY;
+          this.setNewRGBandColor();
+        }
+      }else{
+        this.x = (this.x+5);
+      }
+     }
+     if(this.pickedUp){
+       this.x =startX;
+       this.y=startY;
+       this.pickedUp = false;
+       //push next color
+     }
+    
+    
+  }
+
+  animateThis2(rate,startX,startY,repeatW,repeatH){
+    
+
+    if(rate==1){
+     
+      
+      if(this.x <repeatW-this.w){
+        this.y=(this.y-5);
+        this.x+=0;
+        if(this.y<repeatH){this.x=startX;this.y=startY;
+          this.setNewRGBandColor();
+        }
+      }else{
+        this.x = (this.x-5);
+      }
+     }
+     if(this.pickedUp){
+       this.x =startX;
+       this.y=startY;
+       this.pickedUp = false;
+       //push next color
+     }
+    
+    
+  }
 
 }
 
@@ -388,6 +450,7 @@ class Gate extends GameObjectLocked{
      this.locked = true;
     this.gateKeyReq = gateKeyReq;
     this.keyTaken = false;
+    this.score = 0;
   }
   
   unlock(bgInst,avatarInst,inventory){
@@ -403,8 +466,10 @@ class Gate extends GameObjectLocked{
       this.y = Math.max(this.y-2,10);
     }
 
-      if( (inventory.length==1)&& (this.gateKeyReq == inventory[0].color) && pickup ){
+      if( (inventory.length==1)&& (this.gateKeyReq == inventory[0]) && pickup ){
         inventory.pop();
+        this.score++;
+        console.log("@",this.gateKeyReq,":",this.score);
         
     }
   }
