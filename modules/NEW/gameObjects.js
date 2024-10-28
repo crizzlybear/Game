@@ -225,7 +225,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
       console.log("pickedup");
       // this.col = "#71ffff";
       // console.log(item);
-      if(!this.pickedUp){
+      if(!this.pickedUp && inventory.length==0){
         inventory.push(item);
         this.rgb = [255,255,255];
         this.pickedUp=true;

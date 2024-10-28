@@ -27,7 +27,7 @@ function level3(canvas,ctx){
  
   
   var w1 = new GameObjectLocked(ctx,0,200,300,70,"#F0F0F0");//48,100
-  var w2 = new GameObjectLocked(ctx,300,-50,100,50,"black");
+  // var w2 = new GameObjectLocked(ctx,300,-50,100,50,"black");
   var w3 = new GameObjectLocked(ctx,230,270,70,100,"#F0F0F0");
   var w4 = new GameObjectLocked(ctx,400,500,200,70,"#F0F0F0");
   var w5 = new GameObjectLocked(ctx,400,400,70,100,"#F0F0F0");
@@ -37,7 +37,7 @@ function level3(canvas,ctx){
   var box = new GameObjectInteractableLocked(ctx,0,200,30,30,[255,0,0]);
   var b2 = new GameObjectInteractableLocked(ctx,-100,200,30,30,[0,255,0]);
   var b3 = new GameObjectInteractableLocked(ctx,600,500,30,30,[0,0,255]);
-  var b4 = new GameObjectInteractableLocked(ctx,650,500,30,30,[0,0,0]);
+  var b4 = new GameObjectInteractableLocked(ctx,0,0,30,30,[0,0,0]);
   var enemy = new Enemy(ctx,0,0,50,50);
   var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
@@ -46,11 +46,13 @@ function level3(canvas,ctx){
   var inventory = new Array();
   var inventoryBox = new GameStats(300,280,15,15);
 
-  var gate1 = new Gate(ctx,580,160,20,120,"red");
+  var gate1 = new Gate(ctx,580,160,50,50,"red");
+  var gate2 = new Gate(ctx,0,550,50,50,"green");
+  var gate3 = new Gate(ctx,300,0,50,50,"blue");
 
   var boxList = [box,b2,b3,b4];
-  let obsList = [w1,w2,w3,w4,gate1,];
-  var allObj = [w1,w2,w3,w4,gate1,box,b2,b3,b4];
+  let obsList = [w1,w3,w4,gate1,];
+  var allObj = [w1,w3,w4,gate1,box,b2,b3,b4];
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -76,7 +78,7 @@ function level3(canvas,ctx){
       /*3.DRAW OBJECT BASE - layer above avatar and moveBG so there is no lag*/
       w5.drawObj_BGFixed(moveableBG);
       w1.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
-      w2.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
+      // w2.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
       w3.drawObj_BGFixed(moveableBG);
       w4.drawObj_BGFixed(moveableBG);
      
@@ -92,7 +94,8 @@ function level3(canvas,ctx){
       
 
       gate1.drawObj_BGFixed(moveableBG);
-
+      gate2.drawObj_BGFixed(moveableBG);
+      gate3.drawObj_BGFixed(moveableBG);
       /*Enemies*/
       if(enemy.health>=0){
         enemy.enemyHealthBar(ctx,moveableBG);
@@ -114,10 +117,12 @@ function level3(canvas,ctx){
       // w3.drawObjImgLayer(ctx,wallImg,moveableBG,0,0,0,0);
       // w4.drawObjImgLayer(ctx,whImg,moveableBG,0,40,0,40);
 
-      if(!box.pickedUp){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)};
-      if(!b2.pickedUp){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)};
-      if(!b3.pickedUp){b3.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)};
-     
+      if(!box.pickedUp){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b2.pickedUp){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b3.pickedUp){b3.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      fixedAvatar.carry(box,b4);
+      fixedAvatar.carry(b2,b4);
+      fixedAvatar.carry(b3,b4);
       /*5.AVATAR COLLISIONS*/
       if(rightPressed||leftPressed||upPressed||downPressed){
         w1.collisionObj(moveableBG,fixedAvatar);
@@ -130,6 +135,8 @@ function level3(canvas,ctx){
         box.collisionObj(moveableBG,fixedAvatar);
         // stair1.collisionObj(moveableBG,fixedAvatar);
         gate1.collisionObj(moveableBG,fixedAvatar);
+        gate2.collisionObj(moveableBG,fixedAvatar);
+        gate3.collisionObj(moveableBG,fixedAvatar);
       }
      
   
@@ -145,14 +152,16 @@ function level3(canvas,ctx){
       if(!box.pickedUp){box.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"red"})};
       if(!b2.pickedUp){b2.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"green"})};
       if(!b3.pickedUp){b3.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"blue"})};
-      if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
+      // if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
       gate1.unlock(moveableBG,fixedAvatar,inventory);
+      gate2.unlock(moveableBG,fixedAvatar,inventory);
+      gate3.unlock(moveableBG,fixedAvatar,inventory);
       
       /*UI*/
       gameUI.drawEnergyBar(ctx,fixedAvatar);
       gameUI.drawHealthBar(ctx,fixedAvatar);
       inventoryBox.drawInventory(ctx,inventory);
-      
+      inventoryBox.drawInventory2(ctx,fixedAvatar,inventory);
       
       /*Move BG LAST to prevent lag */
       moveableBG.moveBG(canvas, fixedAvatar);

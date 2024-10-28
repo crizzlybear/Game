@@ -90,5 +90,20 @@ class GameStats{
             drawItem(ctx,this.x+(i*this.w),this.y, this.w,this.h, inventory[i].color);
         }
     }
+    drawInventory2(ctx,avatarInst,inventory){
+        function drawItem(ctx,xx,yy,ww,hh,setCol){
+            ctx.beginPath();
+            ctx.rect(xx,yy,ww,hh);
+            ctx.fillStyle = setCol;
+            ctx.fill();
+            ctx.closePath();
+        }
+       
+            if(inventory.length==1){
+                drawItem(ctx,avatarInst.x,avatarInst.y, this.w,this.h, "pink");
+            }
+           
+        
+    }
 
 }

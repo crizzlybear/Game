@@ -198,4 +198,11 @@ class AvatarFixed extends Avatar{
     }
   }
 
+  carry(pickedBox,carryBox){
+    if(pickedBox.pickedUp){
+      console.log("carry",carryBox);
+    }
+    
+  }
+
 }
