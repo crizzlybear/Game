@@ -96,7 +96,7 @@ class GameStats{
             // ctx.rect(xx,yy,ww,hh);
             // ctx.fillStyle = setCol;
             // ctx.fill();
-            ctx.drawImage(boxImg,xx, yy, boxImg.width, boxImg.height);
+            ctx.drawImage(boxImg,xx, yy, ww, hh );
             // ctx.closePath();
         }
        
