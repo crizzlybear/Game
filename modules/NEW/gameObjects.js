@@ -395,51 +395,20 @@ class Gate extends GameObjectLocked{
     let leftBorder=this.x -10;
     let topBorder=this.y - 10;
     let botBorder=this.y+this.h + 10;
-    var unlockAction = pickup;
-    // var keyFound = inventory.some(item => item.color === this.gateKeyReq);
-    var keyFoundIndex = inventory.findIndex(item => item.color === this.gateKeyReq);
-      //  console.log(keyFound, JSON.stringify(inventory[0]) == JSON.stringify({"color":this.gateKeyReq}));
-      // console.log("key", keyFoundIndex);
+ 
+
     if(((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
-      if(unlockAction && keyFoundIndex!=-1){
-        this.locked = false;
-        // this.y = Math.max(this.y-2,10);
-      
-      }
-      
-      // this.col = "#71ffff";
-    }else{
-      // this.col = "#ffffff";
-     
-    }
+
     if(!this.locked){
       this.y = Math.max(this.y-2,10);
     }
-    if(!this.locked&&this.keyTaken==false){//drops key when opened
-      var i=0;
-      var j=0;
-      inventory.push("temp");//prevent outofbounds kind of
-      for(i; i<inventory.length-1; i++){
+
+      if( (inventory.length==1)&& (this.gateKeyReq == inventory[0].color) && pickup ){
+        inventory.pop();
         
-        if(i!=keyFoundIndex){
-          
-          inventory[i] = inventory[j];
-          
-        }else{
-          //i==found
-          j++;
-          inventory[i] = inventory[j];
-        }
-        j++;
-        // console.log(i,j, inventory[i], inventory[j]);
-      }
-      inventory.pop();
-      inventory.pop();
-      // console.log("INV LEN",inventory.length);
-      this.keyTaken=true;
-      // console.log("Removed",this.keyTaken);
     }
   }
+}
   
 
 }

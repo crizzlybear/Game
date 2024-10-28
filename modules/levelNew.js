@@ -161,7 +161,7 @@ function level3(canvas,ctx){
       gameUI.drawEnergyBar(ctx,fixedAvatar);
       gameUI.drawHealthBar(ctx,fixedAvatar);
       inventoryBox.drawInventory(ctx,inventory);
-      inventoryBox.drawInventory2(ctx,fixedAvatar,inventory);
+      inventoryBox.drawInventory2(ctx,fixedAvatar,inventory,boxImg);
       
       /*Move BG LAST to prevent lag */
       moveableBG.moveBG(canvas, fixedAvatar);

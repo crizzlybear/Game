@@ -90,17 +90,18 @@ class GameStats{
             drawItem(ctx,this.x+(i*this.w),this.y, this.w,this.h, inventory[i].color);
         }
     }
-    drawInventory2(ctx,avatarInst,inventory){
-        function drawItem(ctx,xx,yy,ww,hh,setCol){
+    drawInventory2(ctx,avatarInst,inventory,boxImg){
+        function drawItem(ctx,xx,yy,ww,hh){
             ctx.beginPath();
-            ctx.rect(xx,yy,ww,hh);
-            ctx.fillStyle = setCol;
-            ctx.fill();
+            // ctx.rect(xx,yy,ww,hh);
+            // ctx.fillStyle = setCol;
+            // ctx.fill();
+            ctx.drawImage(boxImg,xx, yy, ww, hh,xx,yy,ww,hh);
             ctx.closePath();
         }
        
             if(inventory.length==1){
-                drawItem(ctx,avatarInst.x,avatarInst.y, this.w,this.h, "pink");
+                drawItem(ctx,avatarInst.x,avatarInst.y, 30,30);
             }
            
         
