@@ -101,10 +101,10 @@ class AvatarFixed extends Avatar{
       ctx.rect(this.x,this.y,10,10);
       this.v = (this.v+1)%50;
       var vv = 50-this.v;
-      ctx.rect(this.x+(vv)%25,this.y+(vv)%40,10,10)
-      ctx.rect(this.x-(vv)%25,this.y-(vv)%50,10,10)
-      ctx.rect(this.x-(vv)%40,this.y-(vv)%30,10,10)
-      ctx.rect(this.x-(-vv)%15,this.y-(vv)%40,10,10)
+      ctx.rect(this.x+(vv)%25,this.y+(vv)%40,5,5)
+      ctx.rect(this.x-(vv)%25,this.y-(vv)%50,5,5)
+      ctx.rect(this.x-(vv)%40,this.y-(vv)%30,5,5)
+      ctx.rect(this.x-(-vv)%15,this.y-(vv)%40,5,5)
       // console.log(vv);
       ctx.fillStyle = this.powerColor;
       ctx.fill();
