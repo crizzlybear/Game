@@ -92,12 +92,12 @@ class GameStats{
     }
     drawInventory2(ctx,avatarInst,inventory,boxImg){
         function drawItem(ctx,xx,yy,ww,hh){
-            ctx.beginPath();
+            // ctx.beginPath();
             // ctx.rect(xx,yy,ww,hh);
             // ctx.fillStyle = setCol;
             // ctx.fill();
-            ctx.drawImage(boxImg,xx, yy, ww, hh,xx,yy,ww,hh);
-            ctx.closePath();
+            ctx.drawImage(boxImg,xx, yy, boxImg.width, boxImg.height);
+            // ctx.closePath();
         }
        
             if(inventory.length==1){
