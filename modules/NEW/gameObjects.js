@@ -157,6 +157,38 @@ class GameObjectLocked extends GameObject{
     
     
   }
+
+  animateThis2(rate,startX,startY,repeatW,repeatH){
+    // if(rate==1){
+     
+    //  this.x = (this.x+5)%(repeatW-this.w);
+    // }
+    // if(this.pickedUp){
+    //   this.x =0;
+    //   this.pickedUp = false;
+    //   //push next color
+    // }
+
+    if(rate==1){
+     
+      
+      if(this.x <repeatW-this.w){
+        this.y=(this.y-5);
+        this.x+=0;
+        if(this.y<repeatH){this.x=startX;this.y=startY;}
+      }else{
+        this.x = (this.x-5);
+      }
+     }
+     if(this.pickedUp){
+       this.x =startX;
+       this.y=startY;
+       this.pickedUp = false;
+       //push next color
+     }
+    
+    
+  }
   
 }
 

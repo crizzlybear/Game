@@ -27,32 +27,30 @@ function level3(canvas,ctx){
  
   
   var w1 = new GameObjectLocked(ctx,0,200,300,70,"#F0F0F0");//48,100
-  var w2 = new GameObjectLocked(ctx,500,-50,100,50,"black");
-  var w3 = new GameObjectLocked(ctx,400,310,10,50,"#F0F0F0");
-  var w4 = new GameObjectLocked(ctx,600,50,200,100,"#F0F0F0");
-  var emptySpace2 = new GameObjectLocked(ctx,450,531,600,100, "#F0F0F0");
+  var w2 = new GameObjectLocked(ctx,300,-50,100,50,"black");
+  var w3 = new GameObjectLocked(ctx,230,270,70,100,"#F0F0F0");
+  var w4 = new GameObjectLocked(ctx,400,500,200,70,"#F0F0F0");
+  var w5 = new GameObjectLocked(ctx,400,400,70,100,"#F0F0F0");
   let fixedAvatar = new AvatarFixed(canvas.width/2,canvas.height/2,50,50);
-  let moveableBG = new BGLocked(1000,631);
+  let moveableBG = new BGLocked(600,631);
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
   var box = new GameObjectInteractableLocked(ctx,0,200,30,30,[255,0,0]);
   var b2 = new GameObjectInteractableLocked(ctx,-100,200,30,30,[0,255,0]);
-  var b3 = new GameObjectInteractableLocked(ctx,800,100,30,30,[0,0,255]);
-  var b4 = new GameObjectInteractableLocked(ctx,900,100,30,30,[0,0,0]);
+  var b3 = new GameObjectInteractableLocked(ctx,600,500,30,30,[0,0,255]);
+  var b4 = new GameObjectInteractableLocked(ctx,650,500,30,30,[0,0,0]);
   var enemy = new Enemy(ctx,0,0,50,50);
   var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
-  var stair1 = new Stairs(ctx,130,450,150,100);
   var gameUI = new GameStats(20,300,50,10);
 
   var inventory = new Array();
   var inventoryBox = new GameStats(300,280,15,15);
 
   var gate1 = new Gate(ctx,580,160,20,120,"red");
-  var plat1 = new Platform(ctx,50,400,80,220);
 
   var boxList = [box,b2,b3,b4];
-  let obsList = [w1,w2,w3,w4,emptySpace2,gate1,plat1];
-  var allObj = [w1,w2,w3,w4,emptySpace2,gate1,plat1,box,b2,b3,b4];
+  let obsList = [w1,w2,w3,w4,gate1,];
+  var allObj = [w1,w2,w3,w4,gate1,box,b2,b3,b4];
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -69,9 +67,6 @@ function level3(canvas,ctx){
         //stair1.drawObj_BGFixed(moveableBG);
       */
       
-      plat1.drawObj_BGFixed(moveableBG);
-      stair1.drawObjImgLayer(ctx,stairsImg,moveableBG,0,0,0,0); 
-      emptySpace2.drawObj_BGFixed(moveableBG);
       
       /*2.AVATAR*/
       fixedAvatar.switchSprite(ctx, rate);
@@ -79,20 +74,22 @@ function level3(canvas,ctx){
       // fixedAvatar.loadNear(allObj,moveableBG,rate);
       
       /*3.DRAW OBJECT BASE - layer above avatar and moveBG so there is no lag*/
-     
+      w5.drawObj_BGFixed(moveableBG);
       w1.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
       w2.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
       w3.drawObj_BGFixed(moveableBG);
       w4.drawObj_BGFixed(moveableBG);
-
+     
       item1.drawObj_BGFixed(moveableBG);
       
       // box.drawObj_BGFixed(moveableBG);
       box.animateThis(rate,0,200,300,300);
-      b2.animateThis(rate,-50,200,300,300);
+      b2.animateThis(rate,0,200,300,300);
       // b2.drawObj_BGFixed(moveableBG);
-      b3.drawObj_BGFixed(moveableBG);
-      b4.drawObj_BGFixed(moveableBG);
+      // b3.drawObj_BGFixed(moveableBG);
+      // b4.drawObj_BGFixed(moveableBG);
+      b3.animateThis2(rate,600,500,(600-200+50),(500-100));
+      
 
       gate1.drawObj_BGFixed(moveableBG);
 
@@ -119,22 +116,20 @@ function level3(canvas,ctx){
 
       if(!box.pickedUp){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)};
       if(!b2.pickedUp){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)};
+      if(!b3.pickedUp){b3.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)};
      
       /*5.AVATAR COLLISIONS*/
       if(rightPressed||leftPressed||upPressed||downPressed){
         w1.collisionObj(moveableBG,fixedAvatar);
-        w2.collisionObj(moveableBG,fixedAvatar);
+        // w2.collisionObj(moveableBG,fixedAvatar);
         w3.collisionObj(moveableBG,fixedAvatar);
         w4.collisionObj(moveableBG,fixedAvatar);
-        emptySpace2.collisionObj(moveableBG,fixedAvatar);
-        
+        w5.collisionObj(moveableBG,fixedAvatar);
         item1.collisionObj(moveableBG,fixedAvatar);
        
         box.collisionObj(moveableBG,fixedAvatar);
         // stair1.collisionObj(moveableBG,fixedAvatar);
-        stair1.collisionShape(moveableBG,fixedAvatar,70);
         gate1.collisionObj(moveableBG,fixedAvatar);
-        plat1.collisionObj(moveableBG,fixedAvatar,stair1);
       }
      
   
