@@ -51,7 +51,7 @@ function level3(canvas,ctx){
   var gate2 = new Gate(ctx,0,550,50,50,"green");
   var gate3 = new Gate(ctx,300,0,50,50,"blue");
 
-  var boxList = [box,b2,b3,b4];
+  var boxList = [box,b2,b3,b4,b5];
   let obsList = [w1,w3,w4,gate1,];
   var allObj = [w1,w3,w4,gate1,box,b2,b3,b4];
   //DRAW LOOP===========================
