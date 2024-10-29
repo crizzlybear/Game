@@ -23,6 +23,8 @@
      en.src = "images/enemy1.png";
     let stairsImg = new Image();
     stairsImg.src = "images/stairs.png";
+    var correctSound = new Audio();
+    correctSound.src = "images/Gold1.wav";
 function level3(canvas,ctx){
  
   
@@ -168,9 +170,9 @@ function level3(canvas,ctx){
       if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
       if(!b5.pickedUp){b5.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
       // if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
-      gate1.unlock(moveableBG,fixedAvatar,inventory);
-      gate2.unlock(moveableBG,fixedAvatar,inventory);
-      gate3.unlock(moveableBG,fixedAvatar,inventory);
+      gate1.unlock(moveableBG,fixedAvatar,inventory,correctSound);
+      gate2.unlock(moveableBG,fixedAvatar,inventory,correctSound);
+      gate3.unlock(moveableBG,fixedAvatar,inventory,correctSound);
       /*UI*/
       gameUI.drawEnergyBar(ctx,fixedAvatar);
       gameUI.drawHealthBar(ctx,fixedAvatar);

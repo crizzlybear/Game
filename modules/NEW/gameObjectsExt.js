@@ -84,7 +84,7 @@ class Gate extends GameObjectLocked{
         this.score = 0;
     }
 
-    unlock(bgInst,avatarInst,inventory){
+    unlock(bgInst,avatarInst,inventory,unlockSound){
         let rightBorder=this.x+this.w + 10;
         let leftBorder=this.x -10;
         let topBorder=this.y - 10;
@@ -99,6 +99,7 @@ class Gate extends GameObjectLocked{
             if( (inventory.length==1)&& (this.gateKeyReq == inventory[0]) && pickup ){
                 inventory.pop();
                 this.score++;
+                unlockSound.play();
                 console.log("@",this.gateKeyReq,":",this.score);
             }
         }
