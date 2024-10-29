@@ -86,7 +86,7 @@ function level3(canvas,ctx){
       item1.drawObj_BGFixed(moveableBG);
       
       box.animateThis(rate,0,200,300,300);
-      b2.animateThis(rate,-50,200,300,300);
+      b2.animateThis(rate,0,200,300,300);
       b3.animateThis2(rate,600,500,(600-200+50),(500-100));
       
 

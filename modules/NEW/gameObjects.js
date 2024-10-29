@@ -160,15 +160,17 @@ class GameObjectInteractableLocked extends GameObjectLocked{
         this.x+=0;
         if(this.y<repeatH){this.x=startX;this.y=startY;
           this.setNewRGBandColor();
+          this.visible=true;
         }
       }else{
         this.x = (this.x-5);
       }
      }
      if(this.pickedUp){
-       this.x =startX;
-       this.y=startY;
+      //  this.x =startX;
+      //  this.y=startY;
        this.pickedUp = false;
+       this.visible=false;
        //push next color
      }
   }
