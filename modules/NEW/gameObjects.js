@@ -95,7 +95,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
       this.color = "#ffffff";
     }
   }
-  pickupItem(bgInst, avatarInst,inventory,enemyInst){
+  pickupItem(bgInst, avatarInst,inventory,enemyInst,enemyAudio, boxAudio){
     //set pickup area
     //should make this into a function or something
     let rightBorder=this.x+this.w + 10;
@@ -104,13 +104,14 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let botBorder=this.y+this.h + 10;
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
       console.log("pickedup");
-     
+     boxAudio.play();
       // console.log(item);
       if(!this.pickedUp && inventory.length==0){
         if(this.key=="black"){
           enemyInst.pickedUp=true;
           enemyInst.x = this.x;
           enemyInst.y=this.y;
+          enemyAudio.play();
           this.pickedUp=true;
         }else{
           inventory.push(this.key);
