@@ -13,30 +13,7 @@ class Enemy extends GameObjectLocked{
         this.isIdle = true;
         this.pickedUp=false;
       }
-        
-      drawHorizontalMovement(bgInst,maxDist){
-        let ctx = this.ctx;
-        ctx.beginPath();
-        
-        var enemyX = maxDist*Math.sin(this.x+=0.008)+maxDist;
-        //console.log("sine:", enemyX);
-        ctx.rect(enemyX-bgInst.bgX,this.y-bgInst.bgY, this.w, this.h);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.closePath();
-      } 
 
-      drawVerticalMovement(bgInst,maxDist){
-        let ctx = this.ctx;
-        ctx.beginPath();
-        var enemyY = maxDist*Math.sin(this.y+=0.008)+maxDist;
-        this.newY = enemyY;
-        ctx.rect(this.x-bgInst.bgX,this.newY-bgInst.bgY, this.w, this.h);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.closePath();
-    }
-    
       drawFollow(bgInst,rate){
       let ctx = this.ctx;
       ctx.beginPath();
@@ -44,26 +21,11 @@ class Enemy extends GameObjectLocked{
       var xDist = Math.floor(convertBGXtoAvatar(bgInst.bgX)-this.x);
       var yDist = Math.floor(convertBGYtoAvatar(bgInst.bgY)- this.y );
     
-      if(Math.abs(xDist)<150 && Math.abs(yDist)<150){//default 200,200
-        // console.log("IN RANGE");
-        this.col = "orange";
-        
-       }else{ 
-        // console.log("OUT RANGE");
-        this.col="pink";
-        //move towards starting position
-          xDist = Math.floor(this.oldX- this.x);
-          yDist = Math.floor(this.oldY- this.y );
-       }
-      
       var ax = this.x +=(xDist*0.008);//ENEMY SPEED default is 0.01
       var ay = this.y +=(yDist*0.008);
       this.newX = ax;
       this.newY = ay;
-      // ctx.rect(ax-bgInst.bgX,ay-bgInst.bgY, this.w, this.h);
-      // ctx.fillStyle = this.color;
-      // ctx.fill();
-      // ctx.closePath();
+ 
       if(Math.round(this.newX)==Math.round(this.oldX) && Math.round(this.newY)==Math.round(this.oldX)){//checking is new position is the same as starting pos
         this.isIdle=true;
       }else{
