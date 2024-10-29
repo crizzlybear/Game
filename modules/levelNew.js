@@ -164,11 +164,11 @@ function level3(canvas,ctx){
 
       /*ITEM and INTERACTABLE PROPERTIES*/
       item1.getEnergy(moveableBG, fixedAvatar);
-      if(!box.pickedUp){box.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
-      if(!b2.pickedUp){b2.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
-      if(!b3.pickedUp){b3.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
-      if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
-      if(!b5.pickedUp){b5.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
+      if(!box.pickedUp&&box.visible){box.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
+      if(!b2.pickedUp&&b2.visible){b2.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
+      if(!b3.pickedUp&&b3.visible){b3.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
+      if(!b4.pickedUp&&b4.visible){b4.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
+      if(!b5.pickedUp&&b5.visible){b5.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
       // if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
       gate1.unlock(moveableBG,fixedAvatar,inventory,correctSound);
       gate2.unlock(moveableBG,fixedAvatar,inventory,correctSound);
