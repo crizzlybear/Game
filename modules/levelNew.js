@@ -37,7 +37,8 @@ function level3(canvas,ctx){
   var box = new GameObjectInteractableLocked(ctx,0,200,30,30,[255,0,0],"red");
   var b2 = new GameObjectInteractableLocked(ctx,-100,200,30,30,[0,255,0],"green");
   var b3 = new GameObjectInteractableLocked(ctx,600,500,30,30,[0,0,255],"blue");
-  var b4 = new GameObjectInteractableLocked(ctx,0,0,30,30,[0,0,0]);
+  var b4 = new GameObjectInteractableLocked(ctx,-200,200,30,30,[0,0,0],"black");
+  var b5 = new GameObjectInteractableLocked(ctx,700,500,30,30,[0,0,0],"black");
   // var enemy = new Enemy(ctx,0,0,50,50);
   // var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
@@ -87,8 +88,9 @@ function level3(canvas,ctx){
       
       box.animateThis(rate,0,200,300,300);
       b2.animateThis(rate,0,200,300,300);
+      b4.animateThis(rate,0,200,300,300);
       b3.animateThis2(rate,600,500,(600-200+50),(500-100));
-      
+      b5.animateThis2(rate,600,500,(600-200+50),(500-100));
 
       gate1.drawObj_BGFixed(moveableBG);
       gate2.drawObj_BGFixed(moveableBG);
@@ -118,6 +120,8 @@ function level3(canvas,ctx){
       if(!box.pickedUp &&box.visible){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       if(!b2.pickedUp&&b2.visible){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       if(!b3.pickedUp&&b3.visible){b3.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b4.pickedUp&&b3.visible){b4.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b5.pickedUp&&b3.visible){b5.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       fixedAvatar.carry(box,b4);
       fixedAvatar.carry(b2,b4);
       fixedAvatar.carry(b3,b4);
