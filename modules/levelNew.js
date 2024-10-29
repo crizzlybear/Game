@@ -115,9 +115,9 @@ function level3(canvas,ctx){
       // w3.drawObjImgLayer(ctx,wallImg,moveableBG,0,0,0,0);
       // w4.drawObjImgLayer(ctx,whImg,moveableBG,0,40,0,40);
 
-      if(!box.pickedUp){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
-      if(!b2.pickedUp){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
-      if(!b3.pickedUp){b3.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!box.pickedUp &&box.visible){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b2.pickedUp&&b2.visible){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b3.pickedUp&&b3.visible){b3.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       fixedAvatar.carry(box,b4);
       fixedAvatar.carry(b2,b4);
       fixedAvatar.carry(b3,b4);
