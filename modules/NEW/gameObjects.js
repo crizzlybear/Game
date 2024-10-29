@@ -104,7 +104,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let botBorder=this.y+this.h + 10;
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
       console.log("pickedup");
-      // this.col = "#71ffff";
+     
       // console.log(item);
       if(!this.pickedUp && inventory.length==0){
         if(this.key=="black"){
@@ -116,10 +116,11 @@ class GameObjectInteractableLocked extends GameObjectLocked{
           inventory.push(this.key);
           this.pickedUp=true;
         }
-       
+        
       }
     }else{
-      // this.col = "#ffffff";
+      this.col=this.key;//COLOR DEBUGGING
+      
     }
   }
   getEnergy(bgInst, avatarInst){

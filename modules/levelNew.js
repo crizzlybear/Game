@@ -120,6 +120,19 @@ function level3(canvas,ctx){
       if(!b3.pickedUp&&b3.visible){b3.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       if(!b4.pickedUp&&b4.visible){b4.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       if(!b5.pickedUp&&b5.visible){b5.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      
+      
+      /*COLOR BOX DEBUGGING
+      if(!box.pickedUp &&box.visible){box.drawObj_BGFixed(moveableBG)}
+      if(!b2.pickedUp&&b2.visible){b2.drawObj_BGFixed(moveableBG)}
+      if(!b3.pickedUp&&b3.visible){b3.drawObj_BGFixed(moveableBG)}
+      if(!b4.pickedUp&&b4.visible){b4.drawObj_BGFixed(moveableBG)}
+      if(!b5.pickedUp&&b5.visible){b5.drawObj_BGFixed(moveableBG)}
+      */
+      
+      
+      
+      
       // fixedAvatar.carry(box,b4);
       // fixedAvatar.carry(b2,b4);
       // fixedAvatar.carry(b3,b4);
