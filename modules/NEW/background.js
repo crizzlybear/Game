@@ -110,3 +110,9 @@ function convertBGXtoAvatar(bgX){
   var translated=bgX+240; 
   return translated;
 }
+
+function setShadow(ctx){
+  ctx.shadowColor = "rgb(59, 55, 71)";
+  ctx.shadow = 2;//instead of ctx.shadowBlur
+  ctx.shadowOffsetY = 5;
+}
