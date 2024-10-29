@@ -90,7 +90,7 @@ class GameStats{
             drawItem(ctx,this.x+(i*this.w),this.y, this.w,this.h, inventory[0]);
         }
     }
-    drawInventory2(ctx,avatarInst,inventory,boxImg){
+    drawCarriedBox(ctx,avatarInst,inventory,boxImg){
         function drawItem(ctx,xx,yy,ww,hh){
             // ctx.beginPath();
             // ctx.rect(xx,yy,ww,hh);
