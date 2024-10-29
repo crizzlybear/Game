@@ -11,6 +11,7 @@ class Enemy extends GameObjectLocked{
         this.health = 200;
         this.damage = 2;
         this.isIdle = true;
+        this.pickedUp=false;
       }
         
       drawHorizontalMovement(bgInst,maxDist){

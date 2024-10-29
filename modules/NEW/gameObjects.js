@@ -95,7 +95,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
       this.color = "#ffffff";
     }
   }
-  pickupItem(bgInst, avatarInst,inventory){
+  pickupItem(bgInst, avatarInst,inventory,enemyInst){
     //set pickup area
     //should make this into a function or something
     let rightBorder=this.x+this.w + 10;
@@ -107,8 +107,16 @@ class GameObjectInteractableLocked extends GameObjectLocked{
       // this.col = "#71ffff";
       // console.log(item);
       if(!this.pickedUp && inventory.length==0){
-        inventory.push(this.key);
-        this.pickedUp=true;
+        if(this.key=="black"){
+          enemyInst.pickedUp=true;
+          enemyInst.x = this.x;
+          enemyInst.y=this.y;
+          this.pickedUp=true;
+        }else{
+          inventory.push(this.key);
+          this.pickedUp=true;
+        }
+       
       }
     }else{
       // this.col = "#ffffff";
@@ -133,14 +141,14 @@ class GameObjectInteractableLocked extends GameObjectLocked{
   animateThis(rate,startX,startY,repeatW,repeatH){
     if(rate==1){ 
       if(this.x >repeatW-this.w){
-        this.y=(this.y+5);
+        this.y=(this.y+2);
         this.x+=0;
         if(this.y>repeatH){this.x=startX;this.y=startY;
           this.setNewRGBandColor();
           this.visible=true;
         }
       }else{
-        this.x = (this.x+5);
+        this.x = (this.x+2);
       }
      }
      if(this.pickedUp){
@@ -156,14 +164,14 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     if(rate==1){
 
       if(this.x <repeatW-this.w){
-        this.y=(this.y-5);
+        this.y=(this.y-2);
         this.x+=0;
         if(this.y<repeatH){this.x=startX;this.y=startY;
           this.setNewRGBandColor();
           this.visible=true;
         }
       }else{
-        this.x = (this.x-5);
+        this.x = (this.x-2);
       }
      }
      if(this.pickedUp){

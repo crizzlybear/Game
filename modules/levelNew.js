@@ -35,11 +35,11 @@ function level3(canvas,ctx){
   let moveableBG = new BGLocked(600,631);
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
   var box = new GameObjectInteractableLocked(ctx,0,200,30,30,[255,0,0],"red");
-  var b2 = new GameObjectInteractableLocked(ctx,-100,200,30,30,[0,255,0],"green");
+  var b2 = new GameObjectInteractableLocked(ctx,-125,200,30,30,[0,255,0],"green");
   var b3 = new GameObjectInteractableLocked(ctx,600,500,30,30,[0,0,255],"blue");
-  var b4 = new GameObjectInteractableLocked(ctx,-200,200,30,30,[0,0,0],"black");
-  var b5 = new GameObjectInteractableLocked(ctx,700,500,30,30,[0,0,0],"black");
-  // var enemy = new Enemy(ctx,0,0,50,50);
+  var b4 = new GameObjectInteractableLocked(ctx,-250,200,30,30,[0,0,0],"black");
+  var b5 = new GameObjectInteractableLocked(ctx,725,500,30,30,[0,0,0],"black");
+  var enemy = new Enemy(ctx,0,0,50,50);
   // var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
   var gameUI = new GameStats(20,300,50,10);
@@ -97,10 +97,10 @@ function level3(canvas,ctx){
       gate3.drawObj_BGFixed(moveableBG);
       gate4.drawObj_BGFixed(moveableBG);
       /*Enemies*/
-      // if(enemy.health>=0){
-      //   enemy.enemyHealthBar(ctx,moveableBG);
-      //   enemy.drawFollow(moveableBG,rate);
-      // }
+      if(enemy.health>=0 && enemy.pickedUp){
+        enemy.enemyHealthBar(ctx,moveableBG);
+        enemy.drawFollow(moveableBG,rate);
+      }
       // if(enemy2.health>=0){
       //   enemy2.enemyHealthBar(ctx,moveableBG);
       //   enemy2.drawFollow(moveableBG,rate);
@@ -120,11 +120,11 @@ function level3(canvas,ctx){
       if(!box.pickedUp &&box.visible){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       if(!b2.pickedUp&&b2.visible){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       if(!b3.pickedUp&&b3.visible){b3.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
-      if(!b4.pickedUp&&b3.visible){b4.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
-      if(!b5.pickedUp&&b3.visible){b5.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
-      fixedAvatar.carry(box,b4);
-      fixedAvatar.carry(b2,b4);
-      fixedAvatar.carry(b3,b4);
+      if(!b4.pickedUp&&b4.visible){b4.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b5.pickedUp&&b5.visible){b5.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      // fixedAvatar.carry(box,b4);
+      // fixedAvatar.carry(b2,b4);
+      // fixedAvatar.carry(b3,b4);
       /*5.AVATAR COLLISIONS*/
       if(rightPressed||leftPressed||upPressed||downPressed){
         w1.collisionObj(moveableBG,fixedAvatar);
@@ -152,9 +152,11 @@ function level3(canvas,ctx){
 
       /*ITEM and INTERACTABLE PROPERTIES*/
       item1.getEnergy(moveableBG, fixedAvatar);
-      if(!box.pickedUp){box.pickupItem(moveableBG, fixedAvatar,inventory)};
-      if(!b2.pickedUp){b2.pickupItem(moveableBG, fixedAvatar,inventory)};
-      if(!b3.pickedUp){b3.pickupItem(moveableBG, fixedAvatar,inventory)};
+      if(!box.pickedUp){box.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
+      if(!b2.pickedUp){b2.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
+      if(!b3.pickedUp){b3.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
+      if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
+      if(!b5.pickedUp){b5.pickupItem(moveableBG, fixedAvatar,inventory,enemy)};
       // if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
       gate1.unlock(moveableBG,fixedAvatar,inventory);
       gate2.unlock(moveableBG,fixedAvatar,inventory);
@@ -163,7 +165,7 @@ function level3(canvas,ctx){
       /*UI*/
       gameUI.drawEnergyBar(ctx,fixedAvatar);
       gameUI.drawHealthBar(ctx,fixedAvatar);
-      // inventoryBox.drawInventory(ctx,inventory);
+      inventoryBox.drawInventory(ctx,inventory);
       inventoryBox.drawCarriedBox(ctx,fixedAvatar,inventory,boxImg);
       
       /*Move BG LAST to prevent lag */
