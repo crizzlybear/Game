@@ -49,6 +49,7 @@ function level3(canvas,ctx){
   var gate1 = new Gate(ctx,580,160,50,50,"red");
   var gate2 = new Gate(ctx,0,550,50,50,"green");
   var gate3 = new Gate(ctx,300,0,50,50,"blue");
+  var gate4 = new Gate(ctx,550,0,50,50,"black");
 
   var boxList = [box,b2,b3,b4];
   let obsList = [w1,w3,w4,gate1,];
@@ -84,18 +85,15 @@ function level3(canvas,ctx){
      
       item1.drawObj_BGFixed(moveableBG);
       
-      // box.drawObj_BGFixed(moveableBG);
       box.animateThis(rate,0,200,300,300);
       b2.animateThis(rate,0,200,300,300);
-      // b2.drawObj_BGFixed(moveableBG);
-      // b3.drawObj_BGFixed(moveableBG);
-      // b4.drawObj_BGFixed(moveableBG);
       b3.animateThis2(rate,600,500,(600-200+50),(500-100));
       
 
       gate1.drawObj_BGFixed(moveableBG);
       gate2.drawObj_BGFixed(moveableBG);
       gate3.drawObj_BGFixed(moveableBG);
+      gate4.drawObj_BGFixed(moveableBG);
       /*Enemies*/
       if(enemy.health>=0){
         enemy.enemyHealthBar(ctx,moveableBG);
@@ -137,6 +135,7 @@ function level3(canvas,ctx){
         gate1.collisionObj(moveableBG,fixedAvatar);
         gate2.collisionObj(moveableBG,fixedAvatar);
         gate3.collisionObj(moveableBG,fixedAvatar);
+        gate4.collisionObj(moveableBG,fixedAvatar);
       }
      
   
@@ -156,7 +155,7 @@ function level3(canvas,ctx){
       gate1.unlock(moveableBG,fixedAvatar,inventory);
       gate2.unlock(moveableBG,fixedAvatar,inventory);
       gate3.unlock(moveableBG,fixedAvatar,inventory);
-      
+      gate4.unlock(moveableBG,fixedAvatar,inventory);
       /*UI*/
       gameUI.drawEnergyBar(ctx,fixedAvatar);
       gameUI.drawHealthBar(ctx,fixedAvatar);

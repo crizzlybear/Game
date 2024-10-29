@@ -204,7 +204,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
   setNewRGBandColor(){
     var rgbList = [[255,0,0],[0,255,0],[0,0,255],[0,0,0]];
     var colorList = ["red","green","blue","black"];
-    var index = Math.round(Math.random()*3);
+    var index = Math.floor(Math.random()*4);
     this.rgb = rgbList[index];
     this.key=colorList[index];
   }
