@@ -38,8 +38,8 @@ function level3(canvas,ctx){
   var b2 = new GameObjectInteractableLocked(ctx,-100,200,30,30,[0,255,0],"green");
   var b3 = new GameObjectInteractableLocked(ctx,600,500,30,30,[0,0,255],"blue");
   var b4 = new GameObjectInteractableLocked(ctx,0,0,30,30,[0,0,0]);
-  var enemy = new Enemy(ctx,0,0,50,50);
-  var enemy2 = new Enemy(ctx,600,450,50,50);
+  // var enemy = new Enemy(ctx,0,0,50,50);
+  // var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
   var gameUI = new GameStats(20,300,50,10);
 
@@ -86,7 +86,7 @@ function level3(canvas,ctx){
       item1.drawObj_BGFixed(moveableBG);
       
       box.animateThis(rate,0,200,300,300);
-      b2.animateThis(rate,0,200,300,300);
+      b2.animateThis(rate,-50,200,300,300);
       b3.animateThis2(rate,600,500,(600-200+50),(500-100));
       
 
@@ -95,14 +95,14 @@ function level3(canvas,ctx){
       gate3.drawObj_BGFixed(moveableBG);
       gate4.drawObj_BGFixed(moveableBG);
       /*Enemies*/
-      if(enemy.health>=0){
-        enemy.enemyHealthBar(ctx,moveableBG);
-        enemy.drawFollow(moveableBG,rate);
-      }
-      if(enemy2.health>=0){
-        enemy2.enemyHealthBar(ctx,moveableBG);
-        enemy2.drawFollow(moveableBG,rate);
-      }
+      // if(enemy.health>=0){
+      //   enemy.enemyHealthBar(ctx,moveableBG);
+      //   enemy.drawFollow(moveableBG,rate);
+      // }
+      // if(enemy2.health>=0){
+      //   enemy2.enemyHealthBar(ctx,moveableBG);
+      //   enemy2.drawFollow(moveableBG,rate);
+      // }
       /*Enemy options
          //enemy.drawObj_BGFixed(moveableBG);
         / enemy.drawVerticalMovement(moveableBG,100);
@@ -140,10 +140,10 @@ function level3(canvas,ctx){
      
   
       /*ENEMY COLLISIONS and ATTACK*/
-      if(enemy.health>=0 && !enemy.isIdle){enemy.collisionObstacles(obsList);}
-      if(enemy2.health>=0  && !enemy2.isIdle){enemy2.collisionObstacles(obsList);}
-      if(enemy.health>=0){enemy.isAttacked(moveableBG,fixedAvatar);}
-      if(enemy2.health>=0){enemy2.isAttacked(moveableBG,fixedAvatar);}
+      // if(enemy.health>=0 && !enemy.isIdle){enemy.collisionObstacles(obsList);}
+      // if(enemy2.health>=0  && !enemy2.isIdle){enemy2.collisionObstacles(obsList);}
+      // if(enemy.health>=0){enemy.isAttacked(moveableBG,fixedAvatar);}
+      // if(enemy2.health>=0){enemy2.isAttacked(moveableBG,fixedAvatar);}
       
 
       /*ITEM and INTERACTABLE PROPERTIES*/
@@ -159,7 +159,7 @@ function level3(canvas,ctx){
       /*UI*/
       gameUI.drawEnergyBar(ctx,fixedAvatar);
       gameUI.drawHealthBar(ctx,fixedAvatar);
-      inventoryBox.drawInventory(ctx,inventory);
+      // inventoryBox.drawInventory(ctx,inventory);
       inventoryBox.drawInventory2(ctx,fixedAvatar,inventory,boxImg);
       
       /*Move BG LAST to prevent lag */

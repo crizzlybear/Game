@@ -17,12 +17,7 @@ class Avatar{
     this.level=0;
   }
 
-  getTest(){
-    return this.testValue;
-  }
-  setTest(newTest){
-    this.testValue = newTest;
-  }
+ 
 
   drawAvatar(ctx,updateX,updateY) {
     //console.log("updateX:", updateX);
