@@ -89,23 +89,51 @@ class AvatarFixed extends Avatar{
  
   usePowerColorParticle(ctx){
     //maybe create another ctx to act as a mask
-    
-    if(powerOn&&this.energy>0){
-      this.energy=this.energy-1;
+    function drawSwipe(ctx,xx,yy,ww,hh,color,vv){
       ctx.beginPath();  
-      ctx.rect(this.x,this.y,10,10);
-      this.v = (this.v+1)%50;
-      var vv = 50-this.v;
-      ctx.rect(this.x+(vv)%25,this.y+(vv)%40,5,5)
-      ctx.rect(this.x-(vv)%25,this.y-(vv)%50,5,5)
-      ctx.rect(this.x-(vv)%40,this.y-(vv)%30,5,5)
-      ctx.rect(this.x-(-vv)%15,this.y-(vv)%40,5,5)
-      // console.log(vv);
-      ctx.fillStyle = this.powerColor;
+      ctx.rect(xx,yy,ww,hh);   
+      
+      ctx.rect(xx+(vv)%25,yy+(vv)%40,5,5)
+      ctx.rect(xx-(vv)%25,yy-(vv)%50,5,5)
+      ctx.rect(xx-(vv)%40,yy-(vv)%30,5,5)
+      ctx.rect(xx-(-vv)%15,yy-(vv)%40,5,5)
+
+      ctx.fillStyle = color;
       ctx.fill();
       ctx.closePath();
+    }
+    if(powerOn&&this.energy>0){
+      this.energy=this.energy-1;
+      this.v = (this.v+1)%50;
+      var vv = 50-this.v;
+      if(rightPressed){
+        drawSwipe(ctx,this.x+this.w-8,this.y,8,8,this.powerColor,vv);
+      }else if(leftPressed){
+        drawSwipe(ctx,this.x,this.y,8,8,this.powerColor,vv);
+      }else if(upPressed){
+        drawSwipe(ctx,this.x+this.w/2-4,this.y,8,8,this.powerColor,vv);
+      }else if(downPressed){
+        drawSwipe(ctx,this.x+this.w/2-4,this.y,8,8,this.powerColor,vv);
+      }
+      
       
     }
+    // if(powerOn&&this.energy>0){
+    //   this.energy=this.energy-1;
+    //   ctx.beginPath();  
+    //   ctx.rect(this.x,this.y,10,10);
+    //   this.v = (this.v+1)%50;
+    //   var vv = 50-this.v;
+    //   ctx.rect(this.x+(vv)%25,this.y+(vv)%40,5,5)
+    //   ctx.rect(this.x-(vv)%25,this.y-(vv)%50,5,5)
+    //   ctx.rect(this.x-(vv)%40,this.y-(vv)%30,5,5)
+    //   ctx.rect(this.x-(-vv)%15,this.y-(vv)%40,5,5)
+    //   // console.log(vv);
+    //   ctx.fillStyle = this.powerColor;
+    //   ctx.fill();
+    //   ctx.closePath();
+      
+    // }
     
   }
 
