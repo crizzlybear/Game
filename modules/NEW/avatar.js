@@ -13,7 +13,7 @@ class Avatar{
     this.rgbSum = [255,255,255];
     this.powerColor = "rgb(255,255,255)";
     this.health = 1000;
-    this.energy = 1000;
+    this.energy = 10000;
     this.level=0;
   }
 
@@ -111,20 +111,21 @@ class AvatarFixed extends Avatar{
 
 
   getClosestItemColors(obsList,bgInst, rate){
-    if((rightPressed||leftPressed||upPressed||downPressed)&&rate==1){
+    if(rate==1){
       // var dist = new Array();
       var calcX1;
       var calcX2;
       var calcY1;
       var calcY2;
-
+      var avX = convertBGXtoAvatar(bgInst.bgX) + 25;
+      var avY = convertBGYtoAvatar(bgInst.bgY) + 25;
       for(var i=0; i<obsList.length; i++){
-            calcX1 = Math.abs((obsList[i].x - convertBGXtoAvatar(bgInst.bgX)));//maybe replace with collision in range
-            calcX2 = Math.abs(obsList[i].x+obsList[i].w - convertBGXtoAvatar(bgInst.bgX));
-            calcY1 = Math.abs((obsList[i].y - convertBGYtoAvatar(bgInst.bgY)));
-            calcY2 = Math.abs(obsList[i].y+obsList[i].h - convertBGYtoAvatar(bgInst.bgY));
-        var center = ((Math.min(calcX1,calcX2) + Math.min(calcY1,calcY2))/2);
-        if((center < 100)&& !obsList[i].pickedUp){ //ADJUST CENTER to be closer to box distance
+            calcX1 = Math.abs((obsList[i].x - avX));//maybe replace with collision in range
+            calcX2 = Math.abs(obsList[i].x+obsList[i].w - avX);
+            calcY1 = Math.abs((obsList[i].y - avY));
+            calcY2 = Math.abs(obsList[i].y+obsList[i].h - avY);
+        var center = (((calcX1+calcX2)/2) + ((calcY1+calcY2)/2))/2;
+        if((center < 100)&& !obsList[i].pickedUp && (obsList[i].x>0 && (obsList[i].x)<bgInst.bgW)){ //ADJUST CENTER to be closer to box distance and within bounds
           
           // console.log(obsList[i].rgb,i);
           this.rgbSum[0] += obsList[i].rgb[0]*3*(100/center);
