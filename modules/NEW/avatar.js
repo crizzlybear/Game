@@ -245,13 +245,13 @@ class AvatarFixed extends Avatar{
     }
     if(attack){
       if(rightPressed){
-        drawSwipe(ctx,this.x+this.w+10,this.y+this.h/2,10,10,rate);
+        drawSwipe(ctx,this.x+this.w+30,this.y+this.h/2,10,10,rate);
       }else if(leftPressed){
-        drawSwipe(ctx,this.x-10,this.y+this.h/2,10,10,rate);
+        drawSwipe(ctx,this.x-30,this.y+this.h/2,10,10,rate);
       }else if(upPressed){
-        drawSwipe(ctx,this.x+this.w/2,this.y-10,10,10,rate);
+        drawSwipe(ctx,this.x+this.w/2,this.y-30,10,10,rate);
       }else if(downPressed){
-        drawSwipe(ctx,this.x+this.w/2,this.y+this.h+10,10,10,rate);
+        drawSwipe(ctx,this.x+this.w/2,this.y+this.h+30,10,10,rate);
       }
       
       
