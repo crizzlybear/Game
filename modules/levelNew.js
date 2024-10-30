@@ -80,7 +80,7 @@ function level3(canvas,ctx){
       /*2.AVATAR*/
       fixedAvatar.switchSprite(ctx, rate);
       fixedAvatar.run();
-      fixedAvatar.drawAttack(ctx);
+      fixedAvatar.drawAttack(ctx,rate);
       // fixedAvatar.loadNear(allObj,moveableBG,rate);
       
       /*3.DRAW OBJECT BASE - layer above avatar and moveBG so there is no lag*/
@@ -201,7 +201,7 @@ function level3(canvas,ctx){
       //   console.log("out of bounds");
       // }
       */
-      openMenu(canvas,ctx);
+      // openMenu(canvas,ctx);
       if(fixedAvatar.health>0){
         requestAnimationFrame(draw);
       }else{

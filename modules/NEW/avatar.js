@@ -229,24 +229,29 @@ class AvatarFixed extends Avatar{
     
   // }
 
-  drawAttack(ctx){
+  drawAttack(ctx,rate){
     //maybe create another ctx to act as a mask
     function drawSwipe(ctx,xx,yy,ww,hh){
       ctx.beginPath();  
       ctx.rect(xx,yy,ww,hh);    
-      ctx.fillStyle = "pink";
+      if(rate==1){
+        ctx.fillStyle = "pink";
+      }else{
+        ctx.fillStyle= "lightblue";
+      }
+      
       ctx.fill();
       ctx.closePath();
     }
     if(attack){
       if(rightPressed){
-        drawSwipe(ctx,this.x+this.w+10,this.y+this.h/2,10,10);
+        drawSwipe(ctx,this.x+this.w+10,this.y+this.h/2,10,10,rate);
       }else if(leftPressed){
-        drawSwipe(ctx,this.x-10,this.y+this.h/2,10,10);
+        drawSwipe(ctx,this.x-10,this.y+this.h/2,10,10,rate);
       }else if(upPressed){
-        drawSwipe(ctx,this.x+this.w/2,this.y-10,10,10);
+        drawSwipe(ctx,this.x+this.w/2,this.y-10,10,10,rate);
       }else if(downPressed){
-        drawSwipe(ctx,this.x+this.w/2,this.y+this.h+10,10,10);
+        drawSwipe(ctx,this.x+this.w/2,this.y+this.h+10,10,10,rate);
       }
       
       
