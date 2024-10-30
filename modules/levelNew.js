@@ -94,8 +94,8 @@ function level3(canvas,ctx){
       box.animateThis(rate,0,200,300,300);
       b2.animateThis(rate,0,200,300,300);
       b4.animateThis(rate,0,200,300,300);
-      b3.animateThis2(rate,600,500,(600-200+50),(500-100));
-      b5.animateThis2(rate,600,500,(600-200+50),(500-100));
+      b3.animateThis2(rate,600,500,(600-200+30),(500-100));
+      b5.animateThis2(rate,600,500,(600-200+30),(500-100));
 
       gate1.drawObj_BGFixed(moveableBG);
       gate2.drawObj_BGFixed(moveableBG);

@@ -13,7 +13,7 @@ class Avatar{
     this.rgbSum = [255,255,255];
     this.powerColor = "rgb(255,255,255)";
     this.health = 1000;
-    this.energy = 10000;
+    this.energy = 1000;
     this.level=0;
   }
 
@@ -125,7 +125,7 @@ class AvatarFixed extends Avatar{
             calcY1 = Math.abs((obsList[i].y - avY));
             calcY2 = Math.abs(obsList[i].y+obsList[i].h - avY);
         var center = (((calcX1+calcX2)/2) + ((calcY1+calcY2)/2))/2;
-        if((center < 70)&& !obsList[i].pickedUp && obsList[i].visible&& (obsList[i].x>0 && (obsList[i].x)<bgInst.bgW)){ //ADJUST CENTER to be closer to box distance and within bounds
+        if((center < 90)&& !obsList[i].pickedUp && obsList[i].visible&& (obsList[i].x+50>0 && (obsList[i].x)<bgInst.bgW)){ //ADJUST CENTER to be closer to box distance and within bounds
           
           // console.log(obsList[i].rgb,i);
           this.rgbSum[0] += obsList[i].rgb[0]*3*(100/center);
