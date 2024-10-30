@@ -109,9 +109,11 @@ class GameObjectInteractableLocked extends GameObjectLocked{
       if(!this.pickedUp && inventory.length==0){
         if(this.key=="black"){
           enemyInst.pickedUp=true;
+          enemyInst.health=200;
           enemyInst.x = this.x;
           enemyInst.y=this.y;
           enemyAudio.play();
+          
           this.pickedUp=true;
         }else{
           inventory.push(this.key);
