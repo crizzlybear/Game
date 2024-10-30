@@ -163,25 +163,25 @@ class Enemy extends GameObjectLocked{
             case n=0:
               // console.log("from right!");
               
-              this.x = Math.max(this.x-20,0);
+              this.x = Math.max(this.x-2,0);
               this.health=this.health-10;
               break;
             case n=1:
               // console.log("from bottom", botBorder); 
             
-              this.y = Math.max(this.y -20,0);
-              this.health=this.health-10;
+              this.y = Math.max(this.y -2,0);
+              this.health=this.health-5;
               break;
             case n=2:
               // console.log("from left");
-              this.x = Math.min(this.x+20, 1020);
-              this.health=this.health-10;
+              this.x = Math.min(this.x+2, bgInst.bgW);
+              this.health=this.health-5;
               break;
             case n=3:
               // console.log("from top"); 
               // this.col = "purple";
-              this.y = Math.min(this.y +20,630);
-              this.health=this.health-10;
+              this.y = Math.min(this.y +2,bgInst.bgH);
+              this.health=this.health-5;
               break;
             default:
               // console.log("nothing...");

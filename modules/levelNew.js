@@ -162,7 +162,7 @@ function level3(canvas,ctx){
       /*ENEMY COLLISIONS and ATTACK*/
       // if(enemy.health>=0 && !enemy.isIdle){enemy.collisionObstacles(obsList);}
       // if(enemy2.health>=0  && !enemy2.isIdle){enemy2.collisionObstacles(obsList);}
-      // if(enemy.health>=0){enemy.isAttacked(moveableBG,fixedAvatar);}
+      if(enemy.health>=0){enemy.isAttacked(moveableBG,fixedAvatar);}
       // if(enemy2.health>=0){enemy2.isAttacked(moveableBG,fixedAvatar);}
       
 
