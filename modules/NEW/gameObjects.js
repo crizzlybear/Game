@@ -158,6 +158,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
        //this.y=startY;
        this.pickedUp = false;
        this.visible=false;
+       this.rbg=[255,255,255];
        //push next color
      }
   }
@@ -181,6 +182,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
       //  this.y=startY;
        this.pickedUp = false;
        this.visible=false;
+       this.rbg=[255,255,255];
        //push next color
      }
   }
