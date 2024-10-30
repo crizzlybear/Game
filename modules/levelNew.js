@@ -80,6 +80,7 @@ function level3(canvas,ctx){
       /*2.AVATAR*/
       fixedAvatar.switchSprite(ctx, rate);
       fixedAvatar.run();
+      fixedAvatar.drawAttack(ctx);
       // fixedAvatar.loadNear(allObj,moveableBG,rate);
       
       /*3.DRAW OBJECT BASE - layer above avatar and moveBG so there is no lag*/
