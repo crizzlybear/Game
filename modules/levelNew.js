@@ -180,7 +180,7 @@ function level3(canvas,ctx){
       /*UI*/
       gameUI.drawEnergyBar(ctx,fixedAvatar);
       gameUI.drawHealthBar(ctx,fixedAvatar);
-      inventoryBox.drawInventory(ctx,inventory);
+      // inventoryBox.drawInventory(ctx,inventory);//TOGGLE FOR COLOR DEBUG
       inventoryBox.drawCarriedBox(ctx,fixedAvatar,inventory,boxImg);
       
       /*Move BG LAST to prevent lag */

@@ -124,7 +124,7 @@ class AvatarFixed extends Avatar{
             calcY1 = Math.abs((obsList[i].y - convertBGYtoAvatar(bgInst.bgY)));
             calcY2 = Math.abs(obsList[i].y+obsList[i].h - convertBGYtoAvatar(bgInst.bgY));
         var center = ((Math.min(calcX1,calcX2) + Math.min(calcY1,calcY2))/2);
-        if((center < 130)&& !obsList[i].pickedUp){
+        if((center < 100)&& !obsList[i].pickedUp){ //ADJUST CENTER to be closer to box distance
           
           // console.log(obsList[i].rgb,i);
           this.rgbSum[0] += obsList[i].rgb[0]*3*(100/center);
@@ -193,11 +193,11 @@ class AvatarFixed extends Avatar{
     }
   }
 
-  carry(pickedBox,carryBox){
-    if(pickedBox.pickedUp){
-      console.log("carry",carryBox);
-    }
+  // carry(pickedBox,carryBox){
+  //   if(pickedBox.pickedUp){
+  //     console.log("carry",carryBox);
+  //   }
     
-  }
+  // }
 
 }
