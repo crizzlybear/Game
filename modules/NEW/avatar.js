@@ -114,6 +114,8 @@ class AvatarFixed extends Avatar{
         drawSwipe(ctx,this.x+this.w/2-4,this.y,8,8,this.powerColor,vv);
       }else if(downPressed){
         drawSwipe(ctx,this.x+this.w/2-4,this.y,8,8,this.powerColor,vv);
+      }else{
+        drawSwipe(ctx,this.x+this.w/2-4,this.y,8,8,this.powerColor,vv);
       }
       
       
