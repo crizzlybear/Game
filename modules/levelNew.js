@@ -60,6 +60,7 @@ function level3(canvas,ctx){
   var boxList = [box,b2,b3,b4,b5];
   let obsList = [w1,w3,w4,gate1,];
   var allObj = [w1,w3,w4,gate1,box,b2,b3,b4];
+  var gateList = [gate1,gate2,gate3];
   //DRAW LOOP===========================
   function draw(){
       //menu();
@@ -181,6 +182,7 @@ function level3(canvas,ctx){
       /*UI*/
       gameUI.drawEnergyBar(ctx,fixedAvatar);
       gameUI.drawHealthBar(ctx,fixedAvatar);
+      gameUI.drawCount(ctx,gateList);
       // inventoryBox.drawInventory(ctx,inventory);//TOGGLE FOR COLOR DEBUG
       inventoryBox.drawCarriedBox(ctx,fixedAvatar,inventory,boxImg);
       

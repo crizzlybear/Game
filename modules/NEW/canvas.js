@@ -107,4 +107,13 @@ class GameStats{
         
     }
 
+    
+    drawCount(ctx,gateList){
+        var text = `R:${gateList[0].score} G:${gateList[1].score} B:${gateList[2].score}`;
+        ctx.font = "bold 10px Arial";
+        ctx.fillStyle = "black";
+        ctx.shadowColor="transparent";
+        ctx.fillText(text, 0, 50);
+        
+    }  
 }
