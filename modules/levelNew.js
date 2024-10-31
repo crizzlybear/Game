@@ -183,6 +183,7 @@ function level3(canvas,ctx){
       gameUI.drawEnergyBar(ctx,fixedAvatar);
       gameUI.drawHealthBar(ctx,fixedAvatar);
       gameUI.drawCount(ctx,gateList);
+      gameUI.drawObjective(ctx,gateList);
       // inventoryBox.drawInventory(ctx,inventory);//TOGGLE FOR COLOR DEBUG
       inventoryBox.drawCarriedBox(ctx,fixedAvatar,inventory,boxImg);
       

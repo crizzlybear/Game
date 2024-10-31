@@ -46,6 +46,12 @@ class GameStats{
         this.y = y;
         this.w = w;
         this.h = h;
+        
+        this.targetScore=0;
+        this.targetValue=1;
+        this.prevScore=0;
+        this.completedTasks=0;
+        this.gateIndex=0;
     }
 
     
@@ -116,4 +122,24 @@ class GameStats{
         ctx.fillText(text, 0, 50);
         
     }  
+    drawObjective(ctx,gateList){
+        var text = `${gateList[this.gateIndex].gateKeyReq}: ${this.targetScore}/${this.targetValue}`;
+        var text2 = `Completed: ${this.completedTasks}`;
+        if(gateList[this.gateIndex].score > this.prevScore){
+            this.targetScore++;
+        }
+        this.prevScore = gateList[this.gateIndex].score;
+        if(this.targetScore==this.targetValue){
+            this.completedTasks++;
+            this.targetScore=0;
+            this.targetValue = Math.round(Math.random()*5);
+            this.gateIndex = Math.round(Math.random()*2);
+        }
+        
+        ctx.font = "bold 10px Arial";
+        ctx.fillStyle = "red";
+        ctx.shadowColor="transparent";
+        ctx.fillText(text, 0, 70);
+        ctx.fillText(text2, 0, 80);
+    }
 }
