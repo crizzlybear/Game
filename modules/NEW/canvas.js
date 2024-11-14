@@ -96,23 +96,7 @@ class GameStats{
             drawItem(ctx,this.x+(i*this.w),this.y, this.w,this.h, inventory[0]);
         }
     }
-    drawCarriedBox(ctx,avatarInst,inventory,boxImg){
-        function drawItem(ctx,xx,yy,ww,hh){
-            // ctx.beginPath();
-            // ctx.rect(xx,yy,ww,hh);
-            // ctx.fillStyle = setCol;
-            // ctx.fill();
-            ctx.drawImage(boxImg,xx, yy, ww, hh );
-            // ctx.closePath();
-        }
-       
-            if(inventory.length==1){
-                drawItem(ctx,avatarInst.x,avatarInst.y, 30,30);
-            }
-           
-        
-    }
-
+    
     
     drawCount(ctx,gateList){
         var text = `R:${gateList[0].score} G:${gateList[1].score} B:${gateList[2].score}`;

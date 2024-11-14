@@ -138,12 +138,6 @@ function level3(canvas,ctx){
       if(!b5.pickedUp&&b5.visible){b5.drawObj_BGFixed(moveableBG)}
       */
       
-      
-      
-      
-      // fixedAvatar.carry(box,b4);
-      // fixedAvatar.carry(b2,b4);
-      // fixedAvatar.carry(b3,b4);
       /*5.AVATAR COLLISIONS*/
       if(rightPressed||leftPressed||upPressed||downPressed){
         w1.collisionObj(moveableBG,fixedAvatar);
@@ -185,7 +179,7 @@ function level3(canvas,ctx){
       gameUI.drawCount(ctx,gateList);
       gameUI.drawObjective(ctx,gateList);
       // inventoryBox.drawInventory(ctx,inventory);//TOGGLE FOR COLOR DEBUG
-      inventoryBox.drawCarriedBox(ctx,fixedAvatar,inventory,boxImg);
+      fixedAvatar.drawCarriedBox(ctx,inventory,boxImg);
       
       /*Move BG LAST to prevent lag */
       moveableBG.moveBG(canvas, fixedAvatar);

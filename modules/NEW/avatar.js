@@ -224,13 +224,6 @@ class AvatarFixed extends Avatar{
     }
   }
 
-  // carry(pickedBox,carryBox){
-  //   if(pickedBox.pickedUp){
-  //     console.log("carry",carryBox);
-  //   }
-    
-  // }
-
   drawAttack(ctx,rate){
     //maybe create another ctx to act as a mask
     function drawSwipe(ctx,xx,yy,ww,hh){
@@ -258,6 +251,18 @@ class AvatarFixed extends Avatar{
       
       
     }
+    
+  }
+
+  drawCarriedBox(ctx,inventoryList,boxImg){
+    function drawItem(ctx,xx,yy,ww,hh){
+        ctx.drawImage(boxImg,xx, yy, ww, hh );
+    }
+   
+        if(inventoryList.length==1){
+            drawItem(ctx,this.x,this.y, 30,30);
+        }
+       
     
   }
 
