@@ -21,6 +21,9 @@
      whImg.src = "images/warehouse.png";
      let en = new Image();
      en.src = "images/enemy1.png";
+    let itemImg = new Image();
+    itemImg.crossOrigin = "anonymous";
+    itemImg.src = "images/items.png";
     let stairsImg = new Image();
     stairsImg.src = "images/stairs.png";
     var correctSound = new Audio();
@@ -39,7 +42,7 @@ function level3(canvas,ctx){
   var w5 = new GameObjectLocked(ctx,400,400,70,100,"#F0F0F0");
   let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
   let moveableBG = new BGLocked(600,631);
-  var item1 = new GameObjectInteractableLocked(ctx,350,50,20,20);
+  var item1 = new GameObjectInteractableLocked(ctx,350,50,30,25);
   var box = new GameObjectInteractableLocked(ctx,0,200,30,30,[255,0,0],"red");
   var b2 = new GameObjectInteractableLocked(ctx,-125,200,30,30,[0,255,0],"green");
   var b3 = new GameObjectInteractableLocked(ctx,600,500,30,30,[0,0,255],"blue");
@@ -91,8 +94,8 @@ function level3(canvas,ctx){
       w3.drawObj_BGFixed(moveableBG);
       w4.drawObj_BGFixed(moveableBG);
      
-      item1.drawObj_BGFixed(moveableBG);
-      
+      // item1.drawObj_BGFixed(moveableBG);
+      item1.drawItemImg(ctx,itemImg,moveableBG,15,12);
       box.animateThis(rate,0,200,300,300);
       b2.animateThis(rate,0,200,300,300);
       b4.animateThis(rate,0,200,300,300);

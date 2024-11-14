@@ -73,6 +73,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     this.rgb = rgb;
     this.key = key;
     this.visible=true;
+    this.frameW=0;
   }
   setNewRGBandColor(){
     var rgbList = [[255,0,0],[0,255,0],[0,0,255],[0,0,0]];
@@ -138,11 +139,14 @@ class GameObjectInteractableLocked extends GameObjectLocked{
       avatarInst.energy=1000;
       //this.col = "#808080";
       this.col = "#71ffff";
+      this.frameW=30;
       var coord = Math.round(Math.random()*(randomPositions.length-1));
       console.log(coord);
       this.x = randomPositions[coord][0];
       this.y=randomPositions[coord][1];
     }else{
+      // this.frameW=30;
+      this.frameW=0;
       this.col = "#ffffff";
     }
   }
@@ -193,4 +197,14 @@ class GameObjectInteractableLocked extends GameObjectLocked{
        //push next color
      }
   }
+
+
+  drawItemImg(ctx,imgName,bgInst,frameW,frameH){
+    //height layer  
+    //console.log("drawn", bgInst.bgX,bgInst.bgY);
+    // this.frameW=30;
+    ctx.drawImage(imgName,0+this.frameW,0,frameW,frameH, this.x-bgInst.bgX, this.y-bgInst.bgY, this.w, this.h);
+   
+  }
+
 }
