@@ -37,7 +37,7 @@ function level3(canvas,ctx){
   var w3 = new GameObjectLocked(ctx,230,270,70,100,"#F0F0F0");
   var w4 = new GameObjectLocked(ctx,400,500,200,70,"#F0F0F0");
   var w5 = new GameObjectLocked(ctx,400,400,70,100,"#F0F0F0");
-  let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2,50,50);
+  let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
   let moveableBG = new BGLocked(600,631);
   var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
   var box = new GameObjectInteractableLocked(ctx,0,200,30,30,[255,0,0],"red");
@@ -192,35 +192,23 @@ function level3(canvas,ctx){
       /*ANIMATION FRAME RATE*/
       rate = (rate+1)%10;//let this be frame rate, e.g if rate == 3, only every 1 out of every 100 frames will be called.
       
-      /*LOAD IF IN BOUNDS
-      // if(bgX>w1.x+w1.w || bgY>w1.y+w1.h){
-      //   //check out of bounds
-      //   console.log("out of bounds");
-      // }
-      */
       // openMenu(canvas,ctx);
-      if(fixedAvatar.health>0){
-        requestAnimationFrame(draw);
-      }else{
-        requestAnimationFrame(gameOver);
+      if(fixedAvatar.health<0){
+        drawText(ctx, 110,150,48,"black","GAME OVER");
+        ctx.filter = 'grayscale(1)';
+        if(shiftPressed){
+          fixedAvatar.health=1000; 
+          ctx.filter = 'grayscale(0)'; 
+        }
       }
+      requestAnimationFrame(draw);
+     
   }//===================================
 
-
-  function gameOver(){
-    //This has no animation, just 1 frame
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.imageSmoothingEnabled = false;
-    drawMenu(canvas,ctx);
-    drawText(ctx, 110,150,48,"black","GAME OVER");
-    drawText(ctx, 80,200,20,"black","Press any key to continue...");
-  }//
+ 
 
   /*EXECUTE */
-  if(fixedAvatar.health>0){
     requestAnimationFrame(draw);
-  }else{
-    gameOver();
-  }
+
   
 }
