@@ -133,10 +133,15 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let leftBorder=this.x -10;
     let topBorder=this.y - 10;
     let botBorder=this.y+this.h + 10;
+    let randomPositions = [[0,50],[400,80],[380,220],[200,510],[300,550]];
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
       avatarInst.energy=1000;
       //this.col = "#808080";
       this.col = "#71ffff";
+      var coord = Math.round(Math.random()*(randomPositions.length-1));
+      console.log(coord);
+      this.x = randomPositions[coord][0];
+      this.y=randomPositions[coord][1];
     }else{
       this.col = "#ffffff";
     }

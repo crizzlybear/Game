@@ -39,7 +39,7 @@ function level3(canvas,ctx){
   var w5 = new GameObjectLocked(ctx,400,400,70,100,"#F0F0F0");
   let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
   let moveableBG = new BGLocked(600,631);
-  var item1 = new GameObjectInteractableLocked(ctx,300,50,20,20);
+  var item1 = new GameObjectInteractableLocked(ctx,350,50,20,20);
   var box = new GameObjectInteractableLocked(ctx,0,200,30,30,[255,0,0],"red");
   var b2 = new GameObjectInteractableLocked(ctx,-125,200,30,30,[0,255,0],"green");
   var b3 = new GameObjectInteractableLocked(ctx,600,500,30,30,[0,0,255],"blue");
