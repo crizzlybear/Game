@@ -17,8 +17,6 @@ class Avatar{
     this.level=0;
   }
 
- 
-
   drawAvatar(ctx,updateX,updateY) {
     //console.log("updateX:", updateX);
     ctx.beginPath();
@@ -79,14 +77,6 @@ class Avatar{
   }
 
 
-}//end Avatar
-
-class AvatarFixed extends Avatar{
-  constructor(avatarX,avatarY,avatarW,avatarH){
-    super(avatarX,avatarY,avatarW,avatarH);
-  }
-  
- 
   usePowerColorParticle(ctx){
     //maybe create another ctx to act as a mask
     function drawSwipe(ctx,xx,yy,ww,hh,color,vv){
@@ -251,4 +241,5 @@ class AvatarFixed extends Avatar{
     
   }
 
-}
+
+}//end Avatar
