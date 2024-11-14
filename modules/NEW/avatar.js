@@ -42,10 +42,10 @@ class Avatar{
   }
  
 
-  switchSprite(ctx, rate){ 
+  switchSprite(ctx, rate, frameW, frameH){ 
     
     function drawSprite(updateX,updateY,avatarW,avatarH,n){
-            ctx.drawImage(av,n*avDiv,0,avDiv,avH,updateX,updateY,avatarW, avatarH);//1,2,3,4=part of image you want to show //5,6,7,8 how to display
+            ctx.drawImage(av,n*frameW,0,frameW,frameH,updateX,updateY,avatarW, avatarH);//1,2,3,4=part of image you want to show //5,6,7,8 how to display
             /*if fixed, updateX and updateY are constant,
             if moves, updateX = avatarX, updateY = avatarY. avatarX,avatarY is updated by moveFree()*/
         }
@@ -120,22 +120,7 @@ class AvatarFixed extends Avatar{
       
       
     }
-    // if(powerOn&&this.energy>0){
-    //   this.energy=this.energy-1;
-    //   ctx.beginPath();  
-    //   ctx.rect(this.x,this.y,10,10);
-    //   this.v = (this.v+1)%50;
-    //   var vv = 50-this.v;
-    //   ctx.rect(this.x+(vv)%25,this.y+(vv)%40,5,5)
-    //   ctx.rect(this.x-(vv)%25,this.y-(vv)%50,5,5)
-    //   ctx.rect(this.x-(vv)%40,this.y-(vv)%30,5,5)
-    //   ctx.rect(this.x-(-vv)%15,this.y-(vv)%40,5,5)
-    //   // console.log(vv);
-    //   ctx.fillStyle = this.powerColor;
-    //   ctx.fill();
-    //   ctx.closePath();
-      
-    // }
+ 
     
   }
 
