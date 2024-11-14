@@ -53,9 +53,9 @@ function level3(canvas,ctx){
   var inventory = new Array();
   var inventoryBox = new GameStats(300,280,15,15);
 
-  var gate1 = new Gate(ctx,580,160,50,50,"red");
-  var gate2 = new Gate(ctx,0,550,50,50,"green");
-  var gate3 = new Gate(ctx,300,0,50,50,"blue");
+  var gate1 = new Gate(ctx,550,0,50,10,"red");
+  var gate2 = new Gate(ctx,0,0,50,10,"green");
+  var gate3 = new Gate(ctx,300,0,50,10,"blue");
 
   var boxList = [box,b2,b3,b4,b5];
   let obsList = [w1,w3,w4,gate1,];
