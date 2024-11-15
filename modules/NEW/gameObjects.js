@@ -137,7 +137,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let botBorder=this.y+this.h + 10;
     let randomPositions = [[0,50],[400,80],[380,220],[200,510],[300,550]];
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
-      this.energy-=10;
+      this.energy = Math.max(this.energy-150,0);
       avatarInst.energy = Math.min(avatarInst.energy+10,1000);
 
       //this.col = "#808080";
@@ -158,7 +158,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     }
   }
   
-  animateThis(rate,startX,startY,repeatW,repeatH){
+  animateLPath(rate,startX,startY,repeatW,repeatH){
     if(rate==1){ 
       if(this.x >repeatW-this.w){
         this.y=(this.y+2);
@@ -181,7 +181,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
      }
   }
 
-  animateThis2(rate,startX,startY,repeatW,repeatH){
+  animateLPathReverse(rate,startX,startY,repeatW,repeatH){
     if(rate==1){
 
       if(this.x <repeatW-this.w){
@@ -214,8 +214,8 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     var imgH = this.h;
 
     if(this.frameW!=0){
-      imgW=  this.w*(0.5+(this.energy/500));
-      imgH = this.h*(0.5+(this.energy/500));
+      imgW=  this.w*((0.5+this.energy/500));
+      imgH = this.h*((0.5+this.energy/500));
     }
     ctx.drawImage(imgName,0+this.frameW,0,frameW,frameH, this.x-bgInst.bgX, this.y-bgInst.bgY, imgW, imgH);
    

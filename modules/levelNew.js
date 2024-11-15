@@ -56,8 +56,8 @@ function level3(canvas,ctx,canvasUI,ctxUI){
   var inventory = new Array();
   var inventoryBox = new GameStats(300,280,15,15);
 
-  var gate1 = new Gate(ctx,550,0,50,10,"red");
-  var gate2 = new Gate(ctx,0,0,50,10,"green");
+  var gate1 = new Gate(ctx,350,0,50,10,"red");
+  var gate2 = new Gate(ctx,250,0,50,10,"green");
   var gate3 = new Gate(ctx,300,0,50,10,"blue");
 
   var boxList = [box,b2,b3,b4,b5];
@@ -96,11 +96,11 @@ function level3(canvas,ctx,canvasUI,ctxUI){
      
       // item1.drawObj_BGFixed(moveableBG);
       item1.drawItemImg(ctx,itemImg,moveableBG,15,12);
-      box.animateThis(rate,0,200,300,300);
-      b2.animateThis(rate,0,200,300,300);
-      b4.animateThis(rate,0,200,300,300);
-      b3.animateThis2(rate,600,500,(600-200+30),(500-100));
-      b5.animateThis2(rate,600,500,(600-200+30),(500-100));
+      box.animateLPath(rate,0,200,300,300);
+      b2.animateLPath(rate,0,200,300,300);
+      b4.animateLPath(rate,0,200,300,300);
+      b3.animateLPathReverse(rate,600,500,(600-200+30),(500-100));
+      b5.animateLPathReverse(rate,600,500,(600-200+30),(500-100));
 
       gate1.drawObj_BGFixed(moveableBG);
       gate2.drawObj_BGFixed(moveableBG);
