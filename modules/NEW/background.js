@@ -30,7 +30,7 @@ class BGLocked extends BG{
       } else if(upPressed){
         this.bgY = Math.max(this.bgY - avatarInst.speed, 0-(0.5*canvas.height));
       } else if(downPressed){
-        this.bgY = Math.min(this.bgY + avatarInst.speed, this.bgH -(canvas.height/2) - avatarInst.h);
+        this.bgY = Math.min(this.bgY + avatarInst.speed, this.bgH -(canvas.height/2) - avatarInst.h+20);
       }
     }
     drawPattern(ctx,tile){

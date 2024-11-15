@@ -36,11 +36,11 @@
 function level3(canvas,ctx,canvasUI,ctxUI){
  
   
-  var w1 = new GameObjectLocked(ctx,0,200,300,70,"#F0F0F0");//48,100
+  var w1 = new GameObjectLocked(ctx,0,200,300,70,"rgb(191, 184, 188)");//48,100
   // var w2 = new GameObjectLocked(ctx,300,-50,100,50,"black");
-  var w3 = new GameObjectLocked(ctx,230,270,70,100,"#F0F0F0");
-  var w4 = new GameObjectLocked(ctx,400,500,200,70,"#F0F0F0");
-  var w5 = new GameObjectLocked(ctx,400,400,70,100,"#F0F0F0");
+  var w3 = new GameObjectLocked(ctx,230,270,70,100,"rgb(191, 184, 188)");
+  var w4 = new GameObjectLocked(ctx,400,500,200,70,"rgb(191, 184, 188)");
+  var w5 = new GameObjectLocked(ctx,400,400,70,100,"rgb(191, 184, 188)");
   var topWall = new GameObjectLocked(ctx,0,-100,600,100,"rgb(106, 100, 117)");
   let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
   let moveableBG = new BGLocked(600,631);
