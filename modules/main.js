@@ -3,7 +3,7 @@
 //All document elements are here
 function main(){
   var canvas = document.getElementById("myCanvas");
-  var ctx = canvas.getContext("2d");
+  var ctx = canvas.getContext("2d",{alpha: false});
 
   var canvasUI = document.getElementById("canvasUI");
   var ctxUI = canvasUI.getContext("2d");
