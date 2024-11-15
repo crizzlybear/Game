@@ -4,12 +4,15 @@
 function main(){
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
+
+  var canvasUI = document.getElementById("canvasUI");
+  var ctxUI = canvasUI.getContext("2d");
   document.addEventListener("keydown", keyDownHandler, false);
   document.addEventListener("keyup", keyUpHandler, false);
   
   //level1(canvas,ctx);
   //level2(canvas,ctx);
-  level3(canvas,ctx);
+  level3(canvas,ctx,canvasUI,ctxUI);
 }
 //KEY CONTROLS
 function keyDownHandler(e) {

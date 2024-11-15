@@ -3,18 +3,21 @@
     margin: 0;
   }
   canvas {
-    background: #eee;
+    /* background: #eee; */
     display: block;
     margin: 0 auto;
+    position: absolute;
+    /* width: 50%; */
+    display: inline;
+    margin: auto;
+    top:0;
+    /* bottom: 0; */
+    left: 0;
+    right: 0;
   }
-  .overlap{
-    position:absolute;
-    background:lightblue;
-    width:480px;
-    height:100px;
-    z-index: 100;
-    top:220px;
-    left:25%;
-    visibility: none;
-    /* toggle hidden */
+  #myCanvas{
+    z-index:1;
+  }
+  #canvasUI{
+    z-index:2;
   }

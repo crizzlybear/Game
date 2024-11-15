@@ -32,7 +32,7 @@
     enemySound.src = "images/Strange.wav";
     var pickupSound = new Audio();
     pickupSound.src = "images/Voice2.wav";
-function level3(canvas,ctx){
+function level3(canvas,ctx,canvasUI,ctxUI){
  
   
   var w1 = new GameObjectLocked(ctx,0,200,300,70,"#F0F0F0");//48,100
@@ -70,7 +70,7 @@ function level3(canvas,ctx){
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.imageSmoothingEnabled = false;
       setShadow(ctx);
-
+      ctxUI.clearRect(0, 0, canvasUI.width, canvasUI.height);//Should check if there is a change in UI before calling
       /*1.BACKGROUND*/
       moveableBG.drawGradient(ctx);
       /*Bg options:
@@ -177,10 +177,10 @@ function level3(canvas,ctx){
       gate2.unlock(moveableBG,fixedAvatar,inventory,correctSound);
       gate3.unlock(moveableBG,fixedAvatar,inventory,correctSound);
       /*UI*/
-      gameUI.drawEnergyBar(ctx,fixedAvatar);
-      gameUI.drawHealthBar(ctx,fixedAvatar);
-      gameUI.drawCount(ctx,gateList);
-      gameUI.drawObjective(ctx,gateList);
+      gameUI.drawEnergyBar(ctxUI,fixedAvatar);
+      gameUI.drawHealthBar(ctxUI,fixedAvatar);
+      gameUI.drawCount(ctxUI,gateList);
+      gameUI.drawObjective(ctxUI,gateList);
       // inventoryBox.drawInventory(ctx,inventory);//TOGGLE FOR COLOR DEBUG
       fixedAvatar.drawCarriedBox(ctx,inventory,boxImg);
       
@@ -197,7 +197,7 @@ function level3(canvas,ctx){
       
       // openMenu(canvas,ctx);
       if(fixedAvatar.health<0){
-        drawText(ctx, 110,150,48,"black","GAME OVER");
+        drawText(ctxUI, 110,150,48,"black","GAME OVER");
         ctx.filter = 'grayscale(1)';
         if(shiftPressed){
           fixedAvatar.health=1000; 
