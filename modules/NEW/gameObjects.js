@@ -38,19 +38,19 @@ class GameObjectLocked extends GameObject{
       switch(n){
         case n=0:
           console.log("from right");
-          bgInst.bgX = bgInst.bgX+10;
+          bgInst.bgX = bgInst.bgX+avatarInst.speed;
           break;
         case n=1:
           console.log("from bottom"); 
-          bgInst.bgY = bgInst.bgY+10;
+          bgInst.bgY = bgInst.bgY+avatarInst.speed;
           break;
         case n=2:
           console.log("from left");
-          bgInst.bgX=bgInst.bgX-10;
+          bgInst.bgX=bgInst.bgX-avatarInst.speed;
           break;
         case n=3:
           console.log("from top"); 
-          bgInst.bgY = bgInst.bgY-10;
+          bgInst.bgY = bgInst.bgY-avatarInst.speed;
           break;
         default:
           console.log("nothing...");
