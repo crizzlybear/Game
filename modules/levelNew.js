@@ -40,6 +40,7 @@ function level3(canvas,ctx,canvasUI,ctxUI){
   var w3 = new GameObjectLocked(ctx,230,270,70,100,"#F0F0F0");
   var w4 = new GameObjectLocked(ctx,400,500,200,70,"#F0F0F0");
   var w5 = new GameObjectLocked(ctx,400,400,70,100,"#F0F0F0");
+  var topWall = new GameObjectLocked(ctx,0,-100,600,100,"rgb(106, 100, 117)");
   let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
   let moveableBG = new BGLocked(600,631);
   var item1 = new GameObjectInteractableLocked(ctx,350,50,30,25);
@@ -56,9 +57,9 @@ function level3(canvas,ctx,canvasUI,ctxUI){
   var inventory = new Array();
   var inventoryBox = new GameStats(300,280,15,15);
 
-  var gate1 = new Gate(ctx,350,0,50,10,"red");
-  var gate2 = new Gate(ctx,250,0,50,10,"green");
-  var gate3 = new Gate(ctx,300,0,50,10,"blue");
+  var gate1 = new Gate(ctxUI,380,0,50,5,"red");
+  var gate2 = new Gate(ctxUI,220,0,50,5,"green");
+  var gate3 = new Gate(ctxUI,300,0,50,5,"blue");
 
   var boxList = [box,b2,b3,b4,b5];
   let obsList = [w1,w3,w4,gate1,];
@@ -80,7 +81,8 @@ function level3(canvas,ctx,canvasUI,ctxUI){
         //stair1.drawObj_BGFixed(moveableBG);
       */
       
-      
+        topWall.drawObj_BGFixed(moveableBG);
+        topWall.drawWallDecor(ctxUI,moveableBG,gateList);
       /*2.AVATAR*/
       fixedAvatar.run();
       fixedAvatar.switchSprite(ctx, rate,64,64);
@@ -88,6 +90,7 @@ function level3(canvas,ctx,canvasUI,ctxUI){
       // fixedAvatar.loadNear(allObj,moveableBG,rate);
       
       /*3.DRAW OBJECT BASE - layer above avatar and moveBG so there is no lag*/
+      
       w5.drawObj_BGFixed(moveableBG);
       w1.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
       // w2.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
