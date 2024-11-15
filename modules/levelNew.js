@@ -82,8 +82,8 @@ function level3(canvas,ctx,canvasUI,ctxUI){
       
       
       /*2.AVATAR*/
-      fixedAvatar.switchSprite(ctx, rate,64,64);
       fixedAvatar.run();
+      fixedAvatar.switchSprite(ctx, rate,64,64);
       fixedAvatar.drawAttack(ctx,rate);
       // fixedAvatar.loadNear(allObj,moveableBG,rate);
       
