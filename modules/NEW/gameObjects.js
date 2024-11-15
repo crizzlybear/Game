@@ -234,12 +234,15 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     // this.frameW=30;
     var imgW = this.w;
     var imgH = this.h;
-
+    var imgX = this.x-bgInst.bgX;
+    var imgY = this.y-bgInst.bgY;
     if(this.frameW!=0){
-      imgW=  this.w*((0.5+this.energy/500));
-      imgH = this.h*((0.5+this.energy/500));
+      imgX = imgX - (2*this.energy/150)*frameW;
+      imgW=  this.w*((1+(this.energy/150)));
+      imgH = this.h*((1+(this.energy/150)));
+      
     }
-    ctx.drawImage(imgName,0+this.frameW,0,frameW,frameH, this.x-bgInst.bgX, this.y-bgInst.bgY, imgW, imgH);
+    ctx.drawImage(imgName,0+this.frameW,0,frameW,frameH, imgX, imgY, imgW, imgH);
    
   }
 

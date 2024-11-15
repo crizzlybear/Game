@@ -23,7 +23,7 @@
      en.src = "images/enemy1.png";
     let itemImg = new Image();
     itemImg.crossOrigin = "anonymous";
-    itemImg.src = "images/items.png";
+    itemImg.src = "images/items3.png";
     let stairsImg = new Image();
     stairsImg.src = "images/stairs.png";
     
