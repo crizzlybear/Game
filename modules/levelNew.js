@@ -190,7 +190,7 @@ function level3(canvas,ctx,canvasUI,ctxUI){
 
       /*AVATAR EFFECTS*/
       fixedAvatar.getClosestItemColors(boxList,moveableBG,rate);
-      fixedAvatar.usePowerColorParticle(ctx, moveableBG);
+      fixedAvatar.usePowerColorParticle(ctxUI, moveableBG);
 
       /*ANIMATION FRAME RATE*/
       rate = (rate+1)%10;//let this be frame rate, e.g if rate == 3, only every 1 out of every 100 frames will be called.
