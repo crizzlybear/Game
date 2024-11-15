@@ -57,16 +57,22 @@ class GameStats{
     
     
     drawCount(ctx,gateList){
-        var text = `R:${gateList[0].score} G:${gateList[1].score} B:${gateList[2].score}`;
+        ctx.beginPath();
+        ctx.rect(0,40,70,15);
+        ctx.fillStyle = "rgba(255,255,255,0.5)";
+        ctx.fill();
+        ctx.closePath();
+
+        var text = ` R:${gateList[0].score} G:${gateList[1].score} B:${gateList[2].score}`;
         ctx.font = "bold 10px Arial";
         ctx.fillStyle = "black";
-        ctx.shadowColor="transparent";
+        // ctx.shadowColor="transparent";
         ctx.fillText(text, 0, 50);
         
     }  
     drawObjective(ctx,gateList){
-        var text = `${gateList[this.gateIndex].gateKeyReq}: ${this.targetScore}/${this.targetValue}`;
-        var text2 = `Completed: ${this.completedTasks}`;
+        var text = ` ${gateList[this.gateIndex].gateKeyReq}: ${this.targetScore}/${this.targetValue}`;
+        var text2 = ` Completed: ${this.completedTasks}`;
         if(gateList[this.gateIndex].score > this.prevScore){
             this.targetScore++;
         }
@@ -80,7 +86,7 @@ class GameStats{
         
         ctx.font = "bold 10px Arial";
         ctx.fillStyle = "red";
-        ctx.shadowColor="transparent";
+        // ctx.shadowColor="transparent";
         ctx.fillText(text, 0, 70);
         ctx.fillText(text2, 0, 80);
     }
