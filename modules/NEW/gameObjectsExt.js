@@ -36,15 +36,15 @@ class Stairs extends GameObject{
         let n=collide.indexOf(Math.min(...collide));
         switch(n){
             case n=0:
-            console.log("from top");
+            // console.log("from top");
             bgInst.bgY = bgInst.bgY-5;
             break;
             case n=1:
-            console.log("from bottom"); 
+            // console.log("from bottom"); 
             bgInst.bgY = bgInst.bgY+5;
             break;
             default:
-            console.log("nothing...");
+            // console.log("nothing...");
             break;
         } //end switch
         }else{//console.log("outside");
@@ -56,15 +56,15 @@ class Stairs extends GameObject{
         let n=collide.indexOf(Math.min(...collide));
         switch(n){
             case n=0:
-            console.log("from top");
+            // console.log("from top");
             bgInst.bgY = bgInst.bgY-5;
             break;
             case n=1:
-            console.log("from bottom"); 
+            // console.log("from bottom"); 
             bgInst.bgY = bgInst.bgY+5;
             break;
             default:
-            console.log("nothing...");
+            // console.log("nothing...");
             break;
         } //end switch
         }else{//console.log("outside");

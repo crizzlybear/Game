@@ -30,30 +30,30 @@ class GameObjectLocked extends GameObject{
     let topBorder=this.y;
     let botBorder=this.y+this.h;
     if((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h)){
-      console.log("inside");
+      // console.log("inside");
       let collide = [Math.abs((rightBorder-bgInst.bgX)-avatarInst.x),Math.abs((botBorder-bgInst.bgY)-avatarInst.y),Math.abs((leftBorder-bgInst.bgX)-(avatarInst.x+ avatarInst.w)), Math.abs((topBorder-bgInst.bgY)-(avatarInst.y+ avatarInst.h))];
       let n=collide.indexOf(Math.min(...collide));
-      console.log(collide);
-      console.log("X:"+bgInst.bgX +" Y:"+bgInst.bgY);
+      // console.log(collide);
+      // console.log("X:"+bgInst.bgX +" Y:"+bgInst.bgY);
       switch(n){
         case n=0:
-          console.log("from right");
+          // console.log("from right");
           bgInst.bgX = bgInst.bgX+avatarInst.speed;
           break;
         case n=1:
-          console.log("from bottom"); 
+          // console.log("from bottom"); 
           bgInst.bgY = bgInst.bgY+avatarInst.speed;
           break;
         case n=2:
-          console.log("from left");
+          // console.log("from left");
           bgInst.bgX=bgInst.bgX-avatarInst.speed;
           break;
         case n=3:
-          console.log("from top"); 
+          // console.log("from top"); 
           bgInst.bgY = bgInst.bgY-avatarInst.speed;
           break;
         default:
-          console.log("nothing...");
+          // console.log("nothing...");
           break;
       } //end switch
     }else{//console.log("outside");
@@ -91,7 +91,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let topBorder=this.y - 10;
     let botBorder=this.y+this.h + 10;
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
-      console.log("pickedup");
+      // console.log("pickedup");
       this.color = "#71ffff";
     }else{
       this.color = "#ffffff";
