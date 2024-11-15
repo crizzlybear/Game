@@ -210,7 +210,14 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     //height layer  
     //console.log("drawn", bgInst.bgX,bgInst.bgY);
     // this.frameW=30;
-    ctx.drawImage(imgName,0+this.frameW,0,frameW,frameH, this.x-bgInst.bgX, this.y-bgInst.bgY, this.w, this.h);
+    var imgW = this.w;
+    var imgH = this.h;
+
+    if(this.frameW!=0){
+      imgW=  this.w*(0.5+(this.energy/500));
+      imgH = this.h*(0.5+(this.energy/500));
+    }
+    ctx.drawImage(imgName,0+this.frameW,0,frameW,frameH, this.x-bgInst.bgX, this.y-bgInst.bgY, imgW, imgH);
    
   }
 
