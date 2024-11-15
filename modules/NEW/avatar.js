@@ -193,7 +193,7 @@ class Avatar{
   run(){
     if(shiftPressed && this.energy>0){
       // console.log("running");
-      this.energy = Math.max(this.energy-5,0);
+      this.energy = Math.max(this.energy-1,0);
       this.speed = 4;
     }else{
       this.speed = 2;
