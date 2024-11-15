@@ -26,12 +26,13 @@
     itemImg.src = "images/items.png";
     let stairsImg = new Image();
     stairsImg.src = "images/stairs.png";
+    
     var correctSound = new Audio();
-    correctSound.src = "images/Gold1.wav";
+    correctSound.src = "sounds/Gold1.wav";
     var enemySound = new Audio();
-    enemySound.src = "images/Strange.wav";
+    enemySound.src = "sounds/Strange.wav";
     var pickupSound = new Audio();
-    pickupSound.src = "images/Voice2.wav";
+    pickupSound.src = "sounds/Voice2.wav";
 function level3(canvas,ctx,canvasUI,ctxUI){
  
   
