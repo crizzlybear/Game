@@ -133,12 +133,12 @@ function level3(canvas,ctx,canvasUI,ctxUI){
       // w2.drawObjImgLayer(ctx,wallImg,moveableBG,0,25,0,25);
       // w3.drawObjImgLayer(ctx,wallImg,moveableBG,0,0,0,0);
       // w4.drawObjImgLayer(ctx,whImg,moveableBG,0,40,0,40);
-
-      if(!box.pickedUp &&box.visible){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
-      if(!b2.pickedUp&&b2.visible){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
-      if(!b3.pickedUp&&b3.visible){b3.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
-      if(!b4.pickedUp&&b4.visible){b4.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
-      if(!b5.pickedUp&&b5.visible){b5.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      
+      if(!box.pickedUp &&box.visible&&box.x>0-box.w){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b2.pickedUp&&b2.visible&&b2.x>0-box.w){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b3.pickedUp&&b3.visible&&b3.x<moveableBG.bgW){b3.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b4.pickedUp&&b4.visible&&b4.x>0-box.w){b4.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b5.pickedUp&&b5.visible&&b5.x<moveableBG.bgW){b5.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       
       machine1.drawObj_BGFixed(moveableBG);
       machine2.drawObj_BGFixed(moveableBG);
