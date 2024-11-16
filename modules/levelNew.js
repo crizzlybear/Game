@@ -41,6 +41,10 @@ function level3(canvas,ctx,canvasUI,ctxUI){
   var w3 = new GameObjectLocked(ctx,230,270,70,100,"rgb(191, 184, 188)");
   var w4 = new GameObjectLocked(ctx,400,500,200,70,"rgb(191, 184, 188)");
   var w5 = new GameObjectLocked(ctx,400,400,70,100,"rgb(191, 184, 188)");
+
+  var machine1 = new GameObjectLocked(ctx,228,320,74,50,"rgb(74, 68, 72)");
+  var machine2 = new GameObjectLocked(ctx,398,400,74,50,"rgb(74, 68, 72)");
+
   var topWall = new GameObjectLocked(ctx,0,-100,600,100,"rgb(106, 100, 117)");
   let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
   let moveableBG = new BGLocked(600,631);
@@ -91,13 +95,13 @@ function level3(canvas,ctx,canvasUI,ctxUI){
       // fixedAvatar.loadNear(allObj,moveableBG,rate);
       
       /*3.DRAW OBJECT BASE - layer above avatar and moveBG so there is no lag*/
-      
+     
       w5.drawObj_BGFixed(moveableBG);
       w1.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
       // w2.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
       w3.drawObj_BGFixed(moveableBG);
       w4.drawObj_BGFixed(moveableBG);
-     
+    
       // item1.drawObj_BGFixed(moveableBG);
       item1.drawItemImg(ctx,itemImg,moveableBG,15,12);
       box.animateLPath(rate,0,200,300,300);
@@ -136,7 +140,8 @@ function level3(canvas,ctx,canvasUI,ctxUI){
       if(!b4.pickedUp&&b4.visible){b4.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       if(!b5.pickedUp&&b5.visible){b5.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       
-      
+      machine1.drawObj_BGFixed(moveableBG);
+      machine2.drawObj_BGFixed(moveableBG);
       /*COLOR BOX DEBUGGING
       if(!box.pickedUp &&box.visible){box.drawObj_BGFixed(moveableBG)}
       if(!b2.pickedUp&&b2.visible){b2.drawObj_BGFixed(moveableBG)}
