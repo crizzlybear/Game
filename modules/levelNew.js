@@ -33,6 +33,9 @@
     enemySound.src = "sounds/Strange.wav";
     var pickupSound = new Audio();
     pickupSound.src = "sounds/Voice2.wav";
+    var itemSound = new Audio();
+    itemSound.src = "sounds/Coin.wav";
+
 function level3(canvas,ctx,canvasUI,ctxUI){
  
   
@@ -175,7 +178,7 @@ function level3(canvas,ctx,canvasUI,ctxUI){
       
 
       /*ITEM and INTERACTABLE PROPERTIES*/
-      item1.getEnergy(moveableBG, fixedAvatar);
+      item1.getEnergy(moveableBG, fixedAvatar, itemSound);
       if(!box.pickedUp&&box.visible){box.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
       if(!b2.pickedUp&&b2.visible){b2.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
       if(!b3.pickedUp&&b3.visible){b3.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};

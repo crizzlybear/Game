@@ -151,7 +151,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
       
     }
   }
-  getEnergy(bgInst, avatarInst){
+  getEnergy(bgInst, avatarInst, soundInst){
     //set pickup area
     //should make this into a function or something
     let rightBorder=this.x+this.w + 10;
@@ -162,7 +162,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
       this.energy = Math.max(this.energy-150,0);
       avatarInst.energy = Math.min(avatarInst.energy+100,1000);
-
+      soundInst.play();
       //this.col = "#808080";
       this.col = "#71ffff";
       this.frameW=30;
