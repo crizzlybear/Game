@@ -1,6 +1,25 @@
 
 //CALLED BY HTML, RUNS UPDATE LOOP
 //All document elements are here
+
+function countDownTimer(){
+  var timeLeft = 60;
+  var elem = document.getElementById("time");
+  
+  var timerId = setInterval(countdown, 1000);
+  
+  function countdown() {
+    if (timeLeft == -1) {
+      clearTimeout(timerId);
+      doSomething();
+    } else {
+      elem.innerText = timeLeft + ' seconds remaining';
+      timeLeft--;
+    }
+  }
+
+}
+
 function main(){
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d",{alpha: false});
@@ -10,6 +29,7 @@ function main(){
   document.addEventListener("keydown", keyDownHandler, false);
   document.addEventListener("keyup", keyUpHandler, false);
   
+  countDownTimer();
   //level1(canvas,ctx);
   //level2(canvas,ctx);
   level1(canvas,ctx,canvasUI,ctxUI);

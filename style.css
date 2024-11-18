@@ -2,6 +2,12 @@
     padding: 0;
     margin: 0;
   }
+  div{
+    position: absolute;
+    /* width: 50%; */
+    z-index:10;
+    font-family:"Lucida Console";
+  }  
   canvas {
     /* background: #eee; */
     display: block;
@@ -21,3 +27,4 @@
   #canvasUI{
     z-index:2;
   }
+ 

@@ -93,6 +93,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     this.frameW=0;
     this.energy=500;
     this.prevX;
+    this.boxSpeed=2;
   }
   setNewRGBandColor(){
     var rgbList = [[255,0,0],[0,255,0],[0,0,255],[0,0,0]];
@@ -184,7 +185,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
   animateLPath(rate,startX,startY,repeatW,repeatH){
     if(rate==1){ 
       if(this.x >repeatW-this.w){
-        this.y=(this.y+2);
+        this.y=(this.y+this.boxSpeed);
         this.x+=0;
         if(this.y>repeatH){this.x=startX;this.y=startY;
           this.setNewRGBandColor();
@@ -208,7 +209,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     if(rate==1){
 
       if(this.x <repeatW-this.w){
-        this.y=(this.y-2);
+        this.y=(this.y-this.boxSpeed);
         this.x+=0;
         if(this.y<repeatH){this.x=startX;this.y=startY;
           this.setNewRGBandColor();
