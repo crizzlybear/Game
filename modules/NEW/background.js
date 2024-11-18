@@ -36,18 +36,7 @@ class BGLocked extends BG{
       }
       
     }
-    drawPattern(ctx,tile){
-      
-      
-      ctx.fillStyle =  ctx.createPattern(tile, "repeat");
-      ctx.beginPath();
-      ctx.rect(-this.bgX,-this.bgY,this.bgW,this.bgH);
-      ctx.translate(-this.bgX,-this.bgY);
-      ctx.fill();
-      ctx.translate(this.bgX,this.bgY);//undo translate so it doesnt smear
-      ctx.closePath();
-      
-    }
+   
     drawGradient(ctx){
       //simple gradient background, gradient follows player but it looks cool
       ctx.beginPath();
@@ -60,45 +49,6 @@ class BGLocked extends BG{
       //end
     }
 
-    drawGradientVignette(ctx){
-      //vignette effect
-      ctx.save();
-      ctx.globalAlpha = 0.55;
-      ctx.beginPath();
-      const grad2 = ctx.createRadialGradient(260, 200, 50, 260, 200, 250);
-      grad2.addColorStop(0,"#3e4e57");//#524f46 #524f46
-     
-      grad2.addColorStop(0.9,"#0c0529");
-      ctx.fillStyle = grad2;
-      ctx.fillRect(-this.bgX,-this.bgY,this.bgW,this.bgH);
-      ctx.closePath();
-
-      //simple gradient background
-      ctx.beginPath();
-      const grad = ctx.createLinearGradient(0,0,0,631);
-      grad.addColorStop(0,"darkgray");
-      grad.addColorStop(1,"BurlyWood");
-      ctx.fillStyle = grad;
-      ctx.fillRect(-this.bgX,-this.bgY,this.bgW,this.bgH);
-      ctx.closePath();
-      //end
-      
-      
-      ctx.restore();
-    }
-
-
-    drawGroundRandom(ctx){
-      ctx.beginPath();
-      ctx.rect(10-this.bgX,10-this.bgY,25,50);
-      ctx.rect(50-this.bgX,40-this.bgY,30,30);
-      ctx.rect(155-this.bgX,320-this.bgY,25,20);
-      ctx.rect(230-this.bgX,140-this.bgY,40,25);
-     ctx.fillStyle = "rgba(194,183,155,0.4)";
-      ctx.fill();
-      // ctx.translate(this.bgX,this.bgY);//undo translate so it doesnt smear
-      ctx.closePath();
-      
-    }
+    
 }
 

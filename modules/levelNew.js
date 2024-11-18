@@ -85,13 +85,7 @@ function level3(canvas,ctx,canvasUI,ctxUI){
       ctxUI.clearRect(0, 0, canvasUI.width, canvasUI.height);//Should check if there is a change in UI before calling
       /*1.BACKGROUND*/
       moveableBG.drawGradient(ctx);
-      /*Bg options:
-        //moveableBG.drawUpdate(ctx);
-        //moveableBG.drawPattern(ctx,tileObj);
-        //moveableBG.drawGroundRandom(ctx);
-        //stair1.drawObj_BGFixed(moveableBG);
-      */
-      
+ 
         topWall.drawObj_BGFixed(moveableBG);
         topWall.drawWallDecor(ctxUI,moveableBG,gateList);
       /*2.AVATAR*/
@@ -124,14 +118,7 @@ function level3(canvas,ctx,canvasUI,ctxUI){
         enemy.enemyHealthBar(ctx,moveableBG);
         enemy.drawFollow(moveableBG,rate);
       }
-      // if(enemy2.health>=0){
-      //   enemy2.enemyHealthBar(ctx,moveableBG);
-      //   enemy2.drawFollow(moveableBG,rate);
-      // }
-      /*Enemy options
-         //enemy.drawObj_BGFixed(moveableBG);
-        / enemy.drawVerticalMovement(moveableBG,100);
-      */
+     
 
       /*4.DRAW OBJECT IMAGE LAYER*/
       

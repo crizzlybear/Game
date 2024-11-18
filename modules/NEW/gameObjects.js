@@ -77,11 +77,6 @@ class GameObjectLocked extends GameObject{
     ctx.fill();
     ctx.closePath();
 
-    // ctx.beginPath();
-    // ctx.rect(this.x-bgInst.bgX+100,this.y-bgInst.bgY+40,10,5);
-    // ctx.fillStyle="red";
-    // ctx.fill();
-    // ctx.closePath();
   }
 
 }
