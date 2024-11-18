@@ -190,10 +190,12 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       // openMenu(canvas,ctx);
       if(fixedAvatar.health<0){
         drawText(ctxUI, 110,150,48,"black","GAME OVER");
+        enemy.health=-1;
         gameOver=true;
         ctx.filter = 'grayscale(1)';
         if(shiftPressed){
-          fixedAvatar.health=1000; 
+          fixedAvatar.health=1000;
+          fixedAvatar.energy=1000;
           ctx.filter = 'grayscale(0)';
           gameOver=false; 
         }
