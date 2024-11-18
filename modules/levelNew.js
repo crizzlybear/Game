@@ -26,7 +26,10 @@
     itemImg.src = "images/items3.png";
     let stairsImg = new Image();
     stairsImg.src = "images/stairs.png";
-    
+    let slashImg = new Image();
+    slashImg.src = "images/slash.png";
+
+
     var correctSound = new Audio();
     correctSound.src = "sounds/Gold1.wav";
     var enemySound = new Audio();
@@ -94,7 +97,7 @@ function level3(canvas,ctx,canvasUI,ctxUI){
       /*2.AVATAR*/
       fixedAvatar.run();
       fixedAvatar.switchSprite(ctx, rate,64,64);
-      fixedAvatar.drawAttack(ctx,rate);
+      fixedAvatar.drawAttack(ctx,rate,slashImg);
       // fixedAvatar.loadNear(allObj,moveableBG,rate);
       
       /*3.DRAW OBJECT BASE - layer above avatar and moveBG so there is no lag*/

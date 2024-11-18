@@ -15,6 +15,7 @@ class Avatar{
     this.health = 1000;
     this.energy = 1000;
     this.level=0;
+    this.j=0;
   }
 
   drawAvatar(ctx,updateX,updateY) {
@@ -200,33 +201,33 @@ class Avatar{
     }
   }
 
-  drawAttack(ctx,rate){
+  drawAttack(ctx,rate,attackImg){
     //maybe create another ctx to act as a mask
-    function drawSwipe(ctx,xx,yy,ww,hh){
-      ctx.beginPath();  
-      ctx.rect(xx,yy,ww,hh);    
-      if(rate==1){
-        ctx.fillStyle = "pink";
-      }else{
-        ctx.fillStyle= "lightblue";
-      }
-      
-      ctx.fill();
-      ctx.closePath();
+    function drawSwipe(ctx,img1,updateX,updateY,avatarW,avatarH,n){
+      // console.log(n);
+      ctx.drawImage(img1,n*32,0,32,32,updateX,updateY,avatarW, avatarH);//1,2,3,4=part of image you want to show //5,6,7,8 how to display
+      /*if fixed, updateX and updateY are constant,
+      if moves, updateX = avatarX, updateY = avatarY. avatarX,avatarY is updated by moveFree()*/
+    }
+    if(rate==1){
+      this.j = (this.j+1)%4;//where 2 is number of frames
+    
     }
     if(attack){
-      if(rightPressed){
-        drawSwipe(ctx,this.x+this.w+30,this.y+this.h/2,10,10,rate);
-      }else if(leftPressed){
-        drawSwipe(ctx,this.x-30,this.y+this.h/2,10,10,rate);
-      }else if(upPressed){
-        drawSwipe(ctx,this.x+this.w/2,this.y-30,10,10,rate);
-      }else if(downPressed){
-        drawSwipe(ctx,this.x+this.w/2,this.y+this.h+30,10,10,rate);
-      }
-      
+      // if(rightPressed){
+      //   drawSwipe(ctx,this.x+this.w+30,this.y+this.h/2,50,50,this.j,attackImg);
+      // }else if(leftPressed){
+      //   drawSwipe(ctx,this.x-30,this.y+this.h/2,50,50,this.j,attackImg);
+      // }else if(upPressed){
+      //   drawSwipe(this.x+this.w+30,this.y-30,50,50,this.j,attackImg);
+      // }else if(downPressed){
+      //   drawSwipe(ctx,this.x+this.w+30,this.y+this.h+30,50,50,this.j,attackImg);
+      // }
+      drawSwipe(ctx,attackImg,this.x,this.y,80,80,this.j);
       
     }
+    
+    
     
   }
 
