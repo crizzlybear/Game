@@ -213,10 +213,12 @@ function level3(canvas,ctx,canvasUI,ctxUI){
       // openMenu(canvas,ctx);
       if(fixedAvatar.health<0){
         drawText(ctxUI, 110,150,48,"black","GAME OVER");
+        gameOver=true;
         ctx.filter = 'grayscale(1)';
         if(shiftPressed){
           fixedAvatar.health=1000; 
-          ctx.filter = 'grayscale(0)'; 
+          ctx.filter = 'grayscale(0)';
+          gameOver=false; 
         }
       }
       requestAnimationFrame(draw);
