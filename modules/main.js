@@ -11,7 +11,6 @@ function countDownTimer(){
   function countdown() {
     if (timeLeft == -1) {
       clearTimeout(timerId);
-      doSomething();
     } else {
       elem.innerText = timeLeft + ' seconds remaining';
       timeLeft--;
