@@ -52,6 +52,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   var enemy = new Enemy(ctx,0,0,50,50);
   // var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
+  let rate2=0;
   var gameUI = new GameStats(20,300,50,10);
 
   var inventory = new Array();
@@ -105,7 +106,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       /*Enemies*/
       if(enemy.health>=0 && enemy.pickedUp){
         enemy.enemyHealthBar(ctx,moveableBG);
-        enemy.drawFollow(moveableBG,rate);
+        enemy.drawFollow(moveableBG,rate,rate2);
       }
      
 
@@ -185,7 +186,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
 
       /*ANIMATION FRAME RATE*/
       rate = (rate+1)%10;//let this be frame rate, e.g if rate == 3, only every 1 out of every 100 frames will be called.
-      
+      rate2 = (rate2+1)%200;
       // openMenu(canvas,ctx);
       if(fixedAvatar.health<0){
         drawText(ctxUI, 110,150,48,"black","GAME OVER");

@@ -14,15 +14,25 @@ class Enemy extends GameObjectLocked{
         this.pickedUp=false;
       }
 
-      drawFollow(bgInst,rate){
+      drawFollow(bgInst,rate,rate2){
       let ctx = this.ctx;
       ctx.beginPath();
-      
+      var rand = Math.round(Math.random()*10);
       var xDist = Math.floor(convertBGXtoAvatar(bgInst.bgX)-this.x);
       var yDist = Math.floor(convertBGYtoAvatar(bgInst.bgY)- this.y );
     
-      var ax = this.x +=(xDist*0.008);//ENEMY SPEED default is 0.01
-      var ay = this.y +=(yDist*0.008);
+      
+      if(rate2<20){
+          ax = this.x +=(xDist*0);//ENEMY SPEED default is 0.01
+          ay = this.y +=(yDist*0);
+         
+      }else if(rate2>=20 && rate2<30){
+        ax = this.x +=(xDist*0.1);//ENEMY SPEED default is 0.01
+        ay = this.y +=(yDist*0.1);
+      }else{
+        var ax = this.x +=(xDist*0.008);//ENEMY SPEED default is 0.01
+        var ay = this.y +=(yDist*0.008);
+      }
       this.newX = ax;
       this.newY = ay;
  
