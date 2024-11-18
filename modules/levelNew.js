@@ -7,25 +7,13 @@
     
     let av = new Image();
       av.src = "images/dogAvatar15.png";
-    let img0 = new Image();
-      img0.crossOrigin = "anonymous";
-      img0.src = "images/buildingLong.png";
-    wallImg = new Image();
-      wallImg.crossOrigin = "anonymous";
-      wallImg.src = "images/wall.png";
     let boxImg = new Image();
       boxImg.crossOrigin = "anonymous";
       boxImg.src = "images/box.png";
-    let whImg = new Image();
-      whImg.crossOrigin = "anonymous";
-     whImg.src = "images/warehouse.png";
      let en = new Image();
      en.src = "images/enemy1.png";
     let itemImg = new Image();
     itemImg.crossOrigin = "anonymous";
-    itemImg.src = "images/items3.png";
-    let stairsImg = new Image();
-    stairsImg.src = "images/stairs.png";
     let slashImg = new Image();
     slashImg.src = "images/slash.png";
 
