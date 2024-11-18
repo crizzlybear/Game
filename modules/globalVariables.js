@@ -9,8 +9,6 @@ let escPressed = false;
 let shiftPressed = false;
 let attack= false;
 let count=0;
-menu = false;
-menuOpen = false;
 let gameOver=false;
 
 let powerOn =false;

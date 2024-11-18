@@ -12,7 +12,7 @@ function main(){
   
   //level1(canvas,ctx);
   //level2(canvas,ctx);
-  level3(canvas,ctx,canvasUI,ctxUI);
+  level1(canvas,ctx,canvasUI,ctxUI);
 }
 //KEY CONTROLS
 function keyDownHandler(e) {
@@ -28,14 +28,6 @@ function keyDownHandler(e) {
   } else if (e.key ==="e"){
     pickup = true;
     powerOn = true;
-  } else if (e.key ==="t"){
-    console.log("t pressed");
-    menu = true;
-    if(menuOpen==false){
-      menuOpen=true;
-    }else{
-      menuOpen=false;
-    }
   }else if(e.key ==="r"){
     attack = true;
   }else if(e.key ==="Shift"){
@@ -58,8 +50,6 @@ function keyUpHandler(e) {
   } else if(e.key === "e"){
     pickup = false;
     powerOn = false;
-  }else if(e.key == "t"){
-    menu=false;
   }else if(e.key ==="r"){
     attack = false;
   }else if(e.key ==="Shift"){

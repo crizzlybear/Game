@@ -28,7 +28,7 @@
     var itemSound = new Audio();
     itemSound.src = "sounds/Coin.wav";
 
-function level3(canvas,ctx,canvasUI,ctxUI){
+function level1(canvas,ctx,canvasUI,ctxUI){
  
   
   var w1 = new GameObjectLocked(ctx,0,200,300,70,"rgb(191, 184, 188)");//48,100
