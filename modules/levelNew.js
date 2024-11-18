@@ -14,6 +14,7 @@
      en.src = "images/enemy1.png";
     let itemImg = new Image();
     itemImg.crossOrigin = "anonymous";
+    itemImg.src = "images/items3.png";
     let slashImg = new Image();
     slashImg.src = "images/slash.png";
 
