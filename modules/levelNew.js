@@ -98,6 +98,9 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       w4.drawObj_BGFixed(moveableBG);
     
       // item1.drawObj_BGFixed(moveableBG);
+      if(rate==0){
+        boxSpeed = Math.min(boxSpeed+0.01,5);
+      }
       item1.drawItemImg(ctx,itemImg,moveableBG,15,12);
       box.animateLPath(rate,0,200,300,300);
       b2.animateLPath(rate,0,200,300,300);

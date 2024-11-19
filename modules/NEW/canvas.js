@@ -111,6 +111,7 @@ class GameStats{
             }
             elem.innerText = min+":"+String(sec).padStart(2,'0');
             t--;
+       
             
           }
         //   console.log();

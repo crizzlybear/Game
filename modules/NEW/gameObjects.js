@@ -93,7 +93,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     this.frameW=0;
     this.energy=500;
     this.prevX;
-    this.boxSpeed=2;
+    // this.boxSpeed=2;//moved to global
   }
   setNewRGBandColor(){
     var rgbList = [[255,0,0],[0,255,0],[0,0,255],[0,0,0]];
@@ -185,14 +185,14 @@ class GameObjectInteractableLocked extends GameObjectLocked{
   animateLPath(rate,startX,startY,repeatW,repeatH){
     if(rate==1){ 
       if(this.x >repeatW-this.w){
-        this.y=(this.y+this.boxSpeed);
+        this.y=(this.y+boxSpeed);
         this.x+=0;
         if(this.y>repeatH){this.x=startX;this.y=startY;
           this.setNewRGBandColor();
           this.visible=true;
         }
       }else{
-        this.x = (this.x+2);
+        this.x = (this.x+boxSpeed);
       }
      }
      if(this.pickedUp){
@@ -209,14 +209,14 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     if(rate==1){
 
       if(this.x <repeatW-this.w){
-        this.y=(this.y-this.boxSpeed);
+        this.y=(this.y-boxSpeed);
         this.x+=0;
         if(this.y<repeatH){this.x=startX;this.y=startY;
           this.setNewRGBandColor();
           this.visible=true;
         }
       }else{
-        this.x = (this.x-2);
+        this.x = (this.x-boxSpeed);
       }
      }
      if(this.pickedUp){
