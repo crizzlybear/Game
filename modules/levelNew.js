@@ -103,12 +103,6 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       gate1.drawObj_BGFixed(moveableBG);
       gate2.drawObj_BGFixed(moveableBG);
       gate3.drawObj_BGFixed(moveableBG);
-      /*Enemies*/
-      if(enemy.health>=0 && enemy.pickedUp){
-        enemy.enemyHealthBar(ctx,moveableBG);
-        enemy.drawFollow(moveableBG,rate,rate2,fixedAvatar);
-      }
-     
 
       /*4.DRAW OBJECT IMAGE LAYER*/
       
@@ -125,6 +119,13 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       
       machine1.drawObj_BGFixed(moveableBG);
       machine2.drawObj_BGFixed(moveableBG);
+
+
+      /*Enemies*/
+      if(enemy.health>=0 && enemy.pickedUp){
+        enemy.enemyHealthBar(ctx,moveableBG);
+        enemy.drawFollow(moveableBG,rate,rate2,fixedAvatar);
+      }
       /*COLOR BOX DEBUGGING
       if(!box.pickedUp &&box.visible){box.drawObj_BGFixed(moveableBG)}
       if(!b2.pickedUp&&b2.visible){b2.drawObj_BGFixed(moveableBG)}
