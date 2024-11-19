@@ -27,6 +27,9 @@
     pickupSound.src = "sounds/Voice2.wav";
     var itemSound = new Audio();
     itemSound.src = "sounds/Coin.wav";
+    var hitSound = new Audio();
+    hitSound.src = "sounds/Hit.wav";
+    hitSound.volume = 0.2;
 
 function level1(canvas,ctx,canvasUI,ctxUI){
  
@@ -124,7 +127,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       /*Enemies*/
       if(enemy.health>=0 && enemy.pickedUp){
         enemy.enemyHealthBar(ctx,moveableBG);
-        enemy.drawFollow(moveableBG,rate,rate2,fixedAvatar);
+        enemy.drawFollow(moveableBG,rate,rate2,fixedAvatar, hitSound);
       }
       /*COLOR BOX DEBUGGING
       if(!box.pickedUp &&box.visible){box.drawObj_BGFixed(moveableBG)}
@@ -154,7 +157,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       /*ENEMY COLLISIONS and ATTACK*/
       // if(enemy.health>=0 && !enemy.isIdle){enemy.collisionObstacles(obsList);}
       // if(enemy2.health>=0  && !enemy2.isIdle){enemy2.collisionObstacles(obsList);}
-      if(enemy.health>=0){enemy.isAttacked(moveableBG,fixedAvatar);}
+      if(enemy.health>=0){enemy.isAttacked(moveableBG,fixedAvatar, hitSound);}
       // if(enemy2.health>=0){enemy2.isAttacked(moveableBG,fixedAvatar);}
       
 

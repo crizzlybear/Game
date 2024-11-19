@@ -14,7 +14,7 @@ class Enemy extends GameObjectLocked{
         this.pickedUp=false;
       }
 
-      drawFollow(bgInst,rate,rate2,avatarInst){
+      drawFollow(bgInst,rate,rate2,avatarInst, hitAudio){
       let ctx = this.ctx;
       ctx.beginPath();
       var xDist = Math.floor(convertBGXtoAvatar(bgInst.bgX)-this.x);
@@ -36,6 +36,7 @@ class Enemy extends GameObjectLocked{
         var aB=25;//attack border
         if((rightBorder-bgInst.bgX>avatarInst.x-aB)&&(botBorder-bgInst.bgY>avatarInst.y-aB)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w+aB)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h+aB)){
           avatarInst.health = avatarInst.health-this.damage;
+          hitAudio.play();
         }else{//console.log("outside");
         }
       
@@ -160,7 +161,7 @@ class Enemy extends GameObjectLocked{
      
     }//end colision
     
-      isAttacked(bgInst, avatarInst){
+      isAttacked(bgInst, avatarInst, hitAudio){
       //custom collision detection
       
       let rightBorder=this.x+this.w;
@@ -183,23 +184,27 @@ class Enemy extends GameObjectLocked{
               
               this.x = Math.max(this.x-2,0);
               this.health=this.health-5;
+              hitAudio.play();
               break;
             case n=1:
               // console.log("from bottom", botBorder); 
             
               this.y = Math.max(this.y -2,0);
               this.health=this.health-5;
+              hitAudio.play();
               break;
             case n=2:
               // console.log("from left");
               this.x = Math.min(this.x+2, bgInst.bgW);
               this.health=this.health-5;
+              hitAudio.play();
               break;
             case n=3:
               // console.log("from top"); 
               // this.col = "purple";
               this.y = Math.min(this.y +2,bgInst.bgH);
               this.health=this.health-5;
+              hitAudio.play();
               break;
             default:
               // console.log("nothing...");
