@@ -101,6 +101,7 @@ class GameStats{
         function countdown(){
           if (t == -1) {
             timeOut=true;
+            elem.setAttribute("style","color:azure");
             clearTimeout(timerId);//deletes timer
           } else {
             
