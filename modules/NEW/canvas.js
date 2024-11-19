@@ -101,7 +101,7 @@ class GameStats{
         function countdown(){
           if (t == -1) {
             timeOut=true;
-            clearTimeout(timerId);
+            clearTimeout(timerId);//deletes timer
           } else {
             
             var min = Math.floor(t/60);
@@ -111,7 +111,7 @@ class GameStats{
             }
             elem.innerText = min+":"+String(sec).padStart(2,'0');
             t--;
-       
+            
             
           }
         //   console.log();

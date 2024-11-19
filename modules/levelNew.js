@@ -56,7 +56,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   // var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
   let rate2=0;
-  var gameUI = new GameStats(20,300,50,10,120);
+  var gameUI = new GameStats(20,300,50,10,5);
 
   var inventory = new Array();
 
@@ -210,6 +210,8 @@ function level1(canvas,ctx,canvasUI,ctxUI){
           moveableBG.bgY=0;
           boxSpeed=2;
           inventory.pop();
+          timeOut=false;
+          gameUI.countDownTimer();//new timer;
           ctx.filter = 'grayscale(0)';
           gameOver=false; 
         }
