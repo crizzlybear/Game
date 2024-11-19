@@ -81,7 +81,7 @@ class GameStats{
         if(this.targetScore==this.targetValue){
             this.completedTasks++;
             this.targetScore=0;
-            this.targetValue = Math.round(Math.random()*5);
+            this.targetValue = Math.round(Math.random()*3);//max target goal size
             this.gateIndex = Math.round(Math.random()*2);
         }
         
