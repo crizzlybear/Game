@@ -56,7 +56,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   // var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
   let rate2=0;
-  var gameUI = new GameStats(20,300,50,10);
+  var gameUI = new GameStats(20,300,50,10,60);
 
   var inventory = new Array();
   var inventoryBox = new GameStats(300,280,15,15);
@@ -72,10 +72,12 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   //DRAW LOOP===========================
   function draw(){
       //menu();
+      
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.imageSmoothingEnabled = false;
       setShadow(ctx);
       ctxUI.clearRect(0, 0, canvasUI.width, canvasUI.height);//Should check if there is a change in UI before calling
+     
       /*1.BACKGROUND*/
       moveableBG.drawGradient(ctx);
  
@@ -192,7 +194,8 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       rate = (rate+1)%10;//let this be frame rate, e.g if rate == 3, only every 1 out of every 100 frames will be called.
       rate2 = (rate2+1)%200;
       // openMenu(canvas,ctx);
-      if(fixedAvatar.health<0){
+
+      if(fixedAvatar.health<0 || timeOut){
         drawText(ctxUI, 110,150,48,"black","GAME OVER");
         enemy.health=-1;
         gameOver=true;
@@ -211,7 +214,9 @@ function level1(canvas,ctx,canvasUI,ctxUI){
  
 
   /*EXECUTE */
+    gameUI.countDownTimer();//Timer must be placed outside of game loop!
     requestAnimationFrame(draw);
+    
 
   
 }

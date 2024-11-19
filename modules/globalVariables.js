@@ -13,4 +13,4 @@ let gameOver=false;
 
 let powerOn =false;
 let score = 0;
-
+let timeOut=false;

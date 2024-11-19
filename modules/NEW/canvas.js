@@ -1,5 +1,5 @@
 class GameStats{
-    constructor(x,y,w,h){
+    constructor(x,y,w,h,time){
         this.x = x;
         this.y = y;
         this.w = w;
@@ -10,6 +10,7 @@ class GameStats{
         this.prevScore=0;
         this.completedTasks=0;
         this.gateIndex=0;
+        this.timeLeft=time;
     }
 
     
@@ -90,4 +91,25 @@ class GameStats{
         ctx.fillText(text, 0, 70);
         ctx.fillText(text2, 0, 80);
     }
+
+    countDownTimer(){
+        //Has to be placed outside of game loop! 
+        var t = this.timeLeft;
+        var elem = document.getElementById("time");
+        
+        var timerId = setInterval(countdown, 1000);
+        function countdown(){
+          if (t == -1) {
+            timeOut=true;
+            clearTimeout(timerId);
+          } else {
+            elem.innerText = t+ ' seconds remaining';
+            t--;
+            
+          }
+        //   console.log();
+        }
+    //   countdown();
+    }
+      
 }
