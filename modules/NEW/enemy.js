@@ -9,15 +9,14 @@ class Enemy extends GameObjectLocked{
         this.oldX  = x;
         this.oldY = y;
         this.health = 200;
-        this.damage = 2;
+        this.damage = 20;
         this.isIdle = true;
         this.pickedUp=false;
       }
 
-      drawFollow(bgInst,rate,rate2){
+      drawFollow(bgInst,rate,rate2,avatarInst){
       let ctx = this.ctx;
       ctx.beginPath();
-      var rand = Math.round(Math.random()*10);
       var xDist = Math.floor(convertBGXtoAvatar(bgInst.bgX)-this.x);
       var yDist = Math.floor(convertBGYtoAvatar(bgInst.bgY)- this.y );
     
@@ -29,6 +28,17 @@ class Enemy extends GameObjectLocked{
       }else if(rate2>=20 && rate2<30){
         ax = this.x +=(xDist*0.1);//ENEMY SPEED default is 0.01
         ay = this.y +=(yDist*0.1);
+      
+        var rightBorder=this.x+this.w;
+        var leftBorder=this.x;
+        var topBorder=this.newY;
+        var botBorder=this.h+this.newY;
+        var aB=25;//attack border
+        if((rightBorder-bgInst.bgX>avatarInst.x-aB)&&(botBorder-bgInst.bgY>avatarInst.y-aB)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w+aB)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h+aB)){
+          avatarInst.health = avatarInst.health-this.damage;
+        }else{//console.log("outside");
+        }
+      
       }else{
         var ax = this.x +=(xDist*0.008);//ENEMY SPEED default is 0.01
         var ay = this.y +=(yDist*0.008);
@@ -160,14 +170,10 @@ class Enemy extends GameObjectLocked{
 
       var aB=30;//attack border
       if((rightBorder-bgInst.bgX>avatarInst.x-aB)&&(botBorder-bgInst.bgY>avatarInst.y-aB)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w+aB)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h+aB)){
-        // console.log("inside");
 
         let collide = [Math.abs((rightBorder-bgInst.bgX)-(avatarInst.x-aB)),Math.abs((botBorder-bgInst.bgY)-(avatarInst.y-aB)),Math.abs((leftBorder-bgInst.bgX)-(avatarInst.x+ avatarInst.w+aB)), Math.abs((topBorder-bgInst.bgY)-(avatarInst.y+ avatarInst.h+aB))];
         let n=collide.indexOf(Math.min(...collide));
-        // console.log(collide);
-        // console.log("X:"+bgInst.bgX +" Y:"+bgInst.bgY);
-        avatarInst.health = avatarInst.health-this.damage;
-        // console.log("avatar health",avatarInst.health,"Enemy health", this.health);
+       
         if(attack){
           // console.log("attacking!");
           
@@ -176,7 +182,7 @@ class Enemy extends GameObjectLocked{
               // console.log("from right!");
               
               this.x = Math.max(this.x-2,0);
-              this.health=this.health-10;
+              this.health=this.health-5;
               break;
             case n=1:
               // console.log("from bottom", botBorder); 

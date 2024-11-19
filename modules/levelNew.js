@@ -106,7 +106,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       /*Enemies*/
       if(enemy.health>=0 && enemy.pickedUp){
         enemy.enemyHealthBar(ctx,moveableBG);
-        enemy.drawFollow(moveableBG,rate,rate2);
+        enemy.drawFollow(moveableBG,rate,rate2,fixedAvatar);
       }
      
 
