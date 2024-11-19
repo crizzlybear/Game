@@ -56,7 +56,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   // var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
   let rate2=0;
-  var gameUI = new GameStats(20,300,50,10,60);
+  var gameUI = new GameStats(20,300,50,10,120);
 
   var inventory = new Array();
   var inventoryBox = new GameStats(300,280,15,15);

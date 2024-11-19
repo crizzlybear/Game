@@ -103,7 +103,13 @@ class GameStats{
             timeOut=true;
             clearTimeout(timerId);
           } else {
-            elem.innerText = t+ ' seconds remaining';
+            
+            var min = Math.floor(t/60);
+            var sec = t%60;
+            if(min==0 && sec<=30){
+                elem.setAttribute("style","color:red");
+            }
+            elem.innerText = min+":"+String(sec).padStart(2,'0');
             t--;
             
           }
