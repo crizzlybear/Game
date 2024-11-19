@@ -118,5 +118,12 @@ class GameStats{
         }
     //   countdown();
     }
+
+    resetScore(gateList){
+        for(var i=0; i<gateList.length;i++){
+            gateList[i].score=0;
+        }
+        this.completedTasks=0;
+    }
       
 }

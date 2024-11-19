@@ -59,7 +59,6 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   var gameUI = new GameStats(20,300,50,10,120);
 
   var inventory = new Array();
-  var inventoryBox = new GameStats(300,280,15,15);
 
   var gate1 = new Gate(ctxUI,380,0,50,5,"red");
   var gate2 = new Gate(ctxUI,220,0,50,5,"green");
@@ -206,6 +205,11 @@ function level1(canvas,ctx,canvasUI,ctxUI){
         if(shiftPressed){
           fixedAvatar.health=1000;
           fixedAvatar.energy=1000;
+          gameUI.resetScore(gateList);
+          moveableBG.bgX=0;
+          moveableBG.bgY=0;
+          boxSpeed=2;
+          inventory.pop();
           ctx.filter = 'grayscale(0)';
           gameOver=false; 
         }
