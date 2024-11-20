@@ -17,6 +17,10 @@
     itemImg.src = "images/items3.png";
     let slashImg = new Image();
     slashImg.src = "images/slash.png";
+    let machineFront = new Image();
+    machineFront.src = "images/machineFront2.png";
+    let machineBack = new Image();
+    machineBack.src = "images/machineBack.png";
 
 
     var correctSound = new Audio();
@@ -40,8 +44,8 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   var w4 = new GameObjectLocked(ctx,400,500,200,70,"rgb(191, 184, 188)");
   var w5 = new GameObjectLocked(ctx,400,400,70,100,"rgb(191, 184, 188)");
 
-  var machine1 = new GameObjectLocked(ctx,228,320,74,50,"rgb(74, 68, 72)");
-  var machine2 = new GameObjectLocked(ctx,398,400,74,50,"rgb(74, 68, 72)");
+  var machine1 = new GameObjectLocked(ctx,228,320,74,50,"rgb(38, 37, 56)");
+  var machine2 = new GameObjectLocked(ctx,398,400,74,50,"rgb(38, 37, 56)");
 
   var topWall = new GameObjectLocked(ctx,0,-100,600,100,"rgb(106, 100, 117)");
   let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
@@ -96,6 +100,8 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       w3.drawObj_BGFixed(moveableBG);
       w4.drawObj_BGFixed(moveableBG);
     
+      // machine1.drawObj_BGFixed(moveableBG);
+      machine2.drawObj_BGFixed(moveableBG);
       // item1.drawObj_BGFixed(moveableBG);
       if(rate==0){
         boxSpeed = Math.min(boxSpeed+0.01,5);
@@ -124,8 +130,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       if(!b4.pickedUp&&b4.visible&&b4.x>0-box.w){b4.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       if(!b5.pickedUp&&b5.visible&&b5.x<moveableBG.bgW){b5.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       
-      machine1.drawObj_BGFixed(moveableBG);
-      machine2.drawObj_BGFixed(moveableBG);
+   
 
 
       /*Enemies*/
@@ -172,6 +177,9 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       if(!b3.pickedUp&&b3.visible){b3.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
       if(!b4.pickedUp&&b4.visible){b4.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
       if(!b5.pickedUp&&b5.visible){b5.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
+      
+      machine1.drawObjImgLayer(ctx,machineBack,moveableBG,0,0,0,0);
+      machine2.drawObjImgLayer(ctx,machineFront,moveableBG,0,0,0,0);
       // if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
       gate1.unlock(moveableBG,fixedAvatar,inventory,correctSound);
       gate2.unlock(moveableBG,fixedAvatar,inventory,correctSound);
