@@ -62,14 +62,20 @@ class GameObjectLocked extends GameObject{
    
   }//end colision
 
-  drawWallDecor(ctx,bgInst,gateList){
+  drawWallDecor(ctx,bgInst,gateList,gateImgInst){
+
     ctx.beginPath();
     ctx.rect(this.x+20-bgInst.bgX,this.y-bgInst.bgY,2,this.h);
     ctx.rect(this.x+600-20-bgInst.bgX,this.y-bgInst.bgY,2,this.h);
+    
+   
+    //ctx.rect(gateList[0].x-bgInst.bgX,gateList[0].y-bgInst.bgY-40,gateList[0].w,40);
+    // ctx.rect(gateList[1].x-bgInst.bgX,gateList[1].y-bgInst.bgY-40,gateList[1].w,40);
+    // ctx.rect(gateList[2].x-bgInst.bgX,gateList[2].y-bgInst.bgY-40,gateList[2].w,40);
 
-    ctx.rect(gateList[0].x-bgInst.bgX,gateList[0].y-bgInst.bgY-40,gateList[0].w,40);
-    ctx.rect(gateList[1].x-bgInst.bgX,gateList[1].y-bgInst.bgY-40,gateList[1].w,40);
-    ctx.rect(gateList[2].x-bgInst.bgX,gateList[2].y-bgInst.bgY-40,gateList[2].w,40);
+    ctx.drawImage(gateImgInst,gateList[0].x-bgInst.bgX,gateList[0].y-bgInst.bgY-55,gateList[0].w,60);
+    ctx.drawImage(gateImgInst,gateList[1].x-bgInst.bgX,gateList[1].y-bgInst.bgY-55,gateList[1].w,60);
+    ctx.drawImage(gateImgInst,gateList[2].x-bgInst.bgX,gateList[2].y-bgInst.bgY-55,gateList[2].w,60);
     
     drawText(ctx,this.x+25-bgInst.bgX,this.y+50-bgInst.bgY,50,"darkgray","01");
     //ctx.fillStyle="rgb(0,0,0)";

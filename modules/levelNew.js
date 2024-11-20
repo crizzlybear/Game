@@ -21,7 +21,8 @@
     machineFront.src = "images/machineFront2.png";
     let machineBack = new Image();
     machineBack.src = "images/machineBack.png";
-
+    let gateImg = new Image();
+    gateImg.src = "images/gate.png";
 
     var correctSound = new Audio();
     correctSound.src = "sounds/Gold1.wav";
@@ -85,7 +86,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       moveableBG.drawGradient(ctx);
  
         topWall.drawObj_BGFixed(moveableBG);
-        topWall.drawWallDecor(ctxUI,moveableBG,gateList);
+        topWall.drawWallDecor(ctxUI,moveableBG,gateList,gateImg);
       /*2.AVATAR*/
       fixedAvatar.run();
       fixedAvatar.switchSprite(ctx, rate,64,64);
