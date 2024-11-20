@@ -23,6 +23,13 @@
     machineBack.src = "images/machineBack.png";
     let gateImg = new Image();
     gateImg.src = "images/gate.png";
+    let edgeImg = new Image();
+    edgeImg.src = "images/edge.png";
+    let edgeImg2 = new Image();
+    edgeImg2.src = "images/edge2.png";
+    let edgeImg3 = new Image();
+    edgeImg3.src = "images/edge3.png";
+
 
     var correctSound = new Audio();
     correctSound.src = "sounds/Gold1.wav";
@@ -102,6 +109,12 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       w4.drawObj_BGFixed(moveableBG);
     
       // machine1.drawObj_BGFixed(moveableBG);
+
+      w1.drawObjImgLayer(ctx,edgeImg,moveableBG,0,0,0,-20);
+      w4.drawObjImgLayer(ctx,edgeImg,moveableBG,0,0,0,-18);
+      w3.drawObjImgLayer(ctx,edgeImg2,moveableBG,0,69,0,40);
+      w5.drawObjImgLayer(ctx,edgeImg3,moveableBG,0,1,0,53);
+
       machine2.drawObj_BGFixed(moveableBG);
       // item1.drawObj_BGFixed(moveableBG);
       if(rate==0){
@@ -120,10 +133,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
 
       /*4.DRAW OBJECT IMAGE LAYER*/
       
-      // w1.drawObjImgLayer(ctx,img0,moveableBG,0,40,0,50);
-      // w2.drawObjImgLayer(ctx,wallImg,moveableBG,0,25,0,25);
-      // w3.drawObjImgLayer(ctx,wallImg,moveableBG,0,0,0,0);
-      // w4.drawObjImgLayer(ctx,whImg,moveableBG,0,40,0,40);
+      
       
       if(!box.pickedUp &&box.visible&&box.x>0-box.w){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       if(!b2.pickedUp&&b2.visible&&b2.x>0-box.w){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
@@ -131,7 +141,8 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       if(!b4.pickedUp&&b4.visible&&b4.x>0-box.w){b4.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       if(!b5.pickedUp&&b5.visible&&b5.x<moveableBG.bgW){b5.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       
-   
+      machine1.drawObjImgLayer(ctx,machineBack,moveableBG,0,0,0,0);
+      machine2.drawObjImgLayer(ctx,machineFront,moveableBG,0,0,0,0);
 
 
       /*Enemies*/
@@ -179,8 +190,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       if(!b4.pickedUp&&b4.visible){b4.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
       if(!b5.pickedUp&&b5.visible){b5.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
       
-      machine1.drawObjImgLayer(ctx,machineBack,moveableBG,0,0,0,0);
-      machine2.drawObjImgLayer(ctx,machineFront,moveableBG,0,0,0,0);
+     
       // if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
       gate1.unlock(moveableBG,fixedAvatar,inventory,correctSound);
       gate2.unlock(moveableBG,fixedAvatar,inventory,correctSound);
