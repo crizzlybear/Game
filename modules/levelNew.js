@@ -88,7 +88,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       ctx.imageSmoothingEnabled = false;
       setShadow(ctx);
       ctxUI.clearRect(0, 0, canvasUI.width, canvasUI.height);//Should check if there is a change in UI before calling
-     
+      ctxUI.imageSmoothingEnabled = false;
       /*1.BACKGROUND*/
       moveableBG.drawGradient(ctx);
  
