@@ -20,7 +20,7 @@ function setShadow(ctx){
   //menu
 
 function drawText(ctx,x,y,size,col,text){
-    ctx.font = `bold ${size}px Courier New`;
+    ctx.font = `bold ${size}px Lucida Console`;
     ctx.fillStyle = col;
     ctx.fillText(text, x, y);
     

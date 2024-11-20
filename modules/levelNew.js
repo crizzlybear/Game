@@ -205,7 +205,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       rate2 = (rate2+1)%200;
       // openMenu(canvas,ctx);
 
-      if(fixedAvatar.health<0 || timeOut){
+      if(fixedAvatar.health<=0 || timeOut){
         drawText(ctxUI, 110,150,48,"black","GAME OVER");
         enemy.health=-1;
         gameOver=true;
