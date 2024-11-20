@@ -184,7 +184,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
   
   animateLPath(rate,startX,startY,repeatW,repeatH){
     if(rate==1){ 
-      if(this.x >repeatW-this.w){
+      if(this.x >repeatW-this.w- Math.pow(boxSpeed,1.02)){
         this.y=(this.y+boxSpeed);
         this.x+=0;
         if(this.y>repeatH){this.x=startX;this.y=startY;
@@ -208,7 +208,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
   animateLPathReverse(rate,startX,startY,repeatW,repeatH){
     if(rate==1){
 
-      if(this.x <repeatW-this.w){
+      if(this.x <repeatW-this.w+ Math.pow(boxSpeed,1.015)){
         this.y=(this.y-boxSpeed);
         this.x+=0;
         if(this.y<repeatH){this.x=startX;this.y=startY;
