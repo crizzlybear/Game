@@ -99,7 +99,7 @@ class GameStats{
         
         var timerId = setInterval(countdown, 1000);
         function countdown(){
-          if (t == -1) {
+          if ((t == -1)|| gameOver) {
             timeOut=true;
             elem.setAttribute("style","color:azure");
             clearTimeout(timerId);//deletes timer
