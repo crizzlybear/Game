@@ -14,7 +14,7 @@
      en.src = "images/enemy1.png";
     let itemImg = new Image();
     itemImg.crossOrigin = "anonymous";
-    itemImg.src = "images/items3.png";
+    itemImg.src = "images/items6.png";
     let slashImg = new Image();
     slashImg.src = "images/slash.png";
     let machineFront = new Image();
@@ -120,7 +120,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       if(rate==0){
         boxSpeed = Math.min(boxSpeed+0.01,5);
       }
-      item1.drawItemImg(ctx,itemImg,moveableBG,15,12);
+      item1.drawItemImg(ctx,itemImg,moveableBG,60,50);
       box.animateLPath(rate,0,200,300,300);
       b2.animateLPath(rate,0,200,300,300);
       b4.animateLPath(rate,0,200,300,300);

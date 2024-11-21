@@ -167,7 +167,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
       soundInst.play();
       //this.col = "#808080";
       this.col = "#71ffff";
-      this.frameW=30;
+      this.frameW=120;
       
       if(this.energy==0){
         this.prevX = this.x;
@@ -245,10 +245,10 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     var imgX = this.x-bgInst.bgX;
     var imgY = this.y-bgInst.bgY;
     if(this.frameW!=0){
-      imgX = imgX - (this.energy/220)*frameW;
-      imgY = imgY - (this.energy/220)*frameH;
-      imgW=  this.w*(((this.energy/200)));
-      imgH = this.h*(((this.energy/200)));
+      // imgX = imgX - (this.energy/450)*frameW;
+      // imgY = imgY - (this.energy/450)*frameH;
+      imgW=  Math.max(this.w*(((this.energy/200))), this.w*1.3);
+      imgH = Math.max(this.h*(((this.energy/200))), this.h*1.3);
       
     }
     ctx.drawImage(imgName,0+this.frameW,0,frameW,frameH, imgX, imgY, imgW, imgH);
