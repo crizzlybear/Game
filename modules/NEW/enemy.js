@@ -33,9 +33,11 @@ class Enemy extends GameObjectLocked{
         var leftBorder=this.x;
         var topBorder=this.newY;
         var botBorder=this.h+this.newY;
-        var aB=25;//attack border
+        var aB=10;//attack border
         if((rightBorder-bgInst.bgX>avatarInst.x-aB)&&(botBorder-bgInst.bgY>avatarInst.y-aB)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w+aB)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h+aB)){
           avatarInst.health = avatarInst.health-this.damage;
+          avatarInst.x +=xDist*0.02;
+          avatarInst.y +=yDist*0.02;
           hitAudio.play();
         }else{//console.log("outside");
         }
