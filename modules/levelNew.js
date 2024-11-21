@@ -6,15 +6,15 @@
     //sprite
     
     let av = new Image();
-      av.src = "images/dogAvatar15.png";
+      av.src = "images/spriteTest2.png";
     let boxImg = new Image();
       boxImg.crossOrigin = "anonymous";
-      boxImg.src = "images/box.png";
+      boxImg.src = "images/boxOutline.png";
      let en = new Image();
      en.src = "images/enemy1.png";
     let itemImg = new Image();
     itemImg.crossOrigin = "anonymous";
-    itemImg.src = "images/items6.png";
+    itemImg.src = "images/items8Outline.png";
     let slashImg = new Image();
     slashImg.src = "images/slash.png";
     let machineFront = new Image();
