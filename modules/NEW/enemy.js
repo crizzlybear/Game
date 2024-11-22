@@ -10,7 +10,7 @@ class Enemy extends GameObjectLocked{
         this.oldY = y;
         this.health = 200;
         this.damage = 20;
-        this.isIdle = true;
+        this.isHit = false;
         this.pickedUp=false;
       }
 
@@ -60,7 +60,12 @@ class Enemy extends GameObjectLocked{
       if(rate==1){
         this.i = (this.i+1)%2;//where 2 is number of frames
        }
-      ctx.drawImage(en,this.i*64,0,64,64,ax-bgInst.bgX,ay-bgInst.bgY,this.w, this.h);
+       if(this.isHit){
+        ctx.drawImage(en,(this.i+2)*64,0,64,64,ax-bgInst.bgX,ay-bgInst.bgY,this.w, this.h);
+       }else{
+        ctx.drawImage(en,this.i*64,0,64,64,ax-bgInst.bgX,ay-bgInst.bgY,this.w, this.h);
+       }
+     
   }
   
     //override
@@ -190,6 +195,7 @@ class Enemy extends GameObjectLocked{
               this.x = Math.max(this.x-2,0);
               this.health=this.health-5;
               hitAudio.play();
+              this.isHit=true;
               break;
             case n=1:
               // console.log("from bottom", botBorder); 
@@ -197,12 +203,14 @@ class Enemy extends GameObjectLocked{
               this.y = Math.max(this.y -2,0);
               this.health=this.health-5;
               hitAudio.play();
+              this.isHit=true;
               break;
             case n=2:
               // console.log("from left");
               this.x = Math.min(this.x+2, bgInst.bgW);
               this.health=this.health-5;
               hitAudio.play();
+              this.isHit=true;
               break;
             case n=3:
               // console.log("from top"); 
@@ -210,12 +218,14 @@ class Enemy extends GameObjectLocked{
               this.y = Math.min(this.y +2,bgInst.bgH);
               this.health=this.health-5;
               hitAudio.play();
+              this.isHit=true;
               break;
             default:
               // console.log("nothing...");
               break;
           } //end switch
         }else{//console.log("outside");
+          this.isHit=false;
         }
       }
     }

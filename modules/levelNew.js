@@ -11,7 +11,7 @@
       boxImg.crossOrigin = "anonymous";
       boxImg.src = "images/boxOutline.png";
      let en = new Image();
-     en.src = "images/enemy1.png";
+     en.src = "images/enemyNew.png";
     let itemImg = new Image();
     itemImg.crossOrigin = "anonymous";
     itemImg.src = "images/items8Outline.png";
