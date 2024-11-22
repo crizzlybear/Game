@@ -29,7 +29,8 @@
     edgeImg2.src = "images/edge2.png";
     let edgeImg3 = new Image();
     edgeImg3.src = "images/edge3.png";
-
+    let coneImg = new Image();
+    coneImg.src = "images/cone3.png";
 
     var correctSound = new Audio();
     correctSound.src = "sounds/Gold1.wav";
@@ -56,6 +57,8 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   var machine2 = new GameObjectLocked(ctx,398,400,74,50,"rgb(38, 37, 56)");
 
   var topWall = new GameObjectLocked(ctx,0,-100,600,100,"rgb(106, 100, 117)");
+  var cone1 = new GameObjectLocked(ctx,540,150,30,10);
+  var cone2 = new GameObjectLocked(ctx,50,550,30,10);
   let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
   let moveableBG = new BGLocked(600,631);
   var item1 = new GameObjectInteractableLocked(ctx,350,50,30,25);
@@ -116,6 +119,8 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       w5.drawObjImgLayer(ctx,edgeImg3,moveableBG,0,1,0,53);
 
       machine2.drawObj_BGFixed(moveableBG);
+      cone1.drawObjImgLayer(ctx,coneImg,moveableBG,0,22,0,22);
+      cone2.drawObjImgLayer(ctx,coneImg,moveableBG,0,22,0,22);
       // item1.drawObj_BGFixed(moveableBG);
       if(rate==0){
         boxSpeed = Math.min(boxSpeed+0.01,5);
@@ -173,8 +178,8 @@ function level1(canvas,ctx,canvasUI,ctxUI){
         gate2.collisionObj(moveableBG,fixedAvatar);
         gate3.collisionObj(moveableBG,fixedAvatar);
       }
-     
-  
+      cone1.collisionObj(moveableBG,fixedAvatar);
+      cone2.collisionObj(moveableBG,fixedAvatar);
       /*ENEMY COLLISIONS and ATTACK*/
       // if(enemy.health>=0 && !enemy.isIdle){enemy.collisionObstacles(obsList);}
       // if(enemy2.health>=0  && !enemy2.isIdle){enemy2.collisionObstacles(obsList);}
