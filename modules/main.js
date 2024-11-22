@@ -11,9 +11,8 @@ function main(){
   document.addEventListener("keydown", keyDownHandler, false);
   document.addEventListener("keyup", keyUpHandler, false);
   
-
   console.log("PRESS JUMP TO START");
-
+  startScreen(canvas,ctx);
   startLevel(canvas,ctx,canvasUI,ctxUI);
   // level1(canvas,ctx,canvasUI,ctxUI);
 }
@@ -26,6 +25,17 @@ async function startLevel(canvas,ctx,canvasUI,ctxUI) {
   await waitUntil(() => spacePressed === true);
   //console.log('condition is met!');
   level1(canvas,ctx,canvasUI,ctxUI);
+}
+
+function startScreen(canvas,ctx){
+  ctx.beginPath();
+  ctx.fillStyle = "lightgray";
+  ctx.rect(0,0,canvas.width, canvas.height);
+  ctx.fill();
+  ctx.closePath();
+  ctx.font = `bold 20px Lucida Console`;
+  ctx.fillStyle = "darkgray";
+  ctx.fillText("Press Jump To Start", 120, 40);
 }
 //KEY CONTROLS
 function keyDownHandler(e) {
