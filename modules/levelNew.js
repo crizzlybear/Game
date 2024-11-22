@@ -223,11 +223,12 @@ function level1(canvas,ctx,canvasUI,ctxUI){
 
       if(fixedAvatar.health<=0 || timeOut){
         drawText(ctxUI, 110,150,48,"black","GAME OVER");
+        updateHighscore(ctxUI,110,190,20,"orange",gameUI.completedTasks);
         enemy.health=-1;
         fixedAvatar.isHit=false;
         gameOver=true;
         ctx.filter = 'grayscale(1)';
-        if(shiftPressed){
+        if(spacePressed){
           fixedAvatar.health=1000;
           fixedAvatar.energy=1000;
           gameUI.resetScore(gateList);

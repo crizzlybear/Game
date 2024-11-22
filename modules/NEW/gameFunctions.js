@@ -25,3 +25,15 @@ function drawText(ctx,x,y,size,col,text){
     ctx.fillText(text, x, y);
     
 }  
+
+function updateHighscore(ctx,x,y,size,col,nCompleted){
+    var hsText;
+    if(nCompleted>highscore){
+        hsText = `Highscore: ${nCompleted} NEW!`;
+        highscore = nCompleted;
+        console.log("FIX HIGHSCORE!!");
+    }else{
+        hsText = `Highscore: ${highscore}`;
+    }
+    drawText(ctx,x,y,size,col,hsText);
+}

@@ -35,6 +35,8 @@ function keyDownHandler(e) {
   }else if(e.key ==="Shift"){
     // console.log("S");
     shiftPressed = true;
+  }else if(e.key===" "){
+    spacePressed = true;
   }
 }
 
@@ -56,6 +58,8 @@ function keyUpHandler(e) {
     attack = false;
   }else if(e.key ==="Shift"){
     shiftPressed = false;
+  }else if(e.key ===" "){
+    spacePressed=false;
   }
 }
 
