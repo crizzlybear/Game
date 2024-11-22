@@ -19,6 +19,15 @@ function setShadow(ctx){
 
   //menu
 
+function drawTextOutline(ctx,x,y,size,col,text){
+    ctx.font = `bold ${size}px Lucida Console`;
+    ctx.strokeStyle=col;
+    ctx.lineWidth=3;
+    // ctx.fillText(text, x, y);
+    ctx.strokeText(text,x,y);
+    ctx.fillStyle = "black";
+    ctx.fillText(text,x,y);
+}  
 function drawText(ctx,x,y,size,col,text){
     ctx.font = `bold ${size}px Lucida Console`;
     ctx.fillStyle = col;
@@ -36,4 +45,5 @@ function updateHighscore(ctx,x,y,size,col,nCompleted){
         hsText = `Highscore: ${highscore}`;
     }
     drawText(ctx,x,y,size,col,hsText);
+    drawText(ctx,x,y+40,size*0.5,col,"Press Jump To Play Again");
 }

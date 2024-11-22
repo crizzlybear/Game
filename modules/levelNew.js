@@ -222,7 +222,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       // openMenu(canvas,ctx);
 
       if(fixedAvatar.health<=0 || timeOut){
-        drawText(ctxUI, 110,150,48,"black","GAME OVER");
+        drawTextOutline(ctxUI, 110,150,48,"white","GAME OVER");
         updateHighscore(ctxUI,110,190,20,"orange",gameUI.completedTasks);
         enemy.health=-1;
         fixedAvatar.isHit=false;
