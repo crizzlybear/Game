@@ -16,6 +16,7 @@ class Avatar{
     this.energy = 1000;
     this.level=0;
     this.j=0;
+    this.isHit=false;
   }
 
   drawAvatar(ctx,updateX,updateY) {
@@ -72,6 +73,8 @@ class Avatar{
         
     }else if(downPressed){//2,3
         drawSprite(this.x,this.y,this.w, this.h, this.i+2);
+    }else if(this.isHit){
+      drawSprite(this.x-1,this.y,this.w, this.h, this.i+6);
     }else{
       drawSprite(this.x,this.y,this.w, this.h, this.i);
     }

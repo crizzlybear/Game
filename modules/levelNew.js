@@ -6,7 +6,7 @@
     //sprite
     
     let av = new Image();
-      av.src = "images/SpriteGood4.png";
+      av.src = "images/SpriteGood6.png";
     let boxImg = new Image();
       boxImg.crossOrigin = "anonymous";
       boxImg.src = "images/boxOutline.png";
@@ -219,6 +219,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       if(fixedAvatar.health<=0 || timeOut){
         drawText(ctxUI, 110,150,48,"black","GAME OVER");
         enemy.health=-1;
+        fixedAvatar.isHit=false;
         gameOver=true;
         ctx.filter = 'grayscale(1)';
         if(shiftPressed){
@@ -227,6 +228,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
           gameUI.resetScore(gateList);
           moveableBG.bgX=0;
           moveableBG.bgY=0;
+          fixedAvatar.isHit=false;
           boxSpeed=2;
           inventory.pop();
           timeOut=false;

@@ -39,10 +39,13 @@ class Enemy extends GameObjectLocked{
           avatarInst.x +=xDist*0.02;
           avatarInst.y +=yDist*0.02;
           hitAudio.play();
+          avatarInst.isHit = true;
         }else{//console.log("outside");
+          avatarInst.isHit = false;
         }
       
       }else{
+        avatarInst.isHit = false;
         var ax = this.x +=(xDist*0.008);//ENEMY SPEED default is 0.01
         var ay = this.y +=(yDist*0.008);
       }
