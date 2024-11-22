@@ -6,7 +6,7 @@
     //sprite
     
     let av = new Image();
-      av.src = "images/spriteTest2.png";
+      av.src = "images/SpriteGood4.png";
     let boxImg = new Image();
       boxImg.crossOrigin = "anonymous";
       boxImg.src = "images/boxOutline.png";
