@@ -57,8 +57,8 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   var machine2 = new GameObjectLocked(ctx,398,400,74,50,"rgb(38, 37, 56)");
 
   var topWall = new GameObjectLocked(ctx,0,-100,600,100,"rgb(106, 100, 117)");
-  var cone1 = new GameObjectLocked(ctx,540,150,30,10);
-  var cone2 = new GameObjectLocked(ctx,50,550,30,10);
+  var cone1 = new GameObjectLocked(ctxUI,540,150,30,10);
+  var cone2 = new GameObjectLocked(ctxUI,50,550,30,10);
   let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
   let moveableBG = new BGLocked(600,631);
   var item1 = new GameObjectInteractableLocked(ctx,350,50,30,25);
@@ -99,7 +99,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
         topWall.drawWallDecor(ctxUI,moveableBG,gateList,gateImg);
       /*2.AVATAR*/
       fixedAvatar.run();
-      fixedAvatar.switchSprite(ctx, rate,64,64);
+      fixedAvatar.switchSprite(ctxUI, rate,64,64);
       fixedAvatar.drawAttack(ctx,rate,slashImg);
       // fixedAvatar.loadNear(allObj,moveableBG,rate);
       
@@ -119,8 +119,8 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       w5.drawObjImgLayer(ctx,edgeImg3,moveableBG,0,1,0,53);
 
       machine2.drawObj_BGFixed(moveableBG);
-      cone1.drawObjImgLayer(ctx,coneImg,moveableBG,0,22,0,22);
-      cone2.drawObjImgLayer(ctx,coneImg,moveableBG,0,22,0,22);
+      cone1.drawObjImgLayer(ctxUI,coneImg,moveableBG,0,22,0,22);
+      cone2.drawObjImgLayer(ctxUI,coneImg,moveableBG,0,22,0,22);
       // item1.drawObj_BGFixed(moveableBG);
       if(rate==0){
         boxSpeed = Math.min(boxSpeed+0.01,5);
@@ -206,7 +206,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       gameUI.drawCount(ctxUI,gateList);
       gameUI.drawObjective(ctxUI,gateList);
       // inventoryBox.drawInventory(ctx,inventory);//TOGGLE FOR COLOR DEBUG
-      fixedAvatar.drawCarriedBox(ctx,inventory,boxImg);
+      fixedAvatar.drawCarriedBox(ctxUI,inventory,boxImg);
       
       /*Move BG LAST to prevent lag */
       moveableBG.moveBG(canvas, fixedAvatar);
