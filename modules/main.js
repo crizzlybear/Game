@@ -11,9 +11,20 @@ function main(){
   document.addEventListener("keydown", keyDownHandler, false);
   document.addEventListener("keyup", keyUpHandler, false);
   
-  // countDownTimer();
-  //level1(canvas,ctx);
-  //level2(canvas,ctx);
+
+  console.log("PRESS JUMP TO START");
+
+  startLevel(canvas,ctx,canvasUI,ctxUI);
+  // level1(canvas,ctx,canvasUI,ctxUI);
+}
+async function waitUntil(condition, time = 100) {
+  while (!condition()) {
+      await new Promise((resolve) => setTimeout(resolve, time));
+  }
+}
+async function startLevel(canvas,ctx,canvasUI,ctxUI) {
+  await waitUntil(() => spacePressed === true);
+  //console.log('condition is met!');
   level1(canvas,ctx,canvasUI,ctxUI);
 }
 //KEY CONTROLS
