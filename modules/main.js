@@ -24,6 +24,7 @@ async function waitUntil(condition, time = 100) {
 async function startLevel(canvas,ctx,canvasUI,ctxUI) {
   await waitUntil(() => spacePressed === true);
   //console.log('condition is met!');
+  document.getElementById("logo").style.display='none';
   level1(canvas,ctx,canvasUI,ctxUI);
 }
 
@@ -35,7 +36,7 @@ function startScreen(canvas,ctx){
   ctx.closePath();
   ctx.font = `bold 20px Lucida Console`;
   ctx.fillStyle = "darkgray";
-  ctx.fillText("Press Jump To Start", 120, 40);
+  ctx.fillText("Press Jump To Start", 120, 150);
 }
 //KEY CONTROLS
 function keyDownHandler(e) {
