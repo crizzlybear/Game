@@ -164,7 +164,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     let leftBorder=this.x -10;
     let topBorder=this.y - 10;
     let botBorder=this.y+this.h + 10;
-    let randomPositions = [[0,50],[400,80],[380,220],[200,510],[300,550]];
+    let randomPositions = [[20,90],[400,80],[380,220],[200,510],[300,550]];
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
       this.energy = Math.max(this.energy-150,0);
       avatarInst.energy = Math.min(avatarInst.energy+100,1000);
