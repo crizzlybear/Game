@@ -49,6 +49,15 @@ class BGLocked extends BG{
       //end
     }
 
-    
+    drawFloorDecor(ctx){
+      ctx.shadowColor="transparent";
+      ctx.drawImage(floorImg,0,0,32,30,50-this.bgX,500-this.bgY,80,60);
+      ctx.drawImage(floorImg,32,15,32,30,400-this.bgX,300-this.bgY,80,90);
+      ctx.drawImage(floorImg,32,0,32,30,400-this.bgX,215-this.bgY,80,60);
+      ctx.drawImage(floorImg,64,0,32,30,20-this.bgX,20-this.bgY,30,60);
+      ctx.drawImage(floorImg,64,0,32,30,235-this.bgX,150-this.bgY,60,80);
+      ctx.drawImage(floorImg,64,0,32,30,520-this.bgX,550-this.bgY,60,80);
+      ctx.shadowColor = "rgb(59, 55, 71)";
+    }
 }
 

@@ -31,6 +31,8 @@
     edgeImg3.src = "images/edge3.png";
     let coneImg = new Image();
     coneImg.src = "images/cone3.png";
+    let floorImg = new Image();
+    floorImg.src = "images/floorMark.png";
 
     var correctSound = new Audio();
     correctSound.src = "sounds/Gold1.wav";
@@ -46,13 +48,12 @@
 
 function level1(canvas,ctx,canvasUI,ctxUI){
  
-  
   var w1 = new GameObjectLocked(ctx,0,200,300,70,"rgb(191, 184, 188)");//48,100
   // var w2 = new GameObjectLocked(ctx,300,-50,100,50,"black");
   var w3 = new GameObjectLocked(ctx,230,270,70,100,"rgb(191, 184, 188)");
   var w4 = new GameObjectLocked(ctx,400,500,200,70,"rgb(191, 184, 188)");
   var w5 = new GameObjectLocked(ctx,400,400,70,100,"rgb(191, 184, 188)");
-
+  
   var machine1 = new GameObjectLocked(ctx,228,320,74,50,"rgb(38, 37, 56)");
   var machine2 = new GameObjectLocked(ctx,398,400,74,50,"rgb(38, 37, 56)");
 
@@ -94,6 +95,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       ctxUI.imageSmoothingEnabled = false;
       /*1.BACKGROUND*/
       moveableBG.drawGradient(ctx);
+      moveableBG.drawFloorDecor(ctx);
  
         topWall.drawObj_BGFixed(moveableBG);
         topWall.drawWallDecor(ctx,ctxUI,moveableBG,gateList,gateImg);
