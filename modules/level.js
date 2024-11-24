@@ -5,85 +5,85 @@
     //   tileObj.src = "images/bricks2.png";
     //sprite
     
-    let av = new Image();
+    const av = new Image();
       av.src = "images/SpriteGood6.png";
-    let boxImg = new Image();
+      const boxImg = new Image();
       boxImg.crossOrigin = "anonymous";
       boxImg.src = "images/boxOutline.png";
-     let en = new Image();
+    const en = new Image();
      en.src = "images/enemyNew.png";
-    let itemImg = new Image();
+     const itemImg = new Image();
     itemImg.crossOrigin = "anonymous";
     itemImg.src = "images/items8Outline.png";
-    let slashImg = new Image();
+    const slashImg = new Image();
     slashImg.src = "images/slash.png";
-    let machineFront = new Image();
+    const machineFront = new Image();
     machineFront.src = "images/machineFront2.png";
-    let machineBack = new Image();
+    const machineBack = new Image();
     machineBack.src = "images/machineBack.png";
-    let gateImg = new Image();
+    const gateImg = new Image();
     gateImg.src = "images/gate.png";
-    let edgeImg = new Image();
+    const edgeImg = new Image();
     edgeImg.src = "images/edge.png";
-    let edgeImg2 = new Image();
+    const edgeImg2 = new Image();
     edgeImg2.src = "images/edge2.png";
-    let edgeImg3 = new Image();
+    const edgeImg3 = new Image();
     edgeImg3.src = "images/edge3.png";
-    let coneImg = new Image();
+    const coneImg = new Image();
     coneImg.src = "images/cone3.png";
-    let floorImg = new Image();
+    const floorImg = new Image();
     floorImg.src = "images/floorMark.png";
 
-    var correctSound = new Audio();
+    const correctSound = new Audio();
     correctSound.src = "sounds/Gold1.wav";
-    var enemySound = new Audio();
+    const enemySound = new Audio();
     enemySound.src = "sounds/Strange.wav";
-    var pickupSound = new Audio();
+    const pickupSound = new Audio();
     pickupSound.src = "sounds/Voice2.wav";
-    var itemSound = new Audio();
+    const itemSound = new Audio();
     itemSound.src = "sounds/Coin.wav";
-    var hitSound = new Audio();
+    const hitSound = new Audio();
     hitSound.src = "sounds/Hit.wav";
     hitSound.volume = 0.2;
 
 function level1(canvas,ctx,canvasUI,ctxUI){
  
-  var w1 = new GameObjectLocked(ctx,0,200,300,70,"rgb(191, 184, 188)");//48,100
+  let w1 = new GameObjectLocked(ctx,0,200,300,70,"rgb(191, 184, 188)");//48,100
   // var w2 = new GameObjectLocked(ctx,300,-50,100,50,"black");
-  var w3 = new GameObjectLocked(ctx,230,270,70,100,"rgb(191, 184, 188)");
-  var w4 = new GameObjectLocked(ctx,400,500,200,70,"rgb(191, 184, 188)");
-  var w5 = new GameObjectLocked(ctx,400,400,70,100,"rgb(191, 184, 188)");
+  let w3 = new GameObjectLocked(ctx,230,270,70,100,"rgb(191, 184, 188)");
+  let w4 = new GameObjectLocked(ctx,400,500,200,70,"rgb(191, 184, 188)");
+  let w5 = new GameObjectLocked(ctx,400,400,70,100,"rgb(191, 184, 188)");
   
-  var machine1 = new GameObjectLocked(ctx,228,320,74,50,"rgb(38, 37, 56)");
-  var machine2 = new GameObjectLocked(ctx,398,400,74,50,"rgb(38, 37, 56)");
+  let machine1 = new GameObjectLocked(ctx,228,320,74,50,"rgb(38, 37, 56)");
+  let machine2 = new GameObjectLocked(ctx,398,400,74,50,"rgb(38, 37, 56)");
 
-  var topWall = new GameObjectLocked(ctx,0,-100,600,100,"rgb(106, 100, 117)");
-  var cone1 = new GameObjectLocked(ctx,540,150,30,10);
-  var cone2 = new GameObjectLocked(ctx,50,550,30,10);
+  let topWall = new GameObjectLocked(ctx,0,-100,600,100,"rgb(106, 100, 117)");
+  let cone1 = new GameObjectLocked(ctx,540,150,30,10);
+  let cone2 = new GameObjectLocked(ctx,50,550,30,10);
   let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
   let moveableBG = new BGLocked(600,631);
-  var item1 = new Item(ctx,350,50,30,25);
-  var box = new Box(ctx,0,200,30,30,[255,0,0],"red");
-  var b2 = new Box(ctx,-125,200,30,30,[0,255,0],"green");
-  var b3 = new Box(ctx,600,500,30,30,[0,0,255],"blue");
-  var b4 = new Box(ctx,-250,200,30,30,[0,0,0],"black");
-  var b5 = new Box(ctx,725,500,30,30,[0,0,0],"black");
-  var enemy = new Enemy(ctx,0,0,50,50);
+  let item1 = new Item(ctx,350,50,30,25);
+  let box = new Box(ctx,0,200,30,30,[255,0,0],"red");
+  let b2 = new Box(ctx,-125,200,30,30,[0,255,0],"green");
+  let b3 = new Box(ctx,600,500,30,30,[0,0,255],"blue");
+  let b4 = new Box(ctx,-250,200,30,30,[0,0,0],"black");
+  let b5 = new Box(ctx,725,500,30,30,[0,0,0],"black");
+  let enemy = new Enemy(ctx,0,0,50,50);
   // var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
   let rate2=0;
-  var gameUI = new GameStats(20,300,50,10,120);
+  let gameUI = new GameStats(20,300,50,10,120);
 
-  var inventory = new Array();
+  let inventory = new Array();
 
-  var gate1 = new Gate(ctxUI,380,0,50,5,"red");
-  var gate2 = new Gate(ctxUI,220,0,50,5,"green");
-  var gate3 = new Gate(ctxUI,300,0,50,5,"blue");
+  let gate1 = new Gate(ctxUI,380,0,50,5,"red");
+  let gate2 = new Gate(ctxUI,220,0,50,5,"green");
+  let gate3 = new Gate(ctxUI,300,0,50,5,"blue");
 
-  var boxList = [box,b2,b3,b4,b5];
+  let boxList = [box,b2,b3,b4,b5];
   let obsList = [w1,w3,w4,gate1,];
-  var allObj = [w1,w3,w4,gate1,box,b2,b3,b4];
-  var gateList = [gate1,gate2,gate3];
+  let allObj = [w1,w3,w4,gate1,box,b2,b3,b4];
+  let gateList = [gate1,gate2,gate3];
   //DRAW LOOP===========================
   function draw(){
       //menu();
