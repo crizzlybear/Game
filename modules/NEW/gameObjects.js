@@ -112,20 +112,7 @@ class GameObjectInteractableLocked extends GameObjectLocked{
     this.rgb = rgbList[index];
     this.key=colorList[index];
   }
-  pickup(bgInst, avatarInst){
-    //set pickup area
-    //should make this into a function or something
-    let rightBorder=this.x+this.w + 10;
-    let leftBorder=this.x -10;
-    let topBorder=this.y - 10;
-    let botBorder=this.y+this.h + 10;
-    if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
-      // console.log("pickedup");
-      this.color = "#71ffff";
-    }else{
-      this.color = "#ffffff";
-    }
-  }
+  
   pickupItem(bgInst, avatarInst,inventory,enemyInst,enemyAudio, boxAudio){
     //set pickup area
     //should make this into a function or something
