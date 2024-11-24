@@ -16,7 +16,6 @@ class Avatar{
     this.j=0;//attack frame index
     this.v=0;//particle positition
     this.rgbSum = [255,255,255];
-    this.powerColor = "rgb(255,255,255)";
 
   }
 
@@ -79,12 +78,13 @@ class Avatar{
       this.energy=this.energy-1;
       this.v = (this.v+1)%50;
       var vv = 50-this.v;
+      var rgbStr = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
       if(rightPressed || downPressed){
-        drawParticles(ctx,this.x+this.w-8,this.y,8,8,this.powerColor,vv);
+        drawParticles(ctx,this.x+this.w-8,this.y,8,8,rgbStr,vv);
       }else if(leftPressed || upPressed){
-        drawParticles(ctx,this.x,this.y,8,8,this.powerColor,vv);
+        drawParticles(ctx,this.x,this.y,8,8,rgbStr,vv);
       }else{
-        drawParticles(ctx,this.x+this.w-8,this.y,8,8,this.powerColor,vv);
+        drawParticles(ctx,this.x+this.w-8,this.y,8,8,rgbStr,vv);
       }
       
       
@@ -119,7 +119,6 @@ class Avatar{
           this.rgbSum[0] = Math.floor(this.rgbSum[0]/(2*100/center));
           this.rgbSum[1] = Math.floor(this.rgbSum[1]/(2*100/center));
           this.rgbSum[2] = Math.floor(this.rgbSum[2]/(2*100/center));
-          this.powerColor = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
           
         }else{
           
@@ -130,16 +129,9 @@ class Avatar{
           this.rgbSum[0] = Math.floor(this.rgbSum[0]/11);
           this.rgbSum[1] = Math.floor(this.rgbSum[1]/11);
           this.rgbSum[2] = Math.floor(this.rgbSum[2]/11);
-          this.powerColor = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
-          
-         
         }
-        // dist.push(center);
         
-      }
-      // console.log(dist);
-      
-      
+      }//end loop
 
     }
   }
