@@ -59,7 +59,7 @@ function keyDownHandler(e) {
       powerOn = true;
       break;
     case ("r"):
-      attack = true;
+      attackPressed = true;
       break;
     case ("Shift"):
       shiftPressed = true;
@@ -91,7 +91,7 @@ function keyUpHandler(e) {
       powerOn = false;
       break;
     case ("r"):
-      attack = false;
+      attackPressed = false;
       break;
     case ("Shift"):
       shiftPressed = false;

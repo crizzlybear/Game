@@ -191,7 +191,7 @@ class Avatar{
       this.j = (this.j+1)%4;//where 2 is number of frames
     
     }
-    if(attack){
+    if(attackPressed){
       // if(rightPressed){
       //   drawSwipe(ctx,this.x+this.w+30,this.y+this.h/2,50,50,this.j,attackImg);
       // }else if(leftPressed){

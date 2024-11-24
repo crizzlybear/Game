@@ -8,7 +8,7 @@ let pickup = false;
 let escPressed = false;
 let shiftPressed = false;
 let spacePressed=false;
-let attack= false;
+let attackPressed= false;
 let count=0;
 let gameOver=false;
 

@@ -185,7 +185,7 @@ class Enemy extends GameObjectLocked{
         let collide = [Math.abs((rightBorder-bgInst.bgX)-(avatarInst.x-aB)),Math.abs((botBorder-bgInst.bgY)-(avatarInst.y-aB)),Math.abs((leftBorder-bgInst.bgX)-(avatarInst.x+ avatarInst.w+aB)), Math.abs((topBorder-bgInst.bgY)-(avatarInst.y+ avatarInst.h+aB))];
         let n=collide.indexOf(Math.min(...collide));
        
-        if(attack){
+        if(attackPressed){
           // console.log("attacking!");
           
           switch(n){
