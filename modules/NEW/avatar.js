@@ -6,17 +6,18 @@ class Avatar{
     this.y = avatarY;
     this.w = avatarW;
     this.h = avatarH;
-    this.testValue=1000;
-    this.i=0;
+      
     this.speed = 2;
-    this.v=0;
-    this.rgbSum = [255,255,255];
-    this.powerColor = "rgb(255,255,255)";
     this.health = 1000;
     this.energy = 1000;
-    this.level=0;
-    this.j=0;
     this.isHit=false;
+
+    this.i=0;//sprite frame index
+    this.j=0;//attack frame index
+    this.v=0;//particle positition
+    this.rgbSum = [255,255,255];
+    this.powerColor = "rgb(255,255,255)";
+
   }
 
 
@@ -61,7 +62,7 @@ class Avatar{
 
   usePowerColorParticle(ctx){
     //maybe create another ctx to act as a mask
-    function drawSwipe(ctx,xx,yy,ww,hh,color,vv){
+    function drawParticles(ctx,xx,yy,ww,hh,color,vv){
       ctx.beginPath();  
       ctx.rect(xx,yy,ww,hh);   
       
@@ -78,19 +79,12 @@ class Avatar{
       this.energy=this.energy-1;
       this.v = (this.v+1)%50;
       var vv = 50-this.v;
-      if(rightPressed){
-        drawSwipe(ctx,this.x+this.w-8,this.y,8,8,this.powerColor,vv);
-      }else if(leftPressed){
-        drawSwipe(ctx,this.x,this.y,8,8,this.powerColor,vv);
-      }else if(upPressed){
-        // drawSwipe(ctx,this.x+this.w/2-4,this.y,8,8,this.powerColor,vv);
-        drawSwipe(ctx,this.x,this.y,8,8,this.powerColor,vv);
-      }else if(downPressed){
-        // drawSwipe(ctx,this.x+this.w/2-4,this.y,8,8,this.powerColor,vv);
-        drawSwipe(ctx,this.x+this.w-8,this.y,8,8,this.powerColor,vv);
+      if(rightPressed || downPressed){
+        drawParticles(ctx,this.x+this.w-8,this.y,8,8,this.powerColor,vv);
+      }else if(leftPressed || upPressed){
+        drawParticles(ctx,this.x,this.y,8,8,this.powerColor,vv);
       }else{
-        // drawSwipe(ctx,this.x+this.w/2-4,this.y,8,8,this.powerColor,vv);
-        drawSwipe(ctx,this.x+this.w-8,this.y,8,8,this.powerColor,vv);
+        drawParticles(ctx,this.x+this.w-8,this.y,8,8,this.powerColor,vv);
       }
       
       
