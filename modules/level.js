@@ -62,12 +62,12 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   var cone2 = new GameObjectLocked(ctx,50,550,30,10);
   let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
   let moveableBG = new BGLocked(600,631);
-  var item1 = new GameObjectInteractableLocked(ctx,350,50,30,25);
-  var box = new GameObjectInteractableLocked(ctx,0,200,30,30,[255,0,0],"red");
-  var b2 = new GameObjectInteractableLocked(ctx,-125,200,30,30,[0,255,0],"green");
-  var b3 = new GameObjectInteractableLocked(ctx,600,500,30,30,[0,0,255],"blue");
-  var b4 = new GameObjectInteractableLocked(ctx,-250,200,30,30,[0,0,0],"black");
-  var b5 = new GameObjectInteractableLocked(ctx,725,500,30,30,[0,0,0],"black");
+  var item1 = new Item(ctx,350,50,30,25);
+  var box = new Box(ctx,0,200,30,30,[255,0,0],"red");
+  var b2 = new Box(ctx,-125,200,30,30,[0,255,0],"green");
+  var b3 = new Box(ctx,600,500,30,30,[0,0,255],"blue");
+  var b4 = new Box(ctx,-250,200,30,30,[0,0,0],"black");
+  var b5 = new Box(ctx,725,500,30,30,[0,0,0],"black");
   var enemy = new Enemy(ctx,0,0,50,50);
   // var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
@@ -191,11 +191,11 @@ function level1(canvas,ctx,canvasUI,ctxUI){
 
       /*ITEM and INTERACTABLE PROPERTIES*/
       item1.getEnergy(moveableBG, fixedAvatar, itemSound);
-      if(!box.pickedUp&&box.visible){box.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
-      if(!b2.pickedUp&&b2.visible){b2.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
-      if(!b3.pickedUp&&b3.visible){b3.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
-      if(!b4.pickedUp&&b4.visible){b4.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
-      if(!b5.pickedUp&&b5.visible){b5.pickupItem(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
+      if(!box.pickedUp&&box.visible){box.pickupBox(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
+      if(!b2.pickedUp&&b2.visible){b2.pickupBox(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
+      if(!b3.pickedUp&&b3.visible){b3.pickupBox(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
+      if(!b4.pickedUp&&b4.visible){b4.pickupBox(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
+      if(!b5.pickedUp&&b5.visible){b5.pickupBox(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
       
      
       // if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
