@@ -9,13 +9,6 @@ class GameObject{
       this.ctx = ctx;
       this.pickedUp=false;
     } 
-    //getters
-    get pos(){
-      console.log(this.x,",",this.y);
-    }
-    set col(c){
-      this.color = c;
-    }
     
     //methods
     drawObj(){
@@ -32,31 +25,3 @@ class GameObject{
       this.collisionObj();
     }
 }//end class
-  
-  
-class GameObjectInteractable extends GameObject{
-constructor(ctx){
-    super();
-    this.ctx = ctx;
-}
-pickupObj(avatarInst){
-    //custom collision detection
-    //has to be above draw()
-    if(avatarInst.x+avatarInst.w>this.x && avatarInst.y+avatarInst.h>this.y && avatarInst.y<(this.y+this.h) && avatarInst.x<(this.x+this.w))
-        {
-            if(pickup){
-            console.log("pickedup");
-            this.setCol = "#808080";
-            }
-        }//end if
-    }//end colision
-
-
-createInteractable(){//var cannot be onst
-    this.pickupObj();
-    this.drawObj();
-    this.collisionObj();
-}
-
-
-}
