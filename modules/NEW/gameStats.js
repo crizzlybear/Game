@@ -22,7 +22,6 @@ class GameStats{
             ctx.fill();
             ctx.closePath();
         }
-    
         drawBar(ctx,this.x,this.y,this.w,this.h,"white");
         //console.log("eneergy",energy);
         drawBar(ctx,this.x,this.y,(avatarInst.energy/1000)*this.w,this.h,"green");
@@ -42,20 +41,6 @@ class GameStats{
         drawBar(ctx,this.x+100,this.y,Math.max((avatarInst.health/maxHealth)*this.w,0),this.h,"red");
     }
 
-    drawInventory(ctx,inventory){
-        function drawItem(ctx,xx,yy,ww,hh,setCol){
-            ctx.beginPath();
-            ctx.rect(xx,yy,ww,hh);
-            ctx.fillStyle = setCol;
-            ctx.fill();
-            ctx.closePath();
-        }
-       
-        for(var i=0; i<inventory.length; i++){
-            drawItem(ctx,this.x+(i*this.w),this.y, this.w,this.h, inventory[0]);
-        }
-    }
-    
     
     drawCount(ctx,gateList){
         ctx.beginPath();
