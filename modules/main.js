@@ -40,48 +40,67 @@ function startScreen(canvas,ctx){
 }
 //KEY CONTROLS
 function keyDownHandler(e) {
-  if (e.key === "Right" || e.key === "ArrowRight") {
-    rightPressed = true;
-    // document.getElementById("score").innerText=score++;
-  } else if (e.key === "Left" || e.key === "ArrowLeft") {
-    leftPressed = true;
-  } else if (e.key ==="Up" || e.key === "ArrowUp") {
-    upPressed = true;
-  } else if (e.key ==="Down" || e.key === "ArrowDown"){
-    downPressed = true;
-  } else if (e.key ==="e"){
-    pickup = true;
-    powerOn = true;
-  }else if(e.key ==="r"){
-    attack = true;
-  }else if(e.key ==="Shift"){
-    // console.log("S");
-    shiftPressed = true;
-  }else if(e.key===" "){
-    spacePressed = true;
+
+  switch(e.key){
+    case ("ArrowRight"):
+      rightPressed = true;
+      break;
+    case ("ArrowLeft"):
+      leftPressed = true;
+      break;
+    case ("ArrowUp"):
+      upPressed = true;
+      break;
+    case ("ArrowDown"):
+      downPressed = true;
+      break;
+    case ("e"):
+      pickup = true;
+      powerOn = true;
+      break;
+    case ("r"):
+      attack = true;
+      break;
+    case ("Shift"):
+      shiftPressed = true;
+      break;
+    case (" "):
+      spacePressed = true;
+      break;
+    default:
+      break;
   }
 }
 
 function keyUpHandler(e) {
-  if (e.key === "Right" || e.key === "ArrowRight") {
-    rightPressed = false;
-  } else if (e.key === "Left" || e.key === "ArrowLeft") {
-    leftPressed = false;
-  } else if (e.key === "Up" || e.key === "ArrowUp") {
-    upPressed = false;
-    // /jump = false;
-  } else if (e.key === "Down" || e.key === "ArrowDown") {
-    downPressed = false;
-    
-  } else if(e.key === "e"){
-    pickup = false;
-    powerOn = false;
-  }else if(e.key ==="r"){
-    attack = false;
-  }else if(e.key ==="Shift"){
-    shiftPressed = false;
-  }else if(e.key ===" "){
-    spacePressed=false;
+  switch(e.key){
+    case ("ArrowRight"):
+      rightPressed = false;
+      break;
+    case ("ArrowLeft"):
+      leftPressed = false;
+      break;
+    case ("ArrowUp"):
+      upPressed = false;
+      break;
+    case ("ArrowDown" ):
+      downPressed = false;
+      break;
+    case ("e"):
+      pickup = false;
+      powerOn = false;
+      break;
+    case ("r"):
+      attack = false;
+      break;
+    case ("Shift"):
+      shiftPressed = false;
+      break;
+    case (" "):
+      spacePressed=false;
+      break;
+    default:
+      break;
   }
 }
 
