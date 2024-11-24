@@ -19,28 +19,6 @@ class Avatar{
     this.isHit=false;
   }
 
-  drawAvatar(ctx,updateX,updateY) {
-    //console.log("updateX:", updateX);
-    ctx.beginPath();
-    ctx.rect(updateX, updateY, this.w, this.h);
-    //ctx.fillStyle = "#0095DD";
-    
-    //ctx.fill();//enable to see hitbox
-    ctx.closePath();
-  }
-
-  moveBoundaries(canvas){//replaces moveBoundaries
-    if (rightPressed) {
-        this.x = Math.min(this.x + this.speed, canvas.width - this.w); //move 7 units right with edge
-    } else if (leftPressed) {
-        this.x = Math.max(this.x - this.speed, 0); 
-    } else if(upPressed){
-      this.y = Math.max(this.y - this.speed, 0);    
-    } else if(downPressed){
-      this.y = Math.min(this.y + this.speed, canvas.height - this.h);
-    }
-  }
- 
 
   switchSprite(ctx, rate, frameW, frameH){ 
     
