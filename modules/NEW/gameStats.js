@@ -36,7 +36,7 @@ class GameStats{
             ctx.closePath();
         }
     
-        var maxHealth = 1000;
+        let maxHealth = 1000;
         drawBar(ctx,this.x+100,this.y,this.w,this.h,"white");
         drawBar(ctx,this.x+100,this.y,Math.max((avatarInst.health/maxHealth)*this.w,0),this.h,"red");
     }
@@ -49,7 +49,7 @@ class GameStats{
         ctx.fill();
         ctx.closePath();
 
-        var text = ` R:${gateList[0].score} G:${gateList[1].score} B:${gateList[2].score}`;
+        let text = ` R:${gateList[0].score} G:${gateList[1].score} B:${gateList[2].score}`;
         ctx.font = "bold 10px Arial";
         ctx.fillStyle = "black";
         // ctx.shadowColor="transparent";
@@ -57,8 +57,8 @@ class GameStats{
         
     }  
     drawObjective(ctx,gateList){
-        var text = ` ${gateList[this.gateIndex].gateKeyReq}: ${this.targetScore}/${this.targetValue}`;
-        var text2 = ` Completed: ${this.completedTasks}`;
+        let text = ` ${gateList[this.gateIndex].gateKeyReq}: ${this.targetScore}/${this.targetValue}`;
+        let text2 = ` Completed: ${this.completedTasks}`;
         if(gateList[this.gateIndex].score > this.prevScore){
             this.targetScore++;
         }
@@ -79,10 +79,10 @@ class GameStats{
 
     countDownTimer(){
         //Has to be placed outside of game loop! 
-        var t = this.timeLeft;
-        var elem = document.getElementById("time");
+        let t = this.timeLeft;
+        let elem = document.getElementById("time");
         
-        var timerId = setInterval(countdown, 1000);
+        let timerId = setInterval(countdown, 1000);
         function countdown(){
           if ((t == -1)|| gameOver) {
             timeOut=true;
@@ -90,8 +90,8 @@ class GameStats{
             clearTimeout(timerId);//deletes timer
           } else {
             
-            var min = Math.floor(t/60);
-            var sec = t%60;
+            let min = Math.floor(t/60);
+            let sec = t%60;
             if(min==0 && sec<=30){
                 elem.setAttribute("style","color:red");
             }
@@ -106,7 +106,7 @@ class GameStats{
     }
 
     resetScore(gateList){
-        for(var i=0; i<gateList.length;i++){
+        for(let i=0; i<gateList.length;i++){
             gateList[i].score=0;
         }
         this.completedTasks=0;

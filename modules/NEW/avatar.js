@@ -77,8 +77,8 @@ class Avatar{
     if(powerOn&&this.energy>0){
       this.energy=this.energy-1;
       this.v = (this.v+1)%50;
-      var vv = 50-this.v;
-      var rgbStr = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
+      let vv = 50-this.v;
+      let rgbStr = `rgb(${this.rgbSum[0]},${this.rgbSum[1]},${this.rgbSum[2]})`;
       if(rightPressed || downPressed){
         drawParticles(ctx,this.x+this.w-8,this.y,8,8,rgbStr,vv);
       }else if(leftPressed || upPressed){
@@ -96,19 +96,19 @@ class Avatar{
 
   getClosestItemColors(obsList,bgInst, rate){
     if(rate==1){
-      // var dist = new Array();
-      var calcX1;
-      var calcX2;
-      var calcY1;
-      var calcY2;
-      var avX = convertBGXtoAvatar(bgInst.bgX) + 25;
-      var avY = convertBGYtoAvatar(bgInst.bgY) + 25;
-      for(var i=0; i<obsList.length; i++){
+      // let dist = new Array();
+      let calcX1;
+      let calcX2;
+      let calcY1;
+      let calcY2;
+      let avX = convertBGXtoAvatar(bgInst.bgX) + 25;
+      let avY = convertBGYtoAvatar(bgInst.bgY) + 25;
+      for(let i=0; i<obsList.length; i++){
             calcX1 = Math.abs((obsList[i].x - avX));//maybe replace with collision in range
             calcX2 = Math.abs(obsList[i].x+obsList[i].w - avX);
             calcY1 = Math.abs((obsList[i].y - avY));
             calcY2 = Math.abs(obsList[i].y+obsList[i].h - avY);
-        var center = (((calcX1+calcX2)/2) + ((calcY1+calcY2)/2))/2;
+        let center = (((calcX1+calcX2)/2) + ((calcY1+calcY2)/2))/2;
         if((center < 90)&& !obsList[i].pickedUp && obsList[i].visible&& (obsList[i].x+50>0 && (obsList[i].x)<bgInst.bgW)){ //ADJUST CENTER to be closer to box distance and within bounds
           
           // console.log(obsList[i].rgb,i);
@@ -138,17 +138,17 @@ class Avatar{
 
   loadNear(allObj, bgInst, rate){
     //maybe not that efficient
-    var calcX1;
-    var calcX2;
-    var calcY1;
-    var calcY2;
+    let calcX1;
+    let calcX2;
+    let calcY1;
+    let calcY2;
     if(rate==1 &&(rightPressed||leftPressed||upPressed||downPressed)){
-      for(var i=0; i<allObj.length; i++){
+      for(let i=0; i<allObj.length; i++){
         calcX1 = Math.abs((allObj[i].x - convertBGXtoAvatar(bgInst.bgX)));//maybe replace with collision in range
         calcX2 = Math.abs(allObj[i].x+allObj[i].w - convertBGXtoAvatar(bgInst.bgX));
         calcY1 = Math.abs((allObj[i].y - convertBGYtoAvatar(bgInst.bgY)));
         calcY2 = Math.abs(allObj[i].y+allObj[i].h - convertBGYtoAvatar(bgInst.bgY));
-    var center = ((Math.min(calcX1,calcX2) + Math.min(calcY1,calcY2))/2);
+    let center = ((Math.min(calcX1,calcX2) + Math.min(calcY1,calcY2))/2);
     if((center < 150)){
       allObj[i].color = "pink";
       allObj[i].isVisible=true;

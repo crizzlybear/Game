@@ -19,22 +19,23 @@ class Enemy extends GameObjectLocked{
   drawFollow(bgInst,rate,rate2,avatarInst, hitAudio){
     let ctx = this.ctx;
    
-    var xDist = Math.floor(convertBGXtoAvatar(bgInst.bgX)-this.x);
-    var yDist = Math.floor(convertBGYtoAvatar(bgInst.bgY)- this.y );
-    
+    let xDist = Math.floor(convertBGXtoAvatar(bgInst.bgX)-this.x);
+    let yDist = Math.floor(convertBGYtoAvatar(bgInst.bgY)- this.y );
+    let ax;
+    let ay;
     if(rate2<20){
-        ax = this.x +=(xDist*0);//ENEMY SPEED default is 0.01
-        ay = this.y +=(yDist*0);
+      ax = this.x +=(xDist*0);//ENEMY SPEED default is 0.01
+      ay = this.y +=(yDist*0);
         
     }else if(rate2>=20 && rate2<30){
       ax = this.x +=(xDist*0.1);//ENEMY SPEED default is 0.01
       ay = this.y +=(yDist*0.1);
     
-      var rightBorder=this.x+this.w;
-      var leftBorder=this.x;
-      var topBorder=this.newY;
-      var botBorder=this.h+this.newY;
-      var aB=10;//attack border
+      let rightBorder=this.x+this.w;
+      let leftBorder=this.x;
+      let topBorder=this.newY;
+      let botBorder=this.h+this.newY;
+      let aB=10;//attack border
       if(this.health>0&&(rightBorder-bgInst.bgX>avatarInst.x-aB)&&(botBorder-bgInst.bgY>avatarInst.y-aB)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w+aB)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h+aB)){
         avatarInst.health = avatarInst.health-this.damage;
         avatarInst.x +=xDist*0.02;
@@ -47,8 +48,8 @@ class Enemy extends GameObjectLocked{
       
     }else{
       avatarInst.isHit = false;
-      var ax = this.x +=(xDist*0.008);//ENEMY SPEED default is 0.01
-      var ay = this.y +=(yDist*0.008);
+      ax = this.x +=(xDist*0.008);//ENEMY SPEED default is 0.01
+      ay = this.y +=(yDist*0.008);
     }
       this.newX = ax;
       this.newY = ay;
@@ -67,22 +68,22 @@ class Enemy extends GameObjectLocked{
     collisionObstacles(obsList){
 
       function getFromList(obsList1){
-        var r = Math.floor(Math.random()*(obsList1.length));
+        let r = Math.floor(Math.random()*(obsList1.length));
         // console.log(r);
-        var ob = obsList1[r];
+        let ob = obsList1[r];
         return ob;
       }
       //custom collision detection
       //console.log(this.x+this.w,this.y+this.h, ObstInst.x, ObstInst.y);
       // console.log(getFromList(obsList));
-      var objectN = getFromList(obsList);
-      // for(var i=0; i<obsList.length; i++){
+      let objectN = getFromList(obsList);
+      // for(let i=0; i<obsList.length; i++){
       //   ObstInst = obsList[i];
       // }
-      var eL = this.x;
-      var eR = this.x+this.w;
-      var eT = this.y;
-      var eB = this.y+this.h;
+      let eL = this.x;
+      let eR = this.x+this.w;
+      let eT = this.y;
+      let eB = this.y+this.h;
 
       if(eR>objectN.x && eB>objectN.y &&eT<objectN.y+objectN.h&&eL<objectN.x+objectN.w){
         console.log("Enemey INSIDE");
@@ -131,7 +132,7 @@ class Enemy extends GameObjectLocked{
       let topBorder=this.newY;
       let botBorder=this.h+this.newY;
 
-      var aB=30;//attack border
+      let aB=30;//attack border
       if((rightBorder-bgInst.bgX>avatarInst.x-aB)&&(botBorder-bgInst.bgY>avatarInst.y-aB)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w+aB)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h+aB)){
 
         let collide = [Math.abs((rightBorder-bgInst.bgX)-(avatarInst.x-aB)),Math.abs((botBorder-bgInst.bgY)-(avatarInst.y-aB)),Math.abs((leftBorder-bgInst.bgX)-(avatarInst.x+ avatarInst.w+aB)), Math.abs((topBorder-bgInst.bgY)-(avatarInst.y+ avatarInst.h+aB))];
@@ -171,7 +172,7 @@ class Enemy extends GameObjectLocked{
     }
     
     enemyHealthBar(ctx,bgInst){
-      var maxHealth = 200;
+      let maxHealth = 200;
       ctx.beginPath();
       ctx.rect(this.x-bgInst.bgX, this.y-5-bgInst.bgY, this.w, 5);
       ctx.fillStyle = "white";

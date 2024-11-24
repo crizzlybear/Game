@@ -1,13 +1,13 @@
 
 function convertBGYtoAvatar(bgY){
     //avatarRelative position
-    var translated=bgY+160; 
+    let translated=bgY+160; 
     return translated;
 }
   
 function convertBGXtoAvatar(bgX){
      //avatarRelative position
-    var translated=bgX+240; 
+    let translated=bgX+240; 
     return translated;
 }
   
@@ -36,7 +36,7 @@ function drawText(ctx,x,y,size,col,text){
 }  
 
 function updateHighscore(ctx,x,y,size,col,nCompleted){
-    var hsText;
+    let hsText;
     if(nCompleted>highscore){
         hsText = `Highscore: ${nCompleted} NEW!`;
         highscore = nCompleted;

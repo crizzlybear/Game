@@ -7,9 +7,9 @@ class Box extends GameObjectLocked{
       this.visible=true;
     }
     setNewRGBandColor(){
-      var rgbList = [[255,0,0],[0,255,0],[0,0,255],[0,0,0]];
-      var colorList = ["red","green","blue","black"];
-      var index = Math.floor(Math.random()*4);
+      let rgbList = [[255,0,0],[0,255,0],[0,0,255],[0,0,0]];
+      let colorList = ["red","green","blue","black"];
+      let index = Math.floor(Math.random()*4);
       this.rgb = rgbList[index];
       this.key=colorList[index];
     }
@@ -124,7 +124,7 @@ class Item extends GameObjectLocked{
         
         if(this.energy==0){
           this.prevX = this.x;
-          var coord = Math.round(Math.random()*(randomPositions.length-1));
+          let coord = Math.round(Math.random()*(randomPositions.length-1));
           this.x = randomPositions[coord][0];
           while(this.x==this.prevX){
             coord = Math.round(Math.random()*(randomPositions.length-1));
@@ -146,10 +146,10 @@ class Item extends GameObjectLocked{
       //height layer  
       //console.log("drawn", bgInst.bgX,bgInst.bgY);
       // this.frameW=30;
-      var imgW = this.w;
-      var imgH = this.h;
-      var imgX = this.x-bgInst.bgX;
-      var imgY = this.y-bgInst.bgY;
+      let imgW = this.w;
+      let imgH = this.h;
+      let imgX = this.x-bgInst.bgX;
+      let imgY = this.y-bgInst.bgY;
       if(this.frameW!=0){
         // imgX = imgX - (this.energy/450)*frameW;
         // imgY = imgY - (this.energy/450)*frameH;
