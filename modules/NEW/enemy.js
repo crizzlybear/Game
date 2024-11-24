@@ -120,8 +120,12 @@ class Enemy extends GameObjectLocked{
     }//end colision
     
     isAttacked(bgInst, avatarInst, hitAudio){
-      //custom collision detection
-      
+      const onHitAction = () =>{
+        //Using arrow function to use parent scope
+        this.health=this.health-5;
+        hitAudio.play();
+        this.isHit=true;
+      }
       let rightBorder=this.x+this.w;
       let leftBorder=this.x;
       let topBorder=this.newY;
@@ -135,38 +139,26 @@ class Enemy extends GameObjectLocked{
        
         if(attackPressed){
           // console.log("attacking!");
-          
           switch(n){
             case n=0:
               // console.log("from right!");
-              
               this.x = Math.max(this.x-2,0);
-              this.health=this.health-5;
-              hitAudio.play();
-              this.isHit=true;
+              onHitAction();
               break;
             case n=1:
               // console.log("from bottom", botBorder); 
-            
               this.y = Math.max(this.y -2,0);
-              this.health=this.health-5;
-              hitAudio.play();
-              this.isHit=true;
+              onHitAction();
               break;
             case n=2:
               // console.log("from left");
               this.x = Math.min(this.x+2, bgInst.bgW);
-              this.health=this.health-5;
-              hitAudio.play();
-              this.isHit=true;
+              onHitAction();
               break;
             case n=3:
               // console.log("from top"); 
-              // this.col = "purple";
               this.y = Math.min(this.y +2,bgInst.bgH);
-              this.health=this.health-5;
-              hitAudio.play();
-              this.isHit=true;
+              onHitAction();
               break;
             default:
               // console.log("nothing...");
