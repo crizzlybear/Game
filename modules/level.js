@@ -222,8 +222,8 @@ function level1(canvas,ctx,canvasUI,ctxUI){
         gameOver=true;
         ctx.filter = 'grayscale(1)';
         if(spacePressed){
-          fixedAvatar.x = canvas.width/2;
-          fixedAvatar.y = canvas.height/2-20;
+          // fixedAvatar.x = canvas.width/2;//hit recoil disabled
+          // fixedAvatar.y = canvas.height/2-20;
           fixedAvatar.health=1000;
           fixedAvatar.energy=1000;
           gameUI.resetScore(gateList);

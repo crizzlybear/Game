@@ -38,8 +38,8 @@ class Enemy extends GameObjectLocked{
       let aB=10;//attack border
       if(this.health>0&&(rightBorder-bgInst.bgX>avatarInst.x-aB)&&(botBorder-bgInst.bgY>avatarInst.y-aB)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w+aB)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h+aB)){
         avatarInst.health = avatarInst.health-this.damage;
-        avatarInst.x +=xDist*0.02;
-        avatarInst.y +=yDist*0.02;
+        // avatarInst.x +=xDist*0.02;
+        // avatarInst.y +=yDist*0.02;//avatar hit recoil, removed becuase it also needs to align bgX and bgY
         hitAudio.play();
         avatarInst.isHit = true;
       }else{//console.log("outside");
