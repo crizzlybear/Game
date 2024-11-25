@@ -109,7 +109,7 @@ class Avatar{
             calcY1 = Math.abs((obsList[i].y - avY));
             calcY2 = Math.abs(obsList[i].y+obsList[i].h - avY);
         let center = (((calcX1+calcX2)/2) + ((calcY1+calcY2)/2))/2;
-        if((center < 90)&& !obsList[i].pickedUp && obsList[i].visible&& (obsList[i].x+50>0 && (obsList[i].x)<bgInst.bgW)){ //ADJUST CENTER to be closer to box distance and within bounds
+        if((center < 80)&& !obsList[i].pickedUp && obsList[i].visible&& (obsList[i].x+50>0 && (obsList[i].x)<bgInst.bgW)){ //ADJUST CENTER to be closer to box distance and within bounds
           
           // console.log(obsList[i].rgb,i);
           this.rgbSum[0] += obsList[i].rgb[0]*3*(100/center);

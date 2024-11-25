@@ -22,7 +22,7 @@ class Box extends GameObjectLocked{
       let topBorder=this.y - 10;
       let botBorder=this.y+this.h + 10;
       if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
-        console.log("pickedup");
+        // console.log("pickedup");
        boxAudio.play();
         // console.log(item);
         if(!this.pickedUp && inventory.length==0){
@@ -119,7 +119,7 @@ class Item extends GameObjectLocked{
         avatarInst.energy = Math.min(avatarInst.energy+100,1000);
         soundInst.play();
         //this.col = "#808080";
-        this.col = "#71ffff";
+        // this.col = "#71ffff";
         this.frameW=120;
         
         if(this.energy==0){
@@ -137,7 +137,7 @@ class Item extends GameObjectLocked{
       }else{
         // this.frameW=30;
         this.frameW=0;
-        this.col = "#ffffff";
+        // this.col = "#ffffff";
       }
     }
     
@@ -187,7 +187,7 @@ class Gate extends GameObjectLocked{
                 inventory.pop();
                 this.score++;
                 unlockSound.play();
-                console.log("@",this.gateKeyReq,":",this.score);
+                // console.log("@",this.gateKeyReq,":",this.score);
             }
         }
     }

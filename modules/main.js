@@ -11,7 +11,7 @@ function main(){
   document.addEventListener("keydown", keyDownHandler, false);
   document.addEventListener("keyup", keyUpHandler, false);
   
-  console.log("PRESS JUMP TO START");
+  // console.log("PRESS JUMP TO START");
   startScreen(canvas,ctx);
   startLevel(canvas,ctx,canvasUI,ctxUI);
   // level1(canvas,ctx,canvasUI,ctxUI);

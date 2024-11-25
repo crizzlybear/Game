@@ -40,7 +40,6 @@ function updateHighscore(ctx,x,y,size,col,nCompleted){
     if(nCompleted>highscore){
         hsText = `Highscore: ${nCompleted} NEW!`;
         highscore = nCompleted;
-        console.log("FIX HIGHSCORE!!");
     }else{
         hsText = `Highscore: ${highscore}`;
     }
