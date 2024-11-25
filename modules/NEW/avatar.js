@@ -19,24 +19,22 @@ class Avatar{
 
   }
 
-
   switchSprite(ctx, rate, frameW, frameH){ 
-    
     function drawSprite(updateX,updateY,avatarW,avatarH,n){
-            ctx.drawImage(av,n*frameW,0,frameW,frameH,updateX,updateY,avatarW, avatarH);//1,2,3,4=part of image you want to show //5,6,7,8 how to display
-            /*if fixed, updateX and updateY are constant,
-            if moves, updateX = avatarX, updateY = avatarY. avatarX,avatarY is updated by moveFree()*/
-        }
-   if(rate==1){
-    this.i = (this.i+1)%2;//where 2 is number of frames
-   }
+      ctx.drawImage(av,n*frameW,0,frameW,frameH,updateX,updateY,avatarW, avatarH);//1,2,3,4=part of image you want to show //5,6,7,8 how to display
+      /*if fixed, updateX and updateY are constant,
+      if moves, updateX = avatarX, updateY = avatarY. avatarX,avatarY is updated by moveFree()*/
+    }
+    if(rate==1){
+      this.i = (this.i+1)%2;//where 2 is number of frames
+    }
     if(rightPressed){//0,4
-        // console.log(this.i);
-        if(powerOn&&this.energy>0){
-          drawSprite(this.x,this.y,this.w, this.h, this.i+2);
-        }else{
-          drawSprite(this.x,this.y,this.w, this.h, this.i+2);
-        }
+      // console.log(this.i);
+      if(powerOn&&this.energy>0){
+        drawSprite(this.x,this.y,this.w, this.h, this.i+2);
+      }else{
+        drawSprite(this.x,this.y,this.w, this.h, this.i+2);
+      }
         
     }else if(leftPressed){//1,5
       // console.log("L",this.i+4);
@@ -86,13 +84,9 @@ class Avatar{
       }else{
         drawParticles(ctx,this.x+this.w-8,this.y,8,8,rgbStr,vv);
       }
-      
-      
     }
- 
     
   }
-
 
   getClosestItemColors(obsList,bgInst, rate){
     if(rate==1){
@@ -104,11 +98,11 @@ class Avatar{
       let avX = convertBGXtoAvatar(bgInst.bgX) + 25;
       let avY = convertBGYtoAvatar(bgInst.bgY) + 25;
       for(let i=0; i<obsList.length; i++){
-            calcX1 = Math.abs((obsList[i].x - avX));//maybe replace with collision in range
-            calcX2 = Math.abs(obsList[i].x+obsList[i].w - avX);
-            calcY1 = Math.abs((obsList[i].y - avY));
-            calcY2 = Math.abs(obsList[i].y+obsList[i].h - avY);
-        let center = (((calcX1+calcX2)/2) + ((calcY1+calcY2)/2))/2;
+          calcX1 = Math.abs((obsList[i].x - avX));//maybe replace with collision in range
+          calcX2 = Math.abs(obsList[i].x+obsList[i].w - avX);
+          calcY1 = Math.abs((obsList[i].y - avY));
+          calcY2 = Math.abs(obsList[i].y+obsList[i].h - avY);
+          let center = (((calcX1+calcX2)/2) + ((calcY1+calcY2)/2))/2;
         if((center < 80)&& !obsList[i].pickedUp && obsList[i].visible&& (obsList[i].x+50>0 && (obsList[i].x)<bgInst.bgW)){ //ADJUST CENTER to be closer to box distance and within bounds
           
           // console.log(obsList[i].rgb,i);
@@ -135,31 +129,6 @@ class Avatar{
 
     }
   }
-
-  loadNear(allObj, bgInst, rate){
-    //maybe not that efficient
-    let calcX1;
-    let calcX2;
-    let calcY1;
-    let calcY2;
-    if(rate==1 &&(rightPressed||leftPressed||upPressed||downPressed)){
-      for(let i=0; i<allObj.length; i++){
-        calcX1 = Math.abs((allObj[i].x - convertBGXtoAvatar(bgInst.bgX)));//maybe replace with collision in range
-        calcX2 = Math.abs(allObj[i].x+allObj[i].w - convertBGXtoAvatar(bgInst.bgX));
-        calcY1 = Math.abs((allObj[i].y - convertBGYtoAvatar(bgInst.bgY)));
-        calcY2 = Math.abs(allObj[i].y+allObj[i].h - convertBGYtoAvatar(bgInst.bgY));
-    let center = ((Math.min(calcX1,calcX2) + Math.min(calcY1,calcY2))/2);
-    if((center < 150)){
-      allObj[i].color = "pink";
-      allObj[i].isVisible=true;
-    }else{
-      allObj[i].color = "white";
-      allObj[i].isVisible=false;
-    }
-}
-    }
-    
-}
 
   run(){
     if(shiftPressed && this.energy>0){
@@ -196,21 +165,16 @@ class Avatar{
       drawSwipe(ctx,attackImg,this.x,this.y,80,80,this.j);
       
     }
-    
-    
-    
   }
 
   drawCarriedBox(ctx,inventoryList,boxImg){
     function drawItem(ctx,xx,yy,ww,hh){
-        ctx.drawImage(boxImg,xx, yy, ww, hh );
+      ctx.drawImage(boxImg,xx, yy, ww, hh );
     }
    
-        if(inventoryList.length==1){
-            drawItem(ctx,this.x,this.y, 30,30);
-        }
-       
-    
+    if(inventoryList.length==1){
+      drawItem(ctx,this.x,this.y, 30,30);
+    }
   }
 
 

@@ -65,125 +65,123 @@ class Enemy extends GameObjectLocked{
     
   }
   
-    collisionObstacles(obsList){
+  collisionObstacles(obsList){
 
-      function getFromList(obsList1){
-        let r = Math.floor(Math.random()*(obsList1.length));
-        // console.log(r);
-        let ob = obsList1[r];
-        return ob;
+    function getFromList(obsList1){
+      let r = Math.floor(Math.random()*(obsList1.length));
+      // console.log(r);
+      let ob = obsList1[r];
+      return ob;
+    }
+    //custom collision detection
+    //console.log(this.x+this.w,this.y+this.h, ObstInst.x, ObstInst.y);
+    // console.log(getFromList(obsList));
+    let objectN = getFromList(obsList);
+    // for(let i=0; i<obsList.length; i++){
+    //   ObstInst = obsList[i];
+    // }
+    let eL = this.x;
+    let eR = this.x+this.w;
+    let eT = this.y;
+    let eB = this.y+this.h;
+
+    if(eR>objectN.x && eB>objectN.y &&eT<objectN.y+objectN.h&&eL<objectN.x+objectN.w){
+      console.log("Enemey INSIDE");
+      let collide = [Math.abs(eR-objectN.x),Math.abs(eB-objectN.y),Math.abs(eT-objectN.y-objectN.h),Math.abs(eL-objectN.x-objectN.w)];
+      let n=collide.indexOf(Math.min(...collide));
+      console.log(n);
+      switch(n){
+        case n=0://L
+          console.log("L");
+          this.x = objectN.x-this.w-5;
+          // this.y=this.y*1.0005;
+          break;
+        case n=1://T
+          console.log("T");
+          this.y = objectN.y-this.h-5;
+          // this.x=this.x+1;
+          break;
+        case n=2://B
+        console.log("B"); 
+        this.y = objectN.y+objectN.h+5;
+          break;
+        case n=3://R
+        console.log("R");
+        this.x = objectN.x+objectN.w+5;
+        // this.y = this.y*1.005;
+          break;
+        default:
+          break;
       }
-      //custom collision detection
-      //console.log(this.x+this.w,this.y+this.h, ObstInst.x, ObstInst.y);
-      // console.log(getFromList(obsList));
-      let objectN = getFromList(obsList);
-      // for(let i=0; i<obsList.length; i++){
-      //   ObstInst = obsList[i];
-      // }
-      let eL = this.x;
-      let eR = this.x+this.w;
-      let eT = this.y;
-      let eB = this.y+this.h;
+    }else{
+      // console.log("OUT");
+    }
+  }//end colision
+  
+  isAttacked(bgInst, avatarInst, hitAudio){
+    const onHitAction = () =>{
+      //Using arrow function to use parent scope
+      this.health=this.health-5;
+      hitAudio.play();
+      this.isHit=true;
+    }
+    let rightBorder=this.x+this.w;
+    let leftBorder=this.x;
+    let topBorder=this.newY;
+    let botBorder=this.h+this.newY;
 
-      if(eR>objectN.x && eB>objectN.y &&eT<objectN.y+objectN.h&&eL<objectN.x+objectN.w){
-        console.log("Enemey INSIDE");
-        let collide = [Math.abs(eR-objectN.x),Math.abs(eB-objectN.y),Math.abs(eT-objectN.y-objectN.h),Math.abs(eL-objectN.x-objectN.w)];
-        let n=collide.indexOf(Math.min(...collide));
-        console.log(n);
+    let aB=30;//attack border
+    if((rightBorder-bgInst.bgX>avatarInst.x-aB)&&(botBorder-bgInst.bgY>avatarInst.y-aB)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w+aB)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h+aB)){
+
+      let collide = [Math.abs((rightBorder-bgInst.bgX)-(avatarInst.x-aB)),Math.abs((botBorder-bgInst.bgY)-(avatarInst.y-aB)),Math.abs((leftBorder-bgInst.bgX)-(avatarInst.x+ avatarInst.w+aB)), Math.abs((topBorder-bgInst.bgY)-(avatarInst.y+ avatarInst.h+aB))];
+      let n=collide.indexOf(Math.min(...collide));
+      
+      if(attackPressed){
+        // console.log("attacking!");
         switch(n){
-          case n=0://L
-            console.log("L");
-            this.x = objectN.x-this.w-5;
-            // this.y=this.y*1.0005;
+          case n=0:
+            // console.log("from right!");
+            this.x = Math.max(this.x-2,0);
+            onHitAction();
             break;
-          case n=1://T
-            console.log("T");
-            this.y = objectN.y-this.h-5;
-            // this.x=this.x+1;
+          case n=1:
+            // console.log("from bottom", botBorder); 
+            this.y = Math.max(this.y -2,0);
+            onHitAction();
             break;
-          case n=2://B
-          console.log("B"); 
-          this.y = objectN.y+objectN.h+5;
+          case n=2:
+            // console.log("from left");
+            this.x = Math.min(this.x+2, bgInst.bgW);
+            onHitAction();
             break;
-          case n=3://R
-          console.log("R");
-          this.x = objectN.x+objectN.w+5;
-          // this.y = this.y*1.005;
+          case n=3:
+            // console.log("from top"); 
+            this.y = Math.min(this.y +2,bgInst.bgH);
+            onHitAction();
             break;
           default:
+            // console.log("nothing...");
             break;
-        }
-      }else{
-        // console.log("OUT");
-      }
-  
-     
-    }//end colision
-    
-    isAttacked(bgInst, avatarInst, hitAudio){
-      const onHitAction = () =>{
-        //Using arrow function to use parent scope
-        this.health=this.health-5;
-        hitAudio.play();
-        this.isHit=true;
-      }
-      let rightBorder=this.x+this.w;
-      let leftBorder=this.x;
-      let topBorder=this.newY;
-      let botBorder=this.h+this.newY;
-
-      let aB=30;//attack border
-      if((rightBorder-bgInst.bgX>avatarInst.x-aB)&&(botBorder-bgInst.bgY>avatarInst.y-aB)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w+aB)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h+aB)){
-
-        let collide = [Math.abs((rightBorder-bgInst.bgX)-(avatarInst.x-aB)),Math.abs((botBorder-bgInst.bgY)-(avatarInst.y-aB)),Math.abs((leftBorder-bgInst.bgX)-(avatarInst.x+ avatarInst.w+aB)), Math.abs((topBorder-bgInst.bgY)-(avatarInst.y+ avatarInst.h+aB))];
-        let n=collide.indexOf(Math.min(...collide));
-       
-        if(attackPressed){
-          // console.log("attacking!");
-          switch(n){
-            case n=0:
-              // console.log("from right!");
-              this.x = Math.max(this.x-2,0);
-              onHitAction();
-              break;
-            case n=1:
-              // console.log("from bottom", botBorder); 
-              this.y = Math.max(this.y -2,0);
-              onHitAction();
-              break;
-            case n=2:
-              // console.log("from left");
-              this.x = Math.min(this.x+2, bgInst.bgW);
-              onHitAction();
-              break;
-            case n=3:
-              // console.log("from top"); 
-              this.y = Math.min(this.y +2,bgInst.bgH);
-              onHitAction();
-              break;
-            default:
-              // console.log("nothing...");
-              break;
-          } //end switch
-        }else{//console.log("outside");
-          this.isHit=false;
-        }
+        } //end switch
+      }else{//console.log("outside");
+        this.isHit=false;
       }
     }
+  }
     
-    enemyHealthBar(ctx,bgInst){
-      let maxHealth = 200;
-      ctx.beginPath();
-      ctx.rect(this.x-bgInst.bgX, this.y-5-bgInst.bgY, this.w, 5);
-      ctx.fillStyle = "white";
-      ctx.fill();
-      ctx.closePath();
+  enemyHealthBar(ctx,bgInst){
+    let maxHealth = 200;
+    ctx.beginPath();
+    ctx.rect(this.x-bgInst.bgX, this.y-5-bgInst.bgY, this.w, 5);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
 
-      ctx.beginPath();      
-      ctx.rect(this.x-bgInst.bgX, this.y-5-bgInst.bgY, this.w*(this.health/maxHealth),5);
-      ctx.fillStyle = "rgb(0,0,0)";
-      ctx.fill();
-      ctx.closePath();
-    }
+    ctx.beginPath();      
+    ctx.rect(this.x-bgInst.bgX, this.y-5-bgInst.bgY, this.w*(this.health/maxHealth),5);
+    ctx.fillStyle = "rgb(0,0,0)";
+    ctx.fill();
+    ctx.closePath();
+  }
    
 }

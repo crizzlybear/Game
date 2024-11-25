@@ -6,7 +6,7 @@ function convertBGYtoAvatar(bgY){
 }
   
 function convertBGXtoAvatar(bgX){
-     //avatarRelative position
+    //avatarRelative position
     let translated=bgX+240; 
     return translated;
 }

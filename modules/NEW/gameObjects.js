@@ -63,7 +63,6 @@ class GameObjectLocked extends GameObject{
   }//end colision
 
   drawWallDecor(ctx,ctxui, bgInst,gateList,gateImgInst){
-
     ctx.beginPath();
     // ctx.shadowColor="transparent";
     ctx.rect(this.x+20-bgInst.bgX,this.y-bgInst.bgY,2,this.h);
