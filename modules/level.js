@@ -6,13 +6,13 @@
     //sprite
     
     const av = new Image();
-      av.src = "images/SpriteGood6.png";
-      const boxImg = new Image();
-      boxImg.crossOrigin = "anonymous";
-      boxImg.src = "images/boxOutline.png";
+    av.src = "images/SpriteGood6.png";
+    const boxImg = new Image();
+    boxImg.crossOrigin = "anonymous";
+    boxImg.src = "images/boxOutline.png";
     const en = new Image();
-     en.src = "images/enemyNew.png";
-     const itemImg = new Image();
+    en.src = "images/enemyNew.png";
+    const itemImg = new Image();
     itemImg.crossOrigin = "anonymous";
     itemImg.src = "images/items8Outline.png";
     const slashImg = new Image();
@@ -49,10 +49,9 @@
 function level1(canvas,ctx,canvasUI,ctxUI){
  
   let w1 = new GameObjectLocked(ctx,0,200,300,70,"rgb(191, 184, 188)");//48,100
-  // var w2 = new GameObjectLocked(ctx,300,-50,100,50,"black");
-  let w3 = new GameObjectLocked(ctx,230,270,70,100,"rgb(191, 184, 188)");
-  let w4 = new GameObjectLocked(ctx,400,500,200,70,"rgb(191, 184, 188)");
-  let w5 = new GameObjectLocked(ctx,400,400,70,100,"rgb(191, 184, 188)");
+  let w2 = new GameObjectLocked(ctx,230,270,70,100,"rgb(191, 184, 188)");
+  let w3 = new GameObjectLocked(ctx,400,500,200,70,"rgb(191, 184, 188)");
+  let w4 = new GameObjectLocked(ctx,400,400,70,100,"rgb(191, 184, 188)");
   
   let machine1 = new GameObjectLocked(ctx,228,320,74,50,"rgb(38, 37, 56)");
   let machine2 = new GameObjectLocked(ctx,398,400,74,50,"rgb(38, 37, 56)");
@@ -63,13 +62,12 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
   let moveableBG = new BGLocked(600,631);
   let item1 = new Item(ctx,350,50,30,25);
-  let box = new Box(ctx,0,200,30,30,[255,0,0],"red");
+  let b1 = new Box(ctx,0,200,30,30,[255,0,0],"red");
   let b2 = new Box(ctx,-125,200,30,30,[0,255,0],"green");
   let b3 = new Box(ctx,600,500,30,30,[0,0,255],"blue");
   let b4 = new Box(ctx,-250,200,30,30,[0,0,0],"black");
   let b5 = new Box(ctx,725,500,30,30,[0,0,0],"black");
   let enemy = new Enemy(ctx,0,0,50,50);
-  // var enemy2 = new Enemy(ctx,600,450,50,50);
   let rate=0;
   let rate2=0;
   let gameUI = new GameStats(20,300,50,10,120);
@@ -80,9 +78,9 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   let gate2 = new Gate(ctxUI,220,0,50,5,"green");
   let gate3 = new Gate(ctxUI,300,0,50,5,"blue");
 
-  let boxList = [box,b2,b3,b4,b5];
-  let obsList = [w1,w3,w4,gate1,];
-  let allObj = [w1,w3,w4,gate1,box,b2,b3,b4];
+  let boxList = [b1,b2,b3,b4,b5];
+  // let obsList = [w1,w3,w4,gate1,];
+  // let allObj = [w1,w3,w4,gate1,box,b2,b3,b4];
   let gateList = [gate1,gate2,gate3];
   //DRAW LOOP===========================
   function draw(){
@@ -103,22 +101,18 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       fixedAvatar.run();
       fixedAvatar.switchSprite(ctx, rate,64,64);
       fixedAvatar.drawAttack(ctx,rate,slashImg);
-      // fixedAvatar.loadNear(allObj,moveableBG,rate);
       
       /*3.DRAW OBJECT BASE - layer above avatar and moveBG so there is no lag*/
      
-      w5.drawObj_BGFixed(moveableBG);
-      w1.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
-      // w2.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
-      w3.drawObj_BGFixed(moveableBG);
       w4.drawObj_BGFixed(moveableBG);
+      w1.drawObj_BGFixed(moveableBG);//make this before moveBG so theres no lag
+      w2.drawObj_BGFixed(moveableBG);
+      w3.drawObj_BGFixed(moveableBG);
     
-      // machine1.drawObj_BGFixed(moveableBG);
-
       w1.drawObjImgLayer(ctx,edgeImg,moveableBG,0,0,0,-20);
-      w4.drawObjImgLayer(ctx,edgeImg,moveableBG,0,0,0,-18);
-      w3.drawObjImgLayer(ctx,edgeImg2,moveableBG,0,69,0,40);
-      w5.drawObjImgLayer(ctx,edgeImg3,moveableBG,0,1,0,53);
+      w3.drawObjImgLayer(ctx,edgeImg,moveableBG,0,0,0,-18);
+      w2.drawObjImgLayer(ctx,edgeImg2,moveableBG,0,69,0,40);
+      w4.drawObjImgLayer(ctx,edgeImg3,moveableBG,0,1,0,53);
 
       machine2.drawObj_BGFixed(moveableBG);
       cone1.drawObjImgLayer(ctx,coneImg,moveableBG,0,22,0,22);
@@ -128,7 +122,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
         boxSpeed = Math.min(boxSpeed+0.01,5);
       }
       item1.drawItemImg(ctx,itemImg,moveableBG,60,50);
-      box.animateLPath(rate,0,200,300,300);
+      b1.animateLPath(rate,0,200,300,300);
       b2.animateLPath(rate,0,200,300,300);
       b4.animateLPath(rate,0,200,300,300);
       b3.animateLPathReverse(rate,600,500,(600-200+30),(500-100));
@@ -142,10 +136,10 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       
       
       
-      if(!box.pickedUp &&box.visible&&box.x>0-box.w){box.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
-      if(!b2.pickedUp&&b2.visible&&b2.x>0-box.w){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b1.pickedUp &&b1.visible&&b1.x>0-b1.w){b1.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b2.pickedUp&&b2.visible&&b2.x>0-b2.w){b2.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       if(!b3.pickedUp&&b3.visible&&b3.x<moveableBG.bgW){b3.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
-      if(!b4.pickedUp&&b4.visible&&b4.x>0-box.w){b4.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
+      if(!b4.pickedUp&&b4.visible&&b4.x>0-b4.w){b4.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       if(!b5.pickedUp&&b5.visible&&b5.x<moveableBG.bgW){b5.drawObjImgLayer(ctx,boxImg,moveableBG,0,0,0,0)}
       
       machine1.drawObjImgLayer(ctx,machineBack,moveableBG,0,0,0,0);
@@ -168,14 +162,12 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       /*5.AVATAR COLLISIONS*/
       if(rightPressed||leftPressed||upPressed||downPressed){
         w1.collisionObj(moveableBG,fixedAvatar);
-        // w2.collisionObj(moveableBG,fixedAvatar);
+        w2.collisionObj(moveableBG,fixedAvatar);
         w3.collisionObj(moveableBG,fixedAvatar);
         w4.collisionObj(moveableBG,fixedAvatar);
-        w5.collisionObj(moveableBG,fixedAvatar);
         item1.collisionObj(moveableBG,fixedAvatar);
        
-        box.collisionObj(moveableBG,fixedAvatar);
-        // stair1.collisionObj(moveableBG,fixedAvatar);
+        // b1.collisionObj(moveableBG,fixedAvatar);
         gate1.collisionObj(moveableBG,fixedAvatar);
         gate2.collisionObj(moveableBG,fixedAvatar);
         gate3.collisionObj(moveableBG,fixedAvatar);
@@ -183,22 +175,21 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       cone1.collisionObj(moveableBG,fixedAvatar);
       cone2.collisionObj(moveableBG,fixedAvatar);
       /*ENEMY COLLISIONS and ATTACK*/
-      // if(enemy.health>=0 && !enemy.isIdle){enemy.collisionObstacles(obsList);}
-      // if(enemy2.health>=0  && !enemy2.isIdle){enemy2.collisionObstacles(obsList);}
+     
       if(enemy.health>=0){enemy.isAttacked(moveableBG,fixedAvatar, hitSound);}
-      // if(enemy2.health>=0){enemy2.isAttacked(moveableBG,fixedAvatar);}
+
       
 
       /*ITEM and INTERACTABLE PROPERTIES*/
       item1.getEnergy(moveableBG, fixedAvatar, itemSound);
-      if(!box.pickedUp&&box.visible){box.pickupBox(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
+      if(!b1.pickedUp&&b1.visible){b1.pickupBox(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
       if(!b2.pickedUp&&b2.visible){b2.pickupBox(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
       if(!b3.pickedUp&&b3.visible){b3.pickupBox(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
       if(!b4.pickedUp&&b4.visible){b4.pickupBox(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
       if(!b5.pickedUp&&b5.visible){b5.pickupBox(moveableBG, fixedAvatar,inventory,enemy, enemySound, pickupSound)};
       
      
-      // if(!b4.pickedUp){b4.pickupItem(moveableBG, fixedAvatar,inventory,{"color":"black"})};
+  
       gate1.unlock(moveableBG,fixedAvatar,inventory,correctSound);
       gate2.unlock(moveableBG,fixedAvatar,inventory,correctSound);
       gate3.unlock(moveableBG,fixedAvatar,inventory,correctSound);
@@ -221,7 +212,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
       /*ANIMATION FRAME RATE*/
       rate = (rate+1)%10;//let this be frame rate, e.g if rate == 3, only every 1 out of every 100 frames will be called.
       rate2 = (rate2+1)%200;
-      // openMenu(canvas,ctx);
+    
 
       if(fixedAvatar.health<=0 || timeOut){
         drawTextOutline(ctxUI, 110,150,48,"white","GAME OVER");
