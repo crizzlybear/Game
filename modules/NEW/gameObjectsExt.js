@@ -121,7 +121,7 @@ class Item extends GameObjectLocked{
       this.frameW=120;
       
       if(this.energy==0){
-        avatarInst.energy = Math.min(avatarInst.energy+250,1000);
+        avatarInst.energy = Math.min(avatarInst.energy+300,1000);
         soundInst.volume = 0.1;
         soundInst.play();
         this.prevX = this.x;

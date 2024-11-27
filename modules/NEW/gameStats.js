@@ -110,6 +110,7 @@ class GameStats{
             gateList[i].score=0;
         }
         this.completedTasks=0;
+        this.prevScore=0;
     }
       
 }
