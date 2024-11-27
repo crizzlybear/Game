@@ -153,17 +153,12 @@ class Avatar{
     
     }
     if(attackPressed){
-      // if(rightPressed){
-      //   drawSwipe(ctx,this.x+this.w+30,this.y+this.h/2,50,50,this.j,attackImg);
-      // }else if(leftPressed){
-      //   drawSwipe(ctx,this.x-30,this.y+this.h/2,50,50,this.j,attackImg);
-      // }else if(upPressed){
-      //   drawSwipe(this.x+this.w+30,this.y-30,50,50,this.j,attackImg);
-      // }else if(downPressed){
-      //   drawSwipe(ctx,this.x+this.w+30,this.y+this.h+30,50,50,this.j,attackImg);
-      // }
-      drawSwipe(ctx,attackImg,this.x,this.y,80,80,this.j);
-      
+      if(leftPressed || upPressed){
+        drawSwipe(ctx,attackImg,this.x-25,this.y-25,80,80,this.j+4);
+      }else{
+        drawSwipe(ctx,attackImg,this.x,this.y,80,80,this.j);
+      }
+
     }
   }
 

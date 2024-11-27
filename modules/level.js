@@ -16,7 +16,7 @@
     itemImg.crossOrigin = "anonymous";
     itemImg.src = "images/items8Outline.png";
     const slashImg = new Image();
-    slashImg.src = "images/slash.png";
+    slashImg.src = "images/slash2.png";
     const machineFront = new Image();
     machineFront.src = "images/machineFront2.png";
     const machineBack = new Image();
