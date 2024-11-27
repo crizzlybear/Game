@@ -111,6 +111,7 @@ class GameStats{
         }
         this.completedTasks=0;
         this.prevScore=0;
+        this.targetScore=0;
     }
       
 }
