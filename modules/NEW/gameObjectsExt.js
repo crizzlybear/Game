@@ -23,6 +23,7 @@ class Box extends GameObjectLocked{
     let botBorder=this.y+this.h + 10;
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
       // console.log("pickedup");
+      boxAudio.volume = 0.85;
       boxAudio.play();
       // console.log(item);
       if(!this.pickedUp && inventory.length==0){
@@ -31,6 +32,7 @@ class Box extends GameObjectLocked{
           enemyInst.health=200;
           enemyInst.x = this.x;
           enemyInst.y=this.y;
+          enemyAudio.volume = 0.3;
           enemyAudio.play();
           
           this.pickedUp=true;
@@ -115,14 +117,13 @@ class Item extends GameObjectLocked{
     let botBorder=this.y+this.h + 10;
     let randomPositions = [[20,90],[400,80],[380,220],[200,510],[300,550]];
     if((pickup) && ((rightBorder-bgInst.bgX>avatarInst.x)&&(botBorder-bgInst.bgY>avatarInst.y)&&(leftBorder-bgInst.bgX<avatarInst.x+ avatarInst.w)&&(topBorder-bgInst.bgY<avatarInst.y+ avatarInst.h))){
-      this.energy = Math.max(this.energy-150,0);
-      avatarInst.energy = Math.min(avatarInst.energy+100,1000);
-      soundInst.play();
-      //this.col = "#808080";
-      // this.col = "#71ffff";
+      this.energy = Math.max(this.energy-250,0);
       this.frameW=120;
       
       if(this.energy==0){
+        avatarInst.energy = Math.min(avatarInst.energy+100,1000);
+        soundInst.volume = 0.1;
+        soundInst.play();
         this.prevX = this.x;
         let coord = Math.round(Math.random()*(randomPositions.length-1));
         this.x = randomPositions[coord][0];
@@ -185,6 +186,7 @@ class Gate extends GameObjectLocked{
       if( (inventory.length==1)&& (this.gateKeyReq == inventory[0]) && pickup ){
         inventory.pop();
         this.score++;
+        unlockSound.volume = 0.6;
         unlockSound.play();
         // console.log("@",this.gateKeyReq,":",this.score);
       }

@@ -40,6 +40,7 @@ class Enemy extends GameObjectLocked{
         avatarInst.health = avatarInst.health-this.damage;
         // avatarInst.x +=xDist*0.02;
         // avatarInst.y +=yDist*0.02;//avatar hit recoil, removed becuase it also needs to align bgX and bgY
+        hitAudio.volume = 0.05;
         hitAudio.play();
         avatarInst.isHit = true;
       }else{//console.log("outside");
@@ -122,6 +123,7 @@ class Enemy extends GameObjectLocked{
     const onHitAction = () =>{
       //Using arrow function to use parent scope
       this.health=this.health-5;
+      hitAudio.volume = 0.05;
       hitAudio.play();
       this.isHit=true;
     }
