@@ -37,6 +37,32 @@ function startScreen(canvas,ctx){
   ctx.font = `bold 20px Lucida Console`;
   ctx.fillStyle = "darkgray";
   ctx.fillText("Press Jump To Start", 120, 150);
+  
+  //draw controls
+  ctx.strokeStyle="white";
+  ctx.strokeRect(100-10,200,25,25);
+  drawText(ctx,105-10,220,20,"White","E");
+  drawText(ctx,82,240,10,"darkgray","PICKUP");
+  drawText(ctx,80,255,10,"darkgray","/SNIFF");
+  
+  ctx.strokeRect(145,200,25,25);
+  drawText(ctx,150,220,20,"White","R");
+  drawText(ctx,138,240,10,"darkgray","ATTACK");
+
+  ctx.strokeRect(200,200,70,25);
+  drawText(ctx,203,220,20,"White","Shift");
+  drawText(ctx,225,240,10,"darkgray","RUN");
+
+  ctx.strokeRect(300,200,25,25);
+  drawText(ctx,305,218,20,"White","<");
+  ctx.strokeRect(330,200,25,25);
+  drawText(ctx,335,218,20,"White","v");
+  drawText(ctx,330,240,10,"darkgray","MOVE");
+  ctx.strokeRect(360,200,25,25);
+  drawText(ctx,365,218,20,"White",">");
+  ctx.strokeRect(330,170,25,25);
+  drawText(ctx,335,188,20,"White","^");
+  ctx.stroke();
 }
 //KEY CONTROLS
 function keyDownHandler(e) {
