@@ -57,7 +57,7 @@ function level1(canvas,ctx,canvasUI,ctxUI){
   let machine2 = new GameObjectLocked(ctx,398,400,74,50,"rgb(38, 37, 56)");
 
   let topWall = new GameObjectLocked(ctx,0,-100,600,100,"rgb(106, 100, 117)");
-  let cone1 = new GameObjectLocked(ctx,540,150,30,10);
+  let cone1 = new GameObjectLocked(ctx,540,100,30,10);
   let cone2 = new GameObjectLocked(ctx,50,550,30,10);
   let fixedAvatar = new Avatar(canvas.width/2,canvas.height/2-20,50,50);
   let moveableBG = new BGLocked(600,631);

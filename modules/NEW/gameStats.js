@@ -44,36 +44,39 @@ class GameStats{
     
     drawCount(ctx,gateList){
         ctx.beginPath();
-        ctx.rect(0,40,70,15);
+        ctx.rect(0,40,75,45);
         ctx.fillStyle = "rgba(255,255,255,0.5)";
         ctx.fill();
         ctx.closePath();
 
         let text = ` R:${gateList[0].score} G:${gateList[1].score} B:${gateList[2].score}`;
         ctx.font = "bold 10px Arial";
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "white";
         // ctx.shadowColor="transparent";
-        ctx.fillText(text, 0, 50);
+        ctx.fillText(text, 0, 51);
         
     }  
     drawObjective(ctx,gateList){
-        let text = ` ${gateList[this.gateIndex].gateKeyReq}: ${this.targetScore}/${this.targetValue}`;
+        let col = gateList[this.gateIndex].gateKeyReq;
+        let text = ` ${col[0].toUpperCase()+col.slice(1).toLowerCase()}: ${this.targetScore}/${this.targetValue}`;
         let text2 = ` Completed: ${this.completedTasks}`;
+        // console.log(gateList[this.gateIndex].score);
         if(gateList[this.gateIndex].score > this.prevScore){
             this.targetScore++;
-        }
+        }//Needs testing
         this.prevScore = gateList[this.gateIndex].score;
         if(this.targetScore==this.targetValue){
-            this.completedTasks++;
             this.targetScore=0;
+            this.completedTasks++;
             this.targetValue = Math.round(Math.random()*3);//max target goal size
             this.gateIndex = Math.round(Math.random()*2);
         }
         
         ctx.font = "bold 10px Arial";
-        ctx.fillStyle = "red";
+        ctx.fillStyle =`${gateList[this.gateIndex].gateKeyReq}`;
         // ctx.shadowColor="transparent";
-        ctx.fillText(text, 0, 70);
+        ctx.fillText(text, 0, 66);
+        // ctx.fillStyle = "black";
         ctx.fillText(text2, 0, 80);
     }
 
