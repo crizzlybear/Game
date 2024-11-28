@@ -68,8 +68,9 @@ class GameStats{
         if(this.targetScore==this.targetValue){
             this.targetScore=0;
             this.completedTasks++;
-            this.targetValue = Math.round(Math.random()*3);//max target goal size
+            this.targetValue = Math.round(Math.random()*(3-1)+1);//max target goal size, note must exclude 0
             this.gateIndex = Math.round(Math.random()*2);
+            this.prevScore = gateList[this.gateIndex].score;
         }
         
         ctx.font = "bold 10px Arial";
@@ -78,6 +79,7 @@ class GameStats{
         ctx.fillText(text, 0, 66);
         // ctx.fillStyle = "black";
         ctx.fillText(text2, 0, 80);
+        // console.log(col,"Gate Score:",gateList[this.gateIndex].score,"TargetScore",this.targetScore,"TargetValue",this.targetValue,"PrevScore",this.prevScore,"Completed",this.completedTasks);
     }
 
     countDownTimer(){
