@@ -44,5 +44,5 @@ function updateHighscore(ctx,x,y,size,col,nCompleted){
         hsText = `Highscore: ${highscore}`;
     }
     drawText(ctx,x,y,size,col,hsText);
-    drawText(ctx,x,y+40,size*0.5,col,"Press Jump To Play Again");
+    drawText(ctx,x,y+40,size*0.7,col,"Press Jump To Play Again");
 }
